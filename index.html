@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скважина 343 — Технический отчёт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #FFFFFF;
+  --bg-2:       #F8F8F8;
+  --surface:    #F4F4F4;
+  --surface-2:  #ECECEC;
+  --surface-3:  #E4E4E4;
+  --border:     #D8D8D8;
+  --border-dim: #EBEBEB;
+
+  --white:      #111111;
+  --white-dim:  #2A2A2A;
+  --grey:       #777777;
+  --grey-dim:   #AAAAAA;
+  --grey-muted: #CCCCCC;
+
+  --accent:     #000000;
+  --accent-dim: rgba(0,0,0,0.04);
+
+  --font-h:     'Oswald', sans-serif;
+  --font-data:  'JetBrains Mono', monospace;
+  --font-body:  'IBM Plex Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ═══════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--border);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark-inner {
+  width: 10px;
+  height: 10px;
+  background: var(--white);
+  transform: rotate(0deg);
+}
+
+.logo-text {
+  font-family: var(--font-h);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.logo-sub {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.nav a {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.nav a:hover,
+.nav a.active { color: var(--white); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--white-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--white);
+  animation: blink 2.5s infinite;
+}
+
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.header-date {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 1px;
+  border-left: 1px solid var(--border);
+  padding-left: 20px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  padding: 52px 48px 40px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Blueprint grid */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Large watermark number */
+.hero::after {
+  content: '343';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-family: var(--font-h);
+  font-size: 320px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -10px;
+}
+
+.hero-inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hero-left {}
+
+.hero-eyebrow {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--grey-muted);
+}
+
+.hero-title {
+  font-family: var(--font-h);
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hero-title .light {
+  font-weight: 200;
+  color: var(--grey);
+}
+
+.hero-meta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-meta-item {
+  font-family: var(--font-data);
+  font-size: 13px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.hero-meta-item span {
+  color: var(--white-dim);
+}
+
+.hero-meta-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+}
+
+.hero-right {
+  text-align: right;
+  padding-bottom: 4px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 10px 18px;
+  border-radius: 2px;
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.status-pill.active {
+  border-color: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.04);
+  color: var(--white);
+}
+
+.status-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--white);
+  animation: blink 2.5s infinite;
+}
+
+.hero-period {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey-dim);
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION LABELS
+═══════════════════════════════════════════════════════ */
+.section-label {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0 48px;
+  margin: 32px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-dim);
+}
+
+/* ═══════════════════════════════════════════════════════
+   KPI STRIP
+═══════════════════════════════════════════════════════ */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+
+.kpi-card {
+  padding: 28px 32px 24px;
+  border-right: 1px solid var(--border);
+  position: relative;
+  transition: background 0.2s;
+}
+
+.kpi-card:last-child { border-right: none; }
+
+.kpi-card:hover {
+  background: var(--surface);
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.kpi-card:hover::before { opacity: 0.2; }
+
+.kpi-card.primary::before { opacity: 1; }
+
+.kpi-index {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-muted);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.kpi-label {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-family: var(--font-h);
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -1px;
+  color: var(--white);
+}
+
+.kpi-card:not(.primary) .kpi-value {
+  color: var(--white-dim);
+}
+
+.kpi-unit {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.kpi-delta {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 1px;
+  background: var(--surface-3);
+  padding: 3px 7px;
+  border-radius: 1px;
+}
+
+.kpi-delta.positive { color: var(--white-dim); }
+
+/* ═══════════════════════════════════════════════════════
+   COMPARE STRIP — ДО / ПИК / СЕЙЧАС
+═══════════════════════════════════════════════════════ */
+.compare-strip {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr 2px 1fr;
+  padding: 0 48px;
+  margin-bottom: 0;
+}
+
+.compare-divider {
+  background: var(--border);
+  align-self: stretch;
+  margin: 20px 0;
+}
+
+.compare-col {
+  padding: 32px 0;
+}
+
+.compare-col.center { padding: 32px 40px; }
+
+.compare-tag {
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin-bottom: 6px;
+}
+
+.compare-date {
+  font-family: var(--font-data);
+  font-size: 13px;
+  color: var(--grey);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.compare-big {
+  font-family: var(--font-h);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  color: var(--grey-muted);
+}
+
+.compare-col.center .compare-big { color: var(--white); }
+.compare-col:last-child .compare-big { color: var(--white-dim); }
+
+.compare-unit {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey-dim);
+  letter-spacing: 1.5px;
+  margin: 8px 0 12px;
+}
+
+.compare-sub {
+  font-family: var(--font-data);
+  font-size: 14px;
+  color: var(--grey);
+  font-weight: 400;
+}
+
+.compare-col.center .compare-sub { color: var(--white-dim); }
+
+.compare-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  color: var(--grey);
+}
+
+.compare-col.center .compare-badge {
+  border-color: rgba(255,255,255,0.2);
+  color: var(--white-dim);
+}
+
+/* ═══════════════════════════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════════════════════════ */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.main-left {
+  border-right: 1px solid var(--border);
+}
+
+.main-right {}
+
+/* ═══════════════════════════════════════════════════════
+   CHART BLOCK
+═══════════════════════════════════════════════════════ */
+.chart-block {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.block-title {
+  font-family: var(--font-h);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.block-badge {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.legend-line {
+  width: 20px;
+  height: 2px;
+  background: var(--white);
+}
+
+.legend-line.dashed {
+  background: repeating-linear-gradient(90deg, var(--grey-muted) 0, var(--grey-muted) 4px, transparent 4px, transparent 8px);
+}
+
+.chart-wrap {
+  height: 300px;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════
+   EVENTS FEED
+═══════════════════════════════════════════════════════ */
+.events-block {
+  padding: 32px 40px;
+}
+
+.event-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.event-item:last-child { border-bottom: none; }
+
+.event-date-col {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1px;
+  line-height: 1.6;
+  padding-top: 2px;
+}
+
+.event-date-col .day-num {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--grey-muted);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.event-body {}
+
+.event-values {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.ev {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--white-dim);
+  font-weight: 500;
+}
+
+.ev span {
+  font-size: 11px;
+  color: var(--grey);
+  font-weight: 300;
+  margin-right: 2px;
+}
+
+.event-note {
+  font-size: 13px;
+  color: var(--grey);
+  line-height: 1.5;
+}
+
+.event-tag {
+  display: inline-block;
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  color: var(--grey-dim);
+  margin-top: 6px;
+}
+
+.event-tag.highlight {
+  border-color: rgba(0,0,0,0.25);
+  color: var(--white-dim);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════════ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+/* RIR block */
+.rir-block {
+  padding: 28px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rir-title {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 24px;
+}
+
+.days-display {
+  text-align: center;
+  padding: 28px 0;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.days-display::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.02) 0%, transparent 70%);
+}
+
+.days-big {
+  font-family: var(--font-h);
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 0.85;
+  color: var(--white);
+  letter-spacing: -4px;
+}
+
+.days-label {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.rir-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.rm:last-child { border-bottom: none; }
+
+.rm-key {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.rm-val {
+  font-family: var(--font-data);
+  font-size: 13px;
+  color: var(--white-dim);
+  font-weight: 500;
+  text-align: right;
+}
+
+.rm-val.bright { color: var(--white); }
+
+/* Tech block */
+.tech-block {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tech-title {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin-bottom: 16px;
+}
+
+.tech-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.tech-row:last-child { border-bottom: none; }
+
+.tech-key {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tech-val {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey);
+}
+
+.tech-val.ok {
+  color: var(--white-dim);
+}
+
+.tech-val.attention {
+  color: var(--white);
+  border-bottom: 1px dotted var(--grey-dim);
+}
+
+/* Risk block */
+.risk-block {
+  padding: 24px 28px;
+}
+
+.risk-title {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey-dim);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.risk-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 12px;
+  background: var(--white-dim);
+}
+
+.risk-bar-group {
+  margin-bottom: 16px;
+}
+
+.risk-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.risk-bar-track {
+  height: 3px;
+  background: var(--surface-3);
+  border-radius: 1px;
+  overflow: visible;
+  position: relative;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  background: #888888;
+  border-radius: 1px;
+  position: relative;
+}
+
+.risk-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  width: 3px;
+  height: 9px;
+  background: #111111;
+  border-radius: 1px;
+}
+
+.risk-threshold {
+  position: absolute;
+  top: -4px;
+  width: 1px;
+  height: 11px;
+  background: var(--grey-muted);
+}
+
+.risk-note {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--border-dim);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BOTTOM STATS BAR
+═══════════════════════════════════════════════════════ */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-bar--3col { grid-template-columns: repeat(3, 1fr); }
+
+.stat-cell {
+  padding: 24px 32px;
+  border-right: 1px solid var(--border);
+}
+
+.stat-cell:last-child { border-right: none; }
+
+.stat-label {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-family: var(--font-h);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--white-dim);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.stat-unit {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 2px;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TIMELINE SECTION
+═══════════════════════════════════════════════════════ */
+.timeline-section {
+  padding: 40px 48px 48px;
+}
+
+.timeline-title {
+  font-family: var(--font-h);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 32px;
+}
+
+.timeline {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: var(--border);
+}
+
+.tl-item {
+  flex: 1;
+  padding-top: 40px;
+  position: relative;
+  padding-right: 20px;
+}
+
+.tl-dot {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transform: rotate(45deg);
+}
+
+.tl-item.milestone .tl-dot {
+  background: var(--white-dim);
+  border-color: var(--white-dim);
+}
+
+.tl-date {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-dim);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.tl-event {
+  font-family: var(--font-h);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.tl-item.milestone .tl-event { color: var(--white-dim); }
+
+.tl-detail {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--grey-dim);
+  line-height: 1.5;
+}
+
+.tl-item.milestone .tl-detail { color: var(--grey); }
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--grey-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+.footer-right {
+  font-family: var(--font-h);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey-muted);
+}
+
+/* ═══════════════════════════════════════════════════════
+   DIVIDER LINE
+═══════════════════════════════════════════════════════ */
+.h-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE NAV TOGGLE
+═══════════════════════════════════════════════════════ */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--grey);
+  transition: all 0.2s;
+}
+
+.nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px 16px;
+}
+
+.nav-mobile.open { display: flex; }
+
+.nav-mobile a {
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--grey);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-dim);
+  transition: color 0.2s;
+}
+
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover,
+.nav-mobile a.active { color: var(--white); }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — TABLET / MOBILE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+
+  /* Header */
+  .header { padding: 0 20px; height: 52px; }
+  .nav { display: none; }
+  .nav-toggle { display: flex; }
+  .header-right { gap: 14px; }
+  .header-date { display: none; }
+  .live-badge { font-size: 10px; }
+
+  /* Hero */
+  .hero { padding: 32px 20px 28px; }
+  .hero::after { font-size: 160px; top: -10px; right: -10px; }
+  .hero-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-title { font-size: 52px; }
+  .hero-meta { flex-wrap: wrap; gap: 12px; }
+  .hero-meta-sep { display: none; }
+  .hero-meta-item { font-size: 11px; }
+  .hero-right { text-align: left; width: 100%; }
+  .status-pill { font-size: 11px; }
+
+  /* KPI strip → 2 columns */
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .kpi-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .kpi-card:nth-child(2n) { border-right: none; }
+  .kpi-card:last-child { grid-column: 1 / -1; border-bottom: none; }
+  .kpi-value { font-size: 40px; }
+  .kpi-card { padding: 20px 20px 18px; }
+
+  /* Section label */
+  .section-label { padding: 0 20px; }
+
+  /* Compare strip → vertical */
+  .compare-strip {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+  .compare-divider { height: 1px; width: 100%; margin: 0; }
+  .compare-col { padding: 20px 0; }
+  .compare-col.center { padding: 20px 0; border-left: 3px solid var(--border); padding-left: 16px; }
+  .compare-col:last-child { padding-left: 0; border-left: none; padding-right: 0; }
+  .compare-big { font-size: 44px; }
+
+  /* Stats bar → 2×2 */
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { padding: 18px 20px; }
+  .stat-cell:nth-child(2n) { border-right: none; }
+  .stat-cell:nth-child(n+3) { border-top: 1px solid var(--border); }
+
+  /* Main layout → single column */
+  .main-layout { grid-template-columns: 1fr; }
+  .main-left { border-right: none; border-bottom: 1px solid var(--border); }
+
+  /* Chart */
+  .chart-block { padding: 24px 20px; }
+  .chart-wrap { height: 240px; }
+  .events-block { padding: 24px 20px; }
+
+  /* Event items */
+  .event-item { grid-template-columns: 70px 1fr; gap: 12px; }
+  .event-date-col .day-num { font-size: 18px; }
+
+  /* Sidebar */
+  .rir-block { padding: 24px 20px; }
+  .tech-block { padding: 20px 20px; }
+  .risk-block { padding: 20px 20px; }
+  .days-big { font-size: 72px; }
+
+  /* Timeline → vertical */
+  .timeline-section { padding: 28px 20px 36px; }
+  .timeline { flex-direction: column; gap: 0; }
+  .timeline::before {
+    top: 0; bottom: 0;
+    left: 5px; right: auto;
+    width: 1px; height: auto;
+  }
+  .tl-item {
+    padding-top: 0;
+    padding-left: 28px;
+    padding-right: 0;
+    padding-bottom: 28px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    top: 2px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Passport stats → 1 column */
+  .stats-bar--3col { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer { flex-direction: column; gap: 10px; align-items: flex-start; padding: 16px 20px; }
+  .footer-left { font-size: 10px; }
+  .footer-right { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+
+  /* Even smaller phones */
+  .hero-title { font-size: 42px; }
+  .hero::after { font-size: 120px; }
+  .kpi-value { font-size: 36px; }
+  .compare-big { font-size: 36px; }
+  .days-big { font-size: 60px; }
+  .stat-value { font-size: 26px; }
+
+  /* KPI → still 2 col but tighter */
+  .kpi-card { padding: 16px 16px 14px; }
+  .kpi-label { font-size: 10px; }
+  .kpi-unit { font-size: 10px; }
+
+  /* Events */
+  .event-item { grid-template-columns: 60px 1fr; }
+  .ev { font-size: 10px; }
+  .event-note { font-size: 12px; }
+
+  /* Chart */
+  .chart-wrap { height: 200px; }
+  .chart-legend { flex-wrap: wrap; gap: 10px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ HEADER ══════════════════════ -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <div>
+      <div class="logo-text">Скважина 343</div>
+      <div class="logo-sub">М/Р Каратюбе · Горизонт J1-IV</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#dashboard" class="active">Дашборд</a>
+    <a href="#dynamics">Динамика</a>
+    <a href="#rir">РИР</a>
+    <a href="#timeline">Хронология</a>
+    <a href="#passport">Паспорт</a>
+  </nav>
+  <div class="header-right">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Работает
+    </div>
+    <div class="header-date">30.04.2026 / 14:00</div>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="nav-mobile" id="navMobile">
+  <a href="#dashboard" onclick="closeNav()">Дашборд</a>
+  <a href="#dynamics" onclick="closeNav()">Динамика</a>
+  <a href="#rir" onclick="closeNav()">РИР</a>
+  <a href="#timeline" onclick="closeNav()">Хронология</a>
+  <a href="#passport" onclick="closeNav()">Паспорт</a>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero" id="dashboard">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Ежедневный технический отчёт · Суточный замер</div>
+      <h1 class="hero-title">СКВАЖИНА <br><span class="light">№</span>343</h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">УШВН 33/900 · <span>585 М</span></div>
+        <div class="hero-meta-sep"></div>
+        <div class="hero-meta-item">ИНТ. ПЕРФ. <span>629,8–660 М</span></div>
+        <div class="hero-meta-sep"></div>
+        <div class="hero-meta-item">НКПЗ: <span>03.02.2026</span></div>
+        <div class="hero-meta-sep"></div>
+        <div class="hero-meta-item">88 ДНЕЙ С НАЧАЛА РИР</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="status-pill active">
+        <div class="status-pulse"></div>
+        Работает · 140 об/мин
+      </div>
+      <div class="hero-period">Период наблюдений: 15.01.2026 — 30.04.2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ KPI STRIP ══════════════════════ -->
+<div class="kpi-strip">
+  <div class="kpi-card primary">
+    <div class="kpi-index">01 / 05</div>
+    <div class="kpi-delta positive">×5,7 от базы</div>
+    <div class="kpi-label">Дебит нефти</div>
+    <div class="kpi-value">14.9</div>
+    <div class="kpi-unit">Т / СУТ</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-index">02 / 05</div>
+    <div class="kpi-delta">−51,9 п.п. от max</div>
+    <div class="kpi-label">Обводнённость</div>
+    <div class="kpi-value">37.6</div>
+    <div class="kpi-unit">%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-index">03 / 05</div>
+    <div class="kpi-delta">+7,2 от базы</div>
+    <div class="kpi-label">Дебит жидкости</div>
+    <div class="kpi-value">27.3</div>
+    <div class="kpi-unit">М³ / СУТ</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-index">04 / 05</div>
+    <div class="kpi-delta">стаб.</div>
+    <div class="kpi-label">Дебит воды</div>
+    <div class="kpi-value">10.3</div>
+    <div class="kpi-unit">М³ / СУТ</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-index">05 / 05</div>
+    <div class="kpi-label">Ндин / стат.</div>
+    <div class="kpi-value">167</div>
+    <div class="kpi-unit">М</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ COMPARE ══════════════════════ -->
+<div class="section-label">Сравнение ключевых точек</div>
+<div class="compare-strip">
+  <div class="compare-col">
+    <div class="compare-tag">До РИР · Базовый</div>
+    <div class="compare-date">28.01.2026</div>
+    <div class="compare-big">1.1</div>
+    <div class="compare-unit">Т / СУТ · НЕФТЬ</div>
+    <div class="compare-sub">89,4% воды</div>
+    <div class="compare-badge">Критическое состояние</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col center">
+    <div class="compare-tag">Пиковый эффект РИР</div>
+    <div class="compare-date">19.03.2026</div>
+    <div class="compare-big">16.4</div>
+    <div class="compare-unit">Т / СУТ · НЕФТЬ</div>
+    <div class="compare-sub">27,5% воды</div>
+    <div class="compare-badge">Исторический максимум</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col" style="padding-left:40px">
+    <div class="compare-tag">Текущий режим</div>
+    <div class="compare-date">30.04.2026</div>
+    <div class="compare-big">14.9</div>
+    <div class="compare-unit">Т / СУТ · НЕФТЬ</div>
+    <div class="compare-sub">37,6% воды</div>
+    <div class="compare-badge">Эффект сохраняется</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ BOTTOM STATS ══════════════════════ -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <div class="stat-label">Накопленная нефть (после РИР)</div>
+    <div class="stat-value">1 250</div>
+    <div class="stat-unit">Т · 88 дней</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Прирост к базовому</div>
+    <div class="stat-value">+12.3</div>
+    <div class="stat-unit">Т / СУТ · средн.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Снижение обводнённости</div>
+    <div class="stat-value">−51.9</div>
+    <div class="stat-unit">П.П. от пика</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Рост дебита от базы</div>
+    <div class="stat-value">×5.7</div>
+    <div class="stat-unit">Кратность</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ MAIN LAYOUT ══════════════════════ -->
+<div class="main-layout" id="dynamics">
+
+  <!-- LEFT COLUMN -->
+  <div class="main-left">
+
+    <!-- Chart -->
+    <div class="chart-block">
+      <div class="block-header">
+        <div class="block-title">Динамика — полная история</div>
+        <div class="block-badge">Qн + ОБВ. / 15.01 — 30.04.2026</div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item">
+          <div class="legend-line"></div>
+          Дебит нефти (Т/СУТ)
+        </div>
+        <div class="legend-item">
+          <div class="legend-line dashed"></div>
+          Обводнённость (%)
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="mainChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Events -->
+    <div class="events-block" id="rir">
+      <div class="block-header">
+        <div class="block-title">Лента событий · Апрель 2026</div>
+        <div class="block-badge">30 записей</div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">30</span>
+          АПР 2026<br>
+          День 88
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>14,9 т/сут</div>
+            <div class="ev"><span>Обв.</span>37,6%</div>
+            <div class="ev"><span>Qж</span>27,3 м³/сут</div>
+            <div class="ev"><span>Ндин</span>167 м</div>
+          </div>
+          <div class="event-note">Конец апреля — устойчивый рабочий режим. Эффект изоляции сохраняется в течение 88 дней после проведения ремонтно-изоляционных работ.</div>
+          <span class="event-tag highlight">Стабильный режим</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">19</span>
+          АПР 2026
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>15,3 т/сут</div>
+            <div class="ev"><span>Обв.</span>37,3%</div>
+            <div class="ev"><span>Ндин</span>179 м</div>
+          </div>
+          <div class="event-note">Снижение обводнённости. Хороший технический режим после плановых замеров. Подтверждён оперативной бригадой.</div>
+          <span class="event-tag highlight">Улучшение</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">13</span>
+          АПР 2026
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>15,0 т/сут</div>
+            <div class="ev"><span>Обв.</span>38,0%</div>
+            <div class="ev"><span>Δ</span>+0,6 т/сут</div>
+          </div>
+          <div class="event-note">Рост дебита нефти с 14,4 до 15,0 т/сут без роста воды — позитивный сигнал сохранения изоляционного эффекта.</div>
+          <span class="event-tag highlight">Рост нефти</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">09</span>
+          АПР 2026
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>14,4 т/сут</div>
+            <div class="ev"><span>Обв.</span>38,0%</div>
+          </div>
+          <div class="event-note">Обводнённость закрепилась на уровне 38% — третий день без роста. Конусообразование не развивается.</div>
+          <span class="event-tag">Стабилизация</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">25</span>
+          АПР 2026
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>14,6 т/сут</div>
+            <div class="ev"><span>Обв.</span>37,5%</div>
+          </div>
+          <div class="event-note">Отключение электроэнергии, переход на ДЭС и обратно. Просадка дебита без роста обводнённости.</div>
+          <span class="event-tag">Отключение ЭЭ</span>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col">
+          <span class="day-num">07</span>
+          АПР 2026
+        </div>
+        <div class="event-body">
+          <div class="event-values">
+            <div class="ev"><span>Qн</span>14,4 т/сут</div>
+            <div class="ev"><span>Обв.</span>38,0%</div>
+          </div>
+          <div class="event-note">Достигнут контрольный уровень обводнённости 38%. Усилен мониторинг: при росте обв. выше 40% при снижении Qн ниже 14,5 — пересмотр режима.</div>
+          <span class="event-tag">Контроль</span>
+        </div>
+      </div>
+
+    </div><!-- /events-block -->
+  </div><!-- /main-left -->
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="main-right">
+    <div class="sidebar">
+
+      <!-- RIR -->
+      <div class="rir-block">
+        <div class="rir-title">Ремонтно-изоляционные работы</div>
+        <div class="days-display">
+          <div class="days-big">88</div>
+          <div class="days-label">Дней после РИР</div>
+        </div>
+        <div class="rir-metrics">
+          <div class="rm">
+            <span class="rm-key">Дата проведения</span>
+            <span class="rm-val">29.01–02.02.26</span>
+          </div>
+          <div class="rm">
+            <span class="rm-key">Пиковый дебит</span>
+            <span class="rm-val bright">16,4 Т/СУТ · 19.03</span>
+          </div>
+          <div class="rm">
+            <span class="rm-key">Мин. обводн.</span>
+            <span class="rm-val bright">27,5% · 19.03</span>
+          </div>
+          <div class="rm">
+            <span class="rm-key">Рост дебита</span>
+            <span class="rm-val bright">×5,7 от базы</span>
+          </div>
+          <div class="rm">
+            <span class="rm-key">Снижение обв.</span>
+            <span class="rm-val">−47–52 п.п.</span>
+          </div>
+          <div class="rm">
+            <span class="rm-key">Эффект</span>
+            <span class="rm-val bright">Сохраняется ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech mode -->
+      <div class="tech-block">
+        <div class="tech-title">Технический режим</div>
+        <div class="tech-row">
+          <span class="tech-key">Насос</span>
+          <span class="tech-val ok">УШВН 33/900</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Глубина установки</span>
+          <span class="tech-val">585 М</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Обороты (факт)</span>
+          <span class="tech-val ok">140 ОБ/МИН</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Qн тех. режим</span>
+          <span class="tech-val">14,2 Т/СУТ</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Qн факт</span>
+          <span class="tech-val ok attention">14,9 Т/СУТ ↑</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Обв. тех. режим</span>
+          <span class="tech-val">35,7%</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Обв. факт</span>
+          <span class="tech-val">37,6%</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Горизонт</span>
+          <span class="tech-val">J1-IV</span>
+        </div>
+        <div class="tech-row">
+          <span class="tech-key">Забой</span>
+          <span class="tech-val">816 М</span>
+        </div>
+      </div>
+
+      <!-- Risk -->
+      <div class="risk-block">
+        <div class="risk-title">Мониторинг рисков</div>
+
+        <div class="risk-bar-group">
+          <div class="risk-bar-label">
+            <span>Обводнённость</span>
+            <span>37,6% / 40%</span>
+          </div>
+          <div class="risk-bar-track">
+            <div class="risk-bar-fill" style="width:60%"></div>
+            <div class="risk-threshold" style="left:64%"></div>
+          </div>
+        </div>
+
+        <div class="risk-bar-group">
+          <div class="risk-bar-label">
+            <span>Дебит нефти</span>
+            <span>14,9 / 16,4 Т/СУТ</span>
+          </div>
+          <div class="risk-bar-track">
+            <div class="risk-bar-fill" style="width:91%"></div>
+          </div>
+        </div>
+
+        <div class="risk-bar-group" style="margin-bottom:14px">
+          <div class="risk-bar-label">
+            <span>Ндин</span>
+            <span>167 / 585 М</span>
+          </div>
+          <div class="risk-bar-track">
+            <div class="risk-bar-fill" style="width:29%"></div>
+          </div>
+        </div>
+
+        <div class="risk-note">
+          Тренд → Стабилен · Рекомендация: держать 140 об/мин
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /main-right -->
+
+</div><!-- /main-layout -->
+
+<!-- ══════════════════════ TIMELINE ══════════════════════ -->
+<div class="section-label" id="timeline">Хронология ключевых событий</div>
+<div class="timeline-section">
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">15 — 28.01.2026</div>
+      <div class="tl-event">Базовый период</div>
+      <div class="tl-detail">Qн 1,1–2,6 т/сут<br>Обв. 84–89,4%<br>Критическое состояние</div>
+    </div>
+
+    <div class="tl-item milestone">
+      <div class="tl-dot"></div>
+      <div class="tl-date">29.01 — 02.02.2026</div>
+      <div class="tl-event">КРС / РИР</div>
+      <div class="tl-detail">Закачка изолирующего<br>состава в интервалы<br>перфорации</div>
+    </div>
+
+    <div class="tl-item milestone">
+      <div class="tl-dot"></div>
+      <div class="tl-date">03 — 04.02.2026</div>
+      <div class="tl-event">Запуск · Перелом</div>
+      <div class="tl-detail">2,1 → 6,2 т/сут<br>83% → 66,8% за сутки<br>Перевод на выкидную линию</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">19.02.2026</div>
+      <div class="tl-event">Резкий перелом</div>
+      <div class="tl-detail">6,9 → 11,5 т/сут<br>62,9 → 38,4%<br>−24,5 п.п. за сутки</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">16.03.2026</div>
+      <div class="tl-event">Форсирование</div>
+      <div class="tl-detail">120 → 140 об/мин<br>Выход на новый уровень<br>Рост Qн до 14,9 т/сут</div>
+    </div>
+
+    <div class="tl-item milestone">
+      <div class="tl-dot"></div>
+      <div class="tl-date">19.03.2026</div>
+      <div class="tl-event">Пиковый эффект</div>
+      <div class="tl-detail">Qн = 16,4 т/сут<br>Обв. = 27,5%<br>Исторические максимумы</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Апрель 2026</div>
+      <div class="tl-event">Стабильный режим</div>
+      <div class="tl-detail">Qн 14,4–15,3 т/сут<br>Обв. 37–38%<br>Эффект сохраняется</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ PASSPORT ══════════════════════ -->
+<div class="section-label" id="passport">Технический паспорт</div>
+<div class="stats-bar stats-bar--3col">
+  <div class="stat-cell">
+    <div class="stat-label">Месторождение</div>
+    <div class="stat-value" style="font-size:22px;letter-spacing:0">Каратюбе</div>
+    <div class="stat-unit">Актюбинская обл. · Казахстан</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Оператор · ПСН</div>
+    <div class="stat-value" style="font-size:22px;letter-spacing:0">ИК Petroleum</div>
+    <div class="stat-unit">ПСН/АГЗУ №1</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Наблюдения</div>
+    <div class="stat-value">96</div>
+    <div class="stat-unit">Суточных замеров</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer">
+  <div class="footer-left">
+    М/Р Каратюбе · Скв. 343 · Горизонт J1-IV · УШВН 33/900<br>
+    Данные: суточные режимные листы · Период: 15.01 — 30.04.2026
+  </div>
+  <div class="footer-right">ТОО «ЭкоМикс»</div>
+</footer>
+
+<!-- ══════════════════════ CHART.JS ══════════════════════ -->
+<script>
+const DATA = [
+  { d:"15.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"16.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"17.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"18.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"19.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"20.01", qn:2.6,  obv:85.4, phase:"before" },
+  { d:"21.01", qn:2.3,  obv:86.0, phase:"before" },
+  { d:"22.01", qn:2.3,  obv:86.0, phase:"before" },
+  { d:"23.01", qn:2.3,  obv:86.0, phase:"before" },
+  { d:"24.01", qn:2.3,  obv:86.5, phase:"before" },
+  { d:"25.01", qn:2.6,  obv:84.0, phase:"before" },
+  { d:"26.01", qn:2.6,  obv:84.0, phase:"before" },
+  { d:"27.01", qn:1.7,  obv:89.4, phase:"before" },
+  { d:"28.01", qn:1.1,  obv:89.4, phase:"before" },
+  { d:"29.01", qn:null, obv:null,  phase:"krs" },
+  { d:"30.01", qn:null, obv:null,  phase:"krs" },
+  { d:"31.01", qn:null, obv:null,  phase:"krs" },
+  { d:"01.02", qn:null, obv:null,  phase:"krs" },
+  { d:"02.02", qn:null, obv:null,  phase:"krs" },
+  { d:"03.02", qn:2.1,  obv:83.0, phase:"after" },
+  { d:"04.02", qn:6.2,  obv:66.8, phase:"after" },
+  { d:"05.02", qn:6.2,  obv:66.7, phase:"after" },
+  { d:"06.02", qn:6.5,  obv:65.0, phase:"after" },
+  { d:"07.02", qn:6.5,  obv:64.7, phase:"after" },
+  { d:"08.02", qn:6.6,  obv:64.7, phase:"after" },
+  { d:"09.02", qn:6.6,  obv:64.7, phase:"after" },
+  { d:"10.02", qn:7.0,  obv:62.8, phase:"after" },
+  { d:"11.02", qn:6.9,  obv:62.8, phase:"after" },
+  { d:"12.02", qn:6.9,  obv:62.8, phase:"after" },
+  { d:"13.02", qn:6.9,  obv:62.8, phase:"after" },
+  { d:"14.02", qn:6.9,  obv:62.8, phase:"after" },
+  { d:"15.02", qn:6.9,  obv:62.9, phase:"after" },
+  { d:"16.02", qn:6.9,  obv:62.9, phase:"after" },
+  { d:"17.02", qn:6.9,  obv:62.9, phase:"after" },
+  { d:"18.02", qn:6.9,  obv:62.9, phase:"after" },
+  { d:"19.02", qn:11.5, obv:38.4, phase:"after" },
+  { d:"20.02", qn:11.5, obv:38.4, phase:"after" },
+  { d:"21.02", qn:11.5, obv:38.4, phase:"after" },
+  { d:"22.02", qn:11.5, obv:38.4, phase:"after" },
+  { d:"23.02", qn:12.3, obv:34.5, phase:"after" },
+  { d:"24.02", qn:13.3, obv:34.5, phase:"after" },
+  { d:"25.02", qn:13.3, obv:34.5, phase:"after" },
+  { d:"26.02", qn:13.3, obv:34.5, phase:"after" },
+  { d:"27.02", qn:13.3, obv:34.5, phase:"after" },
+  { d:"28.02", qn:13.3, obv:35.6, phase:"after" },
+  { d:"01.03", qn:13.3, obv:35.6, phase:"after" },
+  { d:"02.03", qn:13.3, obv:35.6, phase:"after" },
+  { d:"03.03", qn:13.9, obv:35.0, phase:"after" },
+  { d:"05.03", qn:14.0, obv:35.1, phase:"after" },
+  { d:"06.03", qn:14.0, obv:35.1, phase:"after" },
+  { d:"07.03", qn:14.0, obv:35.1, phase:"after" },
+  { d:"08.03", qn:14.1, obv:35.1, phase:"after" },
+  { d:"09.03", qn:14.1, obv:35.1, phase:"after" },
+  { d:"10.03", qn:14.3, obv:35.0, phase:"after" },
+  { d:"11.03", qn:14.3, obv:35.0, phase:"after" },
+  { d:"12.03", qn:14.3, obv:35.0, phase:"after" },
+  { d:"13.03", qn:14.3, obv:34.9, phase:"after" },
+  { d:"14.03", qn:14.3, obv:34.9, phase:"after" },
+  { d:"15.03", qn:14.3, obv:34.9, phase:"after" },
+  { d:"16.03", qn:14.9, obv:33.2, phase:"forced" },
+  { d:"17.03", qn:15.6, obv:31.9, phase:"forced" },
+  { d:"18.03", qn:15.9, obv:29.8, phase:"forced" },
+  { d:"19.03", qn:16.4, obv:27.5, phase:"forced" },
+  { d:"20.03", qn:16.3, obv:27.5, phase:"forced" },
+  { d:"21.03", qn:16.0, obv:27.5, phase:"forced" },
+  { d:"22.03", qn:16.0, obv:27.5, phase:"forced" },
+  { d:"23.03", qn:16.0, obv:27.5, phase:"forced" },
+  { d:"24.03", qn:16.0, obv:27.5, phase:"forced" },
+  { d:"25.03", qn:16.0, obv:28.4, phase:"forced" },
+  { d:"26.03", qn:16.0, obv:28.4, phase:"forced" },
+  { d:"27.03", qn:15.6, obv:30.2, phase:"forced" },
+  { d:"28.03", qn:15.3, obv:32.0, phase:"forced" },
+  { d:"29.03", qn:15.3, obv:32.0, phase:"forced" },
+  { d:"30.03", qn:14.9, obv:34.0, phase:"forced" },
+  { d:"31.03", qn:14.9, obv:34.0, phase:"forced" },
+  { d:"01.04", qn:14.2, obv:35.7, phase:"stable" },
+  { d:"02.04", qn:14.2, obv:36.0, phase:"stable" },
+  { d:"03.04", qn:14.3, obv:36.0, phase:"stable" },
+  { d:"04.04", qn:14.3, obv:37.2, phase:"stable" },
+  { d:"05.04", qn:14.3, obv:37.2, phase:"stable" },
+  { d:"06.04", qn:14.3, obv:37.2, phase:"stable" },
+  { d:"07.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"08.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"09.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"10.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"11.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"12.04", qn:14.4, obv:38.0, phase:"stable" },
+  { d:"13.04", qn:15.0, obv:38.0, phase:"stable" },
+  { d:"14.04", qn:15.0, obv:38.0, phase:"stable" },
+  { d:"15.04", qn:15.0, obv:38.0, phase:"stable" },
+  { d:"16.04", qn:15.0, obv:38.0, phase:"stable" },
+  { d:"17.04", qn:14.9, obv:38.0, phase:"stable" },
+  { d:"18.04", qn:15.2, obv:37.5, phase:"stable" },
+  { d:"19.04", qn:15.3, obv:37.3, phase:"stable" },
+  { d:"20.04", qn:15.3, obv:37.3, phase:"stable" },
+  { d:"21.04", qn:15.2, obv:37.3, phase:"stable" },
+  { d:"22.04", qn:14.9, obv:37.6, phase:"stable" },
+  { d:"23.04", qn:15.1, obv:37.5, phase:"stable" },
+  { d:"24.04", qn:14.8, obv:37.5, phase:"stable" },
+  { d:"25.04", qn:14.6, obv:37.5, phase:"stable" },
+  { d:"26.04", qn:14.7, obv:37.5, phase:"stable" },
+  { d:"27.04", qn:14.7, obv:37.5, phase:"stable" },
+  { d:"28.04", qn:14.9, obv:37.5, phase:"stable" },
+  { d:"29.04", qn:14.9, obv:37.6, phase:"stable" },
+  { d:"30.04", qn:14.9, obv:37.6, phase:"stable" },
+];
+
+const labels = DATA.map(r => r.d);
+const qnData  = DATA.map(r => r.qn);
+const obvData = DATA.map(r => r.obv);
+
+/* KRS gap positions */
+const krsStart = DATA.findIndex(r => r.phase === 'krs');
+const krsEnd   = DATA.map(r => r.phase).lastIndexOf('krs');
+const peakIdx  = DATA.findIndex(r => r.qn === 16.4);
+const forceIdx = DATA.findIndex(r => r.phase === 'forced');
+
+Chart.defaults.color = '#AAAAAA';
+Chart.defaults.font.family = "'JetBrains Mono', monospace";
+Chart.defaults.font.size = 9;
+
+const ctx = document.getElementById('mainChart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Qн (т/сут)',
+        data: qnData,
+        yAxisID: 'y',
+        borderColor: 'rgba(17,17,17,0.85)',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: '#111111',
+        tension: 0.3,
+        spanGaps: false,
+      },
+      {
+        label: 'Обв. (%)',
+        data: obvData,
+        yAxisID: 'y2',
+        borderColor: 'rgba(170,170,170,0.7)',
+        backgroundColor: 'transparent',
+        borderWidth: 1,
+        borderDash: [4, 4],
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        tension: 0.3,
+        spanGaps: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#FFFFFF',
+        borderColor: '#D8D8D8',
+        borderWidth: 1,
+        titleColor: '#111111',
+        bodyColor: '#555555',
+        titleFont: { family: "'JetBrains Mono', monospace", size: 9 },
+        bodyFont: { family: "'JetBrains Mono', monospace", size: 10 },
+        padding: 10,
+        callbacks: {
+          label(ctx) {
+            if (ctx.datasetIndex === 0) return `  Qн:  ${ctx.parsed.y} т/сут`;
+            return `  Обв: ${ctx.parsed.y}%`;
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          krsZone: {
+            type: 'box',
+            xMin: krsStart,
+            xMax: krsEnd,
+            backgroundColor: 'rgba(0,0,0,0.03)',
+            borderColor: 'rgba(0,0,0,0.08)',
+            borderWidth: 1,
+            label: {
+              display: true,
+              content: 'КРС / РИР',
+              font: { family: "'JetBrains Mono', monospace", size: 8 },
+              color: 'rgba(100,100,100,0.6)',
+              position: { x: 'center', y: 'end' },
+            }
+          },
+          forceEvent: {
+            type: 'line',
+            xMin: forceIdx,
+            xMax: forceIdx,
+            borderColor: 'rgba(0,0,0,0.15)',
+            borderWidth: 1,
+            borderDash: [3, 3],
+            label: {
+              display: true,
+              content: '↑ 140 об/мин',
+              font: { family: "'JetBrains Mono', monospace", size: 8 },
+              color: 'rgba(80,80,80,0.6)',
+              position: 'start',
+            }
+          },
+          peakPoint: {
+            type: 'point',
+            xValue: peakIdx,
+            yValue: 16.4,
+            backgroundColor: 'rgba(17,17,17,0.9)',
+            radius: 5,
+            yScaleID: 'y',
+          },
+          baseQn: {
+            type: 'line',
+            yMin: 2.6,
+            yMax: 2.6,
+            yScaleID: 'y',
+            borderColor: 'rgba(0,0,0,0.08)',
+            borderWidth: 1,
+            borderDash: [2, 6],
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: 'rgba(0,0,0,0.05)',
+          tickLength: 0,
+        },
+        border: { color: 'rgba(0,0,0,0.1)' },
+        ticks: {
+          maxTicksLimit: 12,
+          maxRotation: 0,
+          color: '#BBBBBB',
+          font: { size: 8 },
+        }
+      },
+      y: {
+        position: 'left',
+        min: 0,
+        max: 20,
+        grid: {
+          color: 'rgba(0,0,0,0.05)',
+        },
+        border: { color: 'transparent', dash: [] },
+        ticks: {
+          color: '#BBBBBB',
+          font: { size: 8 },
+          stepSize: 4,
+          callback: v => v + ' т'
+        }
+      },
+      y2: {
+        position: 'right',
+        min: 0,
+        max: 100,
+        grid: { display: false },
+        border: { color: 'transparent' },
+        ticks: {
+          color: '#CCCCCC',
+          font: { size: 8 },
+          stepSize: 20,
+          callback: v => v + '%'
+        }
+      }
+    }
+  }
+});
+</script>
+
+<script>
+function toggleNav() {
+  const nav = document.getElementById('navMobile');
+  const toggle = document.getElementById('navToggle');
+  nav.classList.toggle('open');
+  toggle.classList.toggle('active');
+}
+function closeNav() {
+  document.getElementById('navMobile').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('active');
+}
+</script>
+</body>
+</html>
