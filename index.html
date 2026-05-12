@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Скважина 343 — Технический отчёт</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <style>
@@ -34,8 +34,8 @@
   --accent-dim: rgba(0,0,0,0.04);
 
   --font-h:     'Oswald', sans-serif;
-  --font-data:  'JetBrains Mono', monospace;
-  --font-body:  'IBM Plex Sans', sans-serif;
+  --font-data:  'Inter', sans-serif;
+  --font-body:  'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -1082,6 +1082,227 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════
+   DAILY LOG
+═══════════════════════════════════════════════════════ */
+.log-section {
+  padding: 0 0 48px;
+  border-top: 1px solid var(--border);
+}
+
+.log-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.log-heading {
+  font-family: var(--font-h);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.log-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 20px 48px 0;
+}
+
+.log-filter {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--grey);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.log-filter:hover { border-color: var(--grey); color: var(--white-dim); }
+.log-filter.active {
+  background: var(--white);
+  color: var(--bg);
+  border-color: var(--white);
+  font-weight: 600;
+}
+
+.log-table-wrap {
+  margin: 20px 48px 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.log-table thead th {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--grey);
+  background: var(--surface);
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.log-table thead th.num { text-align: right; }
+
+.log-table tbody tr {
+  border-bottom: 1px solid var(--border-dim);
+  transition: background 0.1s;
+  cursor: pointer;
+}
+
+.log-table tbody tr:last-child { border-bottom: none; }
+.log-table tbody tr:hover { background: var(--surface); }
+
+.log-table tbody tr.row-krs { background: var(--surface-2); }
+.log-table tbody tr.row-krs:hover { background: var(--surface-3); }
+
+.log-table tbody td {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--white-dim);
+  padding: 11px 14px;
+  vertical-align: middle;
+}
+
+.log-table tbody td.num {
+  text-align: right;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+}
+
+.log-table tbody td.num.empty { color: var(--grey-muted); }
+
+.log-date {
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.phase-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.phase-label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.phase-before  { background: rgba(0,0,0,0.06); color: #888; }
+.phase-krs     { background: rgba(0,0,0,0.1);  color: #555; }
+.phase-after   { background: rgba(0,0,0,0.08); color: #444; }
+.phase-forced  { background: rgba(0,0,0,0.12); color: #222; }
+.phase-stable  { background: rgba(0,0,0,0.05); color: #666; }
+
+.phase-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.ev-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-right: 6px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.ev-peak  { background: #111; color: #fff; }
+.ev-jump  { background: #333; color: #fff; }
+.ev-stop  { background: #777; color: #fff; }
+.ev-krs   { background: #444; color: #fff; }
+.ev-start { background: #222; color: #fff; }
+.ev-warn  { background: rgba(0,0,0,0.1); color: #555; }
+.ev-rpm   { background: rgba(0,0,0,0.08); color: #444; }
+.ev-power { background: rgba(0,0,0,0.08); color: #444; }
+
+.log-row--ev td { background: rgba(0,0,0,0.02); }
+
+.log-comment {
+  font-size: 12px;
+  color: var(--grey);
+  max-width: 340px;
+  line-height: 1.45;
+}
+
+.log-comment.truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.log-event-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+.badge-peak    { background: #111; color: #fff; }
+.badge-jump    { background: #333; color: #fff; }
+.badge-stop    { background: #888; color: #fff; }
+.badge-krs     { background: #555; color: #fff; }
+.badge-warn    { background: rgba(0,0,0,0.1); color: #555; }
+.badge-ok      { background: rgba(0,0,0,0.06); color: #666; }
+
+.log-count {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--grey);
+  padding: 16px 48px 0;
+}
+
+@media (max-width: 900px) {
+  .log-top { padding: 20px 20px 0; }
+  .log-filters { padding: 14px 20px 0; }
+  .log-table-wrap { margin: 14px 20px 0; }
+  .log-count { padding: 12px 20px 0; }
+  .log-comment.truncated { max-width: 160px; }
+}
+
+/* ═══════════════════════════════════════════════════════
    MOBILE NAV TOGGLE
 ═══════════════════════════════════════════════════════ */
 .nav-toggle {
@@ -1444,109 +1665,7 @@ a { text-decoration: none; color: inherit; }
       </div>
     </div>
 
-    <!-- Events -->
-    <div class="events-block" id="rir">
-      <div class="block-header">
-        <div class="block-title">Лента событий · Апрель 2026</div>
-        <div class="block-badge">30 записей</div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">30</span>
-          АПР 2026<br>
-          День 88
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>14,9 т/сут</div>
-            <div class="ev"><span>Обв.</span>37,6%</div>
-            <div class="ev"><span>Qж</span>27,3 м³/сут</div>
-            <div class="ev"><span>Ндин</span>167 м</div>
-          </div>
-          <div class="event-note">Конец апреля — устойчивый рабочий режим. Эффект изоляции сохраняется в течение 88 дней после проведения ремонтно-изоляционных работ.</div>
-          <span class="event-tag highlight">Стабильный режим</span>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">19</span>
-          АПР 2026
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>15,3 т/сут</div>
-            <div class="ev"><span>Обв.</span>37,3%</div>
-            <div class="ev"><span>Ндин</span>179 м</div>
-          </div>
-          <div class="event-note">Снижение обводнённости. Хороший технический режим после плановых замеров. Подтверждён оперативной бригадой.</div>
-          <span class="event-tag highlight">Улучшение</span>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">13</span>
-          АПР 2026
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>15,0 т/сут</div>
-            <div class="ev"><span>Обв.</span>38,0%</div>
-            <div class="ev"><span>Δ</span>+0,6 т/сут</div>
-          </div>
-          <div class="event-note">Рост дебита нефти с 14,4 до 15,0 т/сут без роста воды — позитивный сигнал сохранения изоляционного эффекта.</div>
-          <span class="event-tag highlight">Рост нефти</span>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">09</span>
-          АПР 2026
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>14,4 т/сут</div>
-            <div class="ev"><span>Обв.</span>38,0%</div>
-          </div>
-          <div class="event-note">Обводнённость закрепилась на уровне 38% — третий день без роста. Конусообразование не развивается.</div>
-          <span class="event-tag">Стабилизация</span>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">25</span>
-          АПР 2026
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>14,6 т/сут</div>
-            <div class="ev"><span>Обв.</span>37,5%</div>
-          </div>
-          <div class="event-note">Отключение электроэнергии, переход на ДЭС и обратно. Просадка дебита без роста обводнённости.</div>
-          <span class="event-tag">Отключение ЭЭ</span>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col">
-          <span class="day-num">07</span>
-          АПР 2026
-        </div>
-        <div class="event-body">
-          <div class="event-values">
-            <div class="ev"><span>Qн</span>14,4 т/сут</div>
-            <div class="ev"><span>Обв.</span>38,0%</div>
-          </div>
-          <div class="event-note">Достигнут контрольный уровень обводнённости 38%. Усилен мониторинг: при росте обв. выше 40% при снижении Qн ниже 14,5 — пересмотр режима.</div>
-          <span class="event-tag">Контроль</span>
-        </div>
-      </div>
-
-    </div><!-- /events-block -->
+    <div id="rir"></div>
   </div><!-- /main-left -->
 
   <!-- RIGHT SIDEBAR -->
@@ -1674,6 +1793,38 @@ a { text-decoration: none; color: inherit; }
 
 </div><!-- /main-layout -->
 
+<!-- ══════════════════════ DAILY LOG ══════════════════════ -->
+<div class="log-section" id="log">
+  <div class="log-top">
+    <div class="log-heading">Ежедневный журнал замеров</div>
+  </div>
+  <div class="log-filters" id="logFilters">
+    <button class="log-filter active" data-phase="all">Все дни</button>
+    <button class="log-filter" data-phase="before">До РИР</button>
+    <button class="log-filter" data-phase="krs">КРС</button>
+    <button class="log-filter" data-phase="after">После РИР</button>
+    <button class="log-filter" data-phase="forced">Форсирование</button>
+    <button class="log-filter" data-phase="stable">Апрель</button>
+  </div>
+  <div class="log-count" id="logCount"></div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Фаза</th>
+          <th class="num">Qн, т/сут</th>
+          <th class="num">Обв., %</th>
+          <th class="num">Qж, м³/сут</th>
+          <th class="num">Ндин, м</th>
+          <th>Комментарий</th>
+        </tr>
+      </thead>
+      <tbody id="logBody"></tbody>
+    </table>
+  </div>
+</div>
+
 <!-- ══════════════════════ TIMELINE ══════════════════════ -->
 <div class="section-label" id="timeline">Хронология ключевых событий</div>
 <div class="timeline-section">
@@ -1760,114 +1911,114 @@ a { text-decoration: none; color: inherit; }
   <div class="footer-right">ТОО «ЭкоМикс»</div>
 </footer>
 
-<!-- ══════════════════════ CHART.JS ══════════════════════ -->
+<!-- ══════════════════════ CHART.JS + LOG ══════════════════════ -->
 <script>
 const DATA = [
-  { d:"15.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"16.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"17.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"18.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"19.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"20.01", qn:2.6,  obv:85.4, phase:"before" },
-  { d:"21.01", qn:2.3,  obv:86.0, phase:"before" },
-  { d:"22.01", qn:2.3,  obv:86.0, phase:"before" },
-  { d:"23.01", qn:2.3,  obv:86.0, phase:"before" },
-  { d:"24.01", qn:2.3,  obv:86.5, phase:"before" },
-  { d:"25.01", qn:2.6,  obv:84.0, phase:"before" },
-  { d:"26.01", qn:2.6,  obv:84.0, phase:"before" },
-  { d:"27.01", qn:1.7,  obv:89.4, phase:"before" },
-  { d:"28.01", qn:1.1,  obv:89.4, phase:"before" },
-  { d:"29.01", qn:null, obv:null,  phase:"krs" },
-  { d:"30.01", qn:null, obv:null,  phase:"krs" },
-  { d:"31.01", qn:null, obv:null,  phase:"krs" },
-  { d:"01.02", qn:null, obv:null,  phase:"krs" },
-  { d:"02.02", qn:null, obv:null,  phase:"krs" },
-  { d:"03.02", qn:2.1,  obv:83.0, phase:"after" },
-  { d:"04.02", qn:6.2,  obv:66.8, phase:"after" },
-  { d:"05.02", qn:6.2,  obv:66.7, phase:"after" },
-  { d:"06.02", qn:6.5,  obv:65.0, phase:"after" },
-  { d:"07.02", qn:6.5,  obv:64.7, phase:"after" },
-  { d:"08.02", qn:6.6,  obv:64.7, phase:"after" },
-  { d:"09.02", qn:6.6,  obv:64.7, phase:"after" },
-  { d:"10.02", qn:7.0,  obv:62.8, phase:"after" },
-  { d:"11.02", qn:6.9,  obv:62.8, phase:"after" },
-  { d:"12.02", qn:6.9,  obv:62.8, phase:"after" },
-  { d:"13.02", qn:6.9,  obv:62.8, phase:"after" },
-  { d:"14.02", qn:6.9,  obv:62.8, phase:"after" },
-  { d:"15.02", qn:6.9,  obv:62.9, phase:"after" },
-  { d:"16.02", qn:6.9,  obv:62.9, phase:"after" },
-  { d:"17.02", qn:6.9,  obv:62.9, phase:"after" },
-  { d:"18.02", qn:6.9,  obv:62.9, phase:"after" },
-  { d:"19.02", qn:11.5, obv:38.4, phase:"after" },
-  { d:"20.02", qn:11.5, obv:38.4, phase:"after" },
-  { d:"21.02", qn:11.5, obv:38.4, phase:"after" },
-  { d:"22.02", qn:11.5, obv:38.4, phase:"after" },
-  { d:"23.02", qn:12.3, obv:34.5, phase:"after" },
-  { d:"24.02", qn:13.3, obv:34.5, phase:"after" },
-  { d:"25.02", qn:13.3, obv:34.5, phase:"after" },
-  { d:"26.02", qn:13.3, obv:34.5, phase:"after" },
-  { d:"27.02", qn:13.3, obv:34.5, phase:"after" },
-  { d:"28.02", qn:13.3, obv:35.6, phase:"after" },
-  { d:"01.03", qn:13.3, obv:35.6, phase:"after" },
-  { d:"02.03", qn:13.3, obv:35.6, phase:"after" },
-  { d:"03.03", qn:13.9, obv:35.0, phase:"after" },
-  { d:"05.03", qn:14.0, obv:35.1, phase:"after" },
-  { d:"06.03", qn:14.0, obv:35.1, phase:"after" },
-  { d:"07.03", qn:14.0, obv:35.1, phase:"after" },
-  { d:"08.03", qn:14.1, obv:35.1, phase:"after" },
-  { d:"09.03", qn:14.1, obv:35.1, phase:"after" },
-  { d:"10.03", qn:14.3, obv:35.0, phase:"after" },
-  { d:"11.03", qn:14.3, obv:35.0, phase:"after" },
-  { d:"12.03", qn:14.3, obv:35.0, phase:"after" },
-  { d:"13.03", qn:14.3, obv:34.9, phase:"after" },
-  { d:"14.03", qn:14.3, obv:34.9, phase:"after" },
-  { d:"15.03", qn:14.3, obv:34.9, phase:"after" },
-  { d:"16.03", qn:14.9, obv:33.2, phase:"forced" },
-  { d:"17.03", qn:15.6, obv:31.9, phase:"forced" },
-  { d:"18.03", qn:15.9, obv:29.8, phase:"forced" },
-  { d:"19.03", qn:16.4, obv:27.5, phase:"forced" },
-  { d:"20.03", qn:16.3, obv:27.5, phase:"forced" },
-  { d:"21.03", qn:16.0, obv:27.5, phase:"forced" },
-  { d:"22.03", qn:16.0, obv:27.5, phase:"forced" },
-  { d:"23.03", qn:16.0, obv:27.5, phase:"forced" },
-  { d:"24.03", qn:16.0, obv:27.5, phase:"forced" },
-  { d:"25.03", qn:16.0, obv:28.4, phase:"forced" },
-  { d:"26.03", qn:16.0, obv:28.4, phase:"forced" },
-  { d:"27.03", qn:15.6, obv:30.2, phase:"forced" },
-  { d:"28.03", qn:15.3, obv:32.0, phase:"forced" },
-  { d:"29.03", qn:15.3, obv:32.0, phase:"forced" },
-  { d:"30.03", qn:14.9, obv:34.0, phase:"forced" },
-  { d:"31.03", qn:14.9, obv:34.0, phase:"forced" },
-  { d:"01.04", qn:14.2, obv:35.7, phase:"stable" },
-  { d:"02.04", qn:14.2, obv:36.0, phase:"stable" },
-  { d:"03.04", qn:14.3, obv:36.0, phase:"stable" },
-  { d:"04.04", qn:14.3, obv:37.2, phase:"stable" },
-  { d:"05.04", qn:14.3, obv:37.2, phase:"stable" },
-  { d:"06.04", qn:14.3, obv:37.2, phase:"stable" },
-  { d:"07.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"08.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"09.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"10.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"11.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"12.04", qn:14.4, obv:38.0, phase:"stable" },
-  { d:"13.04", qn:15.0, obv:38.0, phase:"stable" },
-  { d:"14.04", qn:15.0, obv:38.0, phase:"stable" },
-  { d:"15.04", qn:15.0, obv:38.0, phase:"stable" },
-  { d:"16.04", qn:15.0, obv:38.0, phase:"stable" },
-  { d:"17.04", qn:14.9, obv:38.0, phase:"stable" },
-  { d:"18.04", qn:15.2, obv:37.5, phase:"stable" },
-  { d:"19.04", qn:15.3, obv:37.3, phase:"stable" },
-  { d:"20.04", qn:15.3, obv:37.3, phase:"stable" },
-  { d:"21.04", qn:15.2, obv:37.3, phase:"stable" },
-  { d:"22.04", qn:14.9, obv:37.6, phase:"stable" },
-  { d:"23.04", qn:15.1, obv:37.5, phase:"stable" },
-  { d:"24.04", qn:14.8, obv:37.5, phase:"stable" },
-  { d:"25.04", qn:14.6, obv:37.5, phase:"stable" },
-  { d:"26.04", qn:14.7, obv:37.5, phase:"stable" },
-  { d:"27.04", qn:14.7, obv:37.5, phase:"stable" },
-  { d:"28.04", qn:14.9, obv:37.5, phase:"stable" },
-  { d:"29.04", qn:14.9, obv:37.6, phase:"stable" },
-  { d:"30.04", qn:14.9, obv:37.6, phase:"stable" },
+  { d:"15.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Базовый период. Скважина работает в штатном режиме. Дебит нефти 2,6 т/сут, обводнённость 85,4%." },
+  { d:"16.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Показатели без изменений." },
+  { d:"17.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Стабильный режим. Потенциал скважины не реализован." },
+  { d:"18.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Показатели без изменений." },
+  { d:"19.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Показатели без изменений." },
+  { d:"20.01", qn:2.6,  obv:85.4, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Конец первой недели наблюдений." },
+  { d:"21.01", qn:2.3,  obv:86.0, qzh:19.2, ndin:43,  phase:"before", ev:"warn",   comment:"Начало негативного тренда. Дебит снизился до 2,3 т/сут, обводнённость выросла до 86,0%." },
+  { d:"22.01", qn:2.3,  obv:86.0, qzh:19.2, ndin:43,  phase:"before", ev:"",       comment:"Второй день снижения. Тренд подтверждается." },
+  { d:"23.01", qn:2.3,  obv:86.0, qzh:19.2, ndin:43,  phase:"before", ev:"",       comment:"Третий день снижения." },
+  { d:"24.01", qn:2.3,  obv:86.5, qzh:19.2, ndin:43,  phase:"before", ev:"warn",   comment:"Обводнённость выросла до 86,5% — новый максимум." },
+  { d:"25.01", qn:2.6,  obv:84.0, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Краткосрочное улучшение. Нестабильность пласта." },
+  { d:"26.01", qn:2.6,  obv:84.0, qzh:20.1, ndin:43,  phase:"before", ev:"",       comment:"Показатели держатся." },
+  { d:"27.01", qn:1.7,  obv:89.4, qzh:18.6, ndin:43,  phase:"before", ev:"warn",   comment:"Критическое падение. Дебит 1,7 т/сут, обводнённость 89,4% — рекордный максимум." },
+  { d:"28.01", qn:1.1,  obv:89.4, qzh:11.4, ndin:43,  phase:"before", ev:"stop",   comment:"Минимальный дебит 1,1 т/сут. Остановка после замера в 15:00. Принято решение о РИР." },
+  { d:"29.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 1. Подготовка ствола скважины." },
+  { d:"30.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 2. Промывка и обработка." },
+  { d:"31.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 3. Подготовка к закачке изолирующего состава." },
+  { d:"01.02", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"РИР. Закачка изолирующего состава в интервалы перфорации 629,8–660 м." },
+  { d:"02.02", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"Технологическая выдержка. Набор прочности изолирующего состава." },
+  { d:"03.02", qn:2.1,  obv:83.0, qzh:14.2, ndin:150, phase:"after",  ev:"start",  comment:"Запуск после РИР. Пробы: инт.1 – 93% воды, инт.2 – 82%, инт.3 – 74%. Дебит 2,1 т/сут, обв. 83%." },
+  { d:"04.02", qn:6.2,  obv:66.8, qzh:21.2, ndin:160, phase:"after",  ev:"jump",   comment:"Перелом! Перевод на выкидную линию. Дебит вырос с 2,1 до 6,2 т/сут (+4,1). Обводнённость 83% → 66,8% за сутки." },
+  { d:"05.02", qn:6.2,  obv:66.7, qzh:21.2, ndin:177, phase:"after",  ev:"",       comment:"Стабилизация на новом уровне. Обороты насоса 120 об/мин." },
+  { d:"06.02", qn:6.5,  obv:65.0, qzh:21.3, ndin:197, phase:"after",  ev:"",       comment:"Плавный рост дебита до 6,5 т/сут." },
+  { d:"07.02", qn:6.5,  obv:64.7, qzh:21.2, ndin:197, phase:"after",  ev:"",       comment:"После замера. Режим стабилен." },
+  { d:"08.02", qn:6.6,  obv:64.7, qzh:21.3, ndin:197, phase:"after",  ev:"",       comment:"Незначительный рост." },
+  { d:"09.02", qn:6.6,  obv:64.7, qzh:21.4, ndin:216, phase:"after",  ev:"",       comment:"Стабильная работа на 120 об/мин." },
+  { d:"10.02", qn:7.0,  obv:62.8, qzh:21.5, ndin:216, phase:"after",  ev:"",       comment:"Рост до 7,0 т/сут. Обводнённость снизилась до 62,8%. После замера." },
+  { d:"11.02", qn:6.9,  obv:62.8, qzh:21.2, ndin:216, phase:"after",  ev:"",       comment:"Небольшая коррекция." },
+  { d:"12.02", qn:6.9,  obv:62.8, qzh:21.3, ndin:216, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"13.02", qn:6.9,  obv:62.8, qzh:21.2, ndin:216, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"14.02", qn:6.9,  obv:62.8, qzh:21.3, ndin:216, phase:"after",  ev:"",       comment:"После замера. Плато обводнённости 62,8%." },
+  { d:"15.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"Незначительные колебания." },
+  { d:"16.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"17.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"После замера." },
+  { d:"18.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"Последний день перед резким переломом." },
+  { d:"19.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"jump",   comment:"Резкий перелом! 6,9 → 11,5 т/сут. Обводнённость 62,9% → 38,4% (−24,5 п.п. за сутки). Завершение набора прочности состава." },
+  { d:"20.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Подтверждение нового режима. Стабильно." },
+  { d:"21.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Третий день стабильности — перелом подтверждён." },
+  { d:"22.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"23.02", qn:12.3, obv:34.5, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Дальнейший рост до 12,3 т/сут. Обводнённость 34,5%." },
+  { d:"24.02", qn:13.3, obv:34.5, qzh:23.2, ndin:189, phase:"after",  ev:"",       comment:"После замера. Дебит 13,3 т/сут." },
+  { d:"25.02", qn:13.3, obv:34.5, qzh:23.2, ndin:189, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"26.02", qn:13.3, obv:34.5, qzh:23.2, ndin:189, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"27.02", qn:13.3, obv:34.5, qzh:23.2, ndin:189, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"28.02", qn:13.3, obv:35.6, qzh:23.7, ndin:189, phase:"after",  ev:"",       comment:"Незначительный рост обводнённости. Конец февраля." },
+  { d:"01.03", qn:13.3, obv:35.6, qzh:23.7, ndin:240, phase:"after",  ev:"",       comment:"Март. Режим стабилен." },
+  { d:"02.03", qn:13.3, obv:35.6, qzh:23.7, ndin:240, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"03.03", qn:13.9, obv:35.0, qzh:24.4, ndin:240, phase:"after",  ev:"",       comment:"После замера. Рост до 13,9 т/сут, обводнённость 35,0%." },
+  { d:"05.03", qn:14.0, obv:35.1, qzh:24.7, ndin:239, phase:"after",  ev:"",       comment:"14,0 т/сут. Стабильная работа." },
+  { d:"06.03", qn:14.0, obv:35.1, qzh:24.6, ndin:239, phase:"after",  ev:"",       comment:"После замера." },
+  { d:"07.03", qn:14.0, obv:35.1, qzh:24.6, ndin:239, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"08.03", qn:14.1, obv:35.1, qzh:24.8, ndin:239, phase:"after",  ev:"",       comment:"Незначительный рост." },
+  { d:"09.03", qn:14.1, obv:35.1, qzh:24.8, ndin:273, phase:"after",  ev:"",       comment:"После замера." },
+  { d:"10.03", qn:14.3, obv:35.0, qzh:25.2, ndin:273, phase:"after",  ev:"",       comment:"14,3 т/сут." },
+  { d:"11.03", qn:14.3, obv:35.0, qzh:25.2, ndin:273, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"12.03", qn:14.3, obv:35.0, qzh:25.2, ndin:273, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"13.03", qn:14.3, obv:34.9, qzh:25.2, ndin:273, phase:"after",  ev:"",       comment:"После замера. Обводнённость 34,9%." },
+  { d:"14.03", qn:14.3, obv:34.9, qzh:25.2, ndin:175, phase:"after",  ev:"",       comment:"Стабильно." },
+  { d:"15.03", qn:14.3, obv:34.9, qzh:25.2, ndin:175, phase:"after",  ev:"",       comment:"Конец плато. Планируется форсирование оборотов." },
+  { d:"16.03", qn:14.9, obv:33.2, qzh:25.5, ndin:175, phase:"forced", ev:"rpm",    comment:"Увеличение оборотов 120 → 140 об/мин. Дебит 14,9 т/сут, обводнённость снизилась до 33,2%." },
+  { d:"17.03", qn:15.6, obv:31.9, qzh:26.2, ndin:187, phase:"forced", ev:"",       comment:"Рост после форсирования. 15,6 т/сут, 31,9%." },
+  { d:"18.03", qn:15.9, obv:29.8, qzh:25.9, ndin:187, phase:"forced", ev:"",       comment:"Впервые ниже 30%! 15,9 т/сут, обводнённость 29,8%." },
+  { d:"19.03", qn:16.4, obv:27.5, qzh:26.2, ndin:187, phase:"forced", ev:"peak",   comment:"Пик! 16,4 т/сут — исторический максимум. Обводнённость 27,5% — исторический минимум за весь период наблюдений." },
+  { d:"20.03", qn:16.3, obv:27.5, qzh:25.8, ndin:187, phase:"forced", ev:"",       comment:"Начало стабилизации после пика." },
+  { d:"21.03", qn:16.0, obv:27.5, qzh:25.3, ndin:187, phase:"forced", ev:"",       comment:"Плато на историческом минимуме обводнённости." },
+  { d:"22.03", qn:16.0, obv:27.5, qzh:25.2, ndin:190, phase:"forced", ev:"",       comment:"После замера." },
+  { d:"23.03", qn:16.0, obv:27.5, qzh:25.2, ndin:190, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"24.03", qn:16.0, obv:27.5, qzh:25.2, ndin:190, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"25.03", qn:16.0, obv:28.4, qzh:25.6, ndin:190, phase:"forced", ev:"warn",   comment:"Первый признак конусообразования. Обводнённость выросла до 28,4% (+0,9 п.п.)." },
+  { d:"26.03", qn:16.0, obv:28.4, qzh:25.6, ndin:190, phase:"forced", ev:"warn",   comment:"Тенденция подтверждается. Ведётся мониторинг." },
+  { d:"27.03", qn:15.6, obv:30.2, qzh:25.6, ndin:190, phase:"forced", ev:"warn",   comment:"Дебит снизился до 15,6 т/сут. Обводнённость 30,2%. Конус развивается." },
+  { d:"28.03", qn:15.3, obv:32.0, qzh:25.8, ndin:190, phase:"forced", ev:"",       comment:"После замера. Обводнённость 32,0%." },
+  { d:"29.03", qn:15.3, obv:32.0, qzh:25.8, ndin:190, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"30.03", qn:14.9, obv:34.0, qzh:25.8, ndin:190, phase:"forced", ev:"",       comment:"Дебит 14,9 т/сут. Обводнённость 34,0%." },
+  { d:"31.03", qn:14.9, obv:34.0, qzh:25.8, ndin:190, phase:"forced", ev:"",       comment:"Конец марта." },
+  { d:"01.04", qn:14.2, obv:35.7, qzh:25.3, ndin:190, phase:"stable", ev:"",       comment:"После замера. 14,2 т/сут, 35,7%." },
+  { d:"02.04", qn:14.2, obv:36.0, qzh:25.3, ndin:190, phase:"stable", ev:"",       comment:"Обводнённость 36,0%." },
+  { d:"03.04", qn:14.3, obv:36.0, qzh:25.5, ndin:190, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"04.04", qn:14.3, obv:37.2, qzh:26.1, ndin:182, phase:"stable", ev:"",       comment:"После замера. 37,2%. Рост воды замедляется." },
+  { d:"05.04", qn:14.3, obv:37.2, qzh:26.1, ndin:182, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"06.04", qn:14.3, obv:37.2, qzh:26.1, ndin:182, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"07.04", qn:14.4, obv:38.0, qzh:26.6, ndin:182, phase:"stable", ev:"warn",   comment:"После замера. Обводнённость 38% — контрольный уровень. При росте выше 40% — пересмотр режима." },
+  { d:"08.04", qn:14.4, obv:38.0, qzh:26.6, ndin:182, phase:"stable", ev:"",       comment:"Роста обводнённости нет. Режим удерживается." },
+  { d:"09.04", qn:14.4, obv:38.0, qzh:26.6, ndin:182, phase:"stable", ev:"",       comment:"Стабилизация подтверждена — три дня без роста обводнённости. Конусообразование не развивается." },
+  { d:"10.04", qn:14.4, obv:38.0, qzh:26.6, ndin:181, phase:"stable", ev:"",       comment:"Режим без ухудшения." },
+  { d:"11.04", qn:14.4, obv:38.0, qzh:26.6, ndin:181, phase:"stable", ev:"",       comment:"Стабильное плато." },
+  { d:"12.04", qn:14.4, obv:38.0, qzh:26.6, ndin:181, phase:"stable", ev:"",       comment:"Четвёртый день — обводнённость не растёт." },
+  { d:"13.04", qn:15.0, obv:38.0, qzh:27.6, ndin:181, phase:"stable", ev:"",       comment:"Рост нефти без роста воды. 14,4 → 15,0 т/сут. Обводнённость 38,0% — без изменений. Позитивный сигнал." },
+  { d:"14.04", qn:15.0, obv:38.0, qzh:27.6, ndin:181, phase:"stable", ev:"",       comment:"Закрепление режима." },
+  { d:"15.04", qn:15.0, obv:38.0, qzh:27.6, ndin:181, phase:"stable", ev:"",       comment:"Стабильная работа." },
+  { d:"16.04", qn:15.0, obv:38.0, qzh:27.7, ndin:181, phase:"stable", ev:"",       comment:"Режим держится." },
+  { d:"17.04", qn:14.9, obv:38.0, qzh:27.5, ndin:181, phase:"stable", ev:"power",  comment:"Отключение/переключение электроснабжения. Просадка до 14,9 т/сут. Обводнённость не изменилась." },
+  { d:"18.04", qn:15.2, obv:37.5, qzh:27.8, ndin:181, phase:"stable", ev:"",       comment:"Улучшение. Нефть 15,2 т/сут, обводнённость снизилась до 37,5%." },
+  { d:"19.04", qn:15.3, obv:37.3, qzh:27.9, ndin:179, phase:"stable", ev:"",       comment:"Хороший режим. 15,3 т/сут, 37,3%. После замера — подтверждён." },
+  { d:"20.04", qn:15.3, obv:37.3, qzh:27.9, ndin:179, phase:"stable", ev:"",       comment:"После замера подтверждён." },
+  { d:"21.04", qn:15.2, obv:37.3, qzh:27.8, ndin:179, phase:"stable", ev:"",       comment:"Плато сохраняется." },
+  { d:"22.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Небольшое снижение. Стабильная работа." },
+  { d:"23.04", qn:15.1, obv:37.5, qzh:27.7, ndin:174, phase:"stable", ev:"",       comment:"Хороший день. Нефть выше 15 т/сут." },
+  { d:"24.04", qn:14.8, obv:37.5, qzh:27.1, ndin:174, phase:"stable", ev:"",       comment:"После замера. Лёгкая просадка без роста воды." },
+  { d:"25.04", qn:14.6, obv:37.5, qzh:26.7, ndin:174, phase:"stable", ev:"power",  comment:"Отключение электроэнергии, переход на ДЭС и обратно. Просадка дебита." },
+  { d:"26.04", qn:14.7, obv:37.5, qzh:27.0, ndin:174, phase:"stable", ev:"",       comment:"Восстановление после отключения." },
+  { d:"27.04", qn:14.7, obv:37.5, qzh:26.9, ndin:174, phase:"stable", ev:"",       comment:"После замера. Кратковременное отключение для ремонтных работ." },
+  { d:"28.04", qn:14.9, obv:37.5, qzh:27.2, ndin:167, phase:"stable", ev:"",       comment:"Вернулась к уровню ~15 т/сут." },
+  { d:"29.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Стабильное плато." },
+  { d:"30.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Конец периода наблюдений. Устойчивый рабочий режим. Эффект изоляции сохраняется — 88 дней." },
 ];
 
 const labels = DATA.map(r => r.d);
@@ -1881,8 +2032,8 @@ const peakIdx  = DATA.findIndex(r => r.qn === 16.4);
 const forceIdx = DATA.findIndex(r => r.phase === 'forced');
 
 Chart.defaults.color = '#AAAAAA';
-Chart.defaults.font.family = "'JetBrains Mono', monospace";
-Chart.defaults.font.size = 9;
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 10;
 
 const ctx = document.getElementById('mainChart').getContext('2d');
 
@@ -2051,6 +2202,73 @@ function closeNav() {
   document.getElementById('navMobile').classList.remove('open');
   document.getElementById('navToggle').classList.remove('active');
 }
+
+// ── Daily Log Table ─────────────────────────────────────────────────────────
+(function() {
+  const PHASE_LABEL = {
+    before: 'До РИР',
+    krs:    'КРС',
+    after:  'После РИР',
+    forced: 'Форсирование',
+    stable: 'Апрель'
+  };
+  const EV_LABEL = {
+    warn:  { text: 'предупреждение', cls: 'ev-warn' },
+    stop:  { text: 'остановка',      cls: 'ev-stop' },
+    krs:   { text: 'КРС',            cls: 'ev-krs'  },
+    start: { text: 'запуск',         cls: 'ev-start'},
+    jump:  { text: 'скачок',         cls: 'ev-jump' },
+    peak:  { text: 'пик',            cls: 'ev-peak' },
+    rpm:   { text: 'обороты',        cls: 'ev-rpm'  },
+    power: { text: 'мощность',       cls: 'ev-power'}
+  };
+
+  let activePhase = 'all';
+
+  function fmt(v, digits) {
+    return (v === null || v === undefined) ? '—' : Number(v).toFixed(digits);
+  }
+
+  function buildRow(item) {
+    const tr = document.createElement('tr');
+    tr.className = 'log-row' + (item.ev ? ' log-row--ev' : '');
+    tr.dataset.phase = item.phase;
+
+    const evBadge = item.ev && EV_LABEL[item.ev]
+      ? `<span class="ev-badge ${EV_LABEL[item.ev].cls}">${EV_LABEL[item.ev].text}</span>`
+      : '';
+
+    tr.innerHTML = `
+      <td class="log-date">${item.d}</td>
+      <td><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase] || item.phase}</span></td>
+      <td class="num">${fmt(item.qn, 1)}</td>
+      <td class="num">${fmt(item.obv, 1)}</td>
+      <td class="num">${fmt(item.qzh, 1)}</td>
+      <td class="num">${item.ndin !== null && item.ndin !== undefined ? item.ndin : '—'}</td>
+      <td class="log-comment">${evBadge}${item.comment || ''}</td>`;
+    return tr;
+  }
+
+  function renderLog(phase) {
+    const tbody = document.getElementById('logBody');
+    const countEl = document.getElementById('logCount');
+    tbody.innerHTML = '';
+    const filtered = phase === 'all' ? DATA : DATA.filter(d => d.phase === phase);
+    filtered.forEach(item => tbody.appendChild(buildRow(item)));
+    countEl.textContent = `Показано записей: ${filtered.length} из ${DATA.length}`;
+  }
+
+  document.getElementById('logFilters').addEventListener('click', function(e) {
+    const btn = e.target.closest('.log-filter');
+    if (!btn) return;
+    document.querySelectorAll('.log-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activePhase = btn.dataset.phase;
+    renderLog(activePhase);
+  });
+
+  renderLog('all');
+})();
 </script>
 </body>
 </html>
