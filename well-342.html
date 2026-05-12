@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скважина 342 — IC Petroleum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #FFFFFF;
+  --surface:   #F4F4F4;
+  --border:    #D8D8D8;
+  --white:     #111111;
+  --grey:      #777777;
+  --grey-dim:  #AAAAAA;
+  --font-h:    'Oswald', sans-serif;
+  --font-data: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-data);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo { display: flex; align-items: center; gap: 14px; }
+
+.logo-mark {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--border);
+  transform: rotate(45deg);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark-inner { width: 10px; height: 10px; background: var(--white); }
+
+.logo-eyebrow {
+  font-family: var(--font-data);
+  font-size: 9px; color: var(--grey-dim);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1px;
+}
+.logo-text {
+  font-family: var(--font-h);
+  font-size: 15px; font-weight: 400;
+  letter-spacing: 4px; text-transform: uppercase; color: var(--white);
+}
+.logo-sub {
+  font-family: var(--font-data);
+  font-size: 11px; color: var(--grey);
+  letter-spacing: 2px; text-transform: uppercase; margin-top: 1px;
+}
+
+.nav { display: flex; gap: 36px; align-items: center; }
+.nav a {
+  font-family: var(--font-h);
+  font-size: 13px; font-weight: 300;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--grey); text-decoration: none; transition: color 0.2s;
+}
+.nav a:hover, .nav a.active { color: var(--white); }
+.nav-well342 { border: 1px solid var(--border); padding: 4px 12px; border-radius: 2px; }
+.nav-well342:hover { border-color: var(--grey); }
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.placeholder-mark {
+  width: 56px; height: 56px;
+  border: 2px solid var(--border);
+  transform: rotate(45deg);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 32px;
+}
+.placeholder-mark-inner { width: 18px; height: 18px; background: var(--surface); }
+
+.placeholder-label {
+  font-family: var(--font-data);
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--grey-dim);
+  margin-bottom: 16px;
+}
+
+.placeholder-title {
+  font-family: var(--font-h);
+  font-size: 48px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white); line-height: 1;
+  margin-bottom: 12px;
+}
+
+.placeholder-sub {
+  font-size: 14px; color: var(--grey);
+  letter-spacing: 1px; margin-bottom: 40px;
+}
+
+.placeholder-badge {
+  display: inline-block;
+  border: 1px solid var(--border);
+  padding: 8px 20px;
+  font-family: var(--font-data);
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--grey);
+  border-radius: 2px;
+}
+
+.back-link {
+  margin-top: 48px;
+  font-family: var(--font-h);
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.back-link:hover { color: var(--white); border-color: var(--white); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-data);
+  font-size: 11px; color: var(--grey-dim);
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <div>
+      <div class="logo-eyebrow">Скважина 342</div>
+      <div class="logo-text">IC Petroleum</div>
+      <div class="logo-sub">Месторождение Каратобе</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="index.html">Скважина 343</a>
+    <a href="well-342.html" class="active nav-well342">Скважина 342</a>
+  </nav>
+</header>
+
+<main class="main">
+  <div class="placeholder-mark"><div class="placeholder-mark-inner"></div></div>
+  <div class="placeholder-label">Месторождение Каратобе · IC Petroleum</div>
+  <div class="placeholder-title">Скважина <br>342</div>
+  <div class="placeholder-sub">Ежедневный мониторинг · Данные в подготовке</div>
+  <div class="placeholder-badge">Раздел в разработке</div>
+  <a href="index.html" class="back-link">← Перейти к Скважине 343</a>
+</main>
+
+<footer>
+  <span>М/Р Каратобе · Скв. 342 · IC Petroleum</span>
+  <span>ТОО «ЭкоМикс»</span>
+</footer>
+
+</body>
+</html>
