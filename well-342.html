@@ -12,10 +12,14 @@
 :root {
   --bg:        #FFFFFF;
   --surface:   #F4F4F4;
+  --surface-2: #ECECEC;
   --border:    #D8D8D8;
+  --border-dim:#EBEBEB;
   --white:     #111111;
+  --white-dim: #2A2A2A;
   --grey:      #777777;
   --grey-dim:  #AAAAAA;
+  --grey-muted:#CCCCCC;
   --font-h:    'Oswald', sans-serif;
   --font-data: 'Inter', sans-serif;
 }
@@ -29,6 +33,7 @@ body {
   flex-direction: column;
 }
 
+/* ── Header ── */
 .header {
   display: flex;
   align-items: center;
@@ -36,6 +41,10 @@ body {
   padding: 0 40px;
   height: 60px;
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
 }
 
 .logo { display: flex; align-items: center; gap: 14px; }
@@ -58,14 +67,11 @@ body {
   font-family: var(--font-h);
   font-size: 15px; font-weight: 400;
   letter-spacing: 4px; text-transform: uppercase; color: var(--white);
-}
-.logo-sub {
-  font-family: var(--font-data);
-  font-size: 11px; color: var(--grey);
-  letter-spacing: 2px; text-transform: uppercase; margin-top: 1px;
+  line-height: 1.1;
 }
 
-.nav { display: flex; gap: 36px; align-items: center; }
+/* ── Desktop nav ── */
+.nav { display: flex; gap: 28px; align-items: center; }
 .nav a {
   font-family: var(--font-h);
   font-size: 13px; font-weight: 300;
@@ -73,9 +79,54 @@ body {
   color: var(--grey); text-decoration: none; transition: color 0.2s;
 }
 .nav a:hover, .nav a.active { color: var(--white); }
-.nav-well342 { border: 1px solid var(--border); padding: 4px 12px; border-radius: 2px; }
-.nav-well342:hover { border-color: var(--grey); }
+.nav-pill {
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+.nav-pill:hover { border-color: var(--grey); }
+.nav-pill.active { border-color: var(--white); }
 
+/* ── Hamburger toggle ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--grey);
+  transition: all 0.2s;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile nav dropdown ── */
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px 16px;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-family: var(--font-h);
+  font-size: 13px; font-weight: 300;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--grey); text-decoration: none;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-dim);
+  transition: color 0.2s;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover, .nav-mobile a.active { color: var(--white); }
+
+/* ── Main placeholder ── */
 .main {
   flex: 1;
   display: flex;
@@ -92,6 +143,7 @@ body {
   transform: rotate(45deg);
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 32px;
+  flex-shrink: 0;
 }
 .placeholder-mark-inner { width: 18px; height: 18px; background: var(--surface); }
 
@@ -104,7 +156,7 @@ body {
 
 .placeholder-title {
   font-family: var(--font-h);
-  font-size: 48px; font-weight: 700;
+  font-size: 56px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
   color: var(--white); line-height: 1;
   margin-bottom: 12px;
@@ -113,12 +165,14 @@ body {
 .placeholder-sub {
   font-size: 14px; color: var(--grey);
   letter-spacing: 1px; margin-bottom: 40px;
+  max-width: 320px;
+  line-height: 1.6;
 }
 
 .placeholder-badge {
   display: inline-block;
   border: 1px solid var(--border);
-  padding: 8px 20px;
+  padding: 9px 22px;
   font-family: var(--font-data);
   font-size: 12px; letter-spacing: 2px;
   text-transform: uppercase; color: var(--grey);
@@ -132,10 +186,13 @@ body {
   text-transform: uppercase;
   color: var(--grey); text-decoration: none;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  display: inline-block;
 }
 .back-link:hover { color: var(--white); border-color: var(--white); }
 
+/* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
   padding: 16px 40px;
@@ -143,6 +200,28 @@ footer {
   font-family: var(--font-data);
   font-size: 11px; color: var(--grey-dim);
   letter-spacing: 1px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .header { padding: 0 16px; height: 52px; }
+  .nav { display: none; }
+  .nav-toggle { display: flex; }
+
+  .main { padding: 48px 24px; }
+
+  .placeholder-mark { margin-bottom: 24px; }
+  .placeholder-title { font-size: 40px; }
+  .placeholder-label { font-size: 10px; }
+  .placeholder-sub { font-size: 13px; }
+
+  footer {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    font-size: 10px;
+  }
 }
 </style>
 </head>
@@ -157,15 +236,23 @@ footer {
     </div>
   </div>
   <nav class="nav">
-    <a href="index.html">Скважина 343</a>
-    <a href="well-342.html" class="active nav-well342">Скважина 342</a>
+    <a href="index.html" class="nav-pill">Скважина 343</a>
+    <a href="well-342.html" class="nav-pill active">Скважина 342</a>
   </nav>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
 </header>
+
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html" onclick="closeNav()">Скважина 343</a>
+  <a href="well-342.html" class="active" onclick="closeNav()">Скважина 342</a>
+</nav>
 
 <main class="main">
   <div class="placeholder-mark"><div class="placeholder-mark-inner"></div></div>
   <div class="placeholder-label">Месторождение Каратобе · IC Petroleum</div>
-  <div class="placeholder-title">Скважина <br>342</div>
+  <div class="placeholder-title">Скважина<br>342</div>
   <div class="placeholder-sub">Ежедневный мониторинг · Данные в подготовке</div>
   <div class="placeholder-badge">Раздел в разработке</div>
   <a href="index.html" class="back-link">← Перейти к Скважине 343</a>
@@ -176,5 +263,15 @@ footer {
   <span>ТОО «ЭкоМикс»</span>
 </footer>
 
+<script>
+function toggleNav() {
+  document.getElementById('navMobile').classList.toggle('open');
+  document.getElementById('navToggle').classList.toggle('active');
+}
+function closeNav() {
+  document.getElementById('navMobile').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('active');
+}
+</script>
 </body>
 </html>

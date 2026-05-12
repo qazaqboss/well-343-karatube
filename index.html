@@ -1315,7 +1315,20 @@ a { text-decoration: none; color: inherit; }
   .log-filters { padding: 14px 20px 0; }
   .log-table-wrap { margin: 14px 20px 0; }
   .log-count { padding: 12px 20px 0; }
-  .log-comment.truncated { max-width: 160px; }
+  .log-comment { max-width: 200px; font-size: 12px; }
+  .log-table { min-width: 520px; }
+  .log-table tbody td { padding: 10px 10px; font-size: 12px; }
+  .log-table thead th { padding: 10px 10px; font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  /* Hide less critical columns on small phones */
+  .log-col-phase,
+  .log-col-ndin  { display: none; }
+  .log-table { min-width: 360px; }
+  .log-comment { max-width: 140px; font-size: 11px; }
+  .log-filters { gap: 4px; }
+  .log-filter { font-size: 11px; padding: 5px 10px; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1830,11 +1843,11 @@ a { text-decoration: none; color: inherit; }
       <thead>
         <tr>
           <th>Дата</th>
-          <th>Фаза</th>
+          <th class="log-col-phase">Фаза</th>
           <th class="num">Qн, т/сут</th>
           <th class="num">Обв., %</th>
           <th class="num">Qж, м³/сут</th>
-          <th class="num">Ндин, м</th>
+          <th class="num log-col-ndin">Ндин, м</th>
           <th>Комментарий</th>
         </tr>
       </thead>
@@ -2258,11 +2271,11 @@ function closeNav() {
 
     tr.innerHTML = `
       <td class="log-date">${item.d}</td>
-      <td><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase] || item.phase}</span></td>
+      <td class="log-col-phase"><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase] || item.phase}</span></td>
       <td class="num">${fmt(item.qn, 1)}</td>
       <td class="num">${fmt(item.obv, 1)}</td>
       <td class="num">${fmt(item.qzh, 1)}</td>
-      <td class="num">${item.ndin !== null && item.ndin !== undefined ? item.ndin : '—'}</td>
+      <td class="num log-col-ndin">${item.ndin !== null && item.ndin !== undefined ? item.ndin : '—'}</td>
       <td class="log-comment">${evBadge}${item.comment || ''}</td>`;
     return tr;
   }
