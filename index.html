@@ -2243,12 +2243,13 @@ new Chart(ctx, {
 </script>
 
 <script>
-// МРП — Межремонтный период, считается с 03.02.2026
+// МРП — Межремонтный период
+// Старт: 02.02.2026 (завершение РИР) → 30.04 = день 88, далее накапливается
 (function() {
-  const start = new Date('2026-02-03');
+  const start = new Date('2026-02-02');
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const mrp = Math.floor((today - start) / 86400000);
+  const mrp = Math.floor((today - start) / 86400000) + 1;
   ['mrpCount', 'mrpHero', 'mrpStat'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.textContent = mrp;
