@@ -1621,21 +1621,21 @@ a { text-decoration: none; color: inherit; }
 <div class="kpi-strip">
   <div class="kpi-card primary">
     <div class="kpi-index">01 / 05</div>
-    <div class="kpi-delta positive">×5,7 от базы</div>
+    <div class="kpi-delta positive">×5,2 от базы</div>
     <div class="kpi-label">Дебит нефти</div>
     <div class="kpi-value">13.5</div>
     <div class="kpi-unit">Т / СУТ</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">02 / 05</div>
-    <div class="kpi-delta">−51,9 п.п. от max</div>
+    <div class="kpi-delta">−52,9 п.п. от max</div>
     <div class="kpi-label">Обводнённость</div>
     <div class="kpi-value">36.5</div>
     <div class="kpi-unit">%</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">03 / 05</div>
-    <div class="kpi-delta">+7,2 от базы</div>
+    <div class="kpi-delta">+4,2 от базы</div>
     <div class="kpi-label">Дебит жидкости</div>
     <div class="kpi-value">24.3</div>
     <div class="kpi-unit">М³ / СУТ</div>
@@ -1690,22 +1690,22 @@ a { text-decoration: none; color: inherit; }
 <div class="stats-bar">
   <div class="stat-cell">
     <div class="stat-label">Накопленная нефть (после РИР)</div>
-    <div class="stat-value">1 250</div>
+    <div class="stat-value">2 079</div>
     <div class="stat-unit">Т · <span id="mrpStat">99</span> дней МРП</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Прирост к базовому</div>
-    <div class="stat-value">+12.3</div>
+    <div class="stat-value">+10.9</div>
     <div class="stat-unit">Т / СУТ · средн.</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Снижение обводнённости</div>
-    <div class="stat-value">−51.9</div>
+    <div class="stat-value">−52.9</div>
     <div class="stat-unit">П.П. от пика</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Рост дебита от базы</div>
-    <div class="stat-value">×5.7</div>
+    <div class="stat-value">×5.2</div>
     <div class="stat-unit">Кратность</div>
   </div>
 </div>
@@ -1734,6 +1734,87 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="chart-wrap">
         <canvas id="mainChart"></canvas>
+      </div>
+    </div>
+
+
+    <!-- Ключевые события -->
+    <div class="events-block" style="border-top:1px solid var(--border)">
+      <div class="block-header" style="padding:0 0 8px">
+        <div class="block-title">Ключевые события</div>
+        <div class="block-badge">8 СОБЫТИЙ</div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">04</span>ИЮЛ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-warn">Ндин ↓</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 13,8 т/сут</div><div class="ev"><span>Обв.</span> 36,5%</div><div class="ev"><span>Ндин</span> 128 м</div></div>
+          <div class="event-note">Динамический уровень снизился 160 → 128 м, обводнённость выросла 34,0 → 36,5%. Режим удерживается, дебит стабилен.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">30</span>МАЙ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-rpm">Обороты</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 14,4 т/сут</div><div class="ev"><span>Обв.</span> 34,8%</div><div class="ev"><span>Режим</span> 160 об/мин</div></div>
+          <div class="event-note">Двухступенчатое форсирование: 28.05 — 140 → 150 об/мин, 30.05 — 150 → 160 об/мин. Обводнённость не выросла.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">19</span>МАР 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-peak">Пик</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 16,4 т/сут</div><div class="ev"><span>Обв.</span> 27,5%</div></div>
+          <div class="event-note">Исторический максимум дебита и минимум обводнённости за весь период наблюдений.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">16</span>МАР 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-rpm">Форсирование</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 14,9 т/сут</div><div class="ev"><span>Обв.</span> 33,2%</div><div class="ev"><span>Режим</span> 140 об/мин</div></div>
+          <div class="event-note">Увеличение оборотов 120 → 140 об/мин. Дебит вырос, обводнённость снизилась — выход на новый уровень.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">19</span>ФЕВ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-jump">Резкий перелом</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 6,9 → 11,5 т/сут</div><div class="ev"><span>Обв.</span> 62,9 → 38,4%</div></div>
+          <div class="event-note">Скачок за сутки: −24,5 п.п. обводнённости. Завершение набора прочности изолирующего состава.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">04</span>ФЕВ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-jump">Перелом</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 2,1 → 6,2 т/сут</div><div class="ev"><span>Обв.</span> 83 → 66,8%</div></div>
+          <div class="event-note">Перевод на выкидную линию. Первый явный отклик пласта на изоляцию водопритока.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">29</span>ЯНВ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-krs">КРС / РИР</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Интервалы</span> 629,8–660 м</div><div class="ev"><span>Запуск</span> 03.02.2026</div></div>
+          <div class="event-note">Закачка изолирующего состава в интервалы перфорации, технологическая выдержка.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><span class="day-num">28</span>ЯНВ 2026</div>
+        <div class="event-body">
+          <span class="ev-badge ev-stop">Остановка</span>
+          <div class="event-values" style="margin-top:6px"><div class="ev"><span>Qн</span> 1,1 т/сут</div><div class="ev"><span>Обв.</span> 89,4%</div></div>
+          <div class="event-note">Минимальный дебит за период. Остановка после замера, принято решение о проведении РИР.</div>
+        </div>
       </div>
     </div>
 
@@ -1793,7 +1874,7 @@ a { text-decoration: none; color: inherit; }
         </div>
         <div class="tech-row">
           <span class="tech-key">Обороты (факт)</span>
-          <span class="tech-val ok">140 ОБ/МИН</span>
+          <span class="tech-val ok">160 ОБ/МИН</span>
         </div>
         <div class="tech-row">
           <span class="tech-key">Qн тех. режим</span>
@@ -1801,7 +1882,7 @@ a { text-decoration: none; color: inherit; }
         </div>
         <div class="tech-row">
           <span class="tech-key">Qн факт</span>
-          <span class="tech-val ok attention">14,9 Т/СУТ ↑</span>
+          <span class="tech-val">13,5 Т/СУТ</span>
         </div>
         <div class="tech-row">
           <span class="tech-key">Обв. тех. режим</span>
@@ -1809,7 +1890,7 @@ a { text-decoration: none; color: inherit; }
         </div>
         <div class="tech-row">
           <span class="tech-key">Обв. факт</span>
-          <span class="tech-val">37,6%</span>
+          <span class="tech-val">36,5%</span>
         </div>
         <div class="tech-row">
           <span class="tech-key">Горизонт</span>
@@ -1828,10 +1909,10 @@ a { text-decoration: none; color: inherit; }
         <div class="risk-bar-group">
           <div class="risk-bar-label">
             <span>Обводнённость</span>
-            <span>37,6% / 40%</span>
+            <span>36,5% / 40%</span>
           </div>
           <div class="risk-bar-track">
-            <div class="risk-bar-fill" style="width:60%"></div>
+            <div class="risk-bar-fill" style="width:58%"></div>
             <div class="risk-threshold" style="left:64%"></div>
           </div>
         </div>
@@ -1839,25 +1920,25 @@ a { text-decoration: none; color: inherit; }
         <div class="risk-bar-group">
           <div class="risk-bar-label">
             <span>Дебит нефти</span>
-            <span>14,9 / 16,4 Т/СУТ</span>
+            <span>13,5 / 16,4 Т/СУТ</span>
           </div>
           <div class="risk-bar-track">
-            <div class="risk-bar-fill" style="width:91%"></div>
+            <div class="risk-bar-fill" style="width:82%"></div>
           </div>
         </div>
 
         <div class="risk-bar-group" style="margin-bottom:14px">
           <div class="risk-bar-label">
             <span>Ндин</span>
-            <span>167 / 585 М</span>
+            <span>128 / 585 М</span>
           </div>
           <div class="risk-bar-track">
-            <div class="risk-bar-fill" style="width:29%"></div>
+            <div class="risk-bar-fill" style="width:22%"></div>
           </div>
         </div>
 
         <div class="risk-note">
-          Тренд → Стабилен · Рекомендация: держать 140 об/мин
+          Тренд → Стабилен · Рекомендация: держать 160 об/мин
         </div>
       </div>
 
