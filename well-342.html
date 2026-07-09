@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Скважина 342 — IC Petroleum | Каратобе</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="КаратюбеМонитор">
+<meta property="og:url" content="https://nanocem.app/well-342.html">
+<meta property="og:title" content="Скважина №342 — после РИР NanoCem UT-9">
+<meta property="og:description" content="Эффект РИР нарастает: Qн 9,59 т/сут · обв. 31,0% · ×14,1 от базы. М/Р Каратюбе, J1-IV.">
+<meta property="og:image" content="https://nanocem.app/og-342.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nanocem.app/og-342.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -185,6 +195,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .phase-before{background:rgba(0,0,0,.06);color:#777}
 .phase-crash{background:rgba(239,68,68,.1);color:#EF4444}
 .phase-krs{background:#111;color:#fff}
+.phase-after{background:rgba(34,197,94,.12);color:#16A34A}
 .ev-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.03em;padding:2px 7px;border-radius:2px;margin-right:6px;white-space:nowrap;vertical-align:middle}
 .evb-peak{background:#111;color:#fff}
 .evb-crash{background:#EF4444;color:#fff}
@@ -282,10 +293,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   <nav class="nav">
     <a href="index.html" class="nav-pill">Скважина 343</a>
     <a href="well-342.html" class="nav-pill active">Скважина 342</a>
+    <a href="well-301.html" class="nav-pill">Скважина 301</a>
+    <a href="well-303.html" class="nav-pill">Скважина 303</a>
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">13.05.2026 / ДЕНЬ 1</div>
+    <div class="header-date">08.07.2026 / ПОСЛЕ РИР</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -293,6 +306,8 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 <nav class="nav-mobile" id="navMobile">
   <a href="index.html" onclick="closeNav()">Скважина 343</a>
   <a href="well-342.html" class="active" onclick="closeNav()">Скважина 342</a>
+  <a href="well-301.html" onclick="closeNav()">Скважина 301</a>
+  <a href="well-303.html" onclick="closeNav()">Скважина 303</a>
 </nav>
 
 <!-- HERO -->
@@ -312,41 +327,42 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       </div>
     </div>
     <div class="hero-right">
-      <div class="rir-badge"><div class="rir-dot"></div>РИР: 12.05.2026</div>
-      <div class="hero-date-note">Замер до РИР: 30.04.2026 · 0,59 т/сут · 94,0%</div>
+      <div class="rir-badge"><div class="rir-dot"></div>Запуск после РИР: 06.06.2026</div>
+      <div class="hero-date-note">Замер после РИР: 08.07.2026 · 9,59 т/сут · 31,0%</div>
     </div>
   </div>
 </section>
 
 <!-- KPI STRIP -->
 <div class="kpi-strip">
-  <div class="kpi-card red">
-    <div class="kpi-note">последний до РИР</div>
+  <div class="kpi-card dark">
+    <div class="kpi-note ok">после РИР · 08.07</div>
     <div class="kpi-label">Дебит нефти</div>
-    <div class="kpi-value red">0.59</div>
-    <div class="kpi-unit">Т / СУТ · 30.04.2026</div>
-  </div>
-  <div class="kpi-card red">
-    <div class="kpi-note">предельная</div>
-    <div class="kpi-label">Обводнённость</div>
-    <div class="kpi-value red">94.0</div>
-    <div class="kpi-unit">% · −5,6 от max (98%)</div>
+    <div class="kpi-value">9.6</div>
+    <div class="kpi-unit">Т / СУТ · ×14,1 от 0,59</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note ok">30.04</div>
+    <div class="kpi-note ok">после РИР · 08.07</div>
+    <div class="kpi-label">Обводнённость</div>
+    <div class="kpi-value">31.0</div>
+    <div class="kpi-unit">% · −60,0 п.п. от 91,0</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-note ok">08.07</div>
     <div class="kpi-label">Дебит жидкости</div>
-    <div class="kpi-value">11.3</div>
+    <div class="kpi-value">15.9</div>
     <div class="kpi-unit">М³ / СУТ</div>
   </div>
-  <div class="kpi-card grey">
-    <div class="kpi-label">Ндин</div>
-    <div class="kpi-value grey">39</div>
-    <div class="kpi-unit">М</div>
+  <div class="kpi-card red">
+    <div class="kpi-note">последний до РИР · 07.05</div>
+    <div class="kpi-label">Дебит до РИР</div>
+    <div class="kpi-value red">0.83</div>
+    <div class="kpi-unit">Т / СУТ · 91,0% воды</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-label">Дней с РИР</div>
+    <div class="kpi-label">Дней после РИР</div>
     <div class="kpi-value" id="daysSince">1</div>
-    <div class="kpi-unit">РИР: 12.05.2026</div>
+    <div class="kpi-unit">Запуск: 06.06.2026</div>
   </div>
 </div>
 
@@ -369,12 +385,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="compare-obv">Обв. 69,0%</div>
   </div>
   <div class="compare-divider"></div>
-  <div class="compare-col last">
-    <div class="compare-label">До РИР · последний замер</div>
-    <div class="compare-date">30.04.2026</div>
-    <div class="compare-big red">0.59</div>
+  <div class="compare-col last" style="border-left-color:#16A34A">
+    <div class="compare-label">После РИР · текущий</div>
+    <div class="compare-date">08.07.2026</div>
+    <div class="compare-big" style="color:#16A34A">9.6</div>
     <div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv red">Обв. 94,0%</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 31,0%</div>
   </div>
 </div>
 
@@ -408,8 +424,8 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   <!-- LEFT -->
   <div class="main-left">
     <div class="chart-block">
-      <div class="chart-title">Динамика — 120 дней до РИР</div>
-      <div class="chart-sub">01.01.2026 — 30.04.2026 · Qн (т/сут) и Обводнённость (%)</div>
+      <div class="chart-title">Динамика — до и после РИР</div>
+      <div class="chart-sub">01.01.2026 — 08.07.2026 · Qн (т/сут) и Обводнённость (%) · дни КРС исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -478,12 +494,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       <div class="rir-block-title">РИР NanoCem UT-9</div>
       <div class="days-big" id="daysBig">1</div>
       <div class="days-label">день после РИР</div>
-      <div class="rir-row"><span class="rir-key">ДАТА РИР</span><span class="rir-val">12.05.2026</span></div>
+      <div class="rir-row"><span class="rir-key">КРС (РИР)</span><span class="rir-val">07.05 – 06.06.2026</span></div>
       <div class="rir-row"><span class="rir-key">СОСТАВ</span><span class="rir-val">NanoCem UT-9</span></div>
-      <div class="rir-row"><span class="rir-key">СТАРТ ЗАМЕРОВ</span><span class="rir-val">13.05.2026</span></div>
-      <div class="rir-row"><span class="rir-key">ПИКОВЫЙ ДЕБИТ</span><span class="rir-val pending">ожидается</span></div>
-      <div class="rir-row"><span class="rir-key">МИН. ОБВОДНЁННОСТЬ</span><span class="rir-val pending">ожидается</span></div>
-      <div class="rir-row"><span class="rir-key">ЭФФЕКТ</span><span class="rir-val pending">накапливается</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК / СТАРТ ЗАМЕРОВ</span><span class="rir-val">06.06 / 07.06.2026</span></div>
+      <div class="rir-row"><span class="rir-key">ДЕБИТ ПОСЛЕ РИР</span><span class="rir-val">9,59 т/сут (08.07)</span></div>
+      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">31,0% (08.07)</span></div>
+      <div class="rir-row"><span class="rir-key">ЭФФЕКТ</span><span class="rir-val">×14,1 от базы · нарастает</span></div>
     </div>
 
     <div class="tech-block">
@@ -498,8 +514,8 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 
     <div class="stat-block">
       <div class="stat-block-title">Итоги до РИР</div>
-      <div class="stat-row"><span class="stat-key">Период наблюдений</span><span class="stat-val">01.01 – 30.04.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней наблюдений</span><span class="stat-val">120</span></div>
+      <div class="stat-row"><span class="stat-key">Период наблюдений</span><span class="stat-val">01.01 – 07.05.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней наблюдений</span><span class="stat-val">127</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">4,74 т/сут (01.02)</span></div>
       <div class="stat-row"><span class="stat-key">Мин. Qн</span><span class="stat-val red">0,18 т/сут (20.04)</span></div>
       <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">68,2% (04.02)</span></div>
@@ -518,6 +534,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <button class="log-filter" data-phase="before">Наблюдение</button>
     <button class="log-filter" data-phase="crash">Критическая фаза</button>
     <button class="log-filter" data-phase="krs">РИР</button>
+    <button class="log-filter" data-phase="after">После РИР</button>
   </div>
   <div class="log-count" id="logCount"></div>
   <div class="log-table-wrap">
@@ -550,13 +567,13 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="passport-cell"><div class="passport-key">Насос</div><div class="passport-val">УШВН 33/900</div></div>
     <div class="passport-cell"><div class="passport-key">Глубина установки</div><div class="passport-val">565,68 м</div></div>
     <div class="passport-cell"><div class="passport-key">Дата спуска насоса</div><div class="passport-val">26.06.2024</div></div>
-    <div class="passport-cell"><div class="passport-key">Дата РИР</div><div class="passport-val">12.05.2026</div></div>
+    <div class="passport-cell"><div class="passport-key">КРС (РИР)</div><div class="passport-val">07.05–06.06.2026 (запуск 06.06)</div></div>
     <div class="passport-cell"><div class="passport-key">Состав РИР</div><div class="passport-val">NanoCem UT-9</div></div>
   </div>
 </div>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратобе · Скв. 342 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 30.04.2026</div>
+  <div class="footer-left">М/Р Каратобе · Скв. 342 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 08.07.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -683,7 +700,75 @@ const DATA = [
   {d:"28.04",qn:0.20,obv:98.0,phase:"crash",ev:"",comment:"0,20 т/сут, 98,0%. Скважина фактически не работает."},
   {d:"29.04",qn:0.59,obv:94.0,phase:"crash",ev:"",comment:"Последние замеры до РИР: 0,59 т/сут, обводнённость 94,0%. Принято решение о РИР NanoCem UT-9."},
   {d:"30.04",qn:0.59,obv:94.0,phase:"crash",ev:"",comment:"Финальный замер до РИР. 0,59 т/сут, обводнённость 94,0%. Скважина направлена на РИР."},
-  {d:"12.05",qn:null,obv:null,phase:"krs",ev:"krs",comment:"РИР NanoCem UT-9 выполнен. Ремонтно-изоляционные работы в зонах водопритока. Скважина запущена 12.05.2026. Мониторинг эффекта с 13.05.2026."},
+  {d:"01.05",qn:0.59,obv:94.0,phase:"crash",ev:"low",comment:"Начало мая. Критически низкий дебит 0,59 т/сут, обводнённость 94,0%. Скважина на грани остановки."},
+  {d:"02.05",qn:2.08,obv:82.0,phase:"crash",ev:"rise",comment:"После замера. Кратковременный рост до 2,08 т/сут, обводнённость улучшилась до 82,0%."},
+  {d:"03.05",qn:2.08,obv:82.0,phase:"crash",ev:"",comment:"2,08 т/сут, 82,0%."},
+  {d:"04.05",qn:1.35,obv:86.0,phase:"crash",ev:"",comment:"Снижение до 1,35 т/сут. Обводнённость 86,0%."},
+  {d:"05.05",qn:0.67,obv:93.0,phase:"crash",ev:"low",comment:"0,67 т/сут, обводнённость 93,0%. Возврат к критическому режиму."},
+  {d:"06.05",qn:0.83,obv:91.0,phase:"crash",ev:"",comment:"0,83 т/сут, 91,0%."},
+  {d:"07.05",qn:0.83,obv:91.0,phase:"crash",ev:"stop",comment:"0,83 т/сут, 91,0%. В 20:00 остановка скважины для проведения КРС (РИР NanoCem UT-9)."},
+  {d:"08.05",qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС. День 1. Подготовка ствола скважины."},
+  {d:"09.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"10.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"11.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"12.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"13.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"14.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"15.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"16.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"17.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"18.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"19.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"20.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"21.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"22.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"23.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Закачка изолирующего состава NanoCem UT-9 в зоны водопритока."},
+  {d:"24.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"25.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"26.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"27.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"28.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"29.05",qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"30.05",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"31.05",qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС. АПРС-40. Завоз пресной воды 3м³. Завоз ультратонкого цемента (NanoCem UT-9) 2тн. Приготовление цементного раствора 1,6м³, уд. вес 1,50. ЦПД (цементирование под давлением) в процессе."},
+  {d:"01.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС (ОЗЦ — ожидание затвердевания цемента)."},
+  {d:"02.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"03.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. А-50. Разбурка ЦМ в интервале 607-625м. Опрессовка интервала 622,5-625м на 40атм — герметично. План: разбурка ЦМ, опрессовка 629-634м."},
+  {d:"04.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. А-50. Опрессовка ПВО, ЗПУ на 40атм — герметично. Монтаж оборудования ГИС. План: запись привязки, ПВР."},
+  {d:"05.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Подготовка к запуску."},
+  {d:"06.06",qn:null,obv:null,phase:"after",ev:"start",comment:"Запуск после РИР. В 04:00 запуск при 80 об/мин (19 А; 16,3 Гц), выход жидкости на 4-й минуте. Вывод на режим, отработка на замерную ёмкость: вытеснено 9,2 м³ тех. воды за 10 ч, ожидаемый Qж — 22,1 м³/сут. В 14:00 перевод на выкидную линию. Пробы: №1 — 98%, №2 — 94,5%, №3 — 87%."},
+  {d:"07.06",qn:5.71,obv:54.3,phase:"after",ev:"jump",comment:"Первый замер после РИР: 5,71 т/сут, обводнённость 54,3% — резкое улучшение (до РИР было <1 т/сут при 91–94% воды). Замер на замерную ёмкость с устья. Эффект NanoCem UT-9 подтверждён."},
+  {d:"08.06",qn:7.73,obv:27.5,phase:"after",ev:"rise",comment:"Рост до 7,73 т/сут, обводнённость резко упала до 27,5%. Замер на замерную ёмкость с устья."},
+  {d:"09.06",qn:8.32,obv:30.0,phase:"after",ev:"rise",comment:"Дальнейший рост до 8,32 т/сут, обводнённость 30,0%. Замер на замерную ёмкость с устья."},
+  {d:"10.06",qn:8.32,obv:29.5,phase:"after",ev:"",comment:"После замера. Закрепление режима: 8,32 т/сут, 29,5%."},
+  {d:"11.06",qn:8.15,obv:29.4,phase:"after",ev:"",comment:"8,15 т/сут, обводнённость 29,4%. Стабильно."},
+  {d:"12.06",qn:8.16,obv:29.3,phase:"after",ev:"",comment:"После замера. 8,16 т/сут, 29,3%."},
+  {d:"13.06",qn:8.10,obv:29.3,phase:"after",ev:"",comment:"8,10 т/сут, 29,3%. Устойчивый режим."},
+  {d:"14.06",qn:8.07,obv:29.0,phase:"after",ev:"",comment:"8,07 т/сут, обводнённость 29,0%."},
+  {d:"15.06",qn:8.19,obv:29.0,phase:"after",ev:"rpm",comment:"Увеличение оборота ВН с 80 до 100 об/мин. После замера. 8,19 т/сут, 29,0%."},
+  {d:"16.06",qn:8.53,obv:28.8,phase:"after",ev:"rise",comment:"Рост до 8,53 т/сут, обводнённость 28,8%."},
+  {d:"17.06",qn:8.30,obv:28.6,phase:"after",ev:"",comment:"Текущий режим. После замера. 8,30 т/сут, обводнённость 28,6%. Стабилизация после РИР, 100 об/мин."},
+  {d:"18.06",qn:8.26,obv:28.4,phase:"after",ev:"",comment:"8,26 т/сут, обводнённость 28,4%. Ровное плато."},
+  {d:"19.06",qn:8.32,obv:28.4,phase:"after",ev:"",comment:"Текущий режим. 8,32 т/сут, 28,4%. Работает выше плана."},
+  {d:"20.06",qn:8.3,obv:28.2,phase:"after",ev:"",comment:"Увеличение оборота ВН со 100 до 120 об/мин. 8,3 т/сут, обводнённость 28,2%."},
+  {d:"21.06",qn:9.2,obv:28.0,phase:"after",ev:"rise",comment:"После замера. Рост до 9,2 т/сут после форсирования, обводнённость 28,0%."},
+  {d:"22.06",qn:9.0,obv:27.7,phase:"after",ev:"",comment:"9,0 т/сут, обводнённость 27,7%."},
+  {d:"23.06",qn:8.9,obv:27.5,phase:"after",ev:"",comment:"После замера. 8,9 т/сут, 27,5%."},
+  {d:"24.06",qn:8.9,obv:27.5,phase:"after",ev:"",comment:"Стабильно. 8,9 т/сут, 27,5%."},
+  {d:"25.06",qn:8.9,obv:27.5,phase:"after",ev:"",comment:"Стабильно."},
+  {d:"26.06",qn:8.9,obv:27.5,phase:"after",ev:"",comment:"Стабильно."},
+  {d:"27.06",qn:8.9,obv:27.5,phase:"after",ev:"",comment:"Стабильное плато 8,9 т/сут, 27,5%."},
+  {d:"28.06",qn:7.9,obv:28.0,phase:"after",ev:"fall",comment:"Просадка до 7,9 т/сут: ночью проблема на задвижке БГ выкидной линии (Qж 13,9 м³/сут)."},
+  {d:"29.06",qn:8.7,obv:28.0,phase:"after",ev:"",comment:"Восстановление до 8,7 т/сут после устранения проблемы на задвижке."},
+  {d:"30.06",qn:9.0,obv:28.7,phase:"after",ev:"",comment:"После замера. Конец июня: 9,0 т/сут, обводнённость 28,7%. Самая стабильная скважина."},
+  {d:"01.07",qn:8.97,obv:28.7,phase:"after",ev:"",comment:"8,97 т/сут, обводнённость 28,7%. Qж 14,4 м³/сут."},
+  {d:"02.07",qn:8.81,obv:30.0,phase:"after",ev:"",comment:"8,81 т/сут, обводнённость 30,0%."},
+  {d:"03.07",qn:8.81,obv:30.0,phase:"after",ev:"",comment:"Стабильно. 8,81 т/сут, 30,0%."},
+  {d:"04.07",qn:8.81,obv:30.0,phase:"after",ev:"",comment:"Стабильно. 8,81 т/сут, 30,0%."},
+  {d:"05.07",qn:9.27,obv:29.3,phase:"after",ev:"rise",comment:"После замера. Рост до 9,27 т/сут, обводнённость 29,3%. Qж 15,0 м³/сут."},
+  {d:"06.07",qn:9.27,obv:29.3,phase:"after",ev:"",comment:"9,27 т/сут, 29,3%."},
+  {d:"07.07",qn:9.41,obv:31.0,phase:"after",ev:"rise",comment:"Увеличение оборота ВН со 120 до 130 об/мин. 9,41 т/сут, обводнённость 31,0%."},
+  {d:"08.07",qn:9.59,obv:31.0,phase:"after",ev:"",comment:"Текущий режим. 9,59 т/сут, 31,0%, 130 об/мин. Qж 15,9 м³/сут."},
 ];
 
 // Chart
@@ -770,6 +855,22 @@ new Chart(ctx, {
             borderColor: 'rgba(0,0,0,0.15)',
             borderWidth: 1,
             borderDash: [3, 4],
+          },
+          rirLine: {
+            type: 'line',
+            xMin: labels.indexOf('07.06'),
+            xMax: labels.indexOf('07.06'),
+            borderColor: 'rgba(22,163,74,0.5)',
+            borderWidth: 1.5,
+          },
+          rirLabel: {
+            type: 'label',
+            xValue: labels.indexOf('07.06'),
+            yValue: 5.6,
+            yScaleID: 'y',
+            content: ['ПОСЛЕ РИР'],
+            color: 'rgba(22,163,74,0.8)',
+            font: { size: 9, family: "'Inter', sans-serif", weight: '600' },
           }
         }
       }
@@ -783,14 +884,14 @@ new Chart(ctx, {
       y: {
         position: 'left',
         min: 0,
-        max: 6,
+        max: 10,
         grid: { color: 'rgba(0,0,0,0.05)' },
         border: { color: 'transparent' },
-        ticks: { color: '#BBBBBB', font: { size: 8 }, stepSize: 1, callback: v => v + ' т' }
+        ticks: { color: '#BBBBBB', font: { size: 8 }, stepSize: 2, callback: v => v + ' т' }
       },
       y2: {
         position: 'right',
-        min: 60,
+        min: 20,
         max: 100,
         grid: { display: false },
         border: { color: 'transparent' },
@@ -800,8 +901,8 @@ new Chart(ctx, {
   }
 });
 
-// Days since RIR
-const RIR_DATE = new Date('2026-05-12');
+// Days since RIR (запуск после РИР)
+const RIR_DATE = new Date('2026-06-06');
 const today = new Date();
 const daysSince = Math.max(1, Math.floor((today - RIR_DATE) / 86400000));
 document.getElementById('daysSince').textContent = daysSince;
@@ -809,15 +910,18 @@ document.getElementById('daysBig').textContent = daysSince;
 
 // Log table
 (function(){
-  const PHASE_LABEL = { before:'Наблюдение', crash:'Кризис', krs:'РИР' };
+  const PHASE_LABEL = { before:'Наблюдение', crash:'Кризис', krs:'РИР', after:'После РИР' };
   const EV_LABEL = {
-    peak:  { text:'пик',    cls:'evb-peak'  },
-    crash: { text:'обвал',  cls:'evb-crash' },
-    low:   { text:'минимум',cls:'evb-low'   },
-    warn:  { text:'сигнал', cls:'evb-warn'  },
-    rise:  { text:'рост',   cls:'evb-rise'  },
-    krs:   { text:'РИР',    cls:'evb-krs'   },
-    fall:  { text:'спад',   cls:'evb-fall'  },
+    peak:  { text:'пик',       cls:'evb-peak'  },
+    crash: { text:'обвал',     cls:'evb-crash' },
+    low:   { text:'минимум',   cls:'evb-low'   },
+    warn:  { text:'сигнал',    cls:'evb-warn'  },
+    rise:  { text:'рост',      cls:'evb-rise'  },
+    krs:   { text:'РИР',       cls:'evb-krs'   },
+    fall:  { text:'спад',      cls:'evb-fall'  },
+    stop:  { text:'остановка', cls:'evb-krs'   },
+    start: { text:'запуск',    cls:'evb-peak'  },
+    jump:  { text:'скачок',    cls:'evb-peak'  },
   };
   function fmt(v){ return v === null || v === undefined ? '—' : Number(v).toFixed(2); }
   function buildRow(item){

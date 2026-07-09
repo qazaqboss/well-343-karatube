@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скважина 303 — IC Petroleum | Каратюбе</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="КаратюбеМонитор">
+<meta property="og:url" content="https://nanocem.app/well-303.html">
+<meta property="og:title" content="Скважина №303 — КРС (ремонт)">
+<meta property="og:description" content="Освоение после КРС: 2,5 т/сут · обв. 20% (08.07). Запуск ВН 22.06.2026. М/Р Каратюбе.">
+<meta property="og:image" content="https://nanocem.app/og-303.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nanocem.app/og-303.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-2:#F8F8F8;
+  --surface:#F4F4F4;--surface-2:#ECECEC;--surface-3:#E4E4E4;
+  --border:#D8D8D8;--border-dim:#EBEBEB;
+  --white:#111111;--white-dim:#2A2A2A;
+  --grey:#777777;--grey-dim:#AAAAAA;--grey-muted:#CCCCCC;
+  --font-h:'Oswald',sans-serif;--font-data:'Inter',sans-serif;--font-body:'Inter',sans-serif;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-height:100vh;line-height:1.5}
+
+/* ── HEADER ── */
+.header{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:28px;height:28px;border:1.5px solid var(--border);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark-inner{width:10px;height:10px;background:var(--white)}
+.logo-eyebrow{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}
+.logo-text{font-family:var(--font-h);font-size:15px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--white)}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{font-family:var(--font-h);font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--white)}
+.nav-pill{border:1px solid var(--border);padding:4px 12px;border-radius:2px}
+.nav-pill:hover{border-color:var(--grey)}
+.nav-pill.active{border-color:var(--white)}
+.header-right{display:flex;align-items:center;gap:20px}
+.live-badge{display:flex;align-items:center;gap:7px;font-family:var(--font-data);font-size:11px;color:var(--white-dim);letter-spacing:2px;text-transform:uppercase}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--white-dim);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.header-date{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--grey);transition:all .2s}
+.nav-toggle.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px 16px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-family:var(--font-h);font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--border-dim);transition:color .2s}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover,.nav-mobile a.active{color:var(--white)}
+
+/* ── HERO ── */
+.hero{padding:36px 40px 28px;border-bottom:1px solid var(--border);background:var(--bg-2);position:relative;overflow:hidden}
+.hero::after{content:'303';position:absolute;right:-20px;top:-20px;font-family:var(--font-h);font-size:200px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.hero-eyebrow{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-family:var(--font-h);font-size:64px;font-weight:700;line-height:1;letter-spacing:-1px;text-transform:uppercase}
+.hero-title .light{font-weight:300;color:var(--grey)}
+.hero-meta{display:flex;align-items:center;gap:16px;margin-top:14px;flex-wrap:wrap}
+.hero-meta-item{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px;text-transform:uppercase}
+.hero-meta-item span{color:var(--white-dim);font-weight:500}
+.hero-meta-sep{color:var(--grey-muted);font-size:10px}
+.hero-right{text-align:right;flex-shrink:0}
+.status-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #EF4444;padding:10px 18px;border-radius:2px;font-family:var(--font-data);font-size:11px;color:#EF4444;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#EF4444;animation:pulse 2s infinite}
+.hero-date-note{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:1px;margin-top:6px}
+
+/* ── KPI STRIP ── */
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--border)}
+.kpi-card{padding:24px 24px 20px;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:background .15s}
+.kpi-card:last-child{border-right:none}
+.kpi-card:hover{background:var(--surface)}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi-card.red::before{background:#EF4444}
+.kpi-card.dark::before{background:var(--white)}
+.kpi-card.grey::before{background:var(--grey)}
+.kpi-label{font-family:var(--font-data);font-size:10px;font-weight:500;color:var(--grey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.kpi-value{font-family:var(--font-h);font-size:48px;font-weight:700;line-height:1;letter-spacing:-1px;color:var(--white)}
+.kpi-value.red{color:#EF4444}
+.kpi-value.grey{color:var(--grey)}
+.kpi-unit{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-top:5px;letter-spacing:1px}
+.kpi-note{position:absolute;top:16px;right:16px;font-family:var(--font-data);font-size:9px;padding:2px 6px;border-radius:2px;background:rgba(239,68,68,.1);color:#EF4444;letter-spacing:.5px}
+.kpi-note.ok{background:rgba(0,0,0,.06);color:var(--grey)}
+
+/* ── COMPARE STRIP ── */
+.section-label{padding:28px 40px 0;font-family:var(--font-h);font-size:11px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--grey-muted)}
+.compare-strip{display:grid;grid-template-columns:1fr 8px 1fr 8px 1fr;padding:0 40px;margin-top:16px;border-bottom:1px solid var(--border);padding-bottom:0}
+.compare-col{padding:20px 0 28px}
+.compare-label{font-family:var(--font-data);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:6px}
+.compare-date{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-bottom:14px;letter-spacing:.5px}
+.compare-big{font-family:var(--font-h);font-size:52px;font-weight:700;line-height:1;color:var(--white)}
+.compare-big.dim{color:var(--grey)}
+.compare-big.red{color:#EF4444}
+.compare-unit{font-family:var(--font-data);font-size:11px;color:var(--grey);margin:4px 0 10px;letter-spacing:.5px}
+.compare-obv{font-family:var(--font-data);font-size:15px;font-weight:600;color:var(--white)}
+.compare-obv.dim{color:var(--grey)}
+.compare-obv.red{color:#EF4444}
+.compare-col.center{padding-left:28px;border-left:2px solid var(--border)}
+.compare-col.last{padding-left:28px;border-left:2px solid #EF4444}
+.compare-divider{border:none}
+
+/* ── MAIN LAYOUT ── */
+.main-layout{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--border)}
+.main-left{border-right:1px solid var(--border)}
+.chart-block{padding:28px 32px 24px}
+.chart-title{font-family:var(--font-h);font-size:13px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px}
+.chart-sub{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);letter-spacing:.5px;margin-bottom:16px}
+.chart-legend{display:flex;gap:20px;margin-bottom:16px}
+.legend-item{display:flex;align-items:center;gap:6px;font-family:var(--font-data);font-size:10px;color:var(--grey);letter-spacing:1px}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chart-wrap{height:260px;position:relative}
+.events-block{border-top:1px solid var(--border);padding:24px 32px}
+.events-title{font-family:var(--font-h);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.event-item{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--border-dim)}
+.event-item:last-child{border-bottom:none}
+.event-date-col{text-align:right}
+.day-num{font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--white-dim);line-height:1}
+.month-label{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.event-body{}
+.ev{display:inline-block;font-family:var(--font-data);font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.ev-peak{background:#111;color:#fff}
+.ev-crash{background:#EF4444;color:#fff}
+.ev-low{background:rgba(239,68,68,.15);color:#EF4444}
+.ev-fall{background:rgba(0,0,0,.1);color:#555}
+.ev-krs{background:var(--white);color:var(--bg)}
+.ev-rise{background:rgba(0,0,0,.07);color:#444}
+.ev-warn{background:rgba(249,115,22,.14);color:#EA580C}
+.ev-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
+.event-note{font-size:13px;color:var(--white-dim);line-height:1.4}
+
+/* ── SIDEBAR ── */
+.main-right{display:flex;flex-direction:column}
+.rir-block{padding:24px 20px;border-bottom:1px solid var(--border)}
+.rir-block-title{font-family:var(--font-h);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.days-big{font-family:var(--font-h);font-size:88px;font-weight:700;color:#EF4444;line-height:1;text-align:center}
+.days-label{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:4px;margin-bottom:16px}
+.rir-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border-dim);font-size:12px;gap:12px}
+.rir-row:last-child{border-bottom:none}
+.rir-key{font-family:var(--font-data);font-size:10px;color:var(--grey);letter-spacing:.5px;flex-shrink:0}
+.rir-val{font-family:var(--font-data);font-size:11px;font-weight:600;color:var(--white-dim);text-align:right}
+.rir-val.red{color:#EF4444}
+.tech-block{padding:20px;border-bottom:1px solid var(--border)}
+.tech-title{font-family:var(--font-h);font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.tech-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-dim);gap:12px}
+.tech-row:last-child{border-bottom:none}
+.tech-key{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:.5px;flex-shrink:0}
+.tech-val{font-family:var(--font-data);font-size:11px;color:var(--white-dim);font-weight:500;text-align:right}
+.stat-block{padding:20px;border-bottom:1px solid var(--border)}
+.stat-block-title{font-family:var(--font-h);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border-dim);gap:12px}
+.stat-row:last-child{border-bottom:none}
+.stat-key{font-family:var(--font-data);font-size:10px;color:var(--grey-dim)}
+.stat-val{font-family:var(--font-data);font-size:11px;font-weight:600;color:var(--white-dim);text-align:right}
+.stat-val.red{color:#EF4444}
+
+/* ── MONTHLY STATS BAR ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat-cell{padding:24px 32px;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.stat-label{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.stat-value{font-family:var(--font-h);font-size:32px;font-weight:600;color:var(--white);line-height:1}
+.stat-sub{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-top:4px}
+
+/* ── DAILY LOG ── */
+.log-section{padding:0 0 48px;border-top:1px solid var(--border)}
+.log-top{display:flex;align-items:center;justify-content:space-between;padding:24px 40px 0;gap:16px;flex-wrap:wrap}
+.log-heading{font-family:var(--font-h);font-size:18px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim)}
+.log-filters{display:flex;gap:6px;flex-wrap:wrap;padding:16px 40px 0}
+.log-filter{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey);background:none;border:1px solid var(--border);padding:6px 14px;cursor:pointer;border-radius:2px;transition:all .15s;white-space:nowrap}
+.log-filter:hover{border-color:var(--grey);color:var(--white-dim)}
+.log-filter.active{background:var(--white);color:var(--bg);border-color:var(--white);font-weight:600}
+.log-count{font-family:var(--font-body);font-size:12px;color:var(--grey);padding:12px 40px 0}
+.log-table-wrap{margin:16px 40px 0;border:1px solid var(--border);border-radius:4px;overflow:hidden;overflow-x:auto}
+.log-table{width:100%;border-collapse:collapse;min-width:600px}
+.log-table thead th{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--grey);background:var(--surface);padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.log-table thead th.num{text-align:right}
+.log-table tbody tr{border-bottom:1px solid var(--border-dim);transition:background .1s}
+.log-table tbody tr:last-child{border-bottom:none}
+.log-table tbody tr:hover{background:var(--surface)}
+.log-table tbody tr.log-row--ev td{background:rgba(0,0,0,.015)}
+.log-table tbody td{font-family:var(--font-body);font-size:13px;color:var(--white-dim);padding:10px 14px;vertical-align:top}
+.log-table tbody td.num{text-align:right;font-weight:500;font-variant-numeric:tabular-nums;color:var(--white);white-space:nowrap}
+.log-date{font-weight:600;color:var(--white);white-space:nowrap}
+.log-comment{font-size:12px;color:var(--grey);max-width:380px;line-height:1.45}
+.phase-tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.phase-work{background:rgba(34,197,94,.12);color:#16A34A}
+.phase-decline{background:rgba(239,68,68,.1);color:#EF4444}
+.phase-idle{background:rgba(0,0,0,.05);color:#999}
+.phase-restart{background:rgba(139,92,246,.14);color:#7C3AED}
+.phase-krs{background:#111;color:#fff}
+.ev-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.03em;padding:2px 7px;border-radius:2px;margin-right:6px;white-space:nowrap;vertical-align:middle}
+.evb-peak{background:#111;color:#fff}
+.evb-crash{background:#EF4444;color:#fff}
+.evb-low{background:rgba(239,68,68,.15);color:#EF4444}
+.evb-rise{background:rgba(0,0,0,.07);color:#444}
+.evb-krs{background:#111;color:#fff}
+.evb-warn{background:rgba(249,115,22,.14);color:#EA580C}
+.evb-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
+
+/* ── PASSPORT ── */
+.passport-section{padding:28px 40px 40px;border-top:1px solid var(--border)}
+.passport-title{font-family:var(--font-h);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--grey-muted);margin-bottom:20px}
+.passport-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.passport-cell{padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.passport-cell:nth-child(3n){border-right:none}
+.passport-cell:nth-last-child(-n+3){border-bottom:none}
+.passport-key{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.passport-val{font-family:var(--font-data);font-size:13px;font-weight:500;color:var(--white-dim)}
+
+/* ── FOOTER ── */
+.footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
+.footer-left{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);letter-spacing:.5px;line-height:1.6}
+.footer-right{font-family:var(--font-h);font-size:14px;letter-spacing:2px;color:var(--grey)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .header{padding:0 20px;height:52px}
+  .nav{display:none}
+  .nav-toggle{display:flex}
+  .header-right{gap:12px}
+  .header-date{display:none}
+  .hero{padding:24px 20px 20px}
+  .hero::after{font-size:130px;top:-10px;right:-10px}
+  .hero-inner{flex-direction:column;gap:16px}
+  .hero-title{font-size:48px}
+  .hero-right{text-align:left}
+  .kpi-strip{grid-template-columns:repeat(2,1fr)}
+  .kpi-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .kpi-card:nth-child(2n){border-right:none}
+  .kpi-card:last-child{grid-column:1/-1;border-bottom:none}
+  .kpi-value{font-size:40px}
+  .section-label{padding:0 20px}
+  .compare-strip{grid-template-columns:1fr;padding:0 20px}
+  .compare-divider{height:1px;width:100%;margin:0}
+  .compare-col{padding:18px 0}
+  .compare-col.center,.compare-col.last{padding-left:0;border-left:none;border-top:1px solid var(--border)}
+  .compare-big{font-size:44px}
+  .main-layout{grid-template-columns:1fr}
+  .main-left{border-right:none;border-bottom:1px solid var(--border)}
+  .chart-block{padding:20px 20px}
+  .chart-wrap{height:220px}
+  .events-block{padding:20px 20px}
+  .event-item{grid-template-columns:64px 1fr;gap:10px}
+  .rir-block,.tech-block,.stat-block{padding:20px}
+  .days-big{font-size:72px}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat-cell{padding:18px 20px}
+  .stat-cell:nth-child(2n){border-right:none}
+  .stat-cell:nth-child(n+3){border-top:1px solid var(--border)}
+  .log-top,.log-filters,.log-count{padding-left:20px;padding-right:20px}
+  .log-table-wrap{margin:14px 20px 0}
+  .log-table{min-width:500px}
+  .passport-section{padding:20px 20px 32px}
+  .passport-grid{grid-template-columns:repeat(2,1fr)}
+  .passport-cell:nth-child(2n){border-right:none !important}
+  .passport-cell:nth-child(3n){border-right:1px solid var(--border)}
+  .footer{flex-direction:column;gap:8px;align-items:flex-start;padding:16px 20px}
+}
+@media(max-width:480px){
+  .hero-title{font-size:38px}
+  .kpi-value{font-size:34px}
+  .kpi-card{padding:18px 16px 14px}
+  .compare-big{font-size:36px}
+  .days-big{font-size:60px}
+  .log-col-phase{display:none}
+  .log-table{min-width:360px}
+  .log-filters{gap:4px}
+  .log-filter{font-size:11px;padding:5px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <div>
+      <div class="logo-eyebrow">Месторождение Каратюбе</div>
+      <div class="logo-text">IC Petroleum</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="index.html" class="nav-pill">Скважина 343</a>
+    <a href="well-342.html" class="nav-pill">Скважина 342</a>
+    <a href="well-301.html" class="nav-pill">Скважина 301</a>
+    <a href="well-303.html" class="nav-pill active">Скважина 303</a>
+  </nav>
+  <div class="header-right">
+    <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
+    <div class="header-date">08.07.2026 / ОСВОЕНИЕ</div>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html" onclick="closeNav()">Скважина 343</a>
+  <a href="well-342.html" onclick="closeNav()">Скважина 342</a>
+  <a href="well-301.html" onclick="closeNav()">Скважина 301</a>
+  <a href="well-303.html" class="active" onclick="closeNav()">Скважина 303</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Ежедневный мониторинг · Капитальный ремонт скважины</div>
+      <h1 class="hero-title">СКВАЖИНА <span class="light">№</span>303</h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">НАСОС <span>ВН (винтовой)</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">М/Р <span>Каратюбе</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ОПЕРАТОР <span>IC Petroleum</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–08.07.2026</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>Освоение после КРС</div>
+      <div class="hero-date-note">Запуск ВН 22.06.2026 · освоение · 08.07: 2,5 т/сут, обв. 20%</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI STRIP -->
+<div class="kpi-strip">
+  <div class="kpi-card dark">
+    <div class="kpi-note ok">05.01.2026</div>
+    <div class="kpi-label">Qн · пик</div>
+    <div class="kpi-value">0.762</div>
+    <div class="kpi-unit">Т / СУТ</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-note ok">за период</div>
+    <div class="kpi-label">Qн · средний</div>
+    <div class="kpi-value">0.27</div>
+    <div class="kpi-unit">Т / СУТ</div>
+  </div>
+  <div class="kpi-card grey">
+    <div class="kpi-note ok">за период</div>
+    <div class="kpi-label">Обводнённость средн.</div>
+    <div class="kpi-value grey">96.9</div>
+    <div class="kpi-unit">%</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-note ok">08.07.2026</div>
+    <div class="kpi-label">Qн · освоение</div>
+    <div class="kpi-value">2.5</div>
+    <div class="kpi-unit">Т / СУТ · обв. 20%</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-label">Дней освоения</div>
+    <div class="kpi-value" id="daysSince">1</div>
+    <div class="kpi-unit">запуск ВН 22.06.2026</div>
+  </div>
+</div>
+
+<!-- COMPARE STRIP -->
+<div class="section-label">Ключевые точки периода наблюдений</div>
+<div class="compare-strip">
+  <div class="compare-col">
+    <div class="compare-label">Начало наблюдений</div>
+    <div class="compare-date">01.01.2026</div>
+    <div class="compare-big dim">0.205</div>
+    <div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv dim">Обв. 98,0%</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col center">
+    <div class="compare-label">Пиковый дебит</div>
+    <div class="compare-date">05.01.2026</div>
+    <div class="compare-big">0.762</div>
+    <div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv">Обв. 92,0%</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col last" style="border-left-color:#16A34A">
+    <div class="compare-label">Текущее состояние</div>
+    <div class="compare-date">08.07.2026</div>
+    <div class="compare-big" style="color:#16A34A">2.5</div>
+    <div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 20%</div>
+  </div>
+</div>
+
+<!-- MONTHLY STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <div class="stat-label">Январь 2026</div>
+    <div class="stat-value">0.412</div>
+    <div class="stat-sub">т/сут · обв. 95,6%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Февраль 2026</div>
+    <div class="stat-value">0.175</div>
+    <div class="stat-sub">т/сут · обв. 97,8%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Март 2026</div>
+    <div class="stat-value" style="color:#EF4444">0.125</div>
+    <div class="stat-sub">т/сут · обв. 98,4%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Освоение · июль</div>
+    <div class="stat-value" style="color:#16A34A">2,5</div>
+    <div class="stat-sub">т/сут · обв. 20%</div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- LEFT -->
+  <div class="main-left">
+    <div class="chart-block">
+      <div class="chart-title">Динамика добычи — весь период</div>
+      <div class="chart-sub">01.01.2026 — 08.07.2026 · Qн (т/сут) и Обводнённость (%) · дни простоя/КРС исключены</div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart303"></canvas></div>
+    </div>
+
+    <div class="events-block">
+      <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">11</div><div class="month-label">ИЮН</div></div>
+        <div class="event-body">
+          <div class="ev ev-krs">КРС</div>
+          <div class="event-note">Скважина переведена в капитальный ремонт после ~3 месяцев простоя. Решение по восстановлению продуктивности.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">13</div><div class="month-label">МАР</div></div>
+        <div class="event-body">
+          <div class="ev ev-crash">Остановка ВН</div>
+          <div class="event-note">В 19:00 остановка винтового насоса из-за высокой обводнённости. Qн = 0, обводнённость 100%. Начало простоя (14.03–10.06).</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">06</div><div class="month-label">МАР</div></div>
+        <div class="event-body">
+          <div class="ev ev-low">Минимум</div>
+          <div class="event-note">Дебит просел ниже 0,07 т/сут при обводнённости 99%. Дальнейшая деградация до 0,035 т/сут (12.03).</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">26</div><div class="month-label">ЯНВ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rpm">Обороты</div>
+          <div class="event-note">Уменьшение оборота ВН с 40 до 30 об/мин при обводнённости 98%.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">05</div><div class="month-label">ЯНВ</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Пик</div>
+          <div class="event-note">Максимальный дебит за период: 0,762 т/сут при обводнённости 92,0% — лучший показатель скважины.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="main-right">
+
+    <div class="rir-block">
+      <div class="rir-block-title">Состояние скважины</div>
+      <div class="days-big" id="daysBig">1</div>
+      <div class="days-label">дней освоения</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">Освоение после КРС</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК ВН</span><span class="rir-val">22.06.2026</span></div>
+      <div class="rir-row"><span class="rir-key">ДОБЫЧА (08.07)</span><span class="rir-val">2,5 т/сут</span></div>
+      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">20% (08.07)</span></div>
+      <div class="rir-row"><span class="rir-key">ПРОСТОЙ / КРС</span><span class="rir-val">14.03–21.06.2026</span></div>
+      <div class="rir-row"><span class="rir-key">КРС</span><span class="rir-val red">с 11.06.2026</span></div>
+    </div>
+
+    <div class="tech-block">
+      <div class="tech-title">Технические данные</div>
+      <div class="tech-row"><span class="tech-key">НАСОС</span><span class="tech-val">ВН (винтовой)</span></div>
+      <div class="tech-row"><span class="tech-key">М/Р</span><span class="tech-val">Каратюбе</span></div>
+      <div class="tech-row"><span class="tech-key">ОПЕРАТОР</span><span class="tech-val">IC Petroleum</span></div>
+      <div class="tech-row"><span class="tech-key">РЕЖИМ ВН (ЯНВ)</span><span class="tech-val">40 → 30 об/мин</span></div>
+      <div class="tech-row"><span class="tech-key">ПРИЧИНА ПРОСТОЯ</span><span class="tech-val">высокая обв.</span></div>
+      <div class="tech-row"><span class="tech-key">ТИП РЕМОНТА</span><span class="tech-val">КРС</span></div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-block-title">Итоги периода</div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 08.07.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">189</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">85</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">0,762 т/сут (05.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. Qн</span><span class="stat-val red">0,035 т/сут (12.03)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">92,0% (05.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val red">100% (13.03)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DAILY LOG -->
+<div class="log-section">
+  <div class="log-top"><div class="log-heading">Ежедневный журнал замеров</div></div>
+  <div class="log-filters" id="logFilters">
+    <button class="log-filter active" data-phase="all">Все дни</button>
+    <button class="log-filter" data-phase="work">Работа</button>
+    <button class="log-filter" data-phase="decline">Остановка</button>
+    <button class="log-filter" data-phase="idle">Простой</button>
+    <button class="log-filter" data-phase="krs">КРС</button>
+    <button class="log-filter" data-phase="restart">Освоение</button>
+  </div>
+  <div class="log-count" id="logCount"></div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th class="log-col-phase">Фаза</th>
+          <th class="num">Qн, т/сут</th>
+          <th class="num">Обв., %</th>
+          <th>Комментарий</th>
+        </tr>
+      </thead>
+      <tbody id="logBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PASSPORT -->
+<div class="passport-section">
+  <div class="passport-title">Технический паспорт · Скважина 303</div>
+  <div class="passport-grid">
+    <div class="passport-cell"><div class="passport-key">Месторождение</div><div class="passport-val">Каратюбе (Актюбинская обл.)</div></div>
+    <div class="passport-cell"><div class="passport-key">Оператор</div><div class="passport-val">IC Petroleum</div></div>
+    <div class="passport-cell"><div class="passport-key">Насос</div><div class="passport-val">ВН (винтовой)</div></div>
+    <div class="passport-cell"><div class="passport-key">Остановка ВН</div><div class="passport-val">13.03.2026 (обводнение)</div></div>
+    <div class="passport-cell"><div class="passport-key">Простой</div><div class="passport-val">14.03 – 10.06.2026</div></div>
+    <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС (с 11.06.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">Освоение (на 08.07.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–08.07.2026 (189 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Дней с добычей</div><div class="passport-val">85 из 189</div></div>
+    <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">0,762 т/сут (05.01.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">96,9%</div></div>
+    <div class="passport-cell"><div class="passport-key">Причина простоя</div><div class="passport-val">высокая обводнённость 92–100%</div></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">М/Р Каратюбе · Скв. 303 · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 08.07.2026</div>
+  <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
+</footer>
+
+<!-- DATA + CHART + LOG -->
+<script>
+const DATA = [
+  {d:"01.01",qn:0.205,obv:98,phase:"work",ev:"",comment:""},
+  {d:"02.01",qn:0.143,obv:98.5,phase:"work",ev:"",comment:"После замера."},
+  {d:"03.01",qn:0.182,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"04.01",qn:0.566,obv:94,phase:"work",ev:"",comment:"После замера."},
+  {d:"05.01",qn:0.762,obv:92,phase:"work",ev:"peak",comment:"После замера."},
+  {d:"06.01",qn:0.556,obv:94,phase:"work",ev:"",comment:"После замера."},
+  {d:"07.01",qn:0.63,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"08.01",qn:0.624,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"09.01",qn:0.63,obv:93,phase:"work",ev:"",comment:""},
+  {d:"10.01",qn:0.661,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"11.01",qn:0.673,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"12.01",qn:0.685,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"13.01",qn:0.685,obv:93,phase:"work",ev:"",comment:"После замера."},
+  {d:"14.01",qn:0.498,obv:95,phase:"work",ev:"",comment:"После замера."},
+  {d:"15.01",qn:0.503,obv:95,phase:"work",ev:"",comment:"После замера."},
+  {d:"16.01",qn:0.302,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"17.01",qn:0.281,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"18.01",qn:0.267,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"19.01",qn:0.262,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"20.01",qn:0.307,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"21.01",qn:0.566,obv:94,phase:"work",ev:"",comment:"После замера."},
+  {d:"22.01",qn:0.392,obv:96,phase:"work",ev:"",comment:""},
+  {d:"23.01",qn:0.399,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"24.01",qn:0.381,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"25.01",qn:0.231,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"26.01",qn:0.212,obv:98,phase:"work",ev:"rpm",comment:"После замера. Уменьшение оборота ВН с 40 до 30 об/мин."},
+  {d:"27.01",qn:0.189,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"28.01",qn:0.339,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"29.01",qn:0.325,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"30.01",qn:0.156,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"31.01",qn:0.149,obv:98,phase:"work",ev:"",comment:"После замера ."},
+  {d:"01.02",qn:0.161,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"02.02",qn:0.077,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"03.02",qn:0.336,obv:95,phase:"work",ev:"",comment:"После замера."},
+  {d:"04.02",qn:0.236,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"05.02",qn:0.249,obv:97,phase:"work",ev:"",comment:""},
+  {d:"06.02",qn:0.249,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"07.02",qn:0.249,obv:97,phase:"work",ev:"",comment:""},
+  {d:"08.02",qn:0.244,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"09.02",qn:0.239,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"10.02",qn:0.267,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"11.02",qn:0.244,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"12.02",qn:0.173,obv:97.8,phase:"work",ev:"",comment:"После замера."},
+  {d:"13.02",qn:0.173,obv:97.8,phase:"work",ev:"",comment:"После замера."},
+  {d:"14.02",qn:0.177,obv:97.8,phase:"work",ev:"",comment:"После замера."},
+  {d:"15.02",qn:0.08,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"16.02",qn:0.08,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"17.02",qn:0.08,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"18.02",qn:0.171,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"19.02",qn:0.05,obv:99.3,phase:"work",ev:"",comment:"После замера."},
+  {d:"20.02",qn:0.053,obv:99.3,phase:"work",ev:"",comment:"После замера."},
+  {d:"21.02",qn:0.081,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"22.02",qn:0.233,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"23.02",qn:0.088,obv:98.8,phase:"work",ev:"",comment:"После замера."},
+  {d:"24.02",qn:0.091,obv:98.8,phase:"work",ev:"",comment:"После замера."},
+  {d:"25.02",qn:0.143,obv:98,phase:"work",ev:"",comment:"После замера."},
+  {d:"26.02",qn:0.117,obv:98.5,phase:"work",ev:"",comment:"После замера."},
+  {d:"27.02",qn:0.29,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"28.02",qn:0.273,obv:96,phase:"work",ev:"",comment:"После замера."},
+  {d:"01.03",qn:0.175,obv:97.5,phase:"work",ev:"",comment:"После замера."},
+  {d:"02.03",qn:0.233,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"03.03",qn:0.215,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"04.03",qn:0.218,obv:97,phase:"work",ev:"",comment:""},
+  {d:"05.03",qn:0.218,obv:97,phase:"work",ev:"",comment:"После замера."},
+  {d:"06.03",qn:0.071,obv:99,phase:"work",ev:"low",comment:"После замера."},
+  {d:"07.03",qn:0.071,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"08.03",qn:0.069,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"09.03",qn:0.063,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"10.03",qn:0.06,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"11.03",qn:0.068,obv:99,phase:"work",ev:"",comment:"После замера."},
+  {d:"12.03",qn:0.035,obv:99.5,phase:"work",ev:"",comment:"После замера."},
+  {d:"13.03",qn:0,obv:100,phase:"decline",ev:"stop",comment:"В 19:00ч Остановка ВН из-за высокой обводненности."},
+  {d:"14.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"15.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"16.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"17.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"18.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"19.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"20.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"21.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"22.03",qn:null,obv:null,phase:"idle",ev:"",comment:"13.03.2026г. В 19:00ч Остановка ВН из-за высокой обводненности."},
+  {d:"23.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"24.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"25.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"26.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"27.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"28.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"29.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"30.03",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"31.03",qn:null,obv:null,phase:"idle",ev:"",comment:""},
+  {d:"01.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"02.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"03.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"04.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"05.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"06.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"07.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"08.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"09.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"10.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"11.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"12.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"13.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"14.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"15.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"16.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"17.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"18.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"19.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"20.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"21.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"22.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"23.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"24.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"25.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"26.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"27.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"28.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"29.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"30.04",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"01.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"02.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"03.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"04.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"05.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"06.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"07.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"08.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"09.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"10.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"11.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"12.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"13.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"14.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"15.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"16.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"17.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"18.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"19.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"20.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"21.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"22.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"23.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"24.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"25.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"26.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"27.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"28.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"29.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"30.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"31.05",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"01.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"02.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"03.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"04.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"05.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"06.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"07.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"08.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"09.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"10.06",qn:null,obv:null,phase:"idle",ev:"",comment:"Остановка ВН из-за высокой обводненности."},
+  {d:"11.06",qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС."},
+  {d:"12.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"13.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"14.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. АПРС-40. Разбуривание ЦМ в интервале 644-675м (31м/6ч). Режим: G-0,5-1тн; Q-3 л/с; Р-30-35атм. На выходе техническая вода с цементом. Опрессовка интервалов ПВР 651-656м; 668-670м на 40атм — герметично. План: разбуривание ЦМ + ВП на глубине 685м."},
+  {d:"15.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"16.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"17.06",qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС. АПРС-40. ЦПД (цементирование под давлением). Распакеровка пакера на гл. 670 м, хвостовик на гл. 671 м. ЦПД в интервале 686–688 м: закачка буфера 0,5 м³, цементного раствора 1,6 м³ (у/в 1,82 г/см³) при открытом затрубье. Пакеровка на 670 м, закачка цемраствора 0,8 м³ (Рнач 30 атм, Рстоп 100 атм), выдержка 20 мин — скважина не принимает. Распакеровка и подъём хвостовика НКТ (1,5 м) + технологический пакер ПРО-ЯМО-142 мм 671→631 м. Срезка на 631 м обратной промывкой, продавка техводой 0,3 м³ (Рнач 50, Рстоп 100 атм). С 09:00 ОЗЦ. План: ОЗЦ 36 ч; подъём хвостовика + пакер до 0 м; уборка территории после ЦПД."},
+  {d:"18.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"19.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"20.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Циркуляция, Qж 9,8 м³/сут."},
+  {d:"21.06",qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Qж 9,8 м³/сут."},
+  {d:"22.06",qn:null,obv:null,phase:"restart",ev:"start",comment:"Запуск ВН после КРС. Вывод на режим, Qж 22,5 м³/сут."},
+  {d:"23.06",qn:null,obv:null,phase:"restart",ev:"",comment:"Вывод на режим. Qж 22,5 м³/сут, отработка на замерную ёмкость."},
+  {d:"24.06",qn:0,obv:100,phase:"restart",ev:"",comment:"На замерную ёмкость: Qж 3,2 м³/сут, нефти нет, обводнённость 100%."},
+  {d:"25.06",qn:0.9,obv:75,phase:"restart",ev:"rise",comment:"После замера. Появилась нефть: 0,9 т/сут, обводнённость снизилась до 75%. Qж 4,2 м³/сут."},
+  {d:"26.06",qn:2.2,obv:47.6,phase:"restart",ev:"rise",comment:"После замера. 2,2 т/сут, обводнённость упала до 47,6%. Qж 4,8 м³/сут."},
+  {d:"27.06",qn:2.2,obv:31,phase:"restart",ev:"",comment:"2,2 т/сут, обводнённость 31%. Qж 3,6 м³/сут."},
+  {d:"28.06",qn:2.3,obv:36,phase:"restart",ev:"",comment:"2,3 т/сут, обводнённость 36%. Переподгонка полированного штока автокраном. Qж 4,2 м³/сут."},
+  {d:"29.06",qn:2.5,obv:36,phase:"restart",ev:"",comment:"После замера. 2,5 т/сут, 36%. Qж 4,5 м³/сут."},
+  {d:"30.06",qn:2.6,obv:33,phase:"restart",ev:"rise",comment:"Конец июня: 2,6 т/сут, обводнённость 33%. Qж 4,5 м³/сут. Скважина осваивается после КРС."},
+  {d:"01.07",qn:2.2,obv:28.0,phase:"restart",ev:"",comment:"После замера. 2,20 т/сут, обводнённость 28,0%. Qж 3,5 м³/сут, на ёмкость."},
+  {d:"02.07",qn:2.5,obv:25.0,phase:"restart",ev:"rise",comment:"После замера. 2,49 т/сут, обводнённость снизилась до 25,0%. Qж 3,8 м³/сут."},
+  {d:"03.07",qn:2.0,obv:30.0,phase:"restart",ev:"",comment:"После замера. 1,96 т/сут, обводнённость 30,0%. Qж 3,2 м³/сут."},
+  {d:"04.07",qn:2.6,obv:30.0,phase:"restart",ev:"",comment:"После замера. 2,63 т/сут, 30,0%. Qж 4,3 м³/сут."},
+  {d:"05.07",qn:2.4,obv:22.0,phase:"restart",ev:"rise",comment:"После замера. 2,39 т/сут, обводнённость 22,0%. Qж 3,5 м³/сут."},
+  {d:"06.07",qn:2.5,obv:22.0,phase:"restart",ev:"",comment:"После замера. 2,45 т/сут, 22,0%. Qж 3,6 м³/сут."},
+  {d:"07.07",qn:2.5,obv:20.0,phase:"restart",ev:"",comment:"После замера. 2,52 т/сут, обводнённость 20,0%. Qж 3,6 м³/сут."},
+  {d:"08.07",qn:2.5,obv:20.0,phase:"restart",ev:"",comment:"Текущий режим. 2,45 т/сут, обводнённость 20,0%, 120 об/мин. Освоение: обводнённость стабильно низкая."},
+];
+
+// ── Chart ──────────────────────────────────────────────────────────
+Chart.defaults.color = '#AAAAAA';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 10;
+
+const chartData = DATA.filter(d => d.qn !== null);
+const labels = chartData.map(d => d.d);
+
+const ctx = document.getElementById('chart303').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Qн, т/сут',
+        data: chartData.map(d => d.qn),
+        borderColor: '#111111',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5,
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        tension: 0.3,
+        yAxisID: 'y',
+        order: 1,
+      },
+      {
+        label: 'Обв., %',
+        data: chartData.map(d => d.obv),
+        borderColor: '#BBBBBB',
+        backgroundColor: 'transparent',
+        borderWidth: 1,
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        tension: 0.3,
+        yAxisID: 'y2',
+        order: 2,
+        borderDash: [4, 3],
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(17,17,17,0.9)',
+        titleColor: '#fff',
+        bodyColor: '#ccc',
+        padding: 10,
+        callbacks: {
+          label: c => c.datasetIndex === 0
+            ? `Qн: ${c.parsed.y} т/сут`
+            : `Обв.: ${c.parsed.y}%`
+        }
+      },
+      annotation: {
+        annotations: {
+          peakLine: {
+            type: 'line',
+            xMin: labels.indexOf('05.01'),
+            xMax: labels.indexOf('05.01'),
+            borderColor: 'rgba(0,0,0,0.15)',
+            borderWidth: 1,
+            borderDash: [3, 4],
+          },
+          peakLabel: {
+            type: 'label',
+            xValue: labels.indexOf('05.01'),
+            yValue: 2.6,
+            yScaleID: 'y',
+            content: ['ПИК 0,762'],
+            color: 'rgba(0,0,0,0.45)',
+            font: { size: 9, family: "'Inter', sans-serif", weight: '600' },
+          },
+          stopLine: {
+            type: 'line',
+            xMin: labels.indexOf('13.03'),
+            xMax: labels.indexOf('13.03'),
+            borderColor: 'rgba(239,68,68,0.5)',
+            borderWidth: 1.5,
+          },
+          stopLabel: {
+            type: 'label',
+            xValue: labels.indexOf('13.03'),
+            yValue: 2.0,
+            yScaleID: 'y',
+            content: ['ОСТАНОВКА ВН'],
+            color: 'rgba(239,68,68,0.8)',
+            font: { size: 9, family: "'Inter', sans-serif", weight: '600' },
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(0,0,0,0.05)', tickLength: 0 },
+        border: { color: 'rgba(0,0,0,0.1)' },
+        ticks: { maxTicksLimit: 10, maxRotation: 0, color: '#BBBBBB', font: { size: 8 } }
+      },
+      y: {
+        position: 'left',
+        min: 0,
+        max: 3,
+        grid: { color: 'rgba(0,0,0,0.05)' },
+        border: { color: 'transparent' },
+        ticks: { color: '#BBBBBB', font: { size: 8 }, stepSize: 0.5, callback: v => v + ' т' }
+      },
+      y2: {
+        position: 'right',
+        min: 15,
+        max: 100,
+        grid: { display: false },
+        border: { color: 'transparent' },
+        ticks: { color: '#CCCCCC', font: { size: 8 }, stepSize: 10, callback: v => v + '%' }
+      }
+    }
+  }
+});
+
+// ── Days in KRS (с 11.06.2026) ─────────────────────────────────────
+const KRS_DATE = new Date('2026-06-22');
+const today = new Date();
+const daysIn = Math.max(1, Math.floor((today - KRS_DATE) / 86400000));
+document.getElementById('daysSince').textContent = daysIn;
+document.getElementById('daysBig').textContent = daysIn;
+
+// ── Log table ──────────────────────────────────────────────────────
+(function(){
+  const PHASE_LABEL = { work:'Работа', decline:'Остановка', idle:'Простой', krs:'КРС', restart:'Освоение' };
+  const EV_LABEL = {
+    peak:  { text:'пик',       cls:'evb-peak'  },
+    rise:  { text:'рост',      cls:'evb-rise'  },
+    low:   { text:'минимум',   cls:'evb-low'   },
+    rpm:   { text:'обороты',   cls:'evb-rpm'   },
+    stop:  { text:'остановка', cls:'evb-crash' },
+    krs:   { text:'КРС',       cls:'evb-krs'   },
+    start: { text:'запуск',    cls:'evb-peak'  },
+  };
+  function fmt(v, d){ return (v === null || v === undefined) ? '—' : Number(v).toFixed(d); }
+  function buildRow(item){
+    const tr = document.createElement('tr');
+    tr.className = 'log-row' + (item.ev ? ' log-row--ev' : '');
+    const evBadge = item.ev && EV_LABEL[item.ev]
+      ? `<span class="ev-badge ${EV_LABEL[item.ev].cls}">${EV_LABEL[item.ev].text}</span>` : '';
+    tr.innerHTML = `
+      <td class="log-date">${item.d}</td>
+      <td class="log-col-phase"><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase]||item.phase}</span></td>
+      <td class="num">${fmt(item.qn,3)}</td>
+      <td class="num">${fmt(item.obv,1)}</td>
+      <td class="log-comment">${evBadge}${item.comment||''}</td>`;
+    return tr;
+  }
+  function renderLog(phase){
+    const tbody = document.getElementById('logBody');
+    const countEl = document.getElementById('logCount');
+    tbody.innerHTML = '';
+    const filtered = phase === 'all' ? DATA : DATA.filter(d => d.phase === phase);
+    filtered.forEach(item => tbody.appendChild(buildRow(item)));
+    countEl.textContent = `Показано записей: ${filtered.length} из ${DATA.length}`;
+  }
+  document.getElementById('logFilters').addEventListener('click', function(e){
+    const btn = e.target.closest('.log-filter');
+    if(!btn) return;
+    document.querySelectorAll('.log-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderLog(btn.dataset.phase);
+  });
+  renderLog('all');
+})();
+
+// ── Nav ────────────────────────────────────────────────────────────
+function toggleNav(){
+  document.getElementById('navMobile').classList.toggle('open');
+  document.getElementById('navToggle').classList.toggle('active');
+}
+function closeNav(){
+  document.getElementById('navMobile').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('active');
+}
+</script>
+</body>
+</html>

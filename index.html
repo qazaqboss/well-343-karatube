@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Скважина 343 — Технический отчёт</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="КаратюбеМонитор">
+<meta property="og:url" content="https://nanocem.app/">
+<meta property="og:title" content="Скважина №343 — РИР NanoCem UT-9 · в работе">
+<meta property="og:description" content="Суточный мониторинг: Qн 13,5 т/сут · обв. 36,5% · эффект РИР сохраняется. М/Р Каратюбе, J1-IV.">
+<meta property="og:image" content="https://nanocem.app/og-343.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nanocem.app/og-343.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -1546,13 +1556,15 @@ a { text-decoration: none; color: inherit; }
     <a href="#timeline">Хронология</a>
     <a href="#passport">Паспорт</a>
     <a href="well-342.html" class="nav-well342">Скважина 342</a>
+    <a href="well-301.html" class="nav-well342">Скважина 301</a>
+    <a href="well-303.html" class="nav-well342">Скважина 303</a>
   </nav>
   <div class="header-right">
     <div class="live-badge">
       <div class="live-dot"></div>
       Работает
     </div>
-    <div class="header-date">30.04.2026 / 14:00</div>
+    <div class="header-date">08.07.2026 / 14:00</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
@@ -1567,6 +1579,8 @@ a { text-decoration: none; color: inherit; }
   <a href="#timeline" onclick="closeNav()">Хронология</a>
   <a href="#passport" onclick="closeNav()">Паспорт</a>
   <a href="well-342.html" onclick="closeNav()">Скважина 342</a>
+  <a href="well-301.html" onclick="closeNav()">Скважина 301</a>
+  <a href="well-303.html" onclick="closeNav()">Скважина 303</a>
 </nav>
 
 <!-- ══════════════════════ HERO ══════════════════════ -->
@@ -1588,9 +1602,9 @@ a { text-decoration: none; color: inherit; }
     <div class="hero-right">
       <div class="status-pill active">
         <div class="status-pulse"></div>
-        Работает · 140 об/мин
+        Работает · 160 об/мин
       </div>
-      <div class="hero-period">Период наблюдений: 15.01.2026 — 30.04.2026</div>
+      <div class="hero-period">Период наблюдений: 15.01.2026 — 08.07.2026</div>
     </div>
   </div>
 </section>
@@ -1601,34 +1615,34 @@ a { text-decoration: none; color: inherit; }
     <div class="kpi-index">01 / 05</div>
     <div class="kpi-delta positive">×5,7 от базы</div>
     <div class="kpi-label">Дебит нефти</div>
-    <div class="kpi-value">14.9</div>
+    <div class="kpi-value">13.5</div>
     <div class="kpi-unit">Т / СУТ</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">02 / 05</div>
     <div class="kpi-delta">−51,9 п.п. от max</div>
     <div class="kpi-label">Обводнённость</div>
-    <div class="kpi-value">37.6</div>
+    <div class="kpi-value">36.5</div>
     <div class="kpi-unit">%</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">03 / 05</div>
     <div class="kpi-delta">+7,2 от базы</div>
     <div class="kpi-label">Дебит жидкости</div>
-    <div class="kpi-value">27.3</div>
+    <div class="kpi-value">24.3</div>
     <div class="kpi-unit">М³ / СУТ</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">04 / 05</div>
     <div class="kpi-delta">стаб.</div>
     <div class="kpi-label">Дебит воды</div>
-    <div class="kpi-value">10.3</div>
+    <div class="kpi-value">8.9</div>
     <div class="kpi-unit">М³ / СУТ</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-index">05 / 05</div>
     <div class="kpi-label">Ндин / стат.</div>
-    <div class="kpi-value">167</div>
+    <div class="kpi-value">128</div>
     <div class="kpi-unit">М</div>
   </div>
 </div>
@@ -1656,10 +1670,10 @@ a { text-decoration: none; color: inherit; }
   <div class="compare-divider"></div>
   <div class="compare-col" style="padding-left:40px">
     <div class="compare-tag">Текущий режим</div>
-    <div class="compare-date">30.04.2026</div>
-    <div class="compare-big">14.9</div>
+    <div class="compare-date">08.07.2026</div>
+    <div class="compare-big">13.5</div>
     <div class="compare-unit">Т / СУТ · НЕФТЬ</div>
-    <div class="compare-sub">37,6% воды</div>
+    <div class="compare-sub">36,5% воды</div>
     <div class="compare-badge">Эффект сохраняется</div>
   </div>
 </div>
@@ -1698,7 +1712,7 @@ a { text-decoration: none; color: inherit; }
     <div class="chart-block">
       <div class="block-header">
         <div class="block-title">Динамика — полная история</div>
-        <div class="block-badge">Qн + ОБВ. / 15.01 — 30.04.2026</div>
+        <div class="block-badge">Qн + ОБВ. / 15.01 — 08.07.2026</div>
       </div>
       <div class="chart-legend">
         <div class="legend-item">
@@ -1855,7 +1869,7 @@ a { text-decoration: none; color: inherit; }
     <button class="log-filter" data-phase="krs">КРС</button>
     <button class="log-filter" data-phase="after">После РИР</button>
     <button class="log-filter" data-phase="forced">Форсирование</button>
-    <button class="log-filter" data-phase="stable">Апрель</button>
+    <button class="log-filter" data-phase="stable">Стабильный режим</button>
   </div>
   <div class="log-count" id="logCount"></div>
   <div class="log-table-wrap">
@@ -1948,7 +1962,7 @@ a { text-decoration: none; color: inherit; }
   </div>
   <div class="stat-cell">
     <div class="stat-label">Наблюдения</div>
-    <div class="stat-value">96</div>
+    <div class="stat-value">174</div>
     <div class="stat-unit">Суточных замеров</div>
   </div>
 </div>
@@ -1957,7 +1971,7 @@ a { text-decoration: none; color: inherit; }
 <footer class="footer">
   <div class="footer-left">
     М/Р Каратюбе · Скв. 343 · Горизонт J1-IV · УШВН 33/900<br>
-    Данные: суточные режимные листы · Период: 15.01 — 30.04.2026
+    Данные: суточные режимные листы · Период: 15.01 — 08.07.2026
   </div>
   <div class="footer-right">ТОО «ЭкоМикс»</div>
 </footer>
@@ -2069,7 +2083,76 @@ const DATA = [
   { d:"27.04", qn:14.7, obv:37.5, qzh:26.9, ndin:174, phase:"stable", ev:"",       comment:"После замера. Кратковременное отключение для ремонтных работ." },
   { d:"28.04", qn:14.9, obv:37.5, qzh:27.2, ndin:167, phase:"stable", ev:"",       comment:"Вернулась к уровню ~15 т/сут." },
   { d:"29.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Стабильное плато." },
-  { d:"30.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Конец периода наблюдений. Устойчивый рабочий режим. Эффект изоляции сохраняется — 88 дней." },
+  { d:"30.04", qn:14.9, obv:37.6, qzh:27.3, ndin:167, phase:"stable", ev:"",       comment:"Устойчивый рабочий режим. Эффект изоляции сохраняется — 88 дней." },
+  { d:"01.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"После замера. Начало мая. 14,4 т/сут, обводнённость 37,0%. Эффект РИР сохраняется." },
+  { d:"02.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильный режим. 14,4 т/сут, 37,0%." },
+  { d:"03.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"04.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"05.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"06.05", qn:14.4, obv:37.0, qzh:26.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"07.05", qn:13.7, obv:38.2, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"После замера. Лёгкая просадка до 13,7 т/сут, обводнённость 38,2%." },
+  { d:"08.05", qn:13.7, obv:38.2, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"09.05", qn:13.7, obv:38.2, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"10.05", qn:14.0, obv:36.0, qzh:25.0, ndin:167, phase:"stable", ev:"",       comment:"После замера. Восстановление до 14,0 т/сут, обводнённость 36,0%." },
+  { d:"11.05", qn:14.0, obv:36.0, qzh:25.0, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"12.05", qn:14.0, obv:36.0, qzh:25.0, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"13.05", qn:14.0, obv:36.0, qzh:25.0, ndin:167, phase:"stable", ev:"",       comment:"После замера. 14,0 т/сут, 36,0%." },
+  { d:"14.05", qn:14.1, obv:36.1, qzh:25.2, ndin:167, phase:"stable", ev:"",       comment:"14,1 т/сут, обводнённость 36,1%." },
+  { d:"15.05", qn:14.1, obv:36.1, qzh:25.2, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"16.05", qn:14.3, obv:36.0, qzh:25.6, ndin:167, phase:"stable", ev:"",       comment:"После замера. Рост до 14,3 т/сут." },
+  { d:"17.05", qn:14.2, obv:36.0, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"14,2 т/сут, 36,0%." },
+  { d:"18.05", qn:14.3, obv:35.9, qzh:25.5, ndin:167, phase:"stable", ev:"",       comment:"14,3 т/сут, обводнённость 35,9%." },
+  { d:"19.05", qn:14.3, obv:35.6, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"После замера. Обводнённость снижается до 35,6%." },
+  { d:"20.05", qn:14.3, obv:35.6, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"21.05", qn:14.3, obv:35.6, qzh:25.4, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"22.05", qn:14.4, obv:35.3, qzh:25.5, ndin:167, phase:"stable", ev:"",       comment:"После замера. 14,4 т/сут, обводнённость 35,3%." },
+  { d:"23.05", qn:14.2, obv:35.2, qzh:25.1, ndin:167, phase:"stable", ev:"",       comment:"14,2 т/сут, 35,2%." },
+  { d:"24.05", qn:14.3, obv:35.2, qzh:25.2, ndin:167, phase:"stable", ev:"",       comment:"14,3 т/сут, 35,2%." },
+  { d:"25.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"stable", ev:"",       comment:"После замера. Обводнённость 34,8% — лучший уровень мая." },
+  { d:"26.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"stable", ev:"",       comment:"Стабильно. 14,4 т/сут, 34,8%." },
+  { d:"27.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"stable", ev:"",       comment:"Стабильно." },
+  { d:"28.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"rpm",    comment:"Увеличение оборотов ВН 140 → 150 об/мин. Режим стабилен, 14,4 т/сут, 34,8%." },
+  { d:"29.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Стабильно после форсирования. 150 об/мин." },
+  { d:"30.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"rpm",    comment:"Увеличение оборотов ВН 150 → 160 об/мин." },
+  { d:"31.05", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"После замера. Конец мая. 14,4 т/сут, 34,8%, 160 об/мин." },
+  { d:"01.06", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Июнь. Стабильно. 14,4 т/сут, 34,8%." },
+  { d:"02.06", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"03.06", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"04.06", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"05.06", qn:14.4, obv:34.8, qzh:25.3, ndin:167, phase:"forced", ev:"",       comment:"Стабильно." },
+  { d:"06.06", qn:14.3, obv:36.0, qzh:25.6, ndin:167, phase:"forced", ev:"",       comment:"После замера. 14,3 т/сут, обводнённость 36,0%." },
+  { d:"07.06", qn:14.3, obv:36.0, qzh:25.6, ndin:167, phase:"forced", ev:"",       comment:"14,3 т/сут, обводнённость 36,0%, 160 об/мин." },
+  { d:"08.06", qn:14.3, obv:36.0, qzh:25.6, ndin:167, phase:"forced", ev:"",       comment:"Стабильно. 14,3 т/сут, 36,0%." },
+  { d:"09.06", qn:14.3, obv:34.1, qzh:24.8, ndin:167, phase:"forced", ev:"",       comment:"После замера. Обводнённость снизилась до 34,1%." },
+  { d:"10.06", qn:14.2, obv:34.1, qzh:24.7, ndin:167, phase:"forced", ev:"",       comment:"14,2 т/сут, 34,1%." },
+  { d:"11.06", qn:13.9, obv:34.1, qzh:24.1, ndin:167, phase:"forced", ev:"",       comment:"Лёгкая просадка до 13,9 т/сут, обводнённость 34,1%." },
+  { d:"12.06", qn:14.0, obv:34.0, qzh:24.3, ndin:167, phase:"forced", ev:"",       comment:"14,0 т/сут, 34,0%." },
+  { d:"13.06", qn:13.9, obv:34.0, qzh:24.1, ndin:167, phase:"forced", ev:"",       comment:"После замера. 13,9 т/сут, 34,0%." },
+  { d:"14.06", qn:13.8, obv:34.0, qzh:23.9, ndin:175, phase:"forced", ev:"",       comment:"13,8 т/сут, обводнённость 34,0%, 160 об/мин." },
+  { d:"15.06", qn:13.7, obv:34.0, qzh:23.7, ndin:175, phase:"forced", ev:"",       comment:"13,7 т/сут, 34,0%. Стабильно." },
+  { d:"16.06", qn:13.7, obv:33.8, qzh:23.7, ndin:175, phase:"forced", ev:"",       comment:"После замера. 13,7 т/сут, обводнённость 33,8%." },
+  { d:"17.06", qn:13.4, obv:33.8, qzh:23.2, ndin:170, phase:"forced", ev:"",       comment:"Текущий режим. 13,4 т/сут, 33,8%, 160 об/мин. Опорная скважина — эффект РИР устойчиво сохраняется." },
+  { d:"18.06", qn:13.4, obv:33.8, qzh:23.1, ndin:170, phase:"forced", ev:"",       comment:"13,4 т/сут, обводнённость 33,8%. Стабильное плато." },
+  { d:"19.06", qn:13.3, obv:33.6, qzh:22.9, ndin:170, phase:"forced", ev:"",       comment:"После замера. 13,3 т/сут, 33,6%. Опорная скважина — режим устойчив." },
+  { d:"20.06", qn:13.3, obv:33.6, qzh:22.9, ndin:170, phase:"forced", ev:"",       comment:"22,9 м³/сут жидкости, 13,3 т/сут нефти, обводнённость 33,6%." },
+  { d:"21.06", qn:13.3, obv:33.6, qzh:22.9, ndin:170, phase:"forced", ev:"",       comment:"Стабильно. 13,3 т/сут, 33,6%." },
+  { d:"22.06", qn:13.0, obv:33.6, qzh:22.4, ndin:170, phase:"forced", ev:"",       comment:"Лёгкое снижение. 13,0 т/сут, 33,6%." },
+  { d:"23.06", qn:12.7, obv:33.6, qzh:21.8, ndin:170, phase:"forced", ev:"",       comment:"После замера. 12,7 т/сут, 33,6%." },
+  { d:"24.06", qn:12.7, obv:33.6, qzh:21.8, ndin:170, phase:"forced", ev:"",       comment:"Стабильно. 12,7 т/сут." },
+  { d:"25.06", qn:12.7, obv:33.6, qzh:21.8, ndin:170, phase:"forced", ev:"",       comment:"Стабильно. 12,7 т/сут." },
+  { d:"26.06", qn:13.0, obv:34.0, qzh:22.6, ndin:170, phase:"forced", ev:"",       comment:"После замера. Восстановление до 13,0 т/сут, обводнённость 34,0%." },
+  { d:"27.06", qn:13.0, obv:34.0, qzh:22.6, ndin:170, phase:"forced", ev:"",       comment:"Стабильно. 13,0 т/сут, 34,0%." },
+  { d:"28.06", qn:13.3, obv:32.5, qzh:22.6, ndin:170, phase:"forced", ev:"",       comment:"Рост нефти до 13,3 т/сут, обводнённость снизилась до 32,5%." },
+  { d:"29.06", qn:13.3, obv:32.5, qzh:22.6, ndin:170, phase:"forced", ev:"",       comment:"Стабильно. 13,3 т/сут, 32,5%." },
+  { d:"30.06", qn:13.6, obv:32.5, qzh:23.1, ndin:170, phase:"forced", ev:"",       comment:"После замера. Конец июня: 13,6 т/сут, обводнённость 32,5%. Ровная работа." },
+  { d:"01.07", qn:14.0, obv:34.0, qzh:24.2, ndin:160, phase:"forced", ev:"",       comment:"После замера. 14,0 т/сут, обводнённость 34,0%. Qж 24,2 м³/сут." },
+  { d:"02.07", qn:14.0, obv:34.0, qzh:24.2, ndin:160, phase:"forced", ev:"",       comment:"14,0 т/сут, 34,0%." },
+  { d:"03.07", qn:14.0, obv:34.0, qzh:24.2, ndin:160, phase:"forced", ev:"",       comment:"Стабильно. 14,0 т/сут, 34,0%." },
+  { d:"04.07", qn:13.8, obv:36.5, qzh:24.8, ndin:128, phase:"forced", ev:"",       comment:"После замера. 13,8 т/сут, обводнённость 36,5%. Ндин 128 м." },
+  { d:"05.07", qn:13.8, obv:36.5, qzh:24.8, ndin:128, phase:"forced", ev:"",       comment:"Стабильно. 13,8 т/сут, 36,5%." },
+  { d:"06.07", qn:13.8, obv:36.5, qzh:24.8, ndin:128, phase:"forced", ev:"",       comment:"Стабильно. 13,8 т/сут, 36,5%." },
+  { d:"07.07", qn:13.6, obv:36.5, qzh:24.5, ndin:128, phase:"forced", ev:"",       comment:"После замера. 13,6 т/сут, 36,5%." },
+  { d:"08.07", qn:13.5, obv:36.5, qzh:24.3, ndin:128, phase:"forced", ev:"",       comment:"Текущий режим. 13,5 т/сут, обводнённость 36,5%, 160 об/мин." },
 ];
 
 const labels = DATA.map(r => r.d);
@@ -2274,7 +2357,7 @@ function closeNav() {
     krs:    'КРС',
     after:  'После РИР',
     forced: 'Форсирование',
-    stable: 'Апрель'
+    stable: 'Стабильный'
   };
   const EV_LABEL = {
     warn:  { text: 'предупреждение', cls: 'ev-warn' },
