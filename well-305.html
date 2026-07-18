@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQMCPD3KPC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQMCPD3KPC');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скважина 305 — IC Petroleum</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="КаратюбеМонитор">
+<meta property="og:url" content="https://nanocem.app/well-305.html">
+<meta property="og:title" content="Скважина №305 — КРС (ремонт)">
+<meta property="og:description" content="Остановлена 05.07 при 0,7 м³/сут, в КРС. Пик 4,67 т/сут (19.01), средняя обводнённость 25,6%.">
+<meta property="og:image" content="https://nanocem.app/og-305.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://nanocem.app/og-305.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FFFFFF;--bg-2:#F8F8F8;--surface:#F4F4F4;--border:#D8D8D8;--border-dim:#EBEBEB;--white:#111111;--white-dim:#2A2A2A;--grey:#777777;--grey-dim:#AAAAAA;--grey-muted:#CCCCCC;--font-h:'Oswald',sans-serif;--font-data:'Inter',sans-serif;--font-body:'Inter',sans-serif}
+body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-height:100vh;line-height:1.5}
+.header{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:28px;height:28px;border:1.5px solid var(--border);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark-inner{width:10px;height:10px;background:var(--white)}
+.logo-eyebrow{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}
+.logo-text{font-family:var(--font-h);font-size:15px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--white)}
+.nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.nav a{font-family:var(--font-h);font-size:12px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--white)}
+.nav-pill{border:1px solid var(--border);padding:4px 10px;border-radius:2px}
+.nav-pill:hover{border-color:var(--grey)}
+.nav-pill.active{border-color:var(--white)}
+.header-right{display:flex;align-items:center;gap:20px}
+.live-badge{display:flex;align-items:center;gap:7px;font-family:var(--font-data);font-size:11px;color:var(--white-dim);letter-spacing:2px;text-transform:uppercase}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--white-dim);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.header-date{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--grey);transition:all .2s}
+.nav-mobile{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px 16px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-family:var(--font-h);font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--border-dim)}
+.nav-mobile a:last-child{border-bottom:none}
+.hero{padding:36px 40px 28px;border-bottom:1px solid var(--border);background:var(--bg-2);position:relative;overflow:hidden}
+.hero::after{content:'305';position:absolute;right:-20px;top:-20px;font-family:var(--font-h);font-size:200px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.hero-eyebrow{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-family:var(--font-h);font-size:64px;font-weight:700;line-height:1;letter-spacing:-1px;text-transform:uppercase}
+.hero-title .light{font-weight:300;color:var(--grey)}
+.hero-meta{display:flex;align-items:center;gap:16px;margin-top:14px;flex-wrap:wrap}
+.hero-meta-item{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px;text-transform:uppercase}
+.hero-meta-item span{color:var(--white-dim);font-weight:500}
+.hero-meta-sep{color:var(--grey-muted);font-size:10px}
+.hero-right{text-align:right;flex-shrink:0}
+.status-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #EF4444;padding:10px 18px;border-radius:2px;font-family:var(--font-data);font-size:11px;color:#EF4444;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#EF4444;animation:pulse 2s infinite}
+.hero-date-note{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:1px;margin-top:6px}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--border)}
+.kpi-card{padding:24px;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.kpi-card:last-child{border-right:none}
+.kpi-card:hover{background:var(--surface)}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.kpi-card.red::before{background:#EF4444}
+.kpi-card.dark::before{background:var(--white)}
+.kpi-card.grey::before{background:var(--grey)}
+.kpi-label{font-family:var(--font-data);font-size:10px;font-weight:500;color:var(--grey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.kpi-value{font-family:var(--font-h);font-size:48px;font-weight:700;line-height:1;letter-spacing:-1px;color:var(--white)}
+.kpi-value.red{color:#EF4444}
+.kpi-value.grey{color:var(--grey)}
+.kpi-unit{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-top:5px;letter-spacing:1px}
+.kpi-note{position:absolute;top:16px;right:16px;font-family:var(--font-data);font-size:9px;padding:2px 6px;border-radius:2px;background:rgba(0,0,0,.06);color:var(--grey);letter-spacing:.5px}
+.section-label{padding:28px 40px 0;font-family:var(--font-h);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--grey-muted)}
+.compare-strip{display:grid;grid-template-columns:1fr 8px 1fr 8px 1fr;padding:0 40px;margin-top:16px;border-bottom:1px solid var(--border)}
+.compare-col{padding:20px 0 28px}
+.compare-label{font-family:var(--font-data);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:6px}
+.compare-date{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-bottom:14px}
+.compare-big{font-family:var(--font-h);font-size:52px;font-weight:700;line-height:1;color:var(--white)}
+.compare-big.dim{color:var(--grey)}
+.compare-unit{font-family:var(--font-data);font-size:11px;color:var(--grey);margin:4px 0 10px}
+.compare-obv{font-family:var(--font-data);font-size:15px;font-weight:600;color:var(--white)}
+.compare-obv.dim{color:var(--grey)}
+.compare-col.center{padding-left:28px;border-left:2px solid var(--border)}
+.compare-col.last{padding-left:28px;border-left:2px solid #EF4444}
+.stats-bar{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--border)}
+.stat-cell{padding:24px 20px;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.stat-label{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.stat-value{font-family:var(--font-h);font-size:30px;font-weight:600;color:var(--white);line-height:1}
+.stat-sub{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-top:4px}
+.main-layout{display:grid;grid-template-columns:1fr 320px;border-bottom:1px solid var(--border)}
+.main-left{border-right:1px solid var(--border)}
+.chart-block{padding:28px 32px 24px}
+.chart-title{font-family:var(--font-h);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim);margin-bottom:4px}
+.chart-sub{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);margin-bottom:16px}
+.chart-legend{display:flex;gap:20px;margin-bottom:16px}
+.legend-item{display:flex;align-items:center;gap:6px;font-family:var(--font-data);font-size:10px;color:var(--grey);letter-spacing:1px}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chart-wrap{height:260px;position:relative}
+.events-block{border-top:1px solid var(--border);padding:24px 32px}
+.events-title{font-family:var(--font-h);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.event-item{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--border-dim)}
+.event-item:last-child{border-bottom:none}
+.event-date-col{text-align:right}
+.day-num{font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--white-dim);line-height:1}
+.month-label{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.ev{display:inline-block;font-family:var(--font-data);font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.ev-peak{background:#111;color:#fff}
+.ev-crash{background:#EF4444;color:#fff}
+.ev-low{background:rgba(239,68,68,.15);color:#EF4444}
+.ev-krs{background:var(--white);color:var(--bg)}
+.ev-rise{background:rgba(0,0,0,.07);color:#444}
+.ev-warn{background:rgba(249,115,22,.14);color:#EA580C}
+.ev-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
+.ev-gis{background:rgba(13,148,136,.14);color:#0D9488}
+.event-note{font-size:13px;color:var(--white-dim);line-height:1.45}
+.main-right{display:flex;flex-direction:column}
+.rir-block{padding:24px 20px;border-bottom:1px solid var(--border)}
+.rir-block-title{font-family:var(--font-h);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:16px}
+.days-big{font-family:var(--font-h);font-size:88px;font-weight:700;color:#EF4444;line-height:1;text-align:center}
+.days-label{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:4px;margin-bottom:16px}
+.rir-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border-dim);font-size:12px;gap:12px}
+.rir-row:last-child{border-bottom:none}
+.rir-key{font-family:var(--font-data);font-size:10px;color:var(--grey);flex-shrink:0}
+.rir-val{font-family:var(--font-data);font-size:11px;font-weight:600;color:var(--white-dim);text-align:right}
+.tech-block,.stat-block{padding:20px;border-bottom:1px solid var(--border)}
+.tech-title,.stat-block-title{font-family:var(--font-h);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.tech-row,.stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-dim);gap:12px}
+.tech-row:last-child,.stat-row:last-child{border-bottom:none}
+.tech-key,.stat-key{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);flex-shrink:0}
+.tech-val,.stat-val{font-family:var(--font-data);font-size:11px;color:var(--white-dim);font-weight:500;text-align:right}
+.stat-val.red{color:#EF4444}
+.log-section{padding:0 0 48px;border-top:1px solid var(--border)}
+.log-top{display:flex;align-items:center;justify-content:space-between;padding:24px 40px 0}
+.log-heading{font-family:var(--font-h);font-size:18px;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim)}
+.log-filters{display:flex;gap:6px;flex-wrap:wrap;padding:16px 40px 0}
+.log-filter{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey);background:none;border:1px solid var(--border);padding:6px 14px;cursor:pointer;border-radius:2px;white-space:nowrap}
+.log-filter:hover{border-color:var(--grey);color:var(--white-dim)}
+.log-filter.active{background:var(--white);color:var(--bg);border-color:var(--white);font-weight:600}
+.log-count{font-family:var(--font-body);font-size:12px;color:var(--grey);padding:12px 40px 0}
+.log-table-wrap{margin:16px 40px 0;border:1px solid var(--border);border-radius:4px;overflow:hidden;overflow-x:auto}
+.log-table{width:100%;border-collapse:collapse;min-width:760px}
+.log-table thead th{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--grey);background:var(--surface);padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.log-table thead th.num{text-align:right}
+.log-table tbody tr{border-bottom:1px solid var(--border-dim)}
+.log-table tbody tr:last-child{border-bottom:none}
+.log-table tbody tr:hover{background:var(--surface)}
+.log-table tbody tr.log-row--ev td{background:rgba(0,0,0,.015)}
+.log-table tbody td{font-family:var(--font-body);font-size:13px;color:var(--white-dim);padding:10px 14px;vertical-align:top}
+.log-table tbody td.num{text-align:right;font-weight:500;font-variant-numeric:tabular-nums;color:var(--white);white-space:nowrap}
+.log-date{font-weight:600;color:var(--white);white-space:nowrap}
+.log-comment{font-size:12px;color:var(--grey);max-width:380px;line-height:1.45}
+.phase-tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.phase-work{background:rgba(34,197,94,.12);color:#16A34A}
+.phase-decline{background:rgba(249,115,22,.14);color:#EA580C}
+.phase-gis{background:rgba(13,148,136,.14);color:#0D9488}
+.phase-krs{background:#111;color:#fff}
+.ev-badge{display:inline-block;font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;margin-right:6px;white-space:nowrap;vertical-align:middle}
+.evb-peak{background:#111;color:#fff}
+.evb-crash{background:#EF4444;color:#fff}
+.evb-low{background:rgba(239,68,68,.15);color:#EF4444}
+.evb-rise{background:rgba(0,0,0,.07);color:#444}
+.evb-krs{background:#111;color:#fff}
+.evb-warn{background:rgba(249,115,22,.14);color:#EA580C}
+.evb-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
+.evb-gis{background:rgba(13,148,136,.14);color:#0D9488}
+.passport-section{padding:28px 40px 40px;border-top:1px solid var(--border)}
+.passport-title{font-family:var(--font-h);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--grey-muted);margin-bottom:20px}
+.passport-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.passport-cell{padding:18px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.passport-cell:nth-child(3n){border-right:none}
+.passport-cell:nth-last-child(-n+3){border-bottom:none}
+.passport-key{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.passport-val{font-family:var(--font-data);font-size:13px;font-weight:500;color:var(--white-dim)}
+.footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
+.footer-left{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);line-height:1.6}
+.footer-right{font-family:var(--font-h);font-size:14px;letter-spacing:2px;color:var(--grey)}
+@media(max-width:900px){
+ .header{padding:0 20px;height:52px}.nav{display:none}.nav-toggle{display:flex}.header-date{display:none}
+ .hero{padding:24px 20px 20px}.hero::after{font-size:130px}.hero-inner{flex-direction:column;gap:16px}.hero-title{font-size:48px}.hero-right{text-align:left}
+ .kpi-strip{grid-template-columns:repeat(2,1fr)}.kpi-card{border-bottom:1px solid var(--border)}.kpi-card:nth-child(2n){border-right:none}.kpi-card:last-child{grid-column:1/-1;border-bottom:none}.kpi-value{font-size:40px}
+ .section-label{padding:0 20px}.compare-strip{grid-template-columns:1fr;padding:0 20px}.compare-col.center,.compare-col.last{padding-left:0;border-left:none;border-top:1px solid var(--border)}.compare-big{font-size:44px}
+ .stats-bar{grid-template-columns:repeat(2,1fr)}.stat-cell:nth-child(2n){border-right:none}.stat-cell:nth-child(n+3){border-top:1px solid var(--border)}
+ .main-layout{grid-template-columns:1fr}.main-left{border-right:none;border-bottom:1px solid var(--border)}.chart-block{padding:20px}.chart-wrap{height:220px}.events-block{padding:20px}
+ .log-top,.log-filters,.log-count{padding-left:20px;padding-right:20px}.log-table-wrap{margin:14px 20px 0}.log-col-qzh{display:none}.log-table{min-width:520px}
+ .passport-section{padding:20px 20px 32px}.passport-grid{grid-template-columns:repeat(2,1fr)}.passport-cell:nth-child(2n){border-right:none!important}
+ .footer{flex-direction:column;gap:8px;align-items:flex-start;padding:16px 20px}
+}
+@media(max-width:480px){.hero-title{font-size:38px}.kpi-value{font-size:34px}.compare-big{font-size:36px}.days-big{font-size:60px}.log-col-phase{display:none}.log-table{min-width:380px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <div><div class="logo-eyebrow">Месторождение Каратюбе</div><div class="logo-text">IC Petroleum</div></div>
+  </div>
+  <nav class="nav"><a href="index.html" class="nav-pill">Скважина 343</a>
+    <a href="well-342.html" class="nav-pill">Скважина 342</a>
+    <a href="well-301.html" class="nav-pill">Скважина 301</a>
+    <a href="well-303.html" class="nav-pill">Скважина 303</a>
+    <a href="well-305.html" class="nav-pill active">Скважина 305</a>
+    <a href="well-311.html" class="nav-pill">Скважина 311</a></nav>
+  <div class="header-right">
+    <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
+    <div class="header-date">17.07.2026 / КРС</div>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+<nav class="nav-mobile" id="navMobile"><a href="index.html" onclick="closeNav()">Скважина 343</a>
+  <a href="well-342.html" onclick="closeNav()">Скважина 342</a>
+  <a href="well-301.html" onclick="closeNav()">Скважина 301</a>
+  <a href="well-303.html" onclick="closeNav()">Скважина 303</a>
+  <a href="well-305.html" class="active" onclick="closeNav()">Скважина 305</a>
+  <a href="well-311.html" onclick="closeNav()">Скважина 311</a></nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Ежедневный мониторинг · Капитальный ремонт скважины</div>
+      <h1 class="hero-title">СКВАЖИНА <span class="light">№</span>305</h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">НАСОС <span>УШВН 33/900</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ГОРИЗОНТ <span>J1-IV</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">М/Р <span>Каратюбе</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–17.07.2026</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="status-pill"><div class="status-dot"></div>КРС · нет добычи</div>
+      <div class="hero-date-note">Остановка 05.07.2026 при 0,7 м³/сут · КРС с 06.07 · план ЦПД ультратонким цементом</div>
+    </div>
+  </div>
+</section>
+
+<div class="kpi-strip">  <div class="kpi-card dark">
+    <div class="kpi-note">19.01.2026</div>
+    <div class="kpi-label">Qн · пик</div>
+    <div class="kpi-value">4.67</div>
+    <div class="kpi-unit">Т / СУТ</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-note">за период</div>
+    <div class="kpi-label">Qн · средний</div>
+    <div class="kpi-value">2.78</div>
+    <div class="kpi-unit">Т / СУТ</div>
+  </div>
+  <div class="kpi-card grey">
+    <div class="kpi-note">за период</div>
+    <div class="kpi-label">Обводнённость средн.</div>
+    <div class="kpi-value grey">25.6</div>
+    <div class="kpi-unit">%</div>
+  </div>
+  <div class="kpi-card red">
+    <div class="kpi-note">17.07.2026</div>
+    <div class="kpi-label">Текущий статус</div>
+    <div class="kpi-value red">КРС</div>
+    <div class="kpi-unit">ремонт · нет добычи</div>
+  </div>
+  <div class="kpi-card red">
+    
+    <div class="kpi-label">Дней в КРС</div>
+    <div class="kpi-value red"><span id="daysSince">1</span></div>
+    <div class="kpi-unit">с 06.07.2026</div>
+  </div></div>
+
+<div class="section-label">Ключевые точки периода наблюдений</div>
+<div class="compare-strip">  <div class="compare-col">
+    <div class="compare-label">Начало наблюдений</div><div class="compare-date">01.01.2026</div>
+    <div class="compare-big dim">2.93</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv dim">Обв. 25,4%</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col center">
+    <div class="compare-label">Пиковый дебит</div><div class="compare-date">19–20.01.2026</div>
+    <div class="compare-big">4.67</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv">Обв. 22,5%</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col last">
+    <div class="compare-label">Перед остановкой</div><div class="compare-date">05.07.2026</div>
+    <div class="compare-big" style="color:#EF4444">0.44</div><div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv" style="color:#EF4444">Обв. 22,0%</div>
+  </div></div>
+
+<div class="stats-bar">  <div class="stat-cell">
+    <div class="stat-label">Январь 2026</div>
+    <div class="stat-value">3.66</div>
+    <div class="stat-sub">т/сут · обв. 23,0%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Февраль 2026</div>
+    <div class="stat-value">3.43</div>
+    <div class="stat-sub">т/сут · обв. 26,5%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Март 2026</div>
+    <div class="stat-value">2.68</div>
+    <div class="stat-sub">т/сут · обв. 27,9%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Апрель 2026</div>
+    <div class="stat-value">3.23</div>
+    <div class="stat-sub">т/сут · обв. 28,8%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Май 2026</div>
+    <div class="stat-value" style="color:#EA580C">2.19</div>
+    <div class="stat-sub">т/сут · обв. 23,0%</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Июнь–июль</div>
+    <div class="stat-value" style="color:#EF4444">1.30</div>
+    <div class="stat-sub">т/сут · спад до КРС</div>
+  </div></div>
+
+<div class="main-layout">
+  <div class="main-left">
+    <div class="chart-block">
+      <div class="chart-title">Динамика добычи — весь период</div>
+      <div class="chart-sub">01.01.2026 — 17.07.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта исключены</div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart305"></canvas></div>
+    </div>
+    <div class="events-block">
+      <div class="events-title">Ключевые события</div>
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">17</div><div class="month-label">ИЮЛ</div></div>
+        <div class="event-body">
+          <div class="ev ev-krs">КРС</div>
+          <div class="event-note">АПРС-40 №1: спуск хвостовика ВНКТ-73 мм (20 м) с технологическим пакером ПРО-ЯМО-142 мм, пакеровка на 425 м, опрессовка на 40 атм — герметично. План: ЦПД ультратонким цементом интервалов ПВР 454–457,3 м и 474–477,4 м, ОЗЦ под давлением 24 ч.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">05</div><div class="month-label">ИЮЛ</div></div>
+        <div class="event-body">
+          <div class="ev ev-crash">Остановка</div>
+          <div class="event-note">Дебит упал до 0,7 м³/сут (0,44 т/сут нефти). Скважина остановлена и выведена в капитальный ремонт.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">30</div><div class="month-label">МАЙ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rpm">ОГН</div>
+          <div class="event-note">Горячая обработка затруба (ЦА-320, 16,5 м³ / 14,421 т) при работе ВН. Одна из серии обработок для поддержания притока.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">21</div><div class="month-label">МАЙ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rpm">Обороты</div>
+          <div class="event-note">Снижение оборотов ВН со 100 до 70 об/мин из-за падения подачи.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">15</div><div class="month-label">МАЙ</div></div>
+        <div class="event-body">
+          <div class="ev ev-low">Минимум</div>
+          <div class="event-note">Провал дебита до 1,5 м³/сут. Проведены две горячие обработки затруба водой (T 61 °C) 15.05 и 17.05 — приток временно восстановлен до 5,7 м³.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">19</div><div class="month-label">ЯНВ</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Пик</div>
+          <div class="event-note">Максимум периода: 4,67 т/сут нефти при обводнённости 22,5%, Qж 6,9 м³/сут. Выполнена ОГН выкидной линии (17,0 м³).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-right">
+    <div class="rir-block">
+      <div class="rir-block-title">Состояние скважины</div>
+      <div class="days-big" id="daysBig">1</div>
+      <div class="days-label">дней в КРС</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EF4444">КРС · ремонт</span></div>
+      <div class="rir-row"><span class="rir-key">ОСТАНОВКА</span><span class="rir-val">05.07.2026 (0,7 м³/сут)</span></div>
+      <div class="rir-row"><span class="rir-key">ПОСЛ. ДОБЫЧА</span><span class="rir-val">0,44 т/сут (05.07)</span></div>
+      <div class="rir-row"><span class="rir-key">БРИГАДА</span><span class="rir-val">АПРС-40 №1</span></div>
+      <div class="rir-row"><span class="rir-key">ВЫПОЛНЕНО</span><span class="rir-val">пакер ПРО-ЯМО на 425 м</span></div>
+      <div class="rir-row"><span class="rir-key">ПЛАН</span><span class="rir-val">ЦПД ультратонким цементом</span></div>
+    </div>
+    <div class="tech-block">
+      <div class="tech-title">Технические данные</div>
+      <div class="tech-row"><span class="tech-key">НАСОС</span><span class="tech-val">УШВН 33/900</span></div>
+      <div class="tech-row"><span class="tech-key">ГОРИЗОНТ</span><span class="tech-val">J1-IV</span></div>
+      <div class="tech-row"><span class="tech-key">ОБОРОТЫ ВН</span><span class="tech-val">100 → 70 об/мин (21.05)</span></div>
+      <div class="tech-row"><span class="tech-key">ИНТЕРВАЛЫ ПВР</span><span class="tech-val">454–457,3; 474–477,4 м</span></div>
+      <div class="tech-row"><span class="tech-key">ПАКЕР</span><span class="tech-val">ПРО-ЯМО-142 мм на 425 м</span></div>
+      <div class="tech-row"><span class="tech-key">ХАРАКТЕР</span><span class="tech-val">низкая обводнённость, слабый приток</span></div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-block-title">Итоги периода</div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 17.07.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">188</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">176</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">4,67 т/сут (19.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">6,9 м³/сут (19.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">19,0% (21.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val">30,7% (08.04)</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="log-section">
+  <div class="log-top"><div class="log-heading">Ежедневный журнал замеров</div></div>
+  <div class="log-filters" id="logFilters"><button class="log-filter active" data-phase="all">Все дни</button>
+    <button class="log-filter" data-phase="work">Работа</button>
+    <button class="log-filter" data-phase="decline">Спад</button>
+    <button class="log-filter" data-phase="krs">КРС</button></div>
+  <div class="log-count" id="logCount"></div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead><tr>
+        <th>Дата</th><th class="log-col-phase">Фаза</th>
+        <th class="num log-col-qzh">Qж, м³/сут</th><th class="num">Qн, т/сут</th><th class="num">Обв., %</th>
+        <th>Комментарий</th>
+      </tr></thead>
+      <tbody id="logBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="passport-section">
+  <div class="passport-title">Технический паспорт · Скважина 305</div>
+  <div class="passport-grid">    <div class="passport-cell"><div class="passport-key">Горизонт</div><div class="passport-val">J1-IV</div></div>
+    <div class="passport-cell"><div class="passport-key">Насос</div><div class="passport-val">УШВН 33/900</div></div>
+    <div class="passport-cell"><div class="passport-key">Обороты ВН</div><div class="passport-val">100 → 70 об/мин</div></div>
+    <div class="passport-cell"><div class="passport-key">Интервалы ПВР</div><div class="passport-val">454–457,3; 474–477,4 м</div></div>
+    <div class="passport-cell"><div class="passport-key">Технологический пакер</div><div class="passport-val">ПРО-ЯМО-142 мм (425 м)</div></div>
+    <div class="passport-cell"><div class="passport-key">Хвостовик</div><div class="passport-val">ВНКТ-73 мм, 20 м</div></div>
+    <div class="passport-cell"><div class="passport-key">Остановка</div><div class="passport-val">05.07.2026</div></div>
+    <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС · ЦПД ультратонким цементом</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">КРС (на 17.07.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–17.07.2026 (188 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">4,67 т/сут (19.01.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">25,6%</div></div></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">М/Р Каратюбе · Скв. 305 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 17.07.2026</div>
+  <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
+</footer>
+
+<script>
+const DATA = [
+  {d:"01.01",qzh:4.5,qn:2.93,obv:25.4,phase:"work",ev:"",comment:"2,93 т/сут, обводнённость 25,4%. Qж 4,5 м³/сут."},
+  {d:"02.01",qzh:4.8,qn:3.15,obv:25,phase:"work",ev:"",comment:"3,15 т/сут, обводнённость 25%. Qж 4,8 м³/сут."},
+  {d:"03.01",qzh:3.9,qn:2.6,obv:23.7,phase:"work",ev:"",comment:"2,6 т/сут, обводнённость 23,7%. Qж 3,9 м³/сут."},
+  {d:"04.01",qzh:5.8,qn:3.9,obv:23,phase:"work",ev:"",comment:"3,9 т/сут, обводнённость 23%. Qж 5,8 м³/сут."},
+  {d:"05.01",qzh:4.5,qn:3.03,obv:23,phase:"work",ev:"",comment:"3,03 т/сут, обводнённость 23%. Qж 4,5 м³/сут."},
+  {d:"06.01",qzh:4.3,qn:2.84,obv:24.3,phase:"work",ev:"",comment:"2,84 т/сут, обводнённость 24,3%. Qж 4,3 м³/сут."},
+  {d:"07.01",qzh:4.6,qn:3.04,obv:24.3,phase:"work",ev:"",comment:"3,04 т/сут, обводнённость 24,3%. Qж 4,6 м³/сут."},
+  {d:"08.01",qzh:4.6,qn:3.04,obv:24.3,phase:"work",ev:"",comment:"3,04 т/сут, обводнённость 24,3%. Qж 4,6 м³/сут."},
+  {d:"09.01",qzh:4.7,qn:3.11,obv:24.3,phase:"work",ev:"",comment:"3,11 т/сут, обводнённость 24,3%. Qж 4,7 м³/сут."},
+  {d:"10.01",qzh:4.9,qn:3.25,obv:24.1,phase:"work",ev:"",comment:"3,25 т/сут, обводнённость 24,1%. Qж 4,9 м³/сут."},
+  {d:"11.01",qzh:5,qn:3.32,obv:24,phase:"work",ev:"",comment:"3,32 т/сут, обводнённость 24%. Qж 5 м³/сут."},
+  {d:"12.01",qzh:4.9,qn:3.26,obv:23.8,phase:"work",ev:"",comment:"3,26 т/сут, обводнённость 23,8%. Qж 4,9 м³/сут."},
+  {d:"13.01",qzh:5.4,qn:3.63,obv:23.1,phase:"work",ev:"",comment:"3,63 т/сут, обводнённость 23,1%. Qж 5,4 м³/сут."},
+  {d:"14.01",qzh:5.4,qn:3.63,obv:23.1,phase:"work",ev:"",comment:"3,63 т/сут, обводнённость 23,1%. Qж 5,4 м³/сут."},
+  {d:"15.01",qzh:5.5,qn:3.7,obv:23.1,phase:"work",ev:"",comment:"3,7 т/сут, обводнённость 23,1%. Qж 5,5 м³/сут."},
+  {d:"16.01",qzh:5.8,qn:3.9,obv:23,phase:"work",ev:"",comment:"3,9 т/сут, обводнённость 23%. Qж 5,8 м³/сут."},
+  {d:"17.01",qzh:5.9,qn:3.98,obv:22.8,phase:"work",ev:"",comment:"3,98 т/сут, обводнённость 22,8%. Qж 5,9 м³/сут."},
+  {d:"18.01",qzh:6.8,qn:4.61,obv:22.5,phase:"work",ev:"",comment:"4,61 т/сут, обводнённость 22,5%. Qж 6,8 м³/сут."},
+  {d:"19.01",qzh:6.9,qn:4.67,obv:22.5,phase:"work",ev:"ogn",comment:"ОГН выкидной линии в объёме 17,0 м³. Рнач 2,2 атм; Ркон 2,0 атм."},
+  {d:"20.01",qzh:6.9,qn:4.67,obv:22.5,phase:"work",ev:"",comment:"4,67 т/сут, обводнённость 22,5%. Qж 6,9 м³/сут."},
+  {d:"21.01",qzh:6.2,qn:4.39,obv:19,phase:"work",ev:"",comment:"4,39 т/сут, обводнённость 19%. Qж 6,2 м³/сут."},
+  {d:"22.01",qzh:5.9,qn:4.02,obv:22,phase:"work",ev:"",comment:"4,02 т/сут, обводнённость 22%. Qж 5,9 м³/сут."},
+  {d:"23.01",qzh:5.6,qn:3.92,obv:20,phase:"work",ev:"ogn",comment:"ОГН через затрубное пространство с помощью ЦА-320 в объёме 10,5 м³ (9,177 т) при работе ВН. Рнач 5 атм; Ркон 7 атм."},
+  {d:"24.01",qzh:5.6,qn:3.92,obv:20,phase:"work",ev:"",comment:"3,92 т/сут, обводнённость 20%. Qж 5,6 м³/сут."},
+  {d:"25.01",qzh:5.6,qn:3.92,obv:20,phase:"work",ev:"",comment:"3,92 т/сут, обводнённость 20%. Qж 5,6 м³/сут."},
+  {d:"26.01",qzh:5.4,qn:3.78,obv:20,phase:"work",ev:"",comment:"3,78 т/сут, обводнённость 20%. Qж 5,4 м³/сут."},
+  {d:"27.01",qzh:5.7,qn:3.82,obv:23.4,phase:"work",ev:"",comment:"3,82 т/сут, обводнённость 23,4%. Qж 5,7 м³/сут."},
+  {d:"28.01",qzh:5.7,qn:3.82,obv:23.4,phase:"work",ev:"",comment:"3,82 т/сут, обводнённость 23,4%. Qж 5,7 м³/сут."},
+  {d:"29.01",qzh:5.4,qn:3.59,obv:24,phase:"work",ev:"",comment:"3,59 т/сут, обводнённость 24%. Qж 5,4 м³/сут."},
+  {d:"30.01",qzh:5.9,qn:3.92,obv:24,phase:"work",ev:"",comment:"3,92 т/сут, обводнённость 24%. Qж 5,9 м³/сут."},
+  {d:"31.01",qzh:6.1,qn:4.05,obv:24,phase:"work",ev:"",comment:"4,05 т/сут, обводнённость 24%. Qж 6,1 м³/сут."},
+  {d:"01.02",qzh:5.4,qn:3.62,obv:23.4,phase:"work",ev:"",comment:"3,62 т/сут, обводнённость 23,4%. Qж 5,4 м³/сут."},
+  {d:"02.02",qzh:5.8,qn:3.88,obv:23.4,phase:"work",ev:"",comment:"3,88 т/сут, обводнённость 23,4%. Qж 5,8 м³/сут."},
+  {d:"03.02",qzh:5.4,qn:3.59,obv:24,phase:"work",ev:"",comment:"3,59 т/сут, обводнённость 24%. Qж 5,4 м³/сут."},
+  {d:"04.02",qzh:5.8,qn:3.83,obv:24.4,phase:"work",ev:"",comment:"3,83 т/сут, обводнённость 24,4%. Qж 5,8 м³/сут."},
+  {d:"05.02",qzh:5.8,qn:3.83,obv:24.4,phase:"work",ev:"",comment:"3,83 т/сут, обводнённость 24,4%. Qж 5,8 м³/сут."},
+  {d:"06.02",qzh:5.9,qn:3.91,obv:24.2,phase:"work",ev:"",comment:"3,91 т/сут, обводнённость 24,2%. Qж 5,9 м³/сут."},
+  {d:"07.02",qzh:5.8,qn:3.85,obv:24.1,phase:"work",ev:"",comment:"3,85 т/сут, обводнённость 24,1%. Qж 5,8 м³/сут."},
+  {d:"08.02",qzh:5.7,qn:3.79,obv:23.9,phase:"work",ev:"",comment:"3,79 т/сут, обводнённость 23,9%. Qж 5,7 м³/сут."},
+  {d:"09.02",qzh:5.6,qn:3.72,obv:23.9,phase:"work",ev:"",comment:"3,72 т/сут, обводнённость 23,9%. Qж 5,6 м³/сут."},
+  {d:"10.02",qzh:5.5,qn:3.68,obv:23.5,phase:"work",ev:"",comment:"3,68 т/сут, обводнённость 23,5%. Qж 5,5 м³/сут."},
+  {d:"11.02",qzh:5.4,qn:3.62,obv:23.4,phase:"work",ev:"",comment:"3,62 т/сут, обводнённость 23,4%. Qж 5,4 м³/сут."},
+  {d:"12.02",qzh:5.5,qn:3.44,obv:28.4,phase:"work",ev:"",comment:"3,44 т/сут, обводнённость 28,4%. Qж 5,5 м³/сут."},
+  {d:"13.02",qzh:5.6,qn:3.5,obv:28.4,phase:"work",ev:"",comment:"3,5 т/сут, обводнённость 28,4%. Qж 5,6 м³/сут."},
+  {d:"14.02",qzh:5.7,qn:3.57,obv:28.4,phase:"work",ev:"",comment:"3,57 т/сут, обводнённость 28,4%. Qж 5,7 м³/сут."},
+  {d:"15.02",qzh:5.7,qn:3.56,obv:28.5,phase:"work",ev:"",comment:"3,56 т/сут, обводнённость 28,5%. Qж 5,7 м³/сут."},
+  {d:"16.02",qzh:5.7,qn:3.56,obv:28.6,phase:"work",ev:"",comment:"3,56 т/сут, обводнённость 28,6%. Qж 5,7 м³/сут."},
+  {d:"17.02",qzh:5.9,qn:3.69,obv:28.5,phase:"work",ev:"",comment:"3,69 т/сут, обводнённость 28,5%. Qж 5,9 м³/сут."},
+  {d:"18.02",qzh:5.4,qn:3.38,obv:28.4,phase:"work",ev:"",comment:"3,38 т/сут, обводнённость 28,4%. Qж 5,4 м³/сут."},
+  {d:"19.02",qzh:4.8,qn:3.01,obv:28.3,phase:"work",ev:"",comment:"3,01 т/сут, обводнённость 28,3%. Qж 4,8 м³/сут."},
+  {d:"20.02",qzh:4.8,qn:3.01,obv:28.3,phase:"work",ev:"",comment:"3,01 т/сут, обводнённость 28,3%. Qж 4,8 м³/сут."},
+  {d:"21.02",qzh:4.8,qn:3.01,obv:28.3,phase:"work",ev:"",comment:"3,01 т/сут, обводнённость 28,3%. Qж 4,8 м³/сут."},
+  {d:"22.02",qzh:5.4,qn:3.4,obv:28,phase:"work",ev:"",comment:"3,4 т/сут, обводнённость 28%. Qж 5,4 м³/сут."},
+  {d:"23.02",qzh:4.7,qn:2.96,obv:28,phase:"work",ev:"",comment:"2,96 т/сут, обводнённость 28%. Qж 4,7 м³/сут."},
+  {d:"24.02",qzh:4.1,qn:2.6,obv:27.4,phase:"work",ev:"",comment:"2,6 т/сут, обводнённость 27,4%. Qж 4,1 м³/сут."},
+  {d:"25.02",qzh:4.1,qn:2.6,obv:27.4,phase:"work",ev:"",comment:"2,6 т/сут, обводнённость 27,4%. Qж 4,1 м³/сут."},
+  {d:"26.02",qzh:4.6,qn:2.89,obv:28,phase:"work",ev:"",comment:"2,89 т/сут, обводнённость 28%. Qж 4,6 м³/сут."},
+  {d:"27.02",qzh:4.8,qn:3.04,obv:27.6,phase:"work",ev:"",comment:"3,04 т/сут, обводнённость 27,6%. Qж 4,8 м³/сут."},
+  {d:"28.02",qzh:5.4,qn:3.42,obv:27.6,phase:"work",ev:"",comment:"3,42 т/сут, обводнённость 27,6%. Qж 5,4 м³/сут."},
+  {d:"01.03",qzh:3.6,qn:2.28,obv:27.6,phase:"work",ev:"",comment:"2,28 т/сут, обводнённость 27,6%. Qж 3,6 м³/сут."},
+  {d:"02.03",qzh:4.7,qn:3,obv:27,phase:"work",ev:"",comment:"3 т/сут, обводнённость 27%. Qж 4,7 м³/сут."},
+  {d:"03.03",qzh:4.9,qn:3.08,obv:28,phase:"work",ev:"",comment:"3,08 т/сут, обводнённость 28%. Qж 4,9 м³/сут."},
+  {d:"04.03",qzh:4.6,qn:2.89,obv:28,phase:"work",ev:"",comment:"2,89 т/сут, обводнённость 28%. Qж 4,6 м³/сут."},
+  {d:"05.03",qzh:4.2,qn:2.64,obv:28.1,phase:"work",ev:"",comment:"2,64 т/сут, обводнённость 28,1%. Qж 4,2 м³/сут."},
+  {d:"06.03",qzh:4.1,qn:2.58,obv:27.9,phase:"work",ev:"",comment:"2,58 т/сут, обводнённость 27,9%. Qж 4,1 м³/сут."},
+  {d:"07.03",qzh:4.1,qn:2.58,obv:27.9,phase:"work",ev:"",comment:"2,58 т/сут, обводнённость 27,9%. Qж 4,1 м³/сут."},
+  {d:"08.03",qzh:4.3,qn:2.72,obv:27.7,phase:"work",ev:"",comment:"2,72 т/сут, обводнённость 27,7%. Qж 4,3 м³/сут."},
+  {d:"09.03",qzh:4.3,qn:2.72,obv:27.7,phase:"work",ev:"ogn",comment:"ОГН выкидной линии в объёме 17,0 м³ (14,858 т). Рнач 2,3 атм; Ркон 2,0 атм."},
+  {d:"10.03",qzh:4.1,qn:2.59,obv:27.7,phase:"work",ev:"",comment:"2,59 т/сут, обводнённость 27,7%. Qж 4,1 м³/сут."},
+  {d:"11.03",qzh:4.1,qn:2.59,obv:27.8,phase:"work",ev:"",comment:"2,59 т/сут, обводнённость 27,8%. Qж 4,1 м³/сут."},
+  {d:"12.03",qzh:4.1,qn:2.59,obv:27.8,phase:"work",ev:"",comment:"2,59 т/сут, обводнённость 27,8%. Qж 4,1 м³/сут."},
+  {d:"13.03",qzh:4.2,qn:2.65,obv:27.9,phase:"work",ev:"",comment:"2,65 т/сут, обводнённость 27,9%. Qж 4,2 м³/сут."},
+  {d:"14.03",qzh:4.4,qn:2.77,obv:27.9,phase:"work",ev:"",comment:"2,77 т/сут, обводнённость 27,9%. Qж 4,4 м³/сут."},
+  {d:"15.03",qzh:4.6,qn:2.9,obv:27.9,phase:"work",ev:"",comment:"2,9 т/сут, обводнённость 27,9%. Qж 4,6 м³/сут."},
+  {d:"16.03",qzh:4.5,qn:2.84,obv:27.9,phase:"work",ev:"",comment:"2,84 т/сут, обводнённость 27,9%. Qж 4,5 м³/сут."},
+  {d:"17.03",qzh:4.8,qn:3.02,obv:27.9,phase:"work",ev:"",comment:"3,02 т/сут, обводнённость 27,9%. Qж 4,8 м³/сут."},
+  {d:"18.03",qzh:4.4,qn:2.77,obv:27.9,phase:"work",ev:"",comment:"2,77 т/сут, обводнённость 27,9%. Qж 4,4 м³/сут."},
+  {d:"19.03",qzh:4.4,qn:2.77,obv:27.9,phase:"work",ev:"",comment:"2,77 т/сут, обводнённость 27,9%. Qж 4,4 м³/сут."},
+  {d:"20.03",qzh:4.5,qn:2.84,obv:27.9,phase:"work",ev:"",comment:"2,84 т/сут, обводнённость 27,9%. Qж 4,5 м³/сут."},
+  {d:"21.03",qzh:4.1,qn:2.58,obv:27.9,phase:"work",ev:"",comment:"2,58 т/сут, обводнённость 27,9%. Qж 4,1 м³/сут."},
+  {d:"22.03",qzh:4,qn:2.52,obv:27.9,phase:"work",ev:"",comment:"2,52 т/сут, обводнённость 27,9%. Qж 4 м³/сут."},
+  {d:"23.03",qzh:3.9,qn:2.46,obv:27.9,phase:"work",ev:"",comment:"2,46 т/сут, обводнённость 27,9%. Qж 3,9 м³/сут."},
+  {d:"24.03",qzh:4,qn:2.52,obv:27.9,phase:"work",ev:"",comment:"2,52 т/сут, обводнённость 27,9%. Qж 4 м³/сут."},
+  {d:"25.03",qzh:3.8,qn:2.39,obv:28,phase:"work",ev:"",comment:"2,39 т/сут, обводнённость 28%. Qж 3,8 м³/сут."},
+  {d:"26.03",qzh:4.3,qn:2.69,obv:28.3,phase:"work",ev:"",comment:"2,69 т/сут, обводнённость 28,3%. Qж 4,3 м³/сут."},
+  {d:"27.03",qzh:4.3,qn:2.69,obv:28.3,phase:"work",ev:"",comment:"2,69 т/сут, обводнённость 28,3%. Qж 4,3 м³/сут."},
+  {d:"28.03",qzh:4.9,qn:3.07,obv:28.3,phase:"work",ev:"",comment:"3,07 т/сут, обводнённость 28,3%. Qж 4,9 м³/сут."},
+  {d:"29.03",qzh:4.2,qn:2.61,obv:29,phase:"work",ev:"",comment:"2,61 т/сут, обводнённость 29%. Qж 4,2 м³/сут."},
+  {d:"30.03",qzh:3.8,qn:2.42,obv:27,phase:"work",ev:"",comment:"2,42 т/сут, обводнённость 27%. Qж 3,8 м³/сут."},
+  {d:"31.03",qzh:3.4,qn:2.17,obv:27,phase:"work",ev:"",comment:"2,17 т/сут, обводнённость 27%. Qж 3,4 м³/сут."},
+  {d:"01.04",qzh:5.1,qn:3.23,obv:27.5,phase:"work",ev:"",comment:"3,23 т/сут, обводнённость 27,5%. Qж 5,1 м³/сут."},
+  {d:"02.04",qzh:5.5,qn:3.51,obv:27,phase:"work",ev:"",comment:"3,51 т/сут, обводнённость 27%. Qж 5,5 м³/сут."},
+  {d:"03.04",qzh:6.2,qn:3.96,obv:27,phase:"work",ev:"",comment:"3,96 т/сут, обводнённость 27%. Qж 6,2 м³/сут."},
+  {d:"04.04",qzh:5.4,qn:3.45,obv:27,phase:"work",ev:"",comment:"3,45 т/сут, обводнённость 27%. Qж 5,4 м³/сут."},
+  {d:"05.04",qzh:3.8,qn:2.45,obv:26.3,phase:"work",ev:"",comment:"2,45 т/сут, обводнённость 26,3%. Qж 3,8 м³/сут."},
+  {d:"06.04",qzh:5.1,qn:3.18,obv:28.7,phase:"work",ev:"",comment:"3,18 т/сут, обводнённость 28,7%. Qж 5,1 м³/сут."},
+  {d:"07.04",qzh:4.5,qn:2.79,obv:29,phase:"work",ev:"",comment:"2,79 т/сут, обводнённость 29%. Qж 4,5 м³/сут."},
+  {d:"08.04",qzh:5.6,qn:3.39,obv:30.7,phase:"work",ev:"",comment:"3,39 т/сут, обводнённость 30,7%. Qж 5,6 м³/сут."},
+  {d:"09.04",qzh:5.6,qn:3.39,obv:30.7,phase:"work",ev:"",comment:"3,39 т/сут, обводнённость 30,7%. Qж 5,6 м³/сут."},
+  {d:"10.04",qzh:4.2,qn:2.61,obv:29,phase:"work",ev:"",comment:"2,61 т/сут, обводнённость 29%. Qж 4,2 м³/сут."},
+  {d:"11.04",qzh:5.4,qn:3.33,obv:29.4,phase:"work",ev:"",comment:"3,33 т/сут, обводнённость 29,4%. Qж 5,4 м³/сут."},
+  {d:"12.04",qzh:4.8,qn:3,obv:28.5,phase:"work",ev:"",comment:"3 т/сут, обводнённость 28,5%. Qж 4,8 м³/сут."},
+  {d:"13.04",qzh:4.6,qn:2.93,obv:27,phase:"work",ev:"",comment:"2,93 т/сут, обводнённость 27%. Qж 4,6 м³/сут."},
+  {d:"14.04",qzh:5.6,qn:3.48,obv:29,phase:"work",ev:"",comment:"3,48 т/сут, обводнённость 29%. Qж 5,6 м³/сут."},
+  {d:"15.04",qzh:5.4,qn:3.3,obv:30,phase:"work",ev:"",comment:"3,3 т/сут, обводнённость 30%. Qж 5,4 м³/сут."},
+  {d:"16.04",qzh:5.2,qn:3.16,obv:30,phase:"work",ev:"",comment:"Полное отключение по ВЛ-10 кВ в 09:23. Перевод электроснабжения на ДЭС, в 10:10–10:13 обратный перевод на ВЛ-10 кВ."},
+  {d:"17.04",qzh:5.4,qn:3.31,obv:29.8,phase:"work",ev:"",comment:"3,31 т/сут, обводнённость 29,8%. Qж 5,4 м³/сут."},
+  {d:"18.04",qzh:5.6,qn:3.44,obv:29.7,phase:"work",ev:"",comment:"3,44 т/сут, обводнённость 29,7%. Qж 5,6 м³/сут."},
+  {d:"19.04",qzh:5.6,qn:3.44,obv:29.7,phase:"work",ev:"",comment:"3,44 т/сут, обводнённость 29,7%. Qж 5,6 м³/сут."},
+  {d:"20.04",qzh:5.6,qn:3.44,obv:29.7,phase:"work",ev:"",comment:"3,44 т/сут, обводнённость 29,7%. Qж 5,6 м³/сут."},
+  {d:"21.04",qzh:5.5,qn:3.38,obv:29.7,phase:"work",ev:"",comment:"3,38 т/сут, обводнённость 29,7%. Qж 5,5 м³/сут."},
+  {d:"22.04",qzh:5.6,qn:3.48,obv:28.9,phase:"work",ev:"",comment:"3,48 т/сут, обводнённость 28,9%. Qж 5,6 м³/сут."},
+  {d:"23.04",qzh:5.7,qn:3.54,obv:28.9,phase:"work",ev:"",comment:"3,54 т/сут, обводнённость 28,9%. Qж 5,7 м³/сут."},
+  {d:"24.04",qzh:5.6,qn:3.5,obv:28.8,phase:"work",ev:"",comment:"Отключение электроэнергии 10:36–11:05 (захлёст фаз из-за штормового ветра). Перевод на ДЭС, в 11:30–11:50 возврат на ВЛ-10 кВ."},
+  {d:"25.04",qzh:5.7,qn:3.55,obv:28.8,phase:"work",ev:"",comment:"3,55 т/сут, обводнённость 28,8%. Qж 5,7 м³/сут."},
+  {d:"26.04",qzh:5.7,qn:3.53,obv:28.8,phase:"work",ev:"",comment:"Отключение электроэнергии 10:45–10:55 для ремонтных работ (замена плашечного зажима)."},
+  {d:"27.04",qzh:5.3,qn:3.3,obv:28.8,phase:"work",ev:"",comment:"3,3 т/сут, обводнённость 28,8%. Qж 5,3 м³/сут."},
+  {d:"28.04",qzh:5.4,qn:3.36,obv:28.9,phase:"work",ev:"",comment:"3,36 т/сут, обводнённость 28,9%. Qж 5,4 м³/сут."},
+  {d:"29.04",qzh:4.8,qn:2.98,obv:29,phase:"work",ev:"",comment:"2,98 т/сут, обводнённость 29%. Qж 4,8 м³/сут."},
+  {d:"30.04",qzh:2.4,qn:1.53,obv:27,phase:"work",ev:"ogn",comment:"ОГН через затрубное пространство с помощью ЦА-320 в объёме 12,0 м³ (10,488 т) при работе ВН. Рнач 4 атм; Рраб 6 атм."},
+  {d:"01.05",qzh:5.3,qn:3.47,obv:25,phase:"decline",ev:"",comment:"3,47 т/сут, обводнённость 25%. Qж 5,3 м³/сут."},
+  {d:"02.05",qzh:5.8,qn:3.78,obv:25.4,phase:"decline",ev:"",comment:"3,78 т/сут, обводнённость 25,4%. Qж 5,8 м³/сут."},
+  {d:"03.05",qzh:3.6,qn:2.4,obv:23.7,phase:"decline",ev:"",comment:"2,4 т/сут, обводнённость 23,7%. Qж 3,6 м³/сут."},
+  {d:"04.05",qzh:2.7,qn:1.8,obv:23.7,phase:"decline",ev:"",comment:"1,8 т/сут, обводнённость 23,7%. Qж 2,7 м³/сут."},
+  {d:"05.05",qzh:2.8,qn:1.87,obv:23.7,phase:"decline",ev:"",comment:"1,87 т/сут, обводнённость 23,7%. Qж 2,8 м³/сут."},
+  {d:"06.05",qzh:4.2,qn:2.8,obv:23.7,phase:"decline",ev:"",comment:"2,8 т/сут, обводнённость 23,7%. Qж 4,2 м³/сут."},
+  {d:"07.05",qzh:2.8,qn:1.94,obv:20.6,phase:"decline",ev:"",comment:"1,94 т/сут, обводнённость 20,6%. Qж 2,8 м³/сут."},
+  {d:"08.05",qzh:5.5,qn:3.82,obv:20.6,phase:"decline",ev:"",comment:"3,82 т/сут, обводнённость 20,6%. Qж 5,5 м³/сут."},
+  {d:"09.05",qzh:2.3,qn:1.6,obv:20.6,phase:"decline",ev:"",comment:"1,6 т/сут, обводнённость 20,6%. Qж 2,3 м³/сут."},
+  {d:"10.05",qzh:2.3,qn:1.55,obv:23,phase:"decline",ev:"",comment:"1,55 т/сут, обводнённость 23%. Qж 2,3 м³/сут."},
+  {d:"11.05",qzh:2.3,qn:1.55,obv:23,phase:"decline",ev:"",comment:"1,55 т/сут, обводнённость 23%. Qж 2,3 м³/сут."},
+  {d:"12.05",qzh:2.9,qn:1.95,obv:23,phase:"decline",ev:"",comment:"1,95 т/сут, обводнённость 23%. Qж 2,9 м³/сут."},
+  {d:"13.05",qzh:2.2,qn:1.48,obv:23,phase:"decline",ev:"",comment:"1,48 т/сут, обводнённость 23%. Qж 2,2 м³/сут."},
+  {d:"14.05",qzh:1.5,qn:1.01,obv:22.9,phase:"decline",ev:"",comment:"1,01 т/сут, обводнённость 22,9%. Qж 1,5 м³/сут."},
+  {d:"15.05",qzh:1.5,qn:1.01,obv:22.7,phase:"decline",ev:"ogv",comment:"При замере снижение дебита жидкости. ОГВ через затруб при поднятом роторе с циркуляцией в объёме 10 м³ водой (T 61 °C) на 3-й скорости ЦА-320: Рнач 25 атм; Ркон 8 атм."},
+  {d:"16.05",qzh:5.7,qn:3.86,obv:22.5,phase:"decline",ev:"",comment:"3,86 т/сут, обводнённость 22,5%. Qж 5,7 м³/сут."},
+  {d:"17.05",qzh:5.6,qn:3.79,obv:22.5,phase:"decline",ev:"ogv",comment:"ОГВ через затруб при поднятом роторе с циркуляцией в объёме 10 м³ водой (T 61 °C) на 3-й скорости ЦА-320: Рнач 23 атм; Ркон 10 атм."},
+  {d:"18.05",qzh:3,qn:2.03,obv:22.5,phase:"decline",ev:"",comment:"2,03 т/сут, обводнённость 22,5%. Qж 3 м³/сут."},
+  {d:"19.05",qzh:2.8,qn:1.9,obv:22.4,phase:"decline",ev:"",comment:"1,9 т/сут, обводнённость 22,4%. Qж 2,8 м³/сут."},
+  {d:"20.05",qzh:2.8,qn:1.9,obv:22.4,phase:"decline",ev:"",comment:"1,9 т/сут, обводнённость 22,4%. Qж 2,8 м³/сут."},
+  {d:"21.05",qzh:2.6,qn:1.77,obv:21.9,phase:"decline",ev:"rpm",comment:"Снижение оборотов ВН со 100 до 70 об/мин."},
+  {d:"22.05",qzh:2.5,qn:1.71,obv:21.9,phase:"decline",ev:"",comment:"1,71 т/сут, обводнённость 21,9%. Qж 2,5 м³/сут."},
+  {d:"23.05",qzh:3.3,qn:2.26,obv:21.6,phase:"decline",ev:"",comment:"2,26 т/сут, обводнённость 21,6%. Qж 3,3 м³/сут."},
+  {d:"24.05",qzh:2.8,qn:1.92,obv:21.5,phase:"decline",ev:"",comment:"1,92 т/сут, обводнённость 21,5%. Qж 2,8 м³/сут."},
+  {d:"25.05",qzh:2.8,qn:1.92,obv:21.5,phase:"decline",ev:"",comment:"1,92 т/сут, обводнённость 21,5%. Qж 2,8 м³/сут."},
+  {d:"26.05",qzh:2.5,qn:1.72,obv:21.3,phase:"decline",ev:"",comment:"1,72 т/сут, обводнённость 21,3%. Qж 2,5 м³/сут."},
+  {d:"27.05",qzh:3.7,qn:2.55,obv:21.3,phase:"decline",ev:"",comment:"2,55 т/сут, обводнённость 21,3%. Qж 3,7 м³/сут."},
+  {d:"28.05",qzh:4.3,qn:2.74,obv:27.2,phase:"decline",ev:"",comment:"2,74 т/сут, обводнённость 27,2%. Qж 4,3 м³/сут."},
+  {d:"29.05",qzh:3.5,qn:2.23,obv:27.2,phase:"decline",ev:"",comment:"2,23 т/сут, обводнённость 27,2%. Qж 3,5 м³/сут."},
+  {d:"30.05",qzh:2.7,qn:1.77,obv:25,phase:"decline",ev:"ogn",comment:"ОГН через затрубное пространство с помощью ЦА-320 в объёме 16,5 м³ (14,421 т) при работе ВН. Рнач 4 атм; Ркон 7 атм."},
+  {d:"31.05",qzh:2.7,qn:1.77,obv:25,phase:"decline",ev:"",comment:"1,77 т/сут, обводнённость 25%. Qж 2,7 м³/сут."},
+  {d:"01.06",qzh:2.7,qn:1.77,obv:25,phase:"decline",ev:"",comment:"1,77 т/сут, обводнённость 25%. Qж 2,7 м³/сут."},
+  {d:"02.06",qzh:2.7,qn:1.77,obv:25,phase:"decline",ev:"",comment:"1,77 т/сут, обводнённость 25%. Qж 2,7 м³/сут."},
+  {d:"03.06",qzh:2.7,qn:1.77,obv:25,phase:"decline",ev:"",comment:"1,77 т/сут, обводнённость 25%. Qж 2,7 м³/сут."},
+  {d:"04.06",qzh:1.9,qn:1.28,obv:23,phase:"decline",ev:"",comment:"1,28 т/сут, обводнённость 23%. Qж 1,9 м³/сут."},
+  {d:"05.06",qzh:1.7,qn:1.16,obv:22,phase:"decline",ev:"",comment:"1,16 т/сут, обводнённость 22%. Qж 1,7 м³/сут."},
+  {d:"06.06",qzh:1.7,qn:1.16,obv:22,phase:"decline",ev:"",comment:"1,16 т/сут, обводнённость 22%. Qж 1,7 м³/сут."},
+  {d:"07.06",qzh:2.2,qn:1.42,obv:26,phase:"decline",ev:"",comment:"1,42 т/сут, обводнённость 26%. Qж 2,2 м³/сут."},
+  {d:"08.06",qzh:2.4,qn:1.55,obv:26,phase:"decline",ev:"",comment:"1,55 т/сут, обводнённость 26%. Qж 2,4 м³/сут."},
+  {d:"09.06",qzh:2.4,qn:1.55,obv:26,phase:"decline",ev:"",comment:"1,55 т/сут, обводнённость 26%. Qж 2,4 м³/сут."},
+  {d:"10.06",qzh:2.5,qn:1.62,obv:26,phase:"decline",ev:"",comment:"1,62 т/сут, обводнённость 26%. Qж 2,5 м³/сут."},
+  {d:"11.06",qzh:2.2,qn:1.42,obv:25.9,phase:"decline",ev:"",comment:"1,42 т/сут, обводнённость 25,9%. Qж 2,2 м³/сут."},
+  {d:"12.06",qzh:2.2,qn:1.43,obv:25.7,phase:"decline",ev:"",comment:"1,43 т/сут, обводнённость 25,7%. Qж 2,2 м³/сут."},
+  {d:"13.06",qzh:3,qn:1.95,obv:25.6,phase:"decline",ev:"",comment:"1,95 т/сут, обводнённость 25,6%. Qж 3 м³/сут."},
+  {d:"14.06",qzh:2.8,qn:1.83,obv:25.4,phase:"decline",ev:"",comment:"1,83 т/сут, обводнённость 25,4%. Qж 2,8 м³/сут."},
+  {d:"15.06",qzh:2.1,qn:1.37,obv:25.2,phase:"decline",ev:"",comment:"1,37 т/сут, обводнённость 25,2%. Qж 2,1 м³/сут."},
+  {d:"16.06",qzh:2,qn:1.31,obv:25,phase:"decline",ev:"",comment:"1,31 т/сут, обводнённость 25%. Qж 2 м³/сут."},
+  {d:"17.06",qzh:2.1,qn:1.38,obv:24.8,phase:"decline",ev:"",comment:"1,38 т/сут, обводнённость 24,8%. Qж 2,1 м³/сут."},
+  {d:"18.06",qzh:2.1,qn:1.38,obv:24.6,phase:"decline",ev:"",comment:"1,38 т/сут, обводнённость 24,6%. Qж 2,1 м³/сут."},
+  {d:"19.06",qzh:1.8,qn:1.19,obv:24.3,phase:"decline",ev:"",comment:"1,19 т/сут, обводнённость 24,3%. Qж 1,8 м³/сут."},
+  {d:"30.06",qzh:1.1,qn:0.74,obv:23,phase:"decline",ev:"",comment:"0,74 т/сут, обводнённость 23%. Qж 1,1 м³/сут."},
+  {d:"01.07",qzh:1.1,qn:0.74,obv:23,phase:"decline",ev:"",comment:"0,74 т/сут, обводнённость 23%. Qж 1,1 м³/сут."},
+  {d:"02.07",qzh:1.1,qn:0.75,obv:22,phase:"decline",ev:"",comment:"0,75 т/сут, обводнённость 22%. Qж 1,1 м³/сут."},
+  {d:"03.07",qzh:1.3,qn:0.89,obv:22,phase:"decline",ev:"",comment:"0,89 т/сут, обводнённость 22%. Qж 1,3 м³/сут."},
+  {d:"04.07",qzh:1.2,qn:0.82,obv:22,phase:"decline",ev:"",comment:"0,82 т/сут, обводнённость 22%. Qж 1,2 м³/сут."},
+  {d:"05.07",qzh:0.7,qn:0.44,obv:22,phase:"decline",ev:"stop",comment:"Остановка скважины при дебите 0,7 м³/сут, вывод в КРС."},
+  {d:"06.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС."},
+  {d:"07.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"08.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"09.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"10.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"11.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"12.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
+  {d:"13.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"14.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"15.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"16.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"17.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"krs",comment:"КРС. АПРС-40 №1. Подъём КНБК в интервале 200–0 м с доливом. Спуск хвостовика ВНКТ-73 мм (20 м) + технологический пакер ПРО-ЯМО-142 мм в интервале 0–445 м. Пакеровка на глубине 425 м. Опрессовка пакера через затруб на 40 атм — герметично. ОПП через трубное пространство: закачка технической воды 2 м³ (ЦА-320, 2-я скорость, 1400 об/мин), Р 40 атм, отдача 200 л. План: ПЗР и ЦПД ультратонким цементом интервалов ПВР 454–457,3 м; 474–477,4 м. ОЗЦ под давлением 24 ч."},
+];
+
+Chart.defaults.color = '#AAAAAA';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 10;
+const chartData = DATA.filter(d => d.qn !== null);
+const labels = chartData.map(d => d.d);
+const ctx = document.getElementById('chart305').getContext('2d');
+new Chart(ctx, {
+  type:'line',
+  data:{labels,datasets:[
+    {label:'Qн, т/сут',data:chartData.map(d=>d.qn),borderColor:'#111111',backgroundColor:'transparent',borderWidth:1.5,pointRadius:0,pointHoverRadius:3,tension:0.3,yAxisID:'y',order:1},
+    {label:'Обв., %',data:chartData.map(d=>d.obv),borderColor:'#BBBBBB',backgroundColor:'transparent',borderWidth:1,pointRadius:0,pointHoverRadius:3,tension:0.3,yAxisID:'y2',order:2,borderDash:[4,3]}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'rgba(17,17,17,0.9)',titleColor:'#fff',bodyColor:'#ccc',padding:10,
+        callbacks:{label:c=>c.datasetIndex===0?`Qн: ${c.parsed.y} т/сут`:`Обв.: ${c.parsed.y}%`}},
+      annotation:{annotations:{
+        peakLine:{type:'line',xMin:labels.indexOf('19.01'),xMax:labels.indexOf('19.01'),borderColor:'rgba(0,0,0,0.15)',borderWidth:1,borderDash:[3,4]},
+        peakLabel:{type:'label',xValue:labels.indexOf('19.01'),yValue:4.4,yScaleID:'y',content:['ПИК 4,67'],color:'rgba(0,0,0,0.45)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
+        stopLine:{type:'line',xMin:labels.indexOf('05.07'),xMax:labels.indexOf('05.07'),borderColor:'rgba(239,68,68,0.5)',borderWidth:1.5},
+        stopLabel:{type:'label',xValue:labels.indexOf('05.07'),yValue:3.4,yScaleID:'y',content:['ОСТАНОВКА'],color:'rgba(239,68,68,0.8)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}}
+      }}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.05)',tickLength:0},border:{color:'rgba(0,0,0,0.1)'},ticks:{maxTicksLimit:12,maxRotation:0,color:'#BBBBBB',font:{size:8}}},
+      y:{position:'left',min:0,max:5,grid:{color:'rgba(0,0,0,0.05)'},border:{color:'transparent'},ticks:{color:'#BBBBBB',font:{size:8},stepSize:1,callback:v=>v+' т'}},
+      y2:{position:'right',min:15,max:100,grid:{display:false},border:{color:'transparent'},ticks:{color:'#CCCCCC',font:{size:8},stepSize:10,callback:v=>v+'%'}}
+    }}
+});
+
+const KRS_DATE = new Date('2026-07-06');
+const today = new Date();
+const daysIn = Math.max(1, Math.floor((today - KRS_DATE) / 86400000));
+document.getElementById('daysBig').textContent = daysIn;
+
+(function(){
+  const PHASE_LABEL = { work:'Работа', decline:'Спад', krs:'КРС' };
+  const EV_LABEL = {
+    peak:{text:'пик',cls:'evb-peak'}, rise:{text:'рост',cls:'evb-rise'}, low:{text:'минимум',cls:'evb-low'},
+    warn:{text:'осложнение',cls:'evb-warn'}, rpm:{text:'обороты',cls:'evb-rpm'}, stop:{text:'остановка',cls:'evb-crash'},
+    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}, ogn:{text:'ОГН',cls:'evb-rpm'}, ogv:{text:'ОГВ',cls:'evb-rpm'}
+  };
+  function fmt(v,d){ return (v===null||v===undefined)?'—':Number(v).toFixed(d); }
+  function buildRow(item){
+    const tr=document.createElement('tr');
+    tr.className='log-row'+(item.ev?' log-row--ev':'');
+    const b=item.ev&&EV_LABEL[item.ev]?`<span class="ev-badge ${EV_LABEL[item.ev].cls}">${EV_LABEL[item.ev].text}</span>`:'';
+    tr.innerHTML=`<td class="log-date">${item.d}</td>
+      <td class="log-col-phase"><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase]||item.phase}</span></td>
+      <td class="num log-col-qzh">${fmt(item.qzh,1)}</td>
+      <td class="num">${fmt(item.qn,2)}</td>
+      <td class="num">${fmt(item.obv,1)}</td>
+      <td class="log-comment">${b}${item.comment||''}</td>`;
+    return tr;
+  }
+  function renderLog(phase){
+    const tb=document.getElementById('logBody'), c=document.getElementById('logCount');
+    tb.innerHTML='';
+    const f=phase==='all'?DATA:DATA.filter(d=>d.phase===phase);
+    f.forEach(i=>tb.appendChild(buildRow(i)));
+    c.textContent=`Показано записей: ${f.length} из ${DATA.length}`;
+  }
+  document.getElementById('logFilters').addEventListener('click',function(e){
+    const b=e.target.closest('.log-filter'); if(!b) return;
+    document.querySelectorAll('.log-filter').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); renderLog(b.dataset.phase);
+  });
+  renderLog('all');
+})();
+
+function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
+function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
+</script>
+<script src="i18n.js" defer></script>
+</body>
+</html>
