@@ -313,7 +313,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">27.07.2026 / В РАБОТЕ</div>
+    <div class="header-date">31.07.2026 / В РАБОТЕ</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -345,7 +345,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     </div>
     <div class="hero-right">
       <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>В работе после КРС</div>
-      <div class="hero-date-note">Рост на разгоне ВН: 27.07 — 11,50 т/сут, обв. 36,0% (старт 14.06: 2,73 т/сут)</div>
+      <div class="hero-date-note">Спад к концу месяца: 31.07 — 9,98 т/сут, обв. 40,2% (максимум 24.07: 11,69 т/сут)</div>
     </div>
   </div>
 </section>
@@ -371,10 +371,10 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="kpi-unit">%</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note ok">27.07.2026</div>
+    <div class="kpi-note ok">31.07.2026</div>
     <div class="kpi-label">Qн · после КРС</div>
-    <div class="kpi-value">11.50</div>
-    <div class="kpi-unit">Т / СУТ · обв. 36,0%</div>
+    <div class="kpi-value">9.98</div>
+    <div class="kpi-unit">Т / СУТ · обв. 40,2%</div>
   </div>
   <div class="kpi-card dark">
     <div class="kpi-label">Дней после запуска</div>
@@ -404,10 +404,10 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   <div class="compare-divider"></div>
   <div class="compare-col last" style="border-left-color:#16A34A">
     <div class="compare-label">После КРС · запуск</div>
-    <div class="compare-date">27.07.2026</div>
-    <div class="compare-big" style="color:#16A34A">11.50</div>
+    <div class="compare-date">31.07.2026</div>
+    <div class="compare-big" style="color:#16A34A">9.98</div>
     <div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv" style="color:#16A34A">Обв. 36,0%</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 40,2%</div>
   </div>
 </div>
 
@@ -442,7 +442,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   <div class="main-left">
     <div class="chart-block">
       <div class="chart-title">Динамика добычи — весь период</div>
-      <div class="chart-sub">01.01.2026 — 27.07.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта (ТРС/КРС/ОТРС) исключены</div>
+      <div class="chart-sub">01.01.2026 — 31.07.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта (ТРС/КРС/ОТРС) исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -452,6 +452,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">28</div><div class="month-label">ИЮЛ</div></div>
+        <div class="event-body">
+          <div class="ev ev-warn">Спад</div>
+          <div class="event-note">Дебит снизился 11,52 → 10,30 т/сут, к 31.07 — до 9,98 т/сут. Обводнённость выросла 36,0 → 40,2%, динамический уровень просел 376 → 414 м. Требуется контроль режима.</div>
+        </div>
+      </div>
 
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">24</div><div class="month-label">ИЮЛ</div></div>
@@ -551,10 +559,10 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       <div class="rir-block-title">Состояние скважины</div>
       <div class="days-big" id="daysBig">1</div>
       <div class="days-label">дней после запуска</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">В работе · рост</span></div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EA580C">В работе · спад</span></div>
       <div class="rir-row"><span class="rir-key">ЗАПУСК ВН</span><span class="rir-val">13.06.2026 (80 об/мин)</span></div>
-      <div class="rir-row"><span class="rir-key">ДОБЫЧА ПОСЛЕ КРС</span><span class="rir-val">11,50 т/сут (27.07)</span></div>
-      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">36,0% (27.07)</span></div>
+      <div class="rir-row"><span class="rir-key">ДОБЫЧА ПОСЛЕ КРС</span><span class="rir-val">9,98 т/сут (31.07)</span></div>
+      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">40,2% (31.07)</span></div>
       <div class="rir-row"><span class="rir-key">КРС / ГИС</span><span class="rir-val">29.04–10.06 · ГИС 07–09.05</span></div>
       <div class="rir-row"><span class="rir-key">ТРС</span><span class="rir-val">24–26.02 · 11–12.06.2026</span></div>
       <div class="rir-row"><span class="rir-key">ПРИЧИНА РЕМОНТА</span><span class="rir-val">ротор + обводнение</span></div>
@@ -567,14 +575,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       <div class="tech-row"><span class="tech-key">ИС. ЗАБОЙ (ГИС)</span><span class="tech-val">≈703,5 М</span></div>
       <div class="tech-row"><span class="tech-key">ШАБЛОН Ø44 ММ ДО</span><span class="tech-val">698 М</span></div>
       <div class="tech-row"><span class="tech-key">М/Р · ПСН/АГЗУ</span><span class="tech-val">Каратюбе</span></div>
-      <div class="tech-row"><span class="tech-key">НДИН/СТАТ (ТЕК.)</span><span class="tech-val">48 / 114 М</span></div>
+      <div class="tech-row"><span class="tech-key">НДИН/СТАТ (ТЕК.)</span><span class="tech-val">414 / 114 М</span></div>
       <div class="tech-row"><span class="tech-key">ОПЕРАТОР</span><span class="tech-val">IC Petroleum</span></div>
     </div>
 
     <div class="stat-block">
       <div class="stat-block-title">Итоги периода</div>
-      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 27.07.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">208</span></div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 31.07.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">212</span></div>
       <div class="stat-row"><span class="stat-key">Дней с замером добычи</span><span class="stat-val">107</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">16,92 т/сут (18.01)</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">32,8 м³/сут (04.01)</span></div>
@@ -629,15 +637,15 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="passport-cell"><div class="passport-key">Интервалы закачки (05.06)</div><div class="passport-val">637–641; 646–655; 661–677 м</div></div>
     <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">ТРС → КРС (ГИС, ОКРС)</div></div>
     <div class="passport-cell"><div class="passport-key">ГИС</div><div class="passport-val">КСА-Т12, 07–09.05.2026</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">В работе после КРС (27.07.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–27.07.2026 (208 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">В работе после КРС (31.07.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–31.07.2026 (212 сут)</div></div>
     <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">16,92 т/сут (18.01.2026)</div></div>
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">48,6%</div></div>
   </div>
 </div>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратюбе · Скв. 301 · Горизонт J1-IV · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 27.07.2026</div>
+  <div class="footer-left">М/Р Каратюбе · Скв. 301 · Горизонт J1-IV · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 31.07.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -843,15 +851,19 @@ const DATA = [
   {d:"16.07",qzh:19.6,qn:10.79,obv:37.0,qv:7.3,ndin:"376",phase:"restart",ev:"",comment:"10,79 т/сут, обводнённость 37,0%."},
   {d:"17.07",qzh:20.2,qn:11.12,obv:37.0,qv:7.5,ndin:"376",phase:"restart",ev:"rpm",comment:"Увеличение оборота ВН со 110 до 120 об/мин. 11,12 т/сут, обводнённость 37,0%."},
   {d:"18.07",qzh:20.1,qn:11.10,obv:36.8,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"11,10 т/сут, обводнённость 36,8%."},
-  {d:"19.07",qzh:20.2,qn:11.20,obv:36.6,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"11,20 т/сут, 36,6%. После замера."},
-  {d:"20.07",qzh:20.6,qn:11.40,obv:36.6,qv:7.5,ndin:"376",phase:"restart",ev:"rise",comment:"11,40 т/сут, 36,6%. Разгон ВН продолжает давать прирост."},
-  {d:"21.07",qzh:20.5,qn:11.40,obv:36.6,qv:7.5,ndin:"376",phase:"restart",ev:"",comment:"11,40 т/сут, 36,6%."},
-  {d:"22.07",qzh:20.9,qn:11.60,obv:36.6,qv:7.6,ndin:"376",phase:"restart",ev:"",comment:"11,60 т/сут, 36,6%. После замера."},
-  {d:"23.07",qzh:20.9,qn:11.60,obv:36.6,qv:7.6,ndin:"376",phase:"restart",ev:"",comment:"11,60 т/сут, 36,6%."},
-  {d:"24.07",qzh:20.9,qn:11.70,obv:36.0,qv:7.5,ndin:"376",phase:"restart",ev:"rise",comment:"Максимум после КРС: 11,70 т/сут, обводнённость снизилась до 36,0%."},
-  {d:"25.07",qzh:20.6,qn:11.50,obv:36.0,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"11,50 т/сут, 36,0%. После замера."},
-  {d:"26.07",qzh:20.6,qn:11.50,obv:36.0,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"11,50 т/сут, 36,0%."},
-  {d:"27.07",qzh:20.6,qn:11.50,obv:36.0,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"Текущий режим: 11,50 т/сут, обводнённость 36,0%, 120 об/мин."},
+  {d:"19.07",qzh:20.2,qn:11.19,obv:36.6,qv:7.4,ndin:"376",phase:"restart",ev:"",comment:"11,19 т/сут, 36,6%. После замера."},
+  {d:"20.07",qzh:20.6,qn:11.41,obv:36.6,qv:7.5,ndin:"376",phase:"restart",ev:"rise",comment:"11,41 т/сут, 36,6%. Разгон ВН продолжает давать прирост."},
+  {d:"21.07",qzh:20.5,qn:11.36,obv:36.6,qv:7.5,ndin:"376",phase:"restart",ev:"",comment:"11,36 т/сут, 36,6%."},
+  {d:"22.07",qzh:20.9,qn:11.58,obv:36.6,qv:7.6,ndin:"376",phase:"restart",ev:"",comment:"11,58 т/сут, 36,6%. После замера."},
+  {d:"23.07",qzh:20.9,qn:11.58,obv:36.6,qv:7.6,ndin:"376",phase:"restart",ev:"",comment:"11,58 т/сут, 36,6%."},
+  {d:"24.07",qzh:20.9,qn:11.69,obv:36.0,qv:7.5,ndin:"390",phase:"restart",ev:"rise",comment:"Максимум после КРС: 11,69 т/сут, обводнённость снизилась до 36,0%."},
+  {d:"25.07",qzh:20.6,qn:11.52,obv:36.0,qv:7.4,ndin:"390",phase:"restart",ev:"",comment:"11,52 т/сут, 36,0%. После замера."},
+  {d:"26.07",qzh:20.6,qn:11.52,obv:36.0,qv:7.4,ndin:"390",phase:"restart",ev:"",comment:"11,52 т/сут, 36,0%."},
+  {d:"27.07",qzh:20.6,qn:11.52,obv:36.0,qv:7.4,ndin:"390",phase:"restart",ev:"",comment:"11,52 т/сут, 36,0%."},
+  {d:"28.07",qzh:19.1,qn:10.30,obv:38.3,qv:7.3,ndin:"414",phase:"restart",ev:"warn",comment:"Спад: 11,52 → 10,30 т/сут, обводнённость выросла до 38,3%. Ндин просел до 414 м."},
+  {d:"29.07",qzh:19.1,qn:10.30,obv:38.3,qv:7.3,ndin:"414",phase:"restart",ev:"",comment:"10,30 т/сут, 38,3%. После замера."},
+  {d:"30.07",qzh:19.1,qn:10.30,obv:38.3,qv:7.3,ndin:"414",phase:"restart",ev:"",comment:"10,30 т/сут, 38,3%."},
+  {d:"31.07",qzh:19.1,qn:9.98,obv:40.2,qv:7.7,ndin:"414",phase:"restart",ev:"",comment:"Текущий режим: 9,98 т/сут, обводнённость 40,2%, 120 об/мин. Спад к концу месяца."},
 ];
 
 // ── Chart ──────────────────────────────────────────────────────────

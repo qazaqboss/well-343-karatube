@@ -215,7 +215,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <a href="well-311.html" class="nav-pill active">Скважина 311</a></nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">27.07.2026 / КРС</div>
+    <div class="header-date">31.07.2026 / ЗАПУСК</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -238,12 +238,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">М/Р <span>Каратюбе</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ПЕРИОД <span>01.01–27.07.2026</span></div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–31.07.2026</span></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill"><div class="status-dot"></div>КРС · РИР выполнен</div>
-      <div class="hero-date-note">ГИС 01–02.07 · КРС с 05.07 · 09.07 залит NanoCem UT-9</div>
+      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>Запущена после РИР</div>
+      <div class="hero-date-note">ГИС 01–02.07 · РИР 09.07 (NanoCem UT-9) · запуск 31.07 при 100 об/мин</div>
     </div>
   </div>
 </section>
@@ -267,16 +267,16 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="kpi-unit">% · максимум 99,0%</div>
   </div>
   <div class="kpi-card red">
-    <div class="kpi-note">27.07.2026</div>
+    <div class="kpi-note">31.07.2026</div>
     <div class="kpi-label">Текущий статус</div>
-    <div class="kpi-value red">КРС</div>
-    <div class="kpi-unit">РИР · нет добычи</div>
+    <div class="kpi-value">ЗАПУСК</div>
+    <div class="kpi-unit">1-е сутки · Qж 24,2 м³/сут</div>
   </div>
-  <div class="kpi-card red">
+  <div class="kpi-card">
     
     <div class="kpi-label">Дней в КРС</div>
-    <div class="kpi-value red"><span id="daysSince">1</span></div>
-    <div class="kpi-unit">с 05.07.2026</div>
+    <div class="kpi-value"><span id="daysSince">1</span></div>
+    <div class="kpi-unit">05.07 – 30.07.2026</div>
   </div></div>
 
 <div class="section-label">Ключевые точки периода наблюдений</div>
@@ -331,7 +331,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   <div class="main-left">
     <div class="chart-block">
       <div class="chart-title">Динамика добычи — весь период</div>
-      <div class="chart-sub">01.01.2026 — 27.07.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта исключены</div>
+      <div class="chart-sub">01.01.2026 — 31.07.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -340,6 +340,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     </div>
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">31</div><div class="month-label">ИЮЛ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rise">Запуск после РИР</div>
+          <div class="event-note">В 02:20 скважина запущена при 100 об/мин, выход жидкости через 2 мин, отработка на емкость — вытеснено 0,9 м³ технической воды. Первые сутки: Qж 24,2 м³/сут при обводнённости 98,5% и Qн 0,32 т/сут. Это пусковая закачанная вода, а не пластовая: эффект изоляции оценивается по кривой снижения обводнённости в первые недели августа.</div>
+        </div>
+      </div>
+
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">09</div><div class="month-label">ИЮЛ</div></div>
         <div class="event-body">
@@ -402,12 +410,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       <div class="rir-block-title">Состояние скважины</div>
       <div class="days-big" id="daysBig">1</div>
       <div class="days-label">дней в КРС</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EF4444">КРС · РИР</span></div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">Запущена после РИР</span></div>
       <div class="rir-row"><span class="rir-key">ОСТАНОВКА</span><span class="rir-val">30.06.2026</span></div>
       <div class="rir-row"><span class="rir-key">ГИС</span><span class="rir-val">01–02.07.2026</span></div>
       <div class="rir-row"><span class="rir-key">ВЫТЕСНЕНО ПРИ ГИС</span><span class="rir-val">91,6 м³ пластовой воды</span></div>
       <div class="rir-row"><span class="rir-key">РИР</span><span class="rir-val" style="color:#16A34A">09.07.2026 — NanoCem UT-9</span></div>
       <div class="rir-row"><span class="rir-key">НОВЫЙ НАСОС</span><span class="rir-val">УШВН 33/900 (28.06)</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК</span><span class="rir-val" style="color:#16A34A">31.07.2026 · 100 об/мин</span></div>
+      <div class="rir-row"><span class="rir-key">ПЕРВЫЕ СУТКИ</span><span class="rir-val">Qж 24,2 м³/сут · обв. 98,5%</span></div>
     </div>
     <div class="tech-block">
       <div class="tech-title">Технические данные</div>
@@ -420,9 +430,9 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     </div>
     <div class="stat-block">
       <div class="stat-block-title">Итоги периода</div>
-      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 27.07.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">198</span></div>
-      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">170</span></div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 31.07.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">202</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">171</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">5,84 т/сут (03.01)</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">34,5 м³/сут (10.03)</span></div>
       <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">74,0% (19.05)</span></div>
@@ -461,14 +471,14 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="passport-cell"><div class="passport-key">Вытеснено при ГИС</div><div class="passport-val">91,6 м³ пластовой воды</div></div>
     <div class="passport-cell"><div class="passport-key">РИР</div><div class="passport-val">09.07.2026</div></div>
     <div class="passport-cell"><div class="passport-key">Состав РИР</div><div class="passport-val">NanoCem UT-9 (ультрадисперсный)</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">КРС (на 27.07.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–27.07.2026 (198 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">Запущена после РИР (31.07.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–31.07.2026 (202 сут)</div></div>
     <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">5,84 т/сут (03.01.2026)</div></div>
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">86,3%</div></div></div>
 </div>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратюбе · Скв. 311 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 27.07.2026</div>
+  <div class="footer-left">М/Р Каратюбе · Скв. 311 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 31.07.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -672,6 +682,10 @@ const DATA = [
   {d:"25.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ОКРС."},
   {d:"26.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
   {d:"27.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Продолжение работ после закачки NanoCem UT-9."},
+  {d:"28.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"29.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"30.07",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС. Подготовка к запуску."},
+  {d:"31.07",qzh:24.2,qn:0.32,obv:98.5,phase:"work",ev:"start",comment:"ЗАПУСК ПОСЛЕ РИР. В 02:20 запуск при 100 об/мин, выход жидкости через 2 мин, отработка на емкость (вытеснено 0,9 м³ технической воды). Первые сутки: Qж 24,2 м³/сут, обводнённость 98,5% — пусковая закачанная вода, не пластовая. Оценка эффекта — по динамике августа."},
 ];
 
 Chart.defaults.color = '#AAAAAA';
@@ -713,7 +727,8 @@ document.getElementById('daysBig').textContent = daysIn;
   const EV_LABEL = {
     peak:{text:'пик',cls:'evb-peak'}, rise:{text:'рост',cls:'evb-rise'}, low:{text:'минимум',cls:'evb-low'},
     warn:{text:'осложнение',cls:'evb-warn'}, rpm:{text:'обороты',cls:'evb-rpm'}, stop:{text:'остановка',cls:'evb-crash'},
-    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}, ogn:{text:'ОГН',cls:'evb-rpm'}, ogv:{text:'ОГВ',cls:'evb-rpm'}
+    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}, ogn:{text:'ОГН',cls:'evb-rpm'}, ogv:{text:'ОГВ',cls:'evb-rpm'},
+    start:{text:'запуск',cls:'evb-peak'}
   };
   function fmt(v,d){ return (v===null||v===undefined)?'—':Number(v).toFixed(d); }
   function buildRow(item){
