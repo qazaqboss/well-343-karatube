@@ -200,7 +200,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 @media(max-width:480px){.hero-title{font-size:38px}.kpi-value{font-size:34px}.compare-big{font-size:36px}.days-big{font-size:60px}.log-col-phase{display:none}.log-table{min-width:380px}}
 </style>
 </head>
-<body>
+<body data-well-id="311">
 
 <header class="header">
   <div class="logo">
@@ -246,7 +246,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>Запущена после РИР</div>
+      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>В работе с 12.08 · после РИР</div>
       <div class="hero-date-note">РИР 09.07 (NanoCem UT-9) · ОТРС 07–11.08 · август: обводнённость 98,5 → 56%, Qн до 8,78 т/сут</div>
     </div>
   </div>
@@ -430,7 +430,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
       <div class="rir-block-title">Состояние скважины</div>
       <div class="days-big" id="daysBig">1</div>
       <div class="days-label">дней после запуска</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">Запущена после РИР</span></div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">В работе с 12.08.2026</span></div>
       <div class="rir-row"><span class="rir-key">ОСТАНОВКА</span><span class="rir-val">30.06.2026</span></div>
       <div class="rir-row"><span class="rir-key">ГИС</span><span class="rir-val">01–02.07.2026</span></div>
       <div class="rir-row"><span class="rir-key">ВЫТЕСНЕНО ПРИ ГИС</span><span class="rir-val">91,6 м³ пластовой воды</span></div>
@@ -499,6 +499,15 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">5,84 т/сут (03.01.2026)</div></div>
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">86,3%</div></div></div>
 </div>
+
+<!-- ══════════════════════ ФОНД (общий источник wells.js) ══════════════════════ -->
+<section style="padding:28px 40px;border-top:1px solid var(--border)">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+    <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a></div>
+  </div>
+  <div id="fundStrip"></div>
+</section>
 
 <footer class="footer">
   <div class="footer-left">М/Р Каратюбе · Скв. 311 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 30.08.2026</div>
@@ -815,6 +824,7 @@ document.getElementById('daysSince').textContent = daysIn;
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 </script>
+<script src="wells.js" defer></script>
 <script src="i18n.js" defer></script>
 </body>
 </html>

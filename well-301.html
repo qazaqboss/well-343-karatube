@@ -292,7 +292,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 }
 </style>
 </head>
-<body>
+<body data-well-id="301">
 
 <!-- HEADER -->
 <header class="header">
@@ -663,6 +663,15 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">48,6%</div></div>
   </div>
 </div>
+
+<!-- ══════════════════════ ФОНД (общий источник wells.js) ══════════════════════ -->
+<section style="padding:28px 40px;border-top:1px solid var(--border)">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+    <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a></div>
+  </div>
+  <div id="fundStrip"></div>
+</section>
 
 <footer class="footer">
   <div class="footer-left">М/Р Каратюбе · Скв. 301 · Горизонт J1-IV · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 30.08.2026</div>
@@ -1103,6 +1112,7 @@ function closeNav(){
   document.getElementById('navToggle').classList.remove('active');
 }
 </script>
+<script src="wells.js" defer></script>
 <script src="i18n.js" defer></script>
 </body>
 </html>

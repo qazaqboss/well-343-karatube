@@ -98,6 +98,8 @@ tbody tr:hover{background:var(--bg-2)}
 .dot.r{background:#fff;border:1.5px solid var(--red)}
 .res.r{color:var(--red)}
 .c-note{color:var(--grey);font-size:12px;line-height:1.45}
+.st-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.st-dot.work{background:var(--green)}.st-dot.stop{background:var(--red)}.st-dot.krs{background:var(--grey-muted)}
 
 /* MAP SCHEME */
 .scheme{border:1px solid var(--border);background:var(--bg-2);padding:24px;overflow-x:auto}
@@ -184,7 +186,7 @@ tbody tr:hover{background:var(--bg-2)}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Аналитика</div>
-    <div class="header-date">данные на 03.08.2026</div>
+    <div class="header-date">заходы на 03.08 · статусы <span data-wells-updated>30.08.2026</span></div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -204,13 +206,13 @@ tbody tr:hover{background:var(--bg-2)}
     <div>
       <div class="hero-eyebrow">Аналитика · Горизонт J1-IV · Заходы NanoCem UT-9</div>
       <h1 class="hero-title">ГЕРМЕТИЧНОСТЬ ФОНДА <span class="light">—</span><br>ГДЕ ИЗОЛЯЦИЯ ДЕРЖИТ<br>И ПОЧЕМУ ИНОГДА НЕТ</h1>
-      <div class="hero-lead">Разбор шести скважин Каратюбе, где выполнены заходы NanoCem UT-9. Итог «садится / не садится» распределён по площади не случайно: он определяется положением скважины относительно краевой воды и состоянием заколонного цемента, а не процентом воды в точке.</div>
+      <div class="hero-lead">Разбор шести скважин Каратюбе, где выполнены заходы NanoCem UT-9. Итог «садится / не садится» распределён по площади не случайно: он определяется положением скважины относительно краевой воды и состоянием заколонного цемента, а не процентом воды в точке. Статусы и цифры на странице берутся из общей базы фонда — той же, что питает суточные отчёты по скважинам.</div>
       <div class="hero-meta">
         <div class="hero-meta-item">СКВАЖИН <span>6</span></div>
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">ГЕРМЕТИЧНО С 1-ГО <span>3</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">В ОСВОЕНИИ <span>2</span></div>
+        <div class="hero-meta-item">ЭФФЕКТ ПОСЛЕ ОСВОЕНИЯ <span>1</span></div>
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">ГОРИЗОНТ <span>J1-IV</span></div>
       </div>
@@ -227,7 +229,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="kpi">
     <div class="kpi-label">Заходы UT-9</div>
     <div class="kpi-value">6</div>
-    <div class="kpi-unit">скважин на 03.08.2026</div>
+    <div class="kpi-unit">скважин · заходы на 03.08.2026</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Герметично с 1-го захода</div>
@@ -235,14 +237,14 @@ tbody tr:hover{background:var(--bg-2)}
     <div class="kpi-unit">301 · 303 · 343</div>
   </div>
   <div class="kpi">
-    <div class="kpi-label">Герметично со 2-го</div>
+    <div class="kpi-label">Эффект после освоения</div>
     <div class="kpi-value">1</div>
-    <div class="kpi-unit">342 · северо-восточный фланг</div>
+    <div class="kpi-unit">311 · в работе с 12.08 · обв. 90,5 → 49%</div>
   </div>
   <div class="kpi">
-    <div class="kpi-label">Не держит · в освоении</div>
-    <div class="kpi-value red">2</div>
-    <div class="kpi-unit">305 · 311 · краевые скважины</div>
+    <div class="kpi-label">Оценка не завершена</div>
+    <div class="kpi-value red">1</div>
+    <div class="kpi-unit">305 · в ремонте, добычи нет</div>
   </div>
 </div>
 
@@ -251,12 +253,12 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="section-head">
     <div>
       <div class="section-title">Заходы NanoCem UT-9 — результат по каждой скважине</div>
-      <div class="section-sub">Итог герметизации фиксируется по факту работы скважины после захода. «В освоении» означает, что скважина запущена, но приток воды сохраняется — изоляция перфорации не дала герметичности.</div>
+      <div class="section-sub">Итог герметизации фиксируется по факту работы скважины после захода, поэтому он может уточняться: на 311 первичная оценка была «в освоении» при ~95% воды, но после вывода на режим 12.08 обводнённость опустилась до 49–56% — эффект подтверждён. Статус в предпоследней колонке — текущий, из суточных замеров.</div>
     </div>
   </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>Скважина</th><th>Заходов</th><th>Итог герметизации</th><th>Дата захода</th><th>Зона залежи</th><th>Qн · обв.</th><th>Комментарий</th></tr></thead>
+      <thead><tr><th>Скважина</th><th>Заходов</th><th>Итог герметизации</th><th>Дата захода</th><th>Зона залежи</th><th>Статус на <span data-wells-updated>30.08.2026</span></th><th>Комментарий</th></tr></thead>
       <tbody id="tbody"></tbody>
     </table>
   </div>
@@ -294,14 +296,14 @@ tbody tr:hover{background:var(--bg-2)}
 
       <!-- скважины: краевые -->
       <g>
-        <circle cx="150" cy="268" r="9" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
+        <circle cx="150" cy="268" r="9" fill="#fff" stroke="#111" stroke-width="2.5"/>
         <text x="150" y="299" text-anchor="middle" font-family="Oswald, sans-serif" font-size="17" font-weight="600" fill="#111">311</text>
-        <text x="150" y="315" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#EF4444">не держит</text>
+        <text x="150" y="315" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#777">эффект с 12.08</text>
       </g>
       <g>
         <circle cx="452" cy="150" r="9" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
         <text x="452" y="132" text-anchor="middle" font-family="Oswald, sans-serif" font-size="17" font-weight="600" fill="#111">305</text>
-        <text x="452" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#EF4444">не держит</text>
+        <text x="452" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#EF4444">в ремонте</text>
       </g>
       <!-- ядро -->
       <g>
@@ -336,7 +338,8 @@ tbody tr:hover{background:var(--bg-2)}
     <div class="scheme-legend">
       <span><i class="sw" style="background:#111;border-radius:50%"></i>Герметично с 1-го захода</span>
       <span><i class="sw" style="background:#9A9A9A;border-radius:50%"></i>Герметично со 2-го</span>
-      <span><i class="sw" style="background:#fff;border:2px solid #EF4444;border-radius:50%"></i>Не держит · в освоении</span>
+      <span><i class="sw" style="background:#fff;border:2px solid #111;border-radius:50%"></i>Эффект после освоения</span>
+      <span><i class="sw" style="background:#fff;border:2px solid #EF4444;border-radius:50%"></i>Оценка не завершена</span>
       <span><i class="sw" style="background:repeating-linear-gradient(45deg,#EF4444,#EF4444 2px,#fff 2px,#fff 4px)"></i>Водоактивный край залежи</span>
     </div>
   </div>
@@ -354,12 +357,12 @@ tbody tr:hover{background:var(--bg-2)}
     <div class="card">
       <div class="card-idx">Фактор 01</div>
       <div class="card-title">Положение относительно краевой воды</div>
-      <div class="card-text">Три скважины центрально-восточной части — <b>301, 343, 303</b> — закрылись с первого захода. Обе скважины, где герметичности пока нет, стоят на краях залежи: <b>311</b> на юго-западном крае и <b>305</b> в зоне, примыкающей к водоактивной периферии. На северо-восточном фланге <b>342</b> потребовала второго захода. География результата повторяет геологию краёв, а не разброс по площади.</div>
+      <div class="card-text">Три скважины центрально-восточной части — <b>301, 343, 303</b> — закрылись с первого захода. Трудными оказались краевые: на юго-западном крае <b>311</b> дала эффект только после ОТРС и вывода на режим, на северо-восточном фланге <b>342</b> потребовала второго захода. География результата повторяет геологию краёв, а не разброс по площади.</div>
     </div>
     <div class="card">
       <div class="card-idx">Фактор 02</div>
       <div class="card-title">Состояние заколонного цемента</div>
-      <div class="card-text">По заключениям ПГИ на 305 и 311 заколонный цементный камень некачественный: сплошной контакт — <b>6,25%</b> и <b>30,4%</b> ствола соответственно, остальное — частичный, плохой или его отсутствие. При таком контакте вода идёт за колонной вдоль ствола, минуя перфорацию, и изоляция самих отверстий её не останавливает.</div>
+      <div class="card-text">По заключениям ПГИ на 305 и 311 заколонный цементный камень некачественный: сплошной контакт — <b>6,25%</b> и <b>30,4%</b> ствола соответственно, остальное — частичный, плохой или его отсутствие. При таком контакте часть воды идёт за колонной вдоль ствола, минуя перфорацию. Это объясняет и долгое освоение 311, и остаточные 56% воды при работающей изоляции.</div>
     </div>
     <div class="card">
       <div class="card-idx">Фактор 03</div>
@@ -437,7 +440,7 @@ tbody tr:hover{background:var(--bg-2)}
     <div class="pane">
       <div class="pane-title">Вывод: вода идёт за колонной, а не из пласта</div>
       <p>Для старых скважин с таким состоянием заколонного цемента и корродированной колонной наиболее вероятный путь воды — не приток из целевого пласта через перфорацию, а <b>заколонный переток</b> по негерметичному цементному кольцу от выше- или нижележащих водоносных горизонтов вдоль колонны.</p>
-      <p>Это прямо объясняет, почему <b>305</b> и <b>311</b> остаются негерметичными после захода: изоляция под давлением, закрывающая только интервалы перфорации, не устраняет путь воды за колонной — поэтому обводнённость сохраняется.</p>
+      <p>Это объясняет поведение обеих краевых скважин. На <b>311</b> изоляция сработала — обводнённость с 90,5% упала до 49% — но остановилась на 56%, а не ушла к уровню ядра: часть притока идёт мимо изолированной перфорации. На <b>305</b>, где сплошного контакта всего 6,25%, изоляция одних отверстий тем более не перекроет путь воды.</p>
       <p>Для таких скважин результативнее <b>восстановление заколонного цементного камня</b> — ремонтный цементаж заколонного пространства, селективная изоляция за колонной, — а не изоляция одной лишь перфорации. Состав UT-9 для этого подходит по дисперсности: он проникает в узкие каналы за колонной, куда обычный тампонажный раствор не идёт. Меняется не материал, а схема закачки.</p>
     </div>
     <div class="pane">
@@ -460,31 +463,27 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
+<script src="wells.js"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 
-const WELLS = [
-  {w:'343', n:'1 заход',  res:'Герметично с 1-го', cls:'g', date:'январь 2026', zone:'Западно-центральная', q:'15,7 т/сут · 36%',
-   note:'Опорный кейс: обводнённость с 89,4% до 27,5% на пике, эффект держится седьмой месяц.', href:'index.html'},
-  {w:'301', n:'1 заход',  res:'Герметично с 1-го', cls:'g', date:'06.06.2026', zone:'Юго-западный центр', q:'11,7 т/сут · 39%',
-   note:'Стоит на границе с водоактивным поясом, но интервал закрылся сразу.', href:'well-301.html'},
-  {w:'303', n:'1 заход',  res:'Герметично с 1-го', cls:'g', date:'13.07.2026', zone:'Восточная', q:'1,4 т/сут · 33%',
-   note:'Самый «сухой» вход в ядре залежи. Ограничение по добыче — приток, а не вода.', href:'well-303.html'},
-  {w:'342', n:'2 захода', res:'Герметично со 2-го', cls:'a', date:'10.05 → 31.05.2026', zone:'Северо-восточная', q:'7,4 т/сут · 28%',
-   note:'Северо-восточный фланг: вода активнее, первого захода не хватило.', href:'well-342.html'},
-  {w:'311', n:'1 заход',  res:'Не держит · в освоении', cls:'r', date:'09.07.2026', zone:'Юго-западный край', q:'обв. ~95% на запуске',
-   note:'Крайняя западная скважина. По АКЦ заколонный барьер фрагментарный — вероятен переток за колонной.', href:'well-311.html'},
-  {w:'305', n:'1 заход',  res:'Не держит · в освоении', cls:'r', date:'18.07.2026', zone:'Центральная', q:'добычи нет',
-   note:'По АКЦ сплошной контакт всего 6,25% ствола: изоляция перфорации не перекрывает путь воды.', href:'well-305.html'}
-];
+/* Строки таблицы — из общего источника wells.js (порядок: по итогу изоляции) */
+var SEAL_CLS = { first: 'g', second: 'a', confirmed: 'g', open: 'r' };
+var SEAL_RANK = { first: 0, second: 1, confirmed: 2, open: 3 };
 
-document.getElementById('tbody').innerHTML = WELLS.map(x =>
-  '<tr><td class="c-well"><a href="'+x.href+'">'+x.w+'</a></td>'+
-  '<td class="c-mono">'+x.n+'</td>'+
-  '<td><span class="res '+(x.cls==='r'?'r':'')+'"><i class="dot '+x.cls+'"></i>'+x.res+'</span></td>'+
-  '<td class="c-mono">'+x.date+'</td><td class="c-mono">'+x.zone+'</td><td class="c-mono">'+x.q+'</td>'+
-  '<td class="c-note">'+x.note+'</td></tr>').join('');
+document.getElementById('tbody').innerHTML = window.WELLS.wells.slice().sort(function (a, b) {
+  return SEAL_RANK[a.seal.code] - SEAL_RANK[b.seal.code];
+}).map(function (w) {
+  var s = w.seal, cls = SEAL_CLS[s.code];
+  return '<tr><td class="c-well"><a href="' + w.href + '">' + w.id + '</a></td>' +
+    '<td class="c-mono">' + s.entries + '</td>' +
+    '<td><span class="res ' + (cls === 'r' ? 'r' : '') + '"><i class="dot ' + cls + '"></i>' + s.label + '</span></td>' +
+    '<td class="c-mono">' + s.date + '</td>' +
+    '<td class="c-mono">' + s.zone + '</td>' +
+    '<td class="c-mono"><span class="st-dot ' + w.status.code + '"></span>' + w.status.label + '</td>' +
+    '<td class="c-note">' + s.note + '</td></tr>';
+}).join('');
 </script>
 <script src="i18n.js" defer></script>
 </body>
