@@ -285,6 +285,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
   .log-filters{gap:4px}
   .log-filter{font-size:11px;padding:5px 10px}
 }
+
+/* адаптив шапки: приоритет — навигация, ниже 1250px — бургер */
+.logo{flex-shrink:0}.logo-text,.logo-eyebrow{white-space:nowrap}
+@media(max-width:1500px){.live-badge{display:none}}
+@media(max-width:1360px){.header-date{display:none}}
+@media(max-width:1250px){.nav{display:none}.nav-toggle{display:flex}}
 </style>
 </head>
 <body data-well-id="342">
@@ -415,24 +421,24 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 <!-- MONTHLY STATS BAR -->
 <div class="stats-bar">
   <div class="stat-cell">
-    <div class="stat-label">Январь 2026</div>
-    <div class="stat-value">3.26</div>
-    <div class="stat-sub">т/сут · обв. 75,6%</div>
+    <div class="stat-label">Май 2026</div>
+    <div class="stat-value" style="color:#EF4444">1.20</div>
+    <div class="stat-sub">т/сут · обв. 88,4% · 7 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Февраль 2026</div>
-    <div class="stat-value">3.87</div>
-    <div class="stat-sub">т/сут · обв. 73,4%</div>
+    <div class="stat-label">Июнь 2026</div>
+    <div class="stat-value">8.37</div>
+    <div class="stat-sub">т/сут · обв. 29,5% · 24 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Март 2026</div>
-    <div class="stat-value">2.50</div>
-    <div class="stat-sub">т/сут · обв. 79,3%</div>
+    <div class="stat-label">Июль 2026</div>
+    <div class="stat-value">8.62</div>
+    <div class="stat-sub">т/сут · обв. 29,3% · 31 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Апрель 2026</div>
-    <div class="stat-value" style="color:#EF4444">1.98</div>
-    <div class="stat-sub">т/сут · обв. 84,6%</div>
+    <div class="stat-label">Август 2026</div>
+    <div class="stat-value">7.45</div>
+    <div class="stat-sub">т/сут · обв. 38,0% · 28 сут</div>
   </div>
 </div>
 
@@ -626,7 +632,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 <section style="padding:28px 40px;border-top:1px solid var(--border)">
   <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
     <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
-    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a></div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
   </div>
   <div id="fundStrip"></div>
 </section>
