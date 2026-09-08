@@ -472,7 +472,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
-<script src="wells.js"></script>
+<script src="wells.js?v=20260908"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
@@ -494,6 +494,6 @@ document.getElementById('tbody').innerHTML = window.WELLS.wells.slice().sort(fun
     '<td class="c-note">' + s.note + '</td></tr>';
 }).join('');
 </script>
-<script src="i18n.js" defer></script>
+<script src="i18n.js?v=20260908" defer></script>
 </body>
 </html>
