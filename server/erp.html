@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subsoil ERP — Управление недропользованием</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f5f7;--surface:#fff;--sidebar:#08264E;--sidebar2:#0d3566;
+  --accent:#1560d0;--accent2:#0d4ab0;--red:#c32d1c;--green:#129241;
+  --orange:#c8690a;--gray:#6b7280;--border:#e2e6ec;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden}
+
+/* ── Sidebar ── */
+#sidebar{width:220px;min-width:220px;background:var(--sidebar);
+  display:flex;flex-direction:column;padding:0;user-select:none;z-index:10}
+.logo{padding:20px 18px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo-title{color:#fff;font-size:14px;font-weight:700;letter-spacing:.5px}
+.logo-sub{color:rgba(255,255,255,.5);font-size:10px;margin-top:2px}
+nav{flex:1;padding:10px 0;overflow-y:auto}
+.nav-section{color:rgba(255,255,255,.35);font-size:9px;font-weight:600;
+  letter-spacing:1px;padding:12px 18px 4px;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 18px;
+  color:rgba(255,255,255,.7);font-size:13px;cursor:pointer;
+  border-radius:0;transition:.15s;border-left:3px solid transparent}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:rgba(255,255,255,.12);color:#fff;
+  border-left-color:#4d9eff;font-weight:600}
+.nav-item .icon{font-size:15px;width:18px;text-align:center}
+.sidebar-footer{padding:14px 18px;border-top:1px solid rgba(255,255,255,.1)}
+.sidebar-footer small{color:rgba(255,255,255,.4);font-size:10px}
+
+/* ── Main ── */
+#main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#topbar{background:var(--surface);border-bottom:1px solid var(--border);
+  padding:0 24px;height:52px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+#topbar h1{font-size:16px;font-weight:700;flex:1}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;
+  border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;
+  border:none;transition:.15s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--bg)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-sm{padding:4px 10px;font-size:11px}
+#content{flex:1;overflow-y:auto;padding:24px}
+
+/* ── Cards / KPI ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi{background:var(--surface);border-radius:var(--radius);padding:18px;
+  box-shadow:var(--shadow);border-left:4px solid var(--accent)}
+.kpi.red{border-left-color:var(--red)} .kpi.green{border-left-color:var(--green)}
+.kpi.orange{border-left-color:var(--orange)}
+.kpi-val{font-size:28px;font-weight:800;line-height:1}
+.kpi-label{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* ── Tables ── */
+.card{background:var(--surface);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}
+.card-header{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--border);gap:10px}
+.card-title{font-size:14px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f8f9fb;padding:9px 14px;text-align:left;font-size:11px;
+  font-weight:600;color:var(--gray);border-bottom:2px solid var(--border);
+  white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafbfd}
+.tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;
+  font-size:11px;font-weight:600;white-space:nowrap}
+.tag-green{background:#d1fae5;color:#065f46}
+.tag-red{background:#fee2e2;color:#991b1b}
+.tag-orange{background:#fef3c7;color:#92400e}
+.tag-blue{background:#dbeafe;color:#1e40af}
+.tag-gray{background:#f3f4f6;color:#374151}
+
+/* ── Stage bar ── */
+.stage-bar{display:flex;margin:16px 0;gap:3px}
+.stage-seg{flex:1;height:6px;border-radius:3px;background:var(--border)}
+.stage-seg.done{background:var(--green)}
+.stage-seg.active{background:var(--accent)}
+.stage-seg.pending{background:var(--border)}
+.stage-labels{display:flex;gap:3px;font-size:9px;color:var(--gray)}
+.stage-labels span{flex:1;text-align:center;overflow:hidden;white-space:nowrap}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:2px;border-bottom:2px solid var(--border);
+  padding:0 18px;background:var(--surface)}
+.tab{padding:11px 16px;font-size:13px;font-weight:500;color:var(--gray);
+  cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-pane{display:none;padding:20px 18px}
+.tab-pane.active{display:block}
+
+/* ── Detail grid ── */
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.detail-row{display:flex;flex-direction:column;gap:2px}
+.detail-label{font-size:10px;color:var(--gray);font-weight:600;text-transform:uppercase}
+.detail-val{font-size:13px;font-weight:500}
+.info-box{background:var(--bg);border-radius:8px;padding:14px;margin-bottom:12px}
+
+/* ── Risk dots ── */
+.risk{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
+.risk::before{content:'';width:8px;height:8px;border-radius:50%;display:inline-block}
+.risk.critical::before{background:var(--red)} .risk.critical{color:var(--red)}
+.risk.high::before{background:var(--orange)} .risk.high{color:var(--orange)}
+.risk.medium::before{background:#eab308} .risk.medium{color:#92400e}
+.risk.low::before{background:var(--green)} .risk.low{color:var(--green)}
+
+/* ── Calendar ── */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:12px}
+.cal-head{font-weight:600;text-align:center;padding:8px;color:var(--gray)}
+.cal-day{min-height:72px;border:1px solid var(--border);border-radius:6px;
+  padding:4px 6px;background:var(--surface)}
+.cal-day.today{border-color:var(--accent);background:#eff6ff}
+.cal-day.other-month{opacity:.35}
+.cal-dn{font-size:11px;font-weight:600;margin-bottom:3px}
+.cal-ev{font-size:10px;padding:1px 4px;border-radius:3px;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.cal-ev.critical{background:#fee2e2;color:#991b1b}
+.cal-ev.high{background:#fef3c7;color:#78350f}
+.cal-ev.medium{background:#dbeafe;color:#1e40af}
+.cal-ev.low{background:#d1fae5;color:#065f46}
+
+/* ── AI Chat ── */
+#chat-box{display:flex;flex-direction:column;height:calc(100vh - 140px)}
+#chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:78%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.6}
+.msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-radius:12px 12px 2px 12px}
+.msg.ai{background:var(--surface);border:1px solid var(--border);align-self:flex-start;
+  border-radius:12px 12px 12px 2px;white-space:pre-wrap}
+.msg.ai.loading::after{content:'...';animation:dots 1s infinite}
+@keyframes dots{0%{content:'.'} 33%{content:'..'} 66%{content:'...'}}
+#chat-input-row{display:flex;gap:8px;padding:12px 16px;
+  border-top:1px solid var(--border);background:var(--surface)}
+#chat-input{flex:1;border:1px solid var(--border);border-radius:8px;
+  padding:9px 12px;font-size:13px;outline:none;resize:none}
+#chat-input:focus{border-color:var(--accent)}
+
+/* ── Forms ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);
+  z-index:100;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--radius);padding:24px;
+  width:500px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h2{font-size:16px;font-weight:700;margin-bottom:18px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12px;font-weight:600;color:var(--gray);margin-bottom:4px}
+.form-row input,.form-row select,.form-row textarea{width:100%;border:1px solid var(--border);
+  border-radius:7px;padding:8px 11px;font-size:13px;outline:none}
+.form-row input:focus,.form-row select:focus{border-color:var(--accent)}
+.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+
+/* ── Util ── */
+.row{display:flex;align-items:center;gap:8px}
+.flex1{flex:1} .mt8{margin-top:8px} .mb16{margin-bottom:16px}
+.section-title{font-size:14px;font-weight:700;margin-bottom:12px;
+  padding-bottom:6px;border-bottom:2px solid var(--border)}
+.empty{color:var(--gray);font-size:13px;text-align:center;padding:24px}
+.law-ref{display:inline-flex;align-items:center;padding:2px 7px;
+  background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;
+  font-size:10px;color:#1e40af;margin:2px}
+</style>
+</head>
+<body>
+
+<!-- ── Sidebar ── -->
+<div id="sidebar">
+  <div class="logo">
+    <div class="logo-title">⛏ SUBSOIL ERP</div>
+    <div class="logo-sub">Управление недропользованием РК</div>
+    <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+      <a href="/" style="font-size:11px;text-decoration:none;color:inherit;opacity:.75;border:1px solid currentColor;border-radius:5px;padding:3px 8px">🛢 Фонд</a>
+      <a href="/stages.html" style="font-size:11px;text-decoration:none;color:inherit;opacity:.75;border:1px solid currentColor;border-radius:5px;padding:3px 8px">📑 Этапы</a>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-section">Обзор</div>
+    <div class="nav-item active" onclick="nav('dashboard')" id="nav-dashboard">
+      <span class="icon">📊</span> Дашборд
+    </div>
+    <div class="nav-section">Портфель</div>
+    <div class="nav-item" onclick="nav('contracts')" id="nav-contracts">
+      <span class="icon">📋</span> Лицензии / Контракты
+    </div>
+    <div class="nav-item" onclick="nav('wells')" id="nav-wells">
+      <span class="icon">🔩</span> Скважины
+    </div>
+    <div class="nav-section">Контроль</div>
+    <div class="nav-item" onclick="nav('deadlines')" id="nav-deadlines">
+      <span class="icon">⏰</span> Дедлайны
+    </div>
+    <div class="nav-item" onclick="nav('calendar')" id="nav-calendar">
+      <span class="icon">📅</span> Календарь
+    </div>
+    <div class="nav-section">Отчёты</div>
+    <div class="nav-item" onclick="nav('reports')" id="nav-reports">
+      <span class="icon">📄</span> Отчёты по этапам
+    </div>
+    <div class="nav-section">AI</div>
+    <div class="nav-item" onclick="nav('ai')" id="nav-ai">
+      <span class="icon">🤖</span> AI Помощник
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <small>Subsoil ERP v1.0 · РК</small>
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<div id="main">
+  <div id="topbar">
+    <h1 id="page-title">Дашборд</h1>
+    <div id="topbar-actions"></div>
+  </div>
+  <div id="content">
+    <!-- Pages rendered here by JS -->
+  </div>
+</div>
+
+<!-- ── Add Contract Modal ── -->
+<div class="modal-overlay" id="modal-contract">
+  <div class="modal">
+    <h2>Новый контракт / лицензия</h2>
+    <div class="form-row"><label>Номер контракта *</label>
+      <input id="f-number" placeholder="КЗ-2025-XXX"></div>
+    <div class="form-row"><label>Компания *</label>
+      <input id="f-company" placeholder="ООО «Пример»"></div>
+    <div class="form-row"><label>Территория / блок</label>
+      <input id="f-territory" placeholder="Блок Жазык"></div>
+    <div class="form-row"><label>Регион</label>
+      <input id="f-region" placeholder="Актюбинская обл."></div>
+    <div class="form-row"><label>Тип контракта</label>
+      <select id="f-ctype">
+        <option value="standard">Стандартный</option>
+        <option value="complex">Сложный (>100 млн т)</option>
+      </select></div>
+    <div class="form-row"><label>Текущий этап</label>
+      <select id="f-stage">
+        <option value="1">1 — Разведка</option>
+        <option value="2">2 — Оценка</option>
+        <option value="3">3 — Гос. Баланс</option>
+        <option value="4">4 — Подготовительный</option>
+        <option value="5">5 — Полномасштабная добыча</option>
+        <option value="6">6 — Ликвидация</option>
+        <option value="7">7 — Сдача территории</option>
+      </select></div>
+    <div class="form-row"><label>Дата начала</label>
+      <input type="date" id="f-start"></div>
+    <div class="form-row"><label>Дата окончания</label>
+      <input type="date" id="f-end"></div>
+    <div class="form-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-contract')">Отмена</button>
+      <button class="btn btn-primary" onclick="submitContract()">Создать</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Add Well Modal ── -->
+<div class="modal-overlay" id="modal-well">
+  <div class="modal">
+    <h2>Новая скважина</h2>
+    <input type="hidden" id="wf-contract-id">
+    <div class="form-row"><label>Номер скважины *</label>
+      <input id="wf-number" placeholder="ЖЗ-4"></div>
+    <div class="form-row"><label>Тип скважины</label>
+      <select id="wf-type">
+        <option>поисковая</option><option>оценочная</option>
+        <option>опережающе-добывающая</option><option>добывающая</option>
+        <option>нагнетательная</option><option>наблюдательная</option>
+        <option>ликвидационная</option>
+      </select></div>
+    <div class="form-row"><label>Категория запасов</label>
+      <select id="wf-cat"><option>C2</option><option>C1</option>
+        <option>B</option><option>A</option></select></div>
+    <div class="form-row"><label>Глубина, м</label>
+      <input type="number" id="wf-depth" placeholder="3000"></div>
+    <div class="form-row"><label>Дата забуривания</label>
+      <input type="date" id="wf-spud"></div>
+    <div class="form-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modal-well')">Отмена</button>
+      <button class="btn btn-primary" onclick="submitWell()">Создать</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '';  // same origin
+let currentPage = '';
+let currentContract = null;
+let currentWell = null;
+let aiHistory = [];
+
+const STAGE_NAMES = {
+  1:'Разведка',2:'Оценка',3:'Гос. Баланс',
+  4:'Подготовительный',5:'Полномасштабная добыча',
+  6:'Ликвидация',7:'Сдача территории'
+};
+
+async function apiFetch(url, opts={}) {
+  const r = await fetch(API + url, {
+    headers:{'Content-Type':'application/json'}, ...opts
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+// ── Router ────────────────────────────────────────────────────────────────────
+function nav(page, data=null) {
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  const ni = document.getElementById('nav-' + page);
+  if (ni) ni.classList.add('active');
+  currentPage = page;
+  if (data) {
+    if (page === 'contract-detail') currentContract = data;
+    if (page === 'well-detail') currentWell = data;
+  }
+  renderPage(page);
+}
+
+function renderPage(page) {
+  const content = document.getElementById('content');
+  const actions = document.getElementById('topbar-actions');
+  actions.innerHTML = '';
+  const titles = {
+    dashboard:'Дашборд', contracts:'Лицензии и Контракты',
+    wells:'Скважины', deadlines:'Реестр дедлайнов',
+    calendar:'Календарь', reports:'Отчёты по этапам',
+    ai:'AI Помощник', 'contract-detail':'Контракт',
+    'well-detail':'Паспорт скважины'
+  };
+  document.getElementById('page-title').textContent = titles[page] || page;
+  content.innerHTML = '<div style="color:#999;padding:20px">Загрузка...</div>';
+
+  switch (page) {
+    case 'dashboard':       renderDashboard(); break;
+    case 'contracts':       renderContracts(); break;
+    case 'contract-detail': renderContractDetail(currentContract); break;
+    case 'wells':           renderWells(); break;
+    case 'well-detail':     renderWellDetail(currentWell); break;
+    case 'deadlines':       renderDeadlines(); break;
+    case 'calendar':        renderCalendar(); break;
+    case 'reports':         renderReports(); break;
+    case 'ai':              renderAI(); break;
+  }
+}
+
+// ── Dashboard ──────────────────────────────────────────────────────────────────
+async function renderDashboard() {
+  const d = await apiFetch('/api/dashboard');
+  const content = document.getElementById('content');
+  content.innerHTML = `
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-val">${d.contracts}</div><div class="kpi-label">Активных контрактов</div></div>
+    <div class="kpi green"><div class="kpi-val">${d.wells}</div><div class="kpi-label">Активных скважин</div></div>
+    <div class="kpi orange"><div class="kpi-val">${d.pending_passports}</div><div class="kpi-label">Паспортов на согласовании</div></div>
+    <div class="kpi red"><div class="kpi-val">${d.overdue_deadlines}</div><div class="kpi-label">Просроченных дедлайнов</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">⏰ Ближайшие дедлайны (30 дней)</span>
+        <button class="btn btn-ghost btn-sm" onclick="nav('deadlines')">Все →</button>
+      </div>
+      <table>
+        <thead><tr><th>Обязательство</th><th>Компания</th><th>Срок</th><th>Риск</th></tr></thead>
+        <tbody>${d.upcoming_deadlines.map(dl => `
+          <tr>
+            <td>${dl.obligation}</td>
+            <td style="color:var(--gray)">${dl.company}</td>
+            <td style="white-space:nowrap">${fmtDate(dl.due_date)}</td>
+            <td><span class="risk ${dl.risk_level}">${riskLabel(dl.risk_level)}</span></td>
+          </tr>`).join('') || '<tr><td colspan="4" class="empty">Нет дедлайнов</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">📋 Распределение по этапам</span>
+      </div>
+      <div style="padding:16px">
+        ${d.stage_distribution.map(s => `
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="width:90px;font-size:12px;color:var(--gray)">Этап ${s.current_stage}</div>
+            <div style="flex:1;background:var(--bg);border-radius:4px;height:16px;overflow:hidden">
+              <div style="width:${s.cnt * 33}%;background:var(--accent);height:100%;border-radius:4px"></div>
+            </div>
+            <div style="width:24px;font-size:12px;font-weight:700">${s.cnt}</div>
+          </div>`).join('')}
+      </div>
+      <div class="card-header" style="border-top:1px solid var(--border);border-bottom:none">
+        <span class="card-title">📄 Паспорта на согласовании</span>
+      </div>
+      <table>
+        <thead><tr><th>Скважина</th><th>Компания</th><th>Статус</th></tr></thead>
+        <tbody>${d.pending_passport_list.map(p => `
+          <tr>
+            <td><b>${p.well_number}</b></td>
+            <td style="color:var(--gray)">${p.company}</td>
+            <td>${statusTag(p.status)}</td>
+          </tr>`).join('') || '<tr><td colspan="3" class="empty">Нет</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+// ── Contracts ─────────────────────────────────────────────────────────────────
+async function renderContracts() {
+  const data = await apiFetch('/api/contracts');
+  const actions = document.getElementById('topbar-actions');
+  actions.innerHTML = `<button class="btn btn-primary" onclick="openModal('modal-contract')">+ Контракт</button>`;
+  document.getElementById('content').innerHTML = `
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Все контракты (${data.length})</span>
+      <div class="row">
+        ${[0,1,2,3,4,5,6,7].map(n => `<button class="btn btn-ghost btn-sm" onclick="filterContracts(${n})">${n===0?'Все':n}</button>`).join('')}
+      </div>
+    </div>
+    <table id="contracts-table">
+      <thead><tr>
+        <th>№ контракта</th><th>Компания</th><th>Территория</th>
+        <th>Текущий этап</th><th>Тип</th><th>Статус</th><th>Начало</th><th>Конец</th><th></th>
+      </tr></thead>
+      <tbody>${data.map(c => `
+        <tr data-stage="${c.current_stage}">
+          <td><b>${c.number}</b></td>
+          <td>${c.company}</td>
+          <td>${c.territory||'—'}<br><small style="color:var(--gray)">${c.region||''}</small></td>
+          <td>
+            <span class="tag tag-blue">Этап ${c.current_stage} — ${STAGE_NAMES[c.current_stage]}</span>
+            <div class="stage-bar" style="margin:6px 0 0">${stageBar(c.current_stage)}</div>
+          </td>
+          <td>${c.contract_type==='complex'?'⭐ Сложный':'Стандартный'}</td>
+          <td>${statusTag(c.status)}</td>
+          <td style="white-space:nowrap">${fmtDate(c.start_date)}</td>
+          <td style="white-space:nowrap">${fmtDate(c.end_date)}</td>
+          <td><button class="btn btn-ghost btn-sm" onclick="nav('contract-detail',${c.id})">→ Открыть</button></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function filterContracts(stage) {
+  document.querySelectorAll('#contracts-table tbody tr').forEach(tr => {
+    tr.style.display = (!stage || tr.dataset.stage==stage) ? '' : 'none';
+  });
+}
+
+// ── Contract Detail ───────────────────────────────────────────────────────────
+async function renderContractDetail(cid) {
+  const c = await apiFetch(`/api/contracts/${cid}`);
+  document.getElementById('page-title').textContent = `${c.company} · ${c.number}`;
+  const actions = document.getElementById('topbar-actions');
+  actions.innerHTML = `
+    <button class="btn btn-ghost btn-sm" onclick="nav('contracts')">← Назад</button>
+    <button class="btn btn-primary btn-sm" onclick="openModal('modal-well');document.getElementById('wf-contract-id').value=${c.id}">+ Скважина</button>`;
+
+  // Compute budget totals
+  const totalBudget = c.stages.reduce((s,st)=>s+st.budget_kzt,0);
+  const totalSpent  = c.stages.reduce((s,st)=>s+st.budget_spent,0);
+  const pct = totalBudget ? Math.round(totalSpent/totalBudget*100) : 0;
+
+  document.getElementById('content').innerHTML = `
+  <!-- Stage progress bar -->
+  <div class="card" style="margin-bottom:16px;padding:16px 20px">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px">
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px">Прогресс по этапам</div>
+        <div class="stage-bar" style="height:12px">${stageBar(c.current_stage)}</div>
+        <div style="display:flex;gap:3px;font-size:9px;color:var(--gray);margin-top:4px">
+          ${Object.values(STAGE_NAMES).map((n,i)=>`<span style="flex:1;text-align:center">${i+1}</span>`).join('')}
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:22px;font-weight:800">Этап ${c.current_stage}</div>
+        <div style="font-size:12px;color:var(--gray)">${STAGE_NAMES[c.current_stage]}</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div class="detail-row"><span class="detail-label">Компания</span><span class="detail-val">${c.company}</span></div>
+      <div class="detail-row"><span class="detail-label">Тип</span><span class="detail-val">${c.contract_type==='complex'?'⭐ Сложный':'Стандартный'}</span></div>
+      <div class="detail-row"><span class="detail-label">Территория</span><span class="detail-val">${c.territory||'—'}, ${c.region||''}</span></div>
+      <div class="detail-row"><span class="detail-label">Срок действия</span>
+        <span class="detail-val">${fmtDate(c.start_date)} — ${fmtDate(c.end_date)}</span></div>
+    </div>
+    <div style="margin-top:12px">
+      <div style="font-size:11px;color:var(--gray);margin-bottom:4px">
+        Бюджет: ${fmtMoney(totalSpent)} / ${fmtMoney(totalBudget)} тенге (${pct}% освоено)
+      </div>
+      <div style="background:var(--bg);border-radius:4px;height:8px;overflow:hidden">
+        <div style="width:${pct}%;background:var(--accent);height:100%;border-radius:4px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="card">
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(this,'tab-stages')">Этапы</div>
+      <div class="tab" onclick="switchTab(this,'tab-docs')">Документы</div>
+      <div class="tab" onclick="switchTab(this,'tab-wells')">Скважины (${c.wells.length})</div>
+      <div class="tab" onclick="switchTab(this,'tab-deadlines')">Дедлайны (${c.deadlines.length})</div>
+      <div class="tab" onclick="switchTab(this,'tab-reports')">Отчёты</div>
+    </div>
+
+    <!-- Stages tab -->
+    <div class="tab-pane active" id="tab-stages">
+      ${c.stages.map(st=>`
+      <div style="display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);last-child:border-none">
+        <div style="width:32px;height:32px;border-radius:50%;background:${stageColor(st.status)};
+          color:#fff;display:flex;align-items:center;justify-content:center;
+          font-size:13px;font-weight:700;flex-shrink:0">${st.num}</div>
+        <div style="flex:1">
+          <div style="font-weight:600;font-size:13px">${st.name}</div>
+          <div style="font-size:11px;color:var(--gray);margin-top:2px">
+            ${st.planned_start?fmtDate(st.planned_start):'—'} — ${st.planned_end?fmtDate(st.planned_end):'—'}
+          </div>
+          ${st.budget_kzt?`<div style="font-size:11px;color:var(--gray)">
+            Бюджет: ${fmtMoney(st.budget_kzt)} ₸ · Факт: ${fmtMoney(st.budget_spent)} ₸</div>`:''}
+        </div>
+        <div>${statusTag(st.status)}</div>
+      </div>`).join('')}
+    </div>
+
+    <!-- Documents tab -->
+    <div class="tab-pane" id="tab-docs">
+      <table>
+        <thead><tr><th>Документ</th><th>Тип</th><th>Дедлайн</th><th>Орган</th><th>Нормативка</th><th>Статус</th><th></th></tr></thead>
+        <tbody>${c.documents.map(d=>`
+          <tr>
+            <td><b>${d.name}</b></td>
+            <td><span class="tag tag-gray">${docTypeLabel(d.doc_type)}</span></td>
+            <td style="white-space:nowrap;color:${isOverdue(d.deadline)?'var(--red)':'inherit'}">${fmtDate(d.deadline)}</td>
+            <td style="font-size:12px;color:var(--gray)">${d.authority||'—'}</td>
+            <td>${parseLawRefs(d.law_refs)}</td>
+            <td>${statusTag(d.status)}</td>
+            <td>
+              <select style="font-size:11px;border:1px solid var(--border);border-radius:5px;padding:2px 6px"
+                onchange="patchDoc(${d.id},this.value)">
+                <option value="">— изменить —</option>
+                <option value="pending">В работе</option>
+                <option value="submitted">Подан</option>
+                <option value="approved">Утверждён</option>
+                <option value="rejected">Отклонён</option>
+              </select>
+            </td>
+          </tr>`).join('') || '<tr><td colspan="7" class="empty">Нет документов</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Wells tab -->
+    <div class="tab-pane" id="tab-wells">
+      <table>
+        <thead><tr><th>№ скважины</th><th>Тип</th><th>Категория</th><th>Глубина, м</th><th>Паспорт</th><th>Статус</th><th></th></tr></thead>
+        <tbody>${c.wells.map(w=>`
+          <tr>
+            <td><b>${w.number}</b></td>
+            <td>${w.well_type}</td>
+            <td><span class="tag tag-blue">${w.category||'—'}</span></td>
+            <td>${w.depth_m||'—'}</td>
+            <td>${passportTag(w.passport_status)}</td>
+            <td>${statusTag(w.status)}</td>
+            <td>
+              <button class="btn btn-ghost btn-sm" onclick="nav('well-detail',${w.id})">→ Паспорт</button>
+              <button class="btn btn-ghost btn-sm" onclick="downloadPassport(${w.id},'${w.number}')">⬇ PDF</button>
+            </td>
+          </tr>`).join('') || '<tr><td colspan="7" class="empty">Нет скважин</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Deadlines tab -->
+    <div class="tab-pane" id="tab-deadlines">
+      <table>
+        <thead><tr><th>Обязательство</th><th>Этап</th><th>Срок</th><th>Риск</th><th>Нормативка</th><th>Статус</th><th></th></tr></thead>
+        <tbody>${c.deadlines.map(dl=>`
+          <tr>
+            <td>${dl.obligation}</td>
+            <td>Этап ${dl.stage_num}</td>
+            <td style="white-space:nowrap;color:${dl.status==='overdue'?'var(--red)':'inherit'};font-weight:${dl.status==='overdue'?700:400}">
+              ${fmtDate(dl.due_date)}</td>
+            <td><span class="risk ${dl.risk_level}">${riskLabel(dl.risk_level)}</span></td>
+            <td style="font-size:11px;color:var(--gray)">${dl.law_ref||'—'}</td>
+            <td>${statusTag(dl.status)}</td>
+            <td>
+              ${dl.status!=='completed'?`<button class="btn btn-ghost btn-sm" onclick="completeDl(${dl.id})">✓ Выполнено</button>`:''}
+            </td>
+          </tr>`).join('') || '<tr><td colspan="7" class="empty">Нет дедлайнов</td></tr>'}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Reports tab -->
+    <div class="tab-pane" id="tab-reports">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 0">
+        ${Object.entries(STAGE_NAMES).map(([n,name])=>`
+        <div style="border:1px solid var(--border);border-radius:8px;padding:14px">
+          <div style="font-size:11px;color:var(--gray);margin-bottom:4px">Этап ${n}</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:10px">${name}</div>
+          <a href="/reports/stage/${n}" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">
+            ⬇ Скачать отчёт</a>
+        </div>`).join('')}
+        <div style="border:2px solid var(--accent);border-radius:8px;padding:14px">
+          <div style="font-size:11px;color:var(--gray);margin-bottom:4px">Полный документ</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:10px">Все этапы + паспорта</div>
+          <a href="/reports/stages-complete" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">
+            ⬇ IC_Petroleum_Stages_Complete</a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Wells list ────────────────────────────────────────────────────────────────
+async function renderWells() {
+  const data = await apiFetch('/api/wells');
+  const actions = document.getElementById('topbar-actions');
+  actions.innerHTML = '';
+  document.getElementById('content').innerHTML = `
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Все скважины (${data.length})</span>
+    </div>
+    <table>
+      <thead><tr>
+        <th>№ скважины</th><th>Компания / Контракт</th>
+        <th>Тип</th><th>Категория</th><th>Глубина, м</th>
+        <th>Забуривание</th><th>Паспорт</th><th>Статус</th><th></th>
+      </tr></thead>
+      <tbody>${data.map(w=>`
+        <tr>
+          <td><b>${w.number}</b></td>
+          <td>${w.company}<br><small style="color:var(--gray)">${w.contract_number}</small></td>
+          <td>${w.well_type}</td>
+          <td><span class="tag tag-blue">${w.category||'—'}</span></td>
+          <td>${w.depth_m||'—'}</td>
+          <td style="white-space:nowrap">${fmtDate(w.spud_date)}</td>
+          <td>${passportTag(w.passport_status)}</td>
+          <td>${statusTag(w.status)}</td>
+          <td>
+            <button class="btn btn-ghost btn-sm" onclick="nav('well-detail',${w.id})">→ Детали</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadPassport(${w.id},'${w.number}')">⬇ PDF</button>
+          </td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+// ── Well Detail ───────────────────────────────────────────────────────────────
+async function renderWellDetail(wid) {
+  const w = await apiFetch(`/api/wells/${wid}`);
+  document.getElementById('page-title').textContent = `Скважина ${w.number}`;
+  document.getElementById('topbar-actions').innerHTML = `
+    <button class="btn btn-ghost btn-sm" onclick="nav('wells')">← Назад</button>
+    <button class="btn btn-primary btn-sm" onclick="downloadPassport(${w.id},'${w.number}')">⬇ Паспорт PDF</button>
+    ${w.test_objects.length?`<a href="/reports/welltest" target="_blank" class="btn btn-ghost btn-sm">⬇ Отчёт 90 дней</a>`:''}`;
+
+  const p = w.passport || {};
+  document.getElementById('content').innerHTML = `
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Данные скважины</span></div>
+      <div style="padding:16px">
+        <div class="detail-grid">
+          ${[['Компания',w.company],['Контракт',w.contract_number],
+             ['Тип скважины',w.well_type],['Категория запасов',w.category||'—'],
+             ['Глубина',w.depth_m?w.depth_m+' м':'—'],['Статус',w.status],
+             ['Дата забуривания',fmtDate(w.spud_date)],['Дата завершения',fmtDate(w.completion_date)]
+          ].map(([l,v])=>`<div class="detail-row"><span class="detail-label">${l}</span><span class="detail-val">${v}</span></div>`).join('')}
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div style="font-size:11px;color:var(--gray);margin-bottom:4px">Нормативная база паспорта</div>
+          <span class="law-ref">КОНН РК ст.134</span>
+          <span class="law-ref">КОНН РК ст.135</span>
+          <span class="law-ref">Приказ МЭ РК №355</span>
+          <span class="law-ref">ЕПРКИН №239 п.47</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-title">Паспорт скважины</span></div>
+      <div style="padding:16px">
+        <div class="detail-grid">
+          ${[['Тип паспорта',p.passport_type||'exploration'],['Статус',p.status||'draft'],
+             ['Дата подачи',fmtDate(p.submitted_date)],['Дата утверждения',fmtDate(p.approved_date)],
+             ['Реестровый №',p.registry_number||'—'],['Утверждающий орган',p.approving_authority||'МЭиПР РК']
+          ].map(([l,v])=>`<div class="detail-row"><span class="detail-label">${l}</span><span class="detail-val">${statusTag(v)||v}</span></div>`).join('')}
+        </div>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+          ${p.status==='draft'?`<button class="btn btn-primary btn-sm" onclick="submitPassport(${p.id})">Подать в МЭиПР</button>`:''}
+          ${p.status==='submitted'?`<button class="btn btn-primary btn-sm" onclick="approvePassport(${p.id})">Утвердить (МЭиПР)</button>`:''}
+          <button class="btn btn-ghost btn-sm" onclick="downloadPassport(${w.id},'${w.number}')">⬇ Скачать PDF паспорта</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  ${w.test_objects.length?`
+  <div class="card" style="margin-top:16px">
+    <div class="card-header">
+      <span class="card-title">Объекты испытания (${w.test_objects.length})</span>
+      <a href="/reports/welltest" target="_blank" class="btn btn-primary btn-sm">⬇ Полный отчёт 90 дней</a>
+    </div>
+    <table>
+      <thead><tr>
+        <th>№ объекта</th><th>Пласт</th><th>Кровля, м</th><th>Подошва, м</th>
+        <th>Флюид</th><th>Дебит, м³/сут</th><th>Рпл, атм</th><th>Рзаб, атм</th><th>Результат</th>
+      </tr></thead>
+      <tbody>${w.test_objects.map(o=>`
+        <tr>
+          <td><b>${o.obj_number}</b></td>
+          <td><b>${o.layer_name}</b></td>
+          <td>${o.interval_top}</td><td>${o.interval_bot}</td>
+          <td><span class="tag ${o.fluid_type==='нефть'?'tag-green':o.fluid_type==='газ'?'tag-blue':'tag-gray'}">${o.fluid_type}</span></td>
+          <td><b>${o.flow_rate}</b></td>
+          <td>${o.pressure_reservoir}</td><td>${o.pressure_bottom}</td>
+          <td><span class="tag tag-green">${o.result||'продуктивный'}</span></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`:''}`;
+}
+
+// ── Deadlines ─────────────────────────────────────────────────────────────────
+async function renderDeadlines() {
+  const data = await apiFetch('/api/deadlines?days=90');
+  document.getElementById('content').innerHTML = `
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Все активные дедлайны (90 дней)</span>
+      <div class="row">
+        <span class="risk critical">Критический</span>
+        <span class="risk high">Высокий</span>
+        <span class="risk medium">Средний</span>
+        <span class="risk low">Низкий</span>
+      </div>
+    </div>
+    <table>
+      <thead><tr>
+        <th>Обязательство</th><th>Компания</th><th>Контракт</th>
+        <th>Этап</th><th>Дедлайн</th><th>Риск</th><th>Нормативка</th><th>Статус</th><th></th>
+      </tr></thead>
+      <tbody>${data.map(dl=>`
+        <tr>
+          <td>${dl.obligation}</td>
+          <td style="color:var(--gray)">${dl.company}</td>
+          <td>${dl.contract_number}</td>
+          <td>Этап ${dl.stage_num}</td>
+          <td style="white-space:nowrap;color:${dl.status==='overdue'?'var(--red)':'inherit'};font-weight:${dl.status==='overdue'?700:400}">
+            ${fmtDate(dl.due_date)} ${dl.status==='overdue'?'⚠️':''}</td>
+          <td><span class="risk ${dl.risk_level}">${riskLabel(dl.risk_level)}</span></td>
+          <td style="font-size:11px;color:var(--gray)">${dl.law_ref||'—'}</td>
+          <td>${statusTag(dl.status)}</td>
+          <td>${dl.status!=='completed'?`<button class="btn btn-ghost btn-sm" onclick="completeDl(${dl.id},true)">✓</button>`:''}
+          </td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+// ── Calendar ─────────────────────────────────────────────────────────────────
+async function renderCalendar() {
+  const data = await apiFetch('/api/deadlines?days=60');
+  const today = new Date();
+  const year = today.getFullYear(), month = today.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const monthNames = ['Январь','Февраль','Март','Апрель','Май','Июнь',
+                      'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  const dayNames = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+
+  // Map deadlines by day
+  const evMap = {};
+  data.forEach(dl => {
+    const d = dl.due_date.split('T')[0];
+    if (!evMap[d]) evMap[d] = [];
+    evMap[d].push(dl);
+  });
+
+  let cells = '';
+  const offset = (firstDay + 6) % 7;
+  for (let i=0; i<offset; i++) cells += `<div class="cal-day other-month"></div>`;
+  for (let d=1; d<=daysInMonth; d++) {
+    const ds = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday = d===today.getDate();
+    const evs = evMap[ds]||[];
+    cells += `<div class="cal-day${isToday?' today':''}">
+      <div class="cal-dn">${d}</div>
+      ${evs.map(e=>`<div class="cal-ev ${e.risk_level}" title="${e.obligation} · ${e.company}">${e.obligation.substring(0,22)}</div>`).join('')}
+    </div>`;
+  }
+
+  document.getElementById('content').innerHTML = `
+  <div class="card" style="margin-bottom:16px;padding:14px 18px">
+    <div style="font-size:16px;font-weight:700">${monthNames[month]} ${year}</div>
+  </div>
+  <div class="card">
+    <div class="cal-grid" style="padding:12px">
+      ${dayNames.map(d=>`<div class="cal-head">${d}</div>`).join('')}
+      ${cells}
+    </div>
+  </div>`;
+}
+
+// ── Reports ───────────────────────────────────────────────────────────────────
+function renderReports() {
+  const stageDescs = {
+    1:'Отчёт по поисковому этапу: ГРР, бурение, дебиты',
+    2:'Оценочный этап: запасы C₂→C₁, ГДИС, ПЭ',
+    3:'Постановка на Гос. Баланс: ГКЗ, пересчёт',
+    4:'Подготовительный: ПР, ТП, обустройство',
+    5:'Полномасштабная добыча: эксплуатация',
+    6:'Ликвидационный этап: рекультивация',
+    7:'Сдача территории: финальный акт'
+  };
+  document.getElementById('content').innerHTML = `
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+    ${Object.entries(STAGE_NAMES).map(([n,name])=>`
+    <div class="card" style="overflow:hidden">
+      <div style="background:var(--sidebar);color:#fff;padding:12px 16px">
+        <div style="font-size:10px;opacity:.6;margin-bottom:2px">ЭТАП ${n}</div>
+        <div style="font-weight:700;font-size:14px">${name}</div>
+      </div>
+      <div style="padding:14px 16px">
+        <div style="font-size:12px;color:var(--gray);margin-bottom:12px">${stageDescs[n]}</div>
+        <a href="/reports/stage/${n}" target="_blank" class="btn btn-primary" style="text-decoration:none;width:100%;justify-content:center">
+          ⬇ Скачать отчёт</a>
+      </div>
+    </div>`).join('')}
+  </div>
+  <div class="card" style="padding:16px 20px">
+    <div class="card-title" style="margin-bottom:12px">Комплексные документы IC Petroleum</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="border:1px solid var(--border);border-radius:8px;padding:14px">
+        <div style="font-weight:700;margin-bottom:6px">IC Petroleum — Все 7 этапов + Паспорта</div>
+        <div style="font-size:12px;color:var(--gray);margin-bottom:10px">
+          Полный комплект: паспорта скважин, нормативные ссылки, матрица документов</div>
+        <a href="/reports/stages-complete" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">
+          ⬇ IC_Petroleum_Stages_Complete.pdf</a>
+      </div>
+      <div style="border:1px solid var(--border);border-radius:8px;padding:14px">
+        <div style="font-weight:700;margin-bottom:6px">90-дневный план испытания скважин (5 объектов)</div>
+        <div style="font-size:12px;color:var(--gray);margin-bottom:10px">
+          Скважина ЖЗ-2 · Объекты П-1, К-2, К-3, Ю-4, Ю-5 · Гант-схема</div>
+        <a href="/reports/welltest" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">
+          ⬇ IC_Petroleum_90day_Testing.pdf</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── AI Chat ───────────────────────────────────────────────────────────────────
+function renderAI() {
+  document.getElementById('content').innerHTML = `
+  <div class="card" style="height:calc(100vh - 130px);display:flex;flex-direction:column">
+    <div class="card-header">
+      <span class="card-title">🤖 AI Помощник недропользователя</span>
+      <div style="font-size:12px;color:var(--gray)">КОНН РК · ЭК РК · ЕПРКИН · Приказы МЭ/МИИР</div>
+    </div>
+    <div id="chat-messages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px">
+      <div class="msg ai">Здравствуйте! Я AI-помощник по недропользованию РК.
+Могу ответить на вопросы по 7 этапам, нормативным актам (КОНН РК, ЭК РК, ЕПРКИН),
+паспортам скважин, дедлайнам и управленческому учёту.
+
+Примеры вопросов:
+• Какие документы нужны на этапе оценки?
+• Кто утверждает паспорт скважины?
+• Что такое коммерческое обнаружение?
+• Когда нужен пересчёт запасов?</div>
+    </div>
+    <div id="chat-input-row" style="display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--border)">
+      <textarea id="chat-input" placeholder="Введите вопрос... (Enter — отправить, Shift+Enter — перенос строки)"
+        style="flex:1;border:1px solid var(--border);border-radius:8px;padding:9px 12px;
+               font-size:13px;outline:none;resize:none;height:44px;font-family:inherit"
+        onkeydown="chatKeydown(event)"></textarea>
+      <button class="btn btn-primary" onclick="sendChat()" id="send-btn">Отправить</button>
+    </div>
+  </div>`;
+}
+
+function chatKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML += `<div class="msg user">${escapeHtml(msg)}</div>`;
+  const loadingEl = document.createElement('div');
+  loadingEl.className = 'msg ai loading';
+  loadingEl.textContent = 'Думаю';
+  msgs.appendChild(loadingEl);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const resp = await apiFetch('/api/chat', {
+      method:'POST',
+      body: JSON.stringify({message:msg, history:aiHistory})
+    });
+    loadingEl.remove();
+    aiHistory.push({role:'user',content:msg});
+    aiHistory.push({role:'assistant',content:resp.answer});
+    if (aiHistory.length > 20) aiHistory = aiHistory.slice(-20);
+    msgs.innerHTML += `<div class="msg ai">${escapeHtml(resp.answer)}</div>`;
+  } catch(e) {
+    loadingEl.remove();
+    msgs.innerHTML += `<div class="msg ai" style="color:var(--red)">Ошибка: ${e.message}</div>`;
+  }
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ── CRUD actions ──────────────────────────────────────────────────────────────
+async function submitContract() {
+  const body = {
+    number: document.getElementById('f-number').value.trim(),
+    company: document.getElementById('f-company').value.trim(),
+    territory: document.getElementById('f-territory').value.trim(),
+    region: document.getElementById('f-region').value.trim(),
+    contract_type: document.getElementById('f-ctype').value,
+    current_stage: parseInt(document.getElementById('f-stage').value),
+    start_date: document.getElementById('f-start').value || null,
+    end_date: document.getElementById('f-end').value || null,
+  };
+  if (!body.number || !body.company) { alert('Заполните обязательные поля'); return; }
+  try {
+    await apiFetch('/api/contracts', {method:'POST', body:JSON.stringify(body)});
+    closeModal('modal-contract');
+    nav('contracts');
+  } catch(e) { alert('Ошибка: ' + e.message); }
+}
+
+async function submitWell() {
+  const body = {
+    contract_id: parseInt(document.getElementById('wf-contract-id').value),
+    number: document.getElementById('wf-number').value.trim(),
+    well_type: document.getElementById('wf-type').value,
+    category: document.getElementById('wf-cat').value,
+    depth_m: parseFloat(document.getElementById('wf-depth').value) || null,
+    spud_date: document.getElementById('wf-spud').value || null,
+  };
+  if (!body.number) { alert('Введите номер скважины'); return; }
+  try {
+    await apiFetch('/api/wells', {method:'POST', body:JSON.stringify(body)});
+    closeModal('modal-well');
+    nav('contract-detail', body.contract_id);
+  } catch(e) { alert('Ошибка: ' + e.message); }
+}
+
+async function patchDoc(did, status) {
+  if (!status) return;
+  await apiFetch(`/api/documents/${did}`, {method:'PATCH', body:JSON.stringify({status})});
+  nav('contract-detail', currentContract);
+}
+
+async function completeDl(did, reload=false) {
+  await apiFetch(`/api/deadlines/${did}`, {method:'PATCH', body:JSON.stringify({status:'completed'})});
+  if (reload) nav('deadlines'); else nav('contract-detail', currentContract);
+}
+
+async function submitPassport(pid) {
+  await apiFetch(`/api/passports/${pid}`, {method:'PATCH', body:JSON.stringify({status:'submitted'})});
+  nav('well-detail', currentWell);
+}
+
+async function approvePassport(pid) {
+  await apiFetch(`/api/passports/${pid}`, {method:'PATCH', body:JSON.stringify({status:'approved'})});
+  nav('well-detail', currentWell);
+}
+
+function downloadPassport(wid, wnum) {
+  window.open(`/reports/passport/${wid}`, '_blank');
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function switchTab(el, tabId) {
+  el.closest('.card').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.closest('.card').querySelectorAll('.tab-pane').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  const dt = new Date(d+'T00:00:00');
+  return dt.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric'});
+}
+
+function fmtMoney(n) {
+  if (!n) return '0';
+  return new Intl.NumberFormat('ru-RU').format(n);
+}
+
+function isOverdue(d) {
+  if (!d) return false;
+  return new Date(d) < new Date();
+}
+
+function stageBar(current) {
+  return [1,2,3,4,5,6,7].map(n=>{
+    const cls = n < current ? 'done' : n === current ? 'active' : 'pending';
+    return `<div class="stage-seg ${cls}"></div>`;
+  }).join('');
+}
+
+function stageColor(status) {
+  return {completed:var_('--green'),active:var_('--accent'),pending:'#d1d5db'}[status]||'#d1d5db';
+}
+
+function var_(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function statusTag(s) {
+  const map = {
+    active:   ['tag-green','Активный'],
+    completed:['tag-green','Выполнен'],
+    approved: ['tag-green','Утверждён'],
+    submitted:['tag-blue', 'Подан'],
+    pending:  ['tag-orange','В работе'],
+    draft:    ['tag-gray', 'Черновик'],
+    suspended:['tag-orange','Приостановлен'],
+    overdue:  ['tag-red',  'Просрочен'],
+    rejected: ['tag-red',  'Отклонён'],
+  };
+  const [cls, label] = map[s] || ['tag-gray', s||'—'];
+  return `<span class="tag ${cls}">${label}</span>`;
+}
+
+function passportTag(s) {
+  if (!s) return statusTag('draft');
+  return statusTag(s);
+}
+
+function riskLabel(r) {
+  return {critical:'Критический',high:'Высокий',medium:'Средний',low:'Низкий'}[r]||r;
+}
+
+function docTypeLabel(t) {
+  return {project:'Проект',passport:'Паспорт',report:'Отчёт',
+          geological:'Геол. отчёт',act:'Акт'}[t]||t;
+}
+
+function parseLawRefs(refs) {
+  try {
+    const arr = typeof refs === 'string' ? JSON.parse(refs) : (refs||[]);
+    return arr.map(r=>`<span class="law-ref">${r}</span>`).join('');
+  } catch { return refs||''; }
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+          .replace(/\n/g,'<br>');
+}
+
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target===el) el.classList.remove('open'); });
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+nav('dashboard');
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Subsoil Management — AI-консультант недропользователя</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1620; --panel:#10202c; --panel2:#142b3a; --line:#21404f;
+  --ink:#e6eef2; --muted:#8aa3b0; --teal:#1f9e80; --teal-d:#157a62;
+  --amber:#e8923a; --red:#d2603f; --chip:#173241;
+  --sans:'IBM Plex Sans',sans-serif; --serif:'Spectral',serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:
+   radial-gradient(1200px 600px at 80% -10%, #143042 0%, transparent 60%),
+   var(--bg);
+  color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;overflow:hidden}
+.app{display:grid;grid-template-columns:240px 1fr 320px;height:100vh}
+/* ---- sidebar ---- */
+.side{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.brand{padding:18px 18px 14px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.logo{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--teal),#0e5f4c);
+  display:grid;place-items:center;font-family:var(--serif);font-weight:600;color:#fff;font-size:17px;letter-spacing:.5px}
+.brand h1{font-size:15px;margin:0;font-weight:600;letter-spacing:.2px}
+.brand p{margin:1px 0 0;font-size:10.5px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
+.nav{padding:10px;overflow:auto;flex:1;min-height:0}
+.nav .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:8px 10px 4px}
+.stage{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:9px;cursor:pointer;
+  color:var(--muted);transition:.15s;border:1px solid transparent}
+.stage:hover{background:var(--panel2);color:var(--ink)}
+.stage.active{background:var(--chip);color:var(--ink);border-color:var(--line)}
+.stage .n{width:22px;height:22px;border-radius:6px;background:#0c1c27;border:1px solid var(--line);
+  display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--teal);flex:none}
+.stage.active .n{background:var(--teal);color:#04130d;border-color:var(--teal)}
+.stage .t{font-size:12.5px;font-weight:500}
+.side .foot{padding:12px 16px;border-top:1px solid var(--line);font-size:10.5px;color:var(--muted)}
+/* ---- chat ---- */
+.main{display:flex;flex-direction:column;min-height:0}
+.top{padding:14px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.top h2{margin:0;font-family:var(--serif);font-weight:600;font-size:18px}
+.top .sub{font-size:11.5px;color:var(--muted)}
+.badge{font-family:var(--mono);font-size:10.5px;color:var(--teal);border:1px solid var(--teal-d);
+  padding:3px 9px;border-radius:20px;background:#0c2019}
+.chat{flex:1;overflow:auto;padding:24px 22px;display:flex;flex-direction:column;gap:16px}
+.msg{max-width:86%;display:flex;gap:11px;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg .av{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:13px}
+.msg.bot .av{background:linear-gradient(135deg,var(--teal),#0e5f4c);color:#fff;font-family:var(--serif)}
+.msg.me{margin-left:auto;flex-direction:row-reverse}
+.msg.me .av{background:var(--chip);border:1px solid var(--line);color:var(--muted)}
+.bubble{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.msg.me .bubble{background:var(--panel2)}
+.bubble h4{margin:0 0 6px;font-size:13.5px;color:var(--teal)}
+.bubble p{margin:0 0 8px}.bubble p:last-child{margin:0}
+.bubble ul{margin:6px 0;padding-left:18px}.bubble li{margin:3px 0}
+.bubble .law{font-family:var(--mono);font-size:11.5px;color:var(--amber);background:#1c1305;
+  padding:1px 6px;border-radius:4px;border:1px solid #3a2a10}
+.offer{margin-top:11px;padding:11px;border:1px dashed var(--teal-d);border-radius:10px;background:#0c2019}
+.offer .ot{font-size:12px;color:var(--muted);margin-bottom:8px}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;border-radius:8px;
+  padding:8px 12px;border:1px solid var(--line);background:var(--chip);color:var(--ink);transition:.15s;
+  display:inline-flex;align-items:center;gap:7px}
+.btn:hover{border-color:var(--teal);transform:translateY(-1px)}
+.btn.primary{background:var(--teal);color:#04130d;border-color:var(--teal);font-weight:600}
+.btn.primary:hover{background:#25b692}
+.btn svg{width:14px;height:14px}
+/* ---- composer ---- */
+.composer{padding:14px 22px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-end}
+.composer textarea{flex:1;resize:none;background:var(--panel);border:1px solid var(--line);border-radius:11px;
+  color:var(--ink);font-family:var(--sans);font-size:13.5px;padding:12px 14px;max-height:120px;outline:none}
+.composer textarea:focus{border-color:var(--teal)}
+.send{width:44px;height:44px;border-radius:11px;border:none;background:var(--teal);color:#04130d;cursor:pointer;
+  display:grid;place-items:center;flex:none;transition:.15s}
+.send:hover{background:#25b692}
+/* ---- right panel ---- */
+.docs{background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:18px}
+.docs h3{font-family:var(--serif);font-size:15px;margin:0 0 2px}
+.docs .meta{font-size:11px;color:var(--muted);margin-bottom:14px}
+.doc{border:1px solid var(--line);border-radius:11px;padding:12px;margin-bottom:10px;background:var(--panel2);transition:.15s}
+.doc:hover{border-color:var(--teal-d)}
+.doc .dt{font-size:12.5px;font-weight:600;margin-bottom:4px}
+.doc .dl{font-family:var(--mono);font-size:10.5px;color:var(--amber);margin-bottom:9px}
+.doc .tag{font-size:10px;color:var(--muted);float:right}
+.dlbtn{width:100%;justify-content:center}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 16px}
+.kpi .c{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px}
+.kpi .c .v{font-family:var(--mono);font-size:18px;color:var(--teal)}
+.kpi .c .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.sep{height:1px;background:var(--line);margin:16px 0}
+.exec .btn{width:100%;justify-content:flex-start;margin-bottom:8px}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:#1c3a49;border-radius:9px}
+@media(max-width:1080px){.app{grid-template-columns:200px 1fr}.docs{display:none}}
+@media(max-width:720px){.app{grid-template-columns:1fr}.side{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div><h1>Subsoil Management</h1><p>ERP · CRM · AI</p></div>
+    </div>
+    <nav class="nav">
+      <div class="lbl">Этапы недропользования</div>
+      <div id="stages"></div>
+      <div class="lbl" style="margin-top:8px">Для руководителей</div>
+      <div class="exec">
+        <button class="btn" onclick="execReport('portfolio')">📊 Портфель лицензий</button>
+        <button class="btn" onclick="execReport('deadlines')">⏰ Реестр дедлайнов и рисков</button>
+        <button class="btn" onclick="execReport('payments')">🔒 Статус паспортов и платежей</button>
+      </div>
+    </nav>
+    <div class="foot">КОНН 10.06.2025 · ЭК 29.07.2025 · ЕПРКИН 24.09.2024</div>
+  </aside>
+
+  <!-- CHAT -->
+  <section class="main">
+    <div class="top">
+      <div><h2 id="topTitle">AI-консультант</h2><div class="sub" id="topSub">Выберите этап слева или задайте вопрос</div></div>
+      <div class="badge">● online</div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="composer">
+      <textarea id="inp" rows="1" placeholder="Спросите про этап, документ, срок или согласование…"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"></textarea>
+      <button class="send" onclick="sendMsg()" title="Отправить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- DOCS PANEL -->
+  <aside class="docs" id="docs"></aside>
+</div>
+
+<script>
+/* ============ БАЗА ЗНАНИЙ (из вольта Subsoil) ============ */
+const DATA = {
+  1:{title:"Разведка",sub:"Поиск залежей УВ",laws:"ст. 134, 135, 142 КОНН · ст. 67, 68 ЭК",
+     intro:"Этап поиска залежей. Проект разведочных работ нужно составить в течение <b>1 года</b> со дня регистрации контракта. Авторнадзор — ежегодно.",
+     docs:[
+      {t:"Проект разведочных работ (поисковый)",l:"ст. 134, 135 КОНН",tag:"базовый",kind:"otchet"},
+      {t:"Отчёт авторского надзора",l:"ст. 142 КОНН",tag:"ежегодно",kind:"otchet"},
+      {t:"Паспорт скважины (поисковая)",l:"Приказ МЭ №355",tag:"паспорт",kind:"pasport"}]},
+  2:{title:"Оценка",sub:"Оценка обнаруженной залежи",laws:"ст. 134–136, 138, 142 КОНН",
+     intro:"Оценка залежи: 4 проектных документа. Проект пробной эксплуатации — <b>3 месяца</b> со дня решения. ⚠️ При признаках сложности — обновить контракт.",
+     docs:[
+      {t:"Проект разведки (оценочный)",l:"ст. 134, 135 КОНН",tag:"базовый",kind:"otchet"},
+      {t:"Оперативный подсчёт запасов",l:"Приказ МИИР №419/71",tag:"геол.",kind:"otchet"},
+      {t:"Проект пробной эксплуатации",l:"ст. 136 КОНН",tag:"базовый",kind:"otchet"},
+      {t:"Отчёт об испытании (5 объектов)",l:"ст. 134, 135 КОНН",tag:"отчёт",kind:"ispytanie"},
+      {t:"Паспорт скважины (оценочная)",l:"ст. 134, 135 КОНН",tag:"паспорт",kind:"pasport"}]},
+  3:{title:"Государственный Баланс",sub:"Официальный учёт запасов",laws:"ст. 6, 142 КОНН",
+     intro:"Официальный подсчёт запасов и защита в ГКЗ. Анализ разработки — <b>раз в 3 года</b>.",
+     docs:[
+      {t:"Подсчёт запасов (гос.баланс)",l:"Приказ МИИР №419/71",tag:"геол.",kind:"otchet"},
+      {t:"Анализ разработки месторождения",l:"ст. 6, 142 КОНН",tag:"3 года",kind:"otchet"}]},
+  4:{title:"Подготовительный период",sub:"Подготовка к добыче (≤ 3 лет)",laws:"ст. 137, 138, 142 КОНН",
+     intro:"Проект разработки (4 модели), техпроект скважин, перевод запасов. Длительность периода — <b>не более 3 лет</b>.",
+     docs:[
+      {t:"Проект разработки месторождения",l:"ст. 137 КОНН",tag:"базовый",kind:"otchet"},
+      {t:"Технический проект скважин",l:"ЕПРКИН · №355",tag:"техн.",kind:"otchet"},
+      {t:"Перевод запасов (C₂→C₁→A)",l:"Приказ МИИР №71",tag:"геол.",kind:"otchet"},
+      {t:"Паспорт скважины (опереж.-добыв.)",l:"ст. 137 КОНН",tag:"паспорт",kind:"pasport"}]},
+  5:{title:"Полномасштабная разработка",sub:"Промышленная добыча",laws:"ст. 119, 137, 142 КОНН",
+     intro:"Срок добычи ≤ 25 лет (45 — крупные). <b>δ запасов > 20% → пересчёт</b>. >100 млн т / >50 млрд м³ → обязательство п.7 ст.119.",
+     docs:[
+      {t:"Технический проект скважин",l:"ЕПРКИН · №355",tag:"техн.",kind:"otchet"},
+      {t:"Пересчёт запасов (δ > 20%)",l:"Приказ МИИР №419/71",tag:"геол.",kind:"otchet"},
+      {t:"Паспорт скважины (добыв./нагнет.)",l:"ст. 137 КОНН",tag:"паспорт",kind:"pasport"},
+      {t:"Отчёт об испытании скважины",l:"ст. 134, 135 КОНН",tag:"отчёт",kind:"ispytanie"}]},
+  6:{title:"Проект ликвидации",sub:"Завершение деятельности",laws:"ст. 107, 114, 116, 138 КОНН · ст. 9, 67 ЭК",
+     intro:"Ликвидация скважин, рекультивация. Цепочка согласований — 5–7 органов. Триггеры: ст. 107 / 114 / 116.",
+     docs:[
+      {t:"Проект ликвидации последствий",l:"ст. 138 КОНН · ст. 9 ЭК",tag:"базовый",kind:"otchet"},
+      {t:"Паспорт ликвидируемой скважины",l:"Приказ МЭ №200",tag:"паспорт",kind:"pasport"}]},
+  7:{title:"Сдача Контрактной территории",sub:"Возврат участка государству",laws:"ст. 90, 107, 114, 116 КОНН",
+     intro:"Окончательный отчёт (16 приложений), приёмка комиссией → акт ликвидации. Через Совет МД + сдача в фонды.",
+     docs:[
+      {t:"Окончательный отчёт о результатах ГРР",l:"ст. 107, 114, 116 КОНН",tag:"геол.",kind:"otchet"},
+      {t:"Акт ликвидации (приёмка)",l:"Приказ МЭ №200",tag:"акт",kind:"otchet"}]},
+};
+const KINDS={otchet:"Отчёт",pasport:"Паспорт",ispytanie:"Отчёт об испытании"};
+
+/* ============ UI ============ */
+let current=1;
+const chat=document.getElementById('chat');
+const stagesEl=document.getElementById('stages');
+Object.entries(DATA).forEach(([n,s])=>{
+  const d=document.createElement('div');d.className='stage';d.dataset.n=n;
+  d.innerHTML=`<div class="n">${n}</div><div class="t">${s.title}</div>`;
+  d.onclick=()=>selectStage(+n);stagesEl.appendChild(d);
+});
+
+function icon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>'}
+
+function botMessage(html){
+  const m=document.createElement('div');m.className='msg bot';
+  m.innerHTML=`<div class="av">S</div><div class="bubble">${html}</div>`;
+  chat.appendChild(m);chat.scrollTop=chat.scrollHeight;return m;
+}
+function meMessage(text){
+  const m=document.createElement('div');m.className='msg me';
+  m.innerHTML=`<div class="av">Вы</div><div class="bubble"><p></p></div>`;
+  m.querySelector('p').textContent=text;chat.appendChild(m);chat.scrollTop=chat.scrollHeight;
+}
+
+function docButtons(n){
+  const s=DATA[n];
+  return s.docs.map((d,i)=>`<button class="btn ${d.kind==='pasport'?'':'primary'}"
+      onclick="downloadDoc(${n},${i})">${icon()} ${KINDS[d.kind]}: ${d.t.length>26?d.t.slice(0,24)+'…':d.t}</button>`).join('');
+}
+
+function selectStage(n){
+  current=n;const s=DATA[n];
+  document.querySelectorAll('.stage').forEach(e=>e.classList.toggle('active',+e.dataset.n===n));
+  document.getElementById('topTitle').textContent=`Этап ${n} — ${s.title}`;
+  document.getElementById('topSub').textContent=s.sub;
+  botMessage(`<h4>Этап ${n} — ${s.title}</h4><p>${s.intro}</p>
+     <p>Нормативная база: <span class="law">${s.laws}</span></p>
+     <div class="offer"><div class="ot">📄 Готов сгенерировать документы этого этапа под вашу компанию:</div>
+     <div class="btns">${docButtons(n)}</div></div>`);
+  renderDocs(n);
+}
+
+function renderDocs(n){
+  const s=DATA[n];const el=document.getElementById('docs');
+  el.innerHTML=`<h3>Документы этапа ${n}</h3><div class="meta">${s.title} · ${s.laws}</div>
+    <div class="kpi">
+      <div class="c"><div class="v">${s.docs.length}</div><div class="l">документов</div></div>
+      <div class="c"><div class="v">VII</div><div class="l">фаз согл.</div></div>
+    </div>`+
+    s.docs.map((d,i)=>`<div class="doc"><span class="tag">${d.tag}</span>
+      <div class="dt">${d.t}</div><div class="dl">${d.l}</div>
+      <button class="btn dlbtn ${d.kind==='pasport'?'':'primary'}" onclick="downloadDoc(${n},${i})">${icon()} Скачать ${KINDS[d.kind]}</button>
+    </div>`).join('')+
+    `<div class="sep"></div><button class="btn dlbtn" onclick="execReport('stage',${n})">📊 Отчёт по этапу (для руководства)</button>`;
+}
+
+/* ============ генерация скачиваемого документа (HTML→файл, печать в PDF) ============ */
+function reportHTML(title, sectionsHTML){
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>${title}</title>
+  <style>
+    @page{margin:22mm 18mm}
+    body{font-family:'Segoe UI',Arial,sans-serif;color:#1b2330;font-size:12px;line-height:1.5}
+    .hd{background:#0d1620;color:#fff;padding:14px 18px;border-left:5px solid #1f9e80;margin:-4px -4px 18px}
+    .hd b{font-size:16px}.hd span{color:#8aa3b0;font-size:11px}
+    h1{font-size:20px;color:#0d1620;margin:6px 0}
+    h2{font-size:14px;color:#157a62;border-bottom:1px solid #cfd8e0;padding-bottom:4px;margin-top:20px}
+    table{width:100%;border-collapse:collapse;margin:8px 0;font-size:11px}
+    th{background:#0d1620;color:#fff;text-align:left;padding:6px 8px}
+    td{border:1px solid #cfd8e0;padding:6px 8px}
+    tr:nth-child(even) td{background:#f3f6f8}
+    .law{font-family:monospace;color:#b06a17}
+    .fill{color:#9aa5b1}
+    .sig{margin-top:40px;display:flex;justify-content:space-between;font-size:11px}
+    .note{background:#eef6f3;border-left:3px solid #1f9e80;padding:8px 10px;margin:10px 0;font-size:11px}
+    @media print{.noprint{display:none}}
+    .noprint{position:fixed;top:10px;right:10px;background:#1f9e80;color:#fff;border:none;
+      padding:10px 16px;border-radius:8px;font-size:13px;cursor:pointer}
+  </style></head><body>
+  <button class="noprint" onclick="window.print()">🖨 Сохранить как PDF</button>
+  <div class="hd"><b>Ваша компания</b> &nbsp;<span>Недропользование · Разведка и Добыча УВ</span></div>
+  <h1>${title}</h1>${sectionsHTML}
+  <div class="sig"><span>Руководитель проекта ___________ / ________ /</span><span>Дата: ____.____.20__</span></div>
+  </body></html>`;
+}
+function downloadBlob(name, html){
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
+  document.body.appendChild(a);a.click();a.remove();
+}
+
+function downloadDoc(n,i){
+  const s=DATA[n];const d=s.docs[i];
+  let body=`<div class="note">Документ сформирован шаблоном Subsoil Management. Поля «<span class="fill">____</span>» заполните данными скважины/месторождения.</div>
+    <h2>1. Реквизиты</h2><table>
+    <tr><th>Параметр</th><th>Значение</th></tr>
+    <tr><td>Недропользователь</td><td>Ваша компания</td></tr>
+    <tr><td>Документ</td><td>${d.t}</td></tr>
+    <tr><td>Норма</td><td class="law">${d.l}</td></tr>
+    <tr><td>Этап</td><td>${n} — ${s.title}</td></tr>
+    <tr><td>Месторождение / скважина</td><td class="fill">________________</td></tr>
+    <tr><td>Дата</td><td class="fill">____.____.20__</td></tr></table>`;
+  if(d.kind==='pasport'){
+    body+=`<h2>2. Конструкция скважины</h2><table>
+      <tr><th>Колонна</th><th>Ø, мм</th><th>Спуск, м</th><th>Цемент, м</th></tr>
+      <tr><td>Кондуктор</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr>
+      <tr><td>Техническая</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr>
+      <tr><td>Эксплуатационная</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr></table>
+      <h2>3. Результаты испытания по объектам (снизу вверх)</h2><table>
+      <tr><th>Объект</th><th>Интервал, м</th><th>Флюид</th><th>Дебит</th><th>Pпл, МПа</th><th>Оценка</th></tr>`+
+      [1,2,3,4,5].map(o=>`<tr><td>№${o}</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td></tr>`).join('')+
+      `</table><div class="note">⚠️ Финальная оплата подрядчику разблокируется только после утверждения паспорта МЭиПР РК.</div>`;
+  } else if(d.kind==='ispytanie'){
+    body+=`<h2>2. Методика</h2><p>Испытание в эксплуатационной колонне по принципу <b>«снизу вверх»</b>, 5 объектов × 12 суток, изоляция цементными мостами. 90-дневный цикл.</p>
+      <h2>3. Результаты по объектам</h2><table>
+      <tr><th>Объект</th><th>Интервал, м</th><th>Флюид</th><th>Макс. дебит</th><th>Прониц., мД</th><th>Оценка</th></tr>`+
+      [1,2,3,4,5].map(o=>`<tr><td>№${o}</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td><td class="fill">____</td></tr>`).join('')+`</table>`;
+  } else {
+    body+=`<h2>2. Состав документа</h2><table>
+      <tr><th>Раздел</th><th>Содержание</th></tr>
+      <tr><td>Цель</td><td class="fill">________________</td></tr>
+      <tr><td>Нормативная база</td><td class="law">${d.l}</td></tr>
+      <tr><td>Предусматривается</td><td class="fill">________________</td></tr>
+      <tr><td>Должен содержать</td><td class="fill">________________</td></tr>
+      <tr><td>Обеспечение по ликвидации</td><td>Приказ №27-н/к от 17.01.2025</td></tr></table>
+      <h2>3. Фазы прохождения (I–VII)</h2><table>
+      <tr><th>Фаза</th><th>Содержание</th><th>Орган</th></tr>
+      <tr><td>I</td><td>Уведомление / подача</td><td>МЭиПР</td></tr>
+      <tr><td>II</td><td>Заявление о намечаемой деятельности</td><td>ст. 68 ЭК</td></tr>
+      <tr><td>III</td><td>ОВВ/РООС</td><td>ст. 67 ЭК</td></tr>
+      <tr><td>IV</td><td>Согласования</td><td>эко/земля/МЧС/МЗ/МД</td></tr>
+      <tr><td>V</td><td>Экспертиза</td><td>МЭиПР</td></tr>
+      <tr><td>VI</td><td>Защита</td><td>ЦКРР / ГКЗ</td></tr>
+      <tr><td>VII</td><td>Передача</td><td>оператору</td></tr></table>`;
+  }
+  const fname=`${KINDS[d.kind]}_Этап${n}_${d.t.slice(0,18).replace(/[^a-zA-Zа-яА-Я0-9]/g,'_')}.html`;
+  downloadBlob(fname, reportHTML(d.t, body));
+  botMessage(`<p>✅ Сформировал <b>${d.t}</b> (этап ${n}). Файл скачивается — откройте и нажмите «🖨 Сохранить как PDF».</p>
+     <p style="color:var(--muted);font-size:12px">Поля «____» заполните данными вашей скважины/месторождения.</p>`);
+}
+
+function execReport(type,n){
+  let title,body;
+  if(type==='stage'){const s=DATA[n];
+    title=`Отчёт по этапу ${n} — ${s.title}`;
+    body=`<div class="note">Сводный отчёт для руководства по этапу ${n}.</div>
+      <h2>1. Документы этапа</h2><table><tr><th>Документ</th><th>Норма</th><th>Статус</th></tr>`+
+      s.docs.map(d=>`<tr><td>${d.t}</td><td class="law">${d.l}</td><td class="fill">в работе / ✔</td></tr>`).join('')+
+      `</table><h2>2. Управленческий учёт</h2><table>
+      <tr><th>Статья</th><th>План</th><th>Факт</th><th>Откл.</th></tr>
+      <tr><td>Бурение / ГРР</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr>
+      <tr><td>Геофизика</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr>
+      <tr><td>ИТОГО</td><td class="fill">__</td><td class="fill">__</td><td class="fill">__</td></tr></table>`;
+  } else if(type==='portfolio'){
+    title="Портфель лицензий — сводка для руководства";
+    body=`<div class="note">Обзор всех контрактов/лицензий недропользователя.</div>
+      <h2>Контракты</h2><table>
+      <tr><th>Контракт</th><th>Месторождение</th><th>Этап</th><th>Срок до</th><th>Статус</th></tr>`+
+      [1,2,3].map(i=>`<tr><td class="fill">№____</td><td class="fill">______</td><td class="fill">__</td><td class="fill">__.__.__</td><td class="fill">____</td></tr>`).join('')+`</table>`;
+  } else if(type==='deadlines'){
+    title="Реестр дедлайнов и рисков штрафов";
+    body=`<div class="note">Контроль сроков по всем обязательствам.</div>
+      <h2>Дедлайны</h2><table>
+      <tr><th>Обязательство</th><th>Норма</th><th>Дедлайн</th><th>Риск</th></tr>
+      <tr><td>Проект разведки</td><td class="law">ст.134 КОНН</td><td class="fill">__.__.__</td><td>🟢/🟡/🔴</td></tr>
+      <tr><td>Проект ПЭ</td><td class="law">ст.136 КОНН</td><td class="fill">__.__.__</td><td>🟢/🟡/🔴</td></tr>
+      <tr><td>Авторнадзор</td><td class="law">ст.142 КОНН</td><td class="fill">ежегодно</td><td>🟢/🟡/🔴</td></tr>
+      <tr><td>Анализ разработки</td><td class="law">ст.6 КОНН</td><td class="fill">раз в 3 г.</td><td>🟢/🟡/🔴</td></tr></table>`;
+  } else {
+    title="Статус паспортов скважин и платежей";
+    body=`<div class="note">⚠️ Финальная оплата подрядчику блокируется до утверждения паспорта МЭиПР.</div>
+      <h2>Скважины</h2><table>
+      <tr><th>Скважина</th><th>Этап</th><th>Паспорт</th><th>Оплата</th></tr>`+
+      [1,2,3].map(i=>`<tr><td class="fill">№____</td><td class="fill">__</td><td class="fill">подан/утверждён</td><td class="fill">🔒/🔓</td></tr>`).join('')+`</table>`;
+  }
+  downloadBlob(title.replace(/[^a-zA-Zа-яА-Я0-9]/g,'_')+'.html', reportHTML(title, body));
+  botMessage(`<p>✅ Сформировал отчёт «<b>${title}</b>». Файл скачивается — откройте и «🖨 Сохранить как PDF».</p>`);
+}
+
+/* ============ простой NLU чата ============ */
+function answer(q){
+  q=q.toLowerCase();
+  // этап по номеру/названию
+  for(const [n,s] of Object.entries(DATA)){
+    if(q.includes('этап '+n)||q.includes(s.title.toLowerCase().split(' ')[0])){selectStage(+n);return;}
+  }
+  if(q.includes('паспорт')){selectStage(current);return;}
+  if(q.includes('испыт')||q.includes('5 объект')||q.includes('снизу')){
+    botMessage(`<p>Испытание скважины — <b>90 дней, 5 объектов «снизу вверх»</b>: сначала глубокий объект, изоляция цементным мостом, затем выше. Каждый объект ~12 суток.</p>
+      <div class="offer"><div class="ot">📄 Готов сформировать:</div><div class="btns">
+      <button class="btn primary" onclick="downloadDoc(2,3)">${icon()} Отчёт об испытании</button>
+      <button class="btn" onclick="downloadDoc(2,4)">${icon()} Паспорт скважины</button></div></div>`);return;
+  }
+  if(q.includes('оплат')||q.includes('платёж')||q.includes('платеж')||q.includes('подрядчик')){
+    botMessage(`<p>Финальная оплата подрядчику <b>заблокирована до утверждения паспорта скважины МЭиПР</b>. Это механизм контроля документооборота.</p>
+      <div class="offer"><div class="ot">📊 Отчёт для руководства:</div><div class="btns">
+      <button class="btn primary" onclick="execReport('payments')">🔒 Статус паспортов и платежей</button></div></div>`);return;
+  }
+  if(q.includes('срок')||q.includes('дедлайн')||q.includes('штраф')){
+    botMessage(`<p>Ключевые сроки: проект разведки — <b>1 год</b> с контракта; проект ПЭ — <b>3 мес</b>; подготовительный — <b>≤3 лет</b>; авторнадзор — <b>ежегодно</b>; анализ разработки — <b>раз в 3 года</b>.</p>
+      <div class="offer"><div class="ot">📊 Отчёт:</div><div class="btns">
+      <button class="btn primary" onclick="execReport('deadlines')">⏰ Реестр дедлайнов и рисков</button></div></div>`);return;
+  }
+  if(q.includes('δ')||q.includes('20%')||q.includes('пересч')){
+    selectStage(5);return;
+  }
+  // дефолт
+  botMessage(`<p>Я отвечаю по 7 этапам недропользования РК и формирую документы. Выберите этап слева или уточните вопрос (документ, срок, согласование).</p>
+    <div class="offer"><div class="ot">Частые темы:</div><div class="btns">
+    <button class="btn" onclick="answer('испытание')">Испытание скважины</button>
+    <button class="btn" onclick="answer('оплата')">Платежи подрядчикам</button>
+    <button class="btn" onclick="answer('сроки')">Сроки и дедлайны</button></div></div>`);
+}
+
+function sendMsg(){
+  const inp=document.getElementById('inp');const t=inp.value.trim();if(!t)return;
+  meMessage(t);inp.value='';setTimeout(()=>answer(t),250);
+}
+
+/* ============ старт ============ */
+botMessage(`<h4>Добро пожаловать в Subsoil Management</h4>
+  <p>Я — AI-консультант по недропользованию УВ в Казахстане. Помогу разобраться в этапах, сроках и согласованиях и <b>сформирую отчёты и паспорта</b> прямо здесь.</p>
+  <p>Выберите этап слева, либо нажмите кнопку:</p>
+  <div class="btns">
+    <button class="btn primary" onclick="selectStage(1)">Начать с этапа 1 — Разведка</button>
+    <button class="btn" onclick="execReport('deadlines')">⏰ Реестр дедлайнов</button>
+  </div>`);
+selectStage(1);
+</script>
+</body>
+</html>
