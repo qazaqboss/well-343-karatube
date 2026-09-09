@@ -48,6 +48,26 @@ try:
 except ImportError:
     ContractCreate=WellCreate=DeadlineCreate=StatusPatch=ChatMsg=None
 
+# ── Первый запуск на постоянном томе: переносим стартовую базу ────────────────
+def _seed_db_if_needed() -> None:
+    """DB_PATH на проде указывает на том Railway, где при первом деплое пусто.
+
+    Чтобы не потерять контракты и скважины, один раз копируем базу из репозитория.
+    """
+    seed = Path(__file__).resolve().parent / "erp.db"
+    if DB_PATH == seed or DB_PATH.exists() or not seed.exists():
+        return
+    try:
+        DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+        DB_PATH.write_bytes(seed.read_bytes())
+        print(f"  ERP: стартовая база скопирована в {DB_PATH}")
+    except Exception as e:
+        print(f"⚠️  ERP: не удалось скопировать стартовую базу: {e}")
+
+
+_seed_db_if_needed()
+
+
 # ── DB helpers ─────────────────────────────────────────────────────────────────
 def get_db():
     conn = sqlite3.connect(str(DB_PATH))
