@@ -144,14 +144,16 @@ a{text-decoration:none;color:inherit}
 @media(max-width:1100px){.hub{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr}}
 @media(max-width:640px){.hub{grid-template-columns:1fr}}
 
+.logo{cursor:pointer;transition:opacity .15s}
+.logo:hover{opacity:.65}
 </style>
 </head>
 <body>
 <header class="header">
-  <div class="logo">
+  <a class="logo" href="index.html" title="На главную">
     <div class="logo-mark"><div class="logo-mark-inner"></div></div>
     <div><div class="logo-eyebrow">Месторождение Каратюбе</div><div class="logo-text">IC Petroleum</div></div>
-  </div>
+  </a>
   <nav class="nav">
     <a href="index.html" class="nav-pill active">Фонд</a>
     <a href="sealing.html" class="nav-pill">Герметичность</a>

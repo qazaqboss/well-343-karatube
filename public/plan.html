@@ -181,15 +181,17 @@ tbody tr:hover{background:var(--bg-2)}
 @media(max-width:1500px){.live-badge{display:none}}
 @media(max-width:1360px){.header-date{display:none}}
 @media(max-width:1250px){.nav{display:none}.nav-toggle{display:flex}}
+.logo{cursor:pointer;transition:opacity .15s}
+.logo:hover{opacity:.65}
 </style>
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">
+  <a class="logo" href="index.html" title="На главную">
     <div class="logo-mark"><div class="logo-mark-inner"></div></div>
     <div><div class="logo-eyebrow">Месторождение Каратюбе</div><div class="logo-text">IC Petroleum</div></div>
-  </div>
+  </a>
   <nav class="nav">
     <a href="index.html" class="nav-pill">Фонд</a>
     <a href="sealing.html" class="nav-pill">Герметичность</a>

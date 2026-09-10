@@ -212,15 +212,18 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .well-switch a:hover{border-color:var(--grey);color:var(--white)}
 .well-switch a.active{background:var(--white);color:#fff;border-color:var(--white)}
 @media(max-width:900px){.well-switch{padding:10px 20px}}
+a{text-decoration:none;color:inherit}
+.logo{cursor:pointer;transition:opacity .15s}
+.logo:hover{opacity:.65}
 </style>
 </head>
 <body data-well-id="305">
 
 <header class="header">
-  <div class="logo">
+  <a class="logo" href="index.html" title="На главную">
     <div class="logo-mark"><div class="logo-mark-inner"></div></div>
     <div><div class="logo-eyebrow">Месторождение Каратюбе</div><div class="logo-text">IC Petroleum</div></div>
-  </div>
+  </a>
   <nav class="nav">
     <a href="index.html" class="nav-pill active">Фонд</a>
     <a href="sealing.html" class="nav-pill">Герметичность</a>

@@ -687,7 +687,8 @@ HTML_PAGE = r"""<!DOCTYPE html>
   /* ── Шапка как на сайте ── */
   header{display:flex;align-items:center;justify-content:space-between;gap:16px;
          padding:0 40px;height:60px;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0}
-  .logo{display:flex;align-items:center;gap:14px;flex-shrink:0}
+  .logo{display:flex;align-items:center;gap:14px;flex-shrink:0;cursor:pointer;transition:opacity .15s}
+  .logo:hover{opacity:.65}
   .logo-mark{width:28px;height:28px;border:1.5px solid var(--border);transform:rotate(45deg);
              display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .logo-mark i{width:10px;height:10px;background:var(--white);display:block}
@@ -701,6 +702,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
             padding:4px 10px;border-radius:2px;transition:.2s}
   nav.nav a:hover{border-color:var(--grey);color:var(--white)}
   nav.nav a.active{border-color:var(--white);color:var(--white)}
+  nav.nav a.home{border-color:var(--white);color:var(--white);font-weight:400}
   .header-right{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--white-dim);
                 letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
   .live-dot{width:6px;height:6px;border-radius:50%;background:var(--white-dim);animation:pulse 2s infinite}
@@ -747,7 +749,9 @@ HTML_PAGE = r"""<!DOCTYPE html>
   button#clear:hover{border-color:var(--red);color:var(--red)}
 
   @media(max-width:900px){
-    header{padding:0 20px}nav.nav{display:none}
+    header{padding:0 20px}
+    nav.nav a:not(.home){display:none}
+    .header-right{display:none}
     .stage-bar{padding:10px 20px}#chat{padding:20px}footer{padding:12px 20px}
     .header-right{font-size:10px}
   }
@@ -755,15 +759,15 @@ HTML_PAGE = r"""<!DOCTYPE html>
 </head>
 <body>
 <header>
-  <div class="logo">
+  <a class="logo" href="/" title="На главную">
     <div class="logo-mark"><i></i></div>
     <div>
       <div class="logo-eyebrow">Месторождение Каратюбе</div>
       <div class="logo-text">IC Petroleum</div>
     </div>
-  </div>
+  </a>
   <nav class="nav">
-    <a href="/">Фонд</a>
+    <a href="/" class="home">&#8592; На главную</a>
     <a href="/sealing.html">Герметичность</a>
     <a href="/plan.html">Программа</a>
     <a href="/stages.html">Этапы</a>
