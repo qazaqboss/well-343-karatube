@@ -1,5 +1,6 @@
 {
   "outputDirectory": "public",
+  "ignoreCommand": "exit 0",
   "headers": [
     {
       "source": "/(.*)\\.(js|html)",
