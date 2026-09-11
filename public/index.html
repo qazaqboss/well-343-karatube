@@ -152,6 +152,17 @@ a{text-decoration:none;color:inherit}
 
 .logo{cursor:pointer;transition:opacity .15s}
 .logo:hover{opacity:.65}
+
+/* Управление — входы в ERP */
+.manage{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.mg{background:var(--bg);padding:20px 18px;display:block;transition:background .15s}
+.mg:hover{background:var(--bg-2)}
+.mg-v{font-family:var(--font-h);font-size:30px;font-weight:700;line-height:1}
+.mg-t{font-family:var(--font-h);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-top:10px}
+.mg-s{font-family:var(--font-data);font-size:11px;color:var(--grey);line-height:1.45;margin-top:5px}
+.mg-v.warn{color:var(--red,#EF4444)}
+@media(max-width:1100px){.manage{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.manage{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -260,6 +271,24 @@ a{text-decoration:none;color:inherit}
   </div>
 </section>
 
+<!-- УПРАВЛЕНИЕ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Управление</div>
+      <div class="section-sub">Прямые входы в рабочие разделы: контракты и лицензии, скважины с паспортами, сроки по обязательствам и выпуск отчётов. Цифры подтягиваются из ERP.</div>
+    </div>
+  </div>
+  <div class="manage" id="manage">
+    <a class="mg" href="/erp/#contracts"><div class="mg-v" data-k="contracts">—</div><div class="mg-t">Контракты</div><div class="mg-s">Лицензии, этап, сроки действия</div></a>
+    <a class="mg" href="/erp/#wells"><div class="mg-v" data-k="wells">—</div><div class="mg-t">Скважины</div><div class="mg-s">Паспорта и категории запасов</div></a>
+    <a class="mg" href="/erp/#deadlines"><div class="mg-v" data-k="overdue">—</div><div class="mg-t">Просрочено</div><div class="mg-s">Обязательства с истёкшим сроком</div></a>
+    <a class="mg" href="/erp/#calendar"><div class="mg-v" data-k="upcoming">—</div><div class="mg-t">Календарь</div><div class="mg-s">Ближайшие события по срокам</div></a>
+    <a class="mg" href="/erp/#reports"><div class="mg-v">7</div><div class="mg-t">Отчёты</div><div class="mg-s">Выгрузка PDF по каждому этапу</div></a>
+    <a class="mg" href="/ai"><div class="mg-v">AI</div><div class="mg-t">Помощник</div><div class="mg-s">Нормативка РК и состояние фонда</div></a>
+  </div>
+</section>
+
 <!-- КАК УСТРОЕНО -->
 <section class="section">
   <div class="section-head">
@@ -285,6 +314,30 @@ a{text-decoration:none;color:inherit}
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
+</script>
+<script>
+/* Счётчики в блоке «Управление» — из ERP, молча пропускаем, если бэкенда нет */
+(function () {
+  fetch('/erp/api/dashboard', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      var map = {
+        contracts: d.contracts,
+        wells: d.wells,
+        overdue: d.overdue_deadlines,
+        upcoming: (d.upcoming_deadlines || []).length
+      };
+      Object.keys(map).forEach(function (k) {
+        var el = document.querySelector('.mg-v[data-k="' + k + '"]');
+        if (el && map[k] !== undefined && map[k] !== null) {
+          el.textContent = map[k];
+          if (k === 'overdue' && map[k] > 0) el.classList.add('warn');
+        }
+      });
+    })
+    .catch(function () {});
+})();
 </script>
 <script src="wells.js?v=20260910" defer></script>
 <script src="i18n.js?v=20260910" defer></script>

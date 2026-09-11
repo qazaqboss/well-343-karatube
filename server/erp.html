@@ -362,6 +362,10 @@ async function apiFetch(url, opts={}) {
 
 // ── Router ────────────────────────────────────────────────────────────────────
 function nav(page, data=null) {
+  // Раздел пишем в адрес: /erp/#wells открывается сразу на скважинах
+  if (!data && location.hash.slice(1) !== page) {
+    history.replaceState(null, '', '#' + page);
+  }
   document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
   const ni = document.getElementById('nav-' + page);
   if (ni) ni.classList.add('active');
@@ -1129,7 +1133,16 @@ document.querySelectorAll('.modal-overlay').forEach(el => {
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-nav('dashboard');
+const ROUTES = ['dashboard','contracts','wells','deadlines','calendar','reports','ai'];
+function routeFromHash() {
+  const h = location.hash.slice(1);
+  return ROUTES.includes(h) ? h : 'dashboard';
+}
+nav(routeFromHash());
+window.addEventListener('hashchange', () => {
+  const r = routeFromHash();
+  if (r !== currentPage) nav(r);
+});
 </script>
 </body>
 </html>
