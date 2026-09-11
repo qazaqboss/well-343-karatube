@@ -7,3 +7,8 @@ __pycache__/
 vault/99-Chat-Logs/
 .obsidian/workspace.json
 .DS_Store
+
+# Obsidian: рабочее состояние окон — в репозиторий не нужно
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.trash/
