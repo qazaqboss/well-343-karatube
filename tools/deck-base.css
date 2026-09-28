@@ -1,0 +1,76 @@
+/* Общий стиль презентаций NanoCem UT-9. Слайд 1280×720 px (16:9). */
+@page { size: 338.67mm 190.5mm; margin: 0 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-2:#F8F8F8;--surface:#F4F4F4;--border:#D8D8D8;--border-dim:#EBEBEB;
+  --ink:#111111;--ink-dim:#2A2A2A;--grey:#777777;--grey-dim:#AAAAAA;--grey-muted:#C4C4C4;
+  --ok:#16A34A;--bad:#EF4444;--warn:#EA580C;
+  --fh:'Oswald',sans-serif;--fd:'Inter',sans-serif;
+}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--fd);-webkit-font-smoothing:antialiased}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--bg);
+       page-break-after:always;break-after:page;display:flex;flex-direction:column}
+.slide:last-child{page-break-after:auto;break-after:auto}
+
+/* шапка и подвал слайда */
+.s-head{display:flex;align-items:center;gap:14px;padding:34px 56px 0;flex-shrink:0}
+.mark{width:26px;height:26px;border:1.5px solid var(--border);transform:rotate(45deg);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mark i{width:9px;height:9px;background:var(--ink);display:block}
+.s-brand{font-family:var(--fh);font-size:14px;font-weight:400;letter-spacing:4px;text-transform:uppercase}
+.s-spacer{flex:1}
+.s-kicker{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-dim)}
+.s-foot{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+        padding:0 56px 28px;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;
+        color:var(--grey-muted);flex-shrink:0}
+.s-body{flex:1;padding:0 56px;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.s-body.top{justify-content:flex-start;padding-top:22px}
+.stats-wrap{padding:0 56px 24px;flex-shrink:0}
+
+/* типографика */
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:16px}
+h1{font-family:var(--fh);font-weight:700;font-size:78px;line-height:.98;letter-spacing:-1px;text-transform:uppercase}
+h1 .light{font-weight:300;color:var(--grey)}
+h2{font-family:var(--fh);font-weight:700;font-size:40px;line-height:1.05;letter-spacing:-.4px;text-transform:uppercase}
+.lead{font-size:17px;line-height:1.5;color:var(--ink-dim);max-width:880px;margin-top:18px}
+.note{font-size:13px;line-height:1.55;color:var(--grey);max-width:900px;margin-top:14px}
+b{font-weight:600}
+.hr{height:1px;background:var(--border);margin:22px 0}
+
+/* сетки */
+.cols{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:26px}
+.c2{grid-template-columns:repeat(2,1fr)} .c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.cell{background:var(--bg);padding:24px 26px}
+.cell-idx{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:10px}
+.cell-h{font-family:var(--fh);font-size:19px;font-weight:600;letter-spacing:.3px;line-height:1.15}
+.cell-t{font-size:13px;line-height:1.6;color:var(--ink-dim);margin-top:10px}
+
+/* числовые плитки */
+.stats{display:flex;border-top:1px solid var(--border)}
+.stat{flex:1;padding:20px 0 0;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat:not(:first-child){padding-left:26px}
+.stat-k{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dim)}
+.stat-v{font-family:var(--fh);font-size:34px;font-weight:700;line-height:1.1;margin-top:7px}
+.stat-s{font-size:11px;color:var(--grey);margin-top:4px}
+
+/* таблица */
+table{width:100%;border-collapse:collapse;margin-top:22px;font-size:13.5px}
+th{font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);
+   text-align:left;font-weight:500;padding:0 12px 9px 0;border-bottom:1px solid var(--border)}
+td{padding:12px 12px 12px 0;border-bottom:1px solid var(--border-dim);vertical-align:top}
+td.num{font-variant-numeric:tabular-nums}
+.w{font-family:var(--fh);font-size:16px;font-weight:600;letter-spacing:.5px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.d-ok{background:var(--ok)} .d-mid{background:var(--warn)} .d-no{background:var(--grey-muted)}
+
+/* акценты */
+.big{font-family:var(--fh);font-size:64px;font-weight:700;line-height:1;letter-spacing:-1px}
+.big.ok{color:var(--ok)} .big.bad{color:var(--bad)}
+.unit{font-size:12px;color:var(--grey);letter-spacing:1px;margin-top:6px}
+.watermark{position:absolute;right:-24px;top:-56px;font-family:var(--fh);font-size:270px;
+           font-weight:700;color:rgba(0,0,0,.035);line-height:1;letter-spacing:-6px;user-select:none}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);
+      padding:8px 14px;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-dim)}
+.pill.ok{border-color:var(--ok);color:var(--ok)}

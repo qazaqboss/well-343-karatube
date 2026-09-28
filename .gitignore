@@ -12,3 +12,6 @@ vault/99-Chat-Logs/
 vault/.obsidian/workspace.json
 vault/.obsidian/workspace-mobile.json
 vault/.trash/
+
+# Черновики презентаций (генерируются tools/make-deck.sh)
+tools/_deck-*.html
