@@ -150,7 +150,8 @@
       var val = w.last.qn === '—'
         ? '<div class="wf-val">Добычи нет</div><div class="wf-sub">' + w.status.detail + '</div>'
         : '<div class="wf-val"><b>' + w.last.qn + '</b> т/сут · обв. <b>' + w.last.obv + '%</b></div>' +
-          '<div class="wf-sub">замер ' + w.last.date + ' · Qж ' + w.last.qzh + ' м³/сут</div>';
+          '<div class="wf-sub"><span>замер</span> ' + w.last.date + ' · <span>Qж</span> ' +
+          w.last.qzh + ' <span>м³/сут</span></div>';
       return '<a class="wf-card' + (cur ? ' is-current' : '') + '" href="' + w.href + '">' +
         '<div class="wf-top"><span class="wf-num">' + w.id + '</span><span class="wf-dot ' + w.status.code + '"></span></div>' +
         '<div class="wf-status">' + w.status.label + '</div>' + val + '</a>';
