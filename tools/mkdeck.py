@@ -4,6 +4,7 @@ import io, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSS  = io.open(os.path.join(ROOT, "tools/deck-base.css"), encoding="utf-8").read()
+CSS_M = io.open(os.path.join(ROOT, "tools/deck-mobile.css"), encoding="utf-8").read()
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Схема «обычный цемент против ультратонкого» — та же идея, что на сайте
@@ -322,7 +323,7 @@ EN = dict(
  ])
 
 # ─────────────────────────────────────────────────────────────────────────────
-def slide(t, s, n, total):
+def slide(t, s, n, total, m=False):
     head = (f'<div class="s-head"><div class="mark"><i></i></div>'
             f'<div class="s-brand">NanoCem UT-9</div><div class="s-spacer"></div>'
             f'<div class="s-kicker">{s.get("kicker","")}</div></div>')
@@ -353,19 +354,30 @@ def slide(t, s, n, total):
                 + cols(s["cols"]) + '</div>')
     elif k == "grind":
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2><div class="lead">{s["lead"]}</div>'
-                f'<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:center;margin-top:30px">'
+                f'<div style="display:grid;grid-template-columns:{"1fr" if m else "1.1fr 1fr"};gap:{44 if m else 52}px;align-items:center;margin-top:30px">'
                 f'<div>{grind_svg(t)}</div><div class="note" style="margin:0">{s["note"]}</div></div></div>')
     elif k == "spec":
         half = (len(s["rows"]) + 1) // 2
         def tbl(rows):
+            if m:
+                return ("<table>" + "".join(
+                    f'<tr style="padding:0;border:none;margin:0;'
+                    f'border-bottom:1px solid var(--border-dim)">'
+                    f'<td style="padding:16px 0;text-align:left">'
+                    f'<span style="color:var(--grey)">{a}</span>'
+                    f'<span style="font-weight:600;margin-left:auto;padding-left:24px;'
+                    f'text-align:right">{b}</span></td></tr>'
+                    for a, b in rows) + "</table>")
             return ("<table>" + "".join(
                 f'<tr><td style="color:var(--grey)">{a}</td>'
                 f'<td class="num" style="text-align:right;font-weight:600">{b}</td></tr>'
                 for a, b in rows) + "</table>")
+        grid = ("1fr", 0) if m else ("1fr 1fr", 48)
+        rows_html = tbl(s["rows"]) if m else (tbl(s["rows"][:half]) + tbl(s["rows"][half:]))
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2>'
                 f'<div class="note" style="margin-top:10px">{s["sub"]}</div>'
-                f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:8px">'
-                f'{tbl(s["rows"][:half])}{tbl(s["rows"][half:])}</div></div>')
+                f'<div style="display:grid;grid-template-columns:{grid[0]};gap:{grid[1]}px;margin-top:8px">'
+                f'{rows_html}</div></div>')
     elif k == "tech":
         items = [(a, b, c) for a, b, c in s["steps"]]
         body = (f'<div class="s-body top"><h2>{s["h2"]}</h2>'
@@ -374,26 +386,35 @@ def slide(t, s, n, total):
                 + '</div>')
     elif k == "fund":
         head_row = "".join(f"<th>{h}</th>" for h in s["head"])
+        hk = s["head"]
         rows = "".join(
-            f'<tr><td class="w">{w}</td><td class="num">{e}</td>'
-            f'<td><span class="dot {d}"></span>{lab}</td><td class="num">{dt}</td>'
-            f'<td style="color:var(--ink-dim)">{res}</td></tr>'
+            f'<tr><td class="w">{w}</td>'
+            f'<td class="num" data-k="{hk[1]}">{e}</td>'
+            f'<td data-k="{hk[2]}"><span class="cv"><span class="dot {d}"></span>{lab}</span></td>'
+            f'<td class="num" data-k="{hk[3]}">{dt}</td>'
+            f'<td class="wide" data-k="{hk[4]}" style="color:var(--ink-dim)">{res}</td></tr>'
             for w, e, d, lab, dt, res in s["rows"])
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2>'
                 f'<div class="note" style="margin-top:10px">{s["sub"]}</div>'
                 f'<table><thead><tr>{head_row}</tr></thead><tbody>{rows}</tbody></table></div>')
     elif k == "case":
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2>'
-                f'<div style="display:grid;grid-template-columns:1.15fr 1fr;gap:52px;align-items:center;margin-top:18px">'
+                f'<div style="display:grid;grid-template-columns:{"1fr" if m else "1.15fr 1fr"};gap:{40 if m else 52}px;align-items:center;margin-top:18px">'
                 f'<div>{case_svg(t)}</div><div class="lead" style="margin:0">{s["lead"]}</div></div></div>'
                 f'<div class="stats-wrap">{stats(s["stats"])}</div>')
     elif k == "verify":
-        rows = "".join(f'<tr><td style="color:var(--grey)">{a}</td>'
-                       f'<td class="num" style="text-align:right">{b}</td>'
-                       f'<td style="text-align:right;color:var(--ok);font-weight:600;width:130px">{c}</td></tr>'
-                       for a, b, c in s["rows"])
+        if m:
+            rows = "".join(f'<tr><td class="w" style="font-size:30px">{a}</td>'
+                           f'<td data-k="Давление">{b}</td>'
+                           f'<td data-k="Итог" style="color:var(--ok);font-weight:600">{c}</td></tr>'
+                           for a, b, c in s["rows"])
+        else:
+            rows = "".join(f'<tr><td style="color:var(--grey)">{a}</td>'
+                           f'<td class="num" style="text-align:right">{b}</td>'
+                           f'<td style="text-align:right;color:var(--ok);font-weight:600;width:130px">{c}</td></tr>'
+                           for a, b, c in s["rows"])
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2><div class="lead">{s["lead"]}</div>'
-                f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:26px;align-items:start">'
+                f'<div style="display:grid;grid-template-columns:{"1fr" if m else "1fr 1fr"};gap:{36 if m else 52}px;margin-top:26px;align-items:start">'
                 f'<table style="margin-top:0">{rows}</table>'
                 f'<div class="note" style="margin-top:0">{s["note"]}</div></div></div>')
     else:  # final
@@ -402,16 +423,36 @@ def slide(t, s, n, total):
                 f'<div style="margin-top:30px"><span class="pill ok">{s["cta"]}</span></div></div>')
     return f'<section class="slide">{head}{body}{foot}</section>'
 
-def build(t):
-    total = len(t["s"])
-    slides = "\n".join(slide(t, s, i + 1, total) for i, s in enumerate(t["s"]))
+def split_for_mobile(deck):
+    """Плотные слайды делим пополам: в вертикальный формат шесть карточек не влезают."""
+    out = []
+    for s in deck:
+        if s["kind"] == "tech" and len(s.get("steps", [])) > 3:
+            a = dict(s); a["steps"] = s["steps"][:3]
+            b = dict(s); b["steps"] = s["steps"][3:]; b["sub"] = ""
+            b["h2"] = s["h2"] + " · 2"
+            a["h2"] = s["h2"] + " · 1"
+            out += [a, b]
+        elif s["kind"] == "fund" and len(s.get("rows", [])) > 4:
+            a = dict(s); a["rows"] = s["rows"][:4]
+            b = dict(s); b["rows"] = s["rows"][4:]; b["sub"] = ""
+            out += [a, b]
+        else:
+            out.append(s)
+    return out
+
+def build(t, mobile=False):
+    deck = split_for_mobile(t["s"]) if mobile else t["s"]
+    total = len(deck)
+    slides = "\n".join(slide(t, s, i + 1, total, mobile) for i, s in enumerate(deck))
     html = (f'<!DOCTYPE html><html lang="{t["lang"]}"><head><meta charset="UTF-8">'
             f'<title>{t["title"]}</title>'
             f'<link rel="preconnect" href="https://fonts.googleapis.com">'
             f'<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700'
             f'&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">'
-            f'<style>{CSS}</style></head><body>{slides}</body></html>')
-    out = os.path.join(ROOT, "tools/_deck-%s.html" % t["lang"])
+            f'<style>{CSS_M if mobile else CSS}</style></head><body>{slides}</body></html>')
+    name = "tools/_deck-%s%s.html" % (t["lang"], "-m" if mobile else "")
+    out = os.path.join(ROOT, name)
     io.open(out, "w", encoding="utf-8").write(html)
     print("%s — %d слайдов" % (os.path.basename(out), total))
     return out
@@ -419,3 +460,4 @@ def build(t):
 if __name__ == "__main__":
     for t in (RU, EN):
         build(t)
+    build(RU, mobile=True)

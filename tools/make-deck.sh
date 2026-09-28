@@ -15,6 +15,7 @@ render () {   # render <язык> <имя файла>
   echo "  public/$2"
 }
 echo "Рендерю PDF:"
-render ru nanocem-ut9-presentation.pdf
-render en nanocem-ut9-presentation-en.pdf
+render ru   nanocem-ut9-presentation.pdf
+render en   nanocem-ut9-presentation-en.pdf
+render ru-m nanocem-ut9-presentation-mobile.pdf
 echo "Готово."
