@@ -107,20 +107,21 @@
           date: "18.07.2026", zone: "Центральная", qobv: "1,42 т/сут · 18,6%",
           note: "По АКЦ сплошной контакт всего 6,25% ствола: изоляция перфорации не перекрывала путь воды за колонной. В сентябре скважину перевели на горизонт T1-II — результат захода по J1-IV оценить уже нельзя."
         }
-      }
-    ],
-
-    /* Заходы вне суточного мониторинга: скважина обработана, но в фонд из шести
-       не входит — своих режимных листов по ней пока нет. Идёт в таблицу
-       на странице герметичности, в ленту фонда не попадает. */
-    extra: [
+      },
       {
-        id: "357", href: "sealing.html", title: "Скважина 357",
-        status: { code: "krs", label: "КРС · разбурка, далее ПВР", detail: "с 24.09" },
+        id: "357", href: "well-357.html", title: "Скважина 357",
+        status: { code: "krs", label: "КРС · после ЦПД", detail: "опрессовка пройдена 25.09" },
+        last: { date: "25.09", qn: "—", obv: "—", qzh: "—" },
+        stats: [
+          ["Интервалов изолировано", "3 из 3"],
+          ["Опрессовка", "держат все три"],
+          ["Состав", "3 т · ультратонкий"],
+          ["Суточные замеры", "после запуска"]
+        ],
+        note: "Заход 24.09 в трёх интервалах 657–684 м. 25.09 мост разбурен и каждый интервал опрессован отдельно — герметичны все три. Единственная скважина фонда, где изоляция подтверждена прямым испытанием до запуска. Дальше ГИС и перфорация.",
         seal: {
           code: "tested", label: "Герметично по опрессовке", entries: "1 заход",
-          date: "24.09.2026", zone: "уточняется",
-          qobv: "добычи пока нет",
+          date: "24.09.2026", zone: "уточняется", qobv: "добычи пока нет",
           note: "ЦПД в трёх интервалах 657–663, 669,5–672 и 679–684 м, 3 т ультратонкого состава. 25.09 мост разбурен и каждый интервал опрессован — все три держат (30–40 атм, 15 мин). Изоляция подтверждена прямым испытанием, а не косвенно. Дальше ГИС и перфорация; промысловый эффект будет виден после запуска."
         }
       }
@@ -138,7 +139,7 @@
 
   /* ── Лента фонда: рендерится в #fundStrip на любой странице ────────────── */
   var CSS = '' +
-    '.wf-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border,#D8D8D8);border:1px solid var(--border,#D8D8D8)}' +
+    '.wf-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border,#D8D8D8);border:1px solid var(--border,#D8D8D8)}' +
     '.wf-card{background:var(--bg,#fff);padding:16px 18px;display:block;text-decoration:none;color:inherit;transition:background .15s}' +
     '.wf-card:hover{background:var(--bg-2,#F8F8F8)}' +
     '.wf-card.is-current{background:var(--surface,#F4F4F4)}' +
@@ -150,6 +151,7 @@
     '.wf-val{font-family:Inter,sans-serif;font-size:12.5px;margin-top:9px;color:#2A2A2A}' +
     '.wf-val b{font-weight:600}' +
     '.wf-sub{font-family:Inter,sans-serif;font-size:10.5px;color:#AAAAAA;margin-top:3px;letter-spacing:.5px}' +
+    '@media(max-width:1500px){.wf-strip{grid-template-columns:repeat(4,1fr)}}' +
     '@media(max-width:1100px){.wf-strip{grid-template-columns:repeat(3,1fr)}}' +
     '@media(max-width:640px){.wf-strip{grid-template-columns:repeat(2,1fr)}}';
 

@@ -389,7 +389,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="section-head">
     <div>
       <div class="section-title">Последний заход — скважина 357</div>
-      <div class="section-sub">ЦПД 24.09.2026, разбурка моста и опрессовка интервалов 25.09.2026. Единственный заход в фонде, где герметичность подтверждена прямым испытанием ещё до запуска скважины. Скважина не входит в суточный мониторинг, поэтому промысловый эффект будет виден только после перфорации и вывода на режим.</div>
+      <div class="section-sub">ЦПД 24.09.2026, разбурка моста и опрессовка интервалов 25.09.2026. Единственный заход в фонде, где герметичность подтверждена прямым испытанием ещё до запуска скважины. Суточные замеры начнутся после перфорации и вывода на режим — до тех пор промысловый эффект не оценивается. Подробности операции — на <a href="well-357.html" style="border-bottom:1px solid var(--grey-muted)">странице скважины</a>.</div>
     </div>
   </div>
   <div class="cards">
@@ -544,7 +544,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
-<script src="wells.js?v=20260929b"></script>
+<script src="wells.js?v=20260929c"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
@@ -553,15 +553,11 @@ function closeNav(){document.getElementById('navMobile').classList.remove('open'
 var SEAL_CLS = { first: 'g', second: 'a', confirmed: 'g', tested: 'g', wait: 'a', open: 'r' };
 var SEAL_RANK = { first: 0, second: 1, confirmed: 2, tested: 3, wait: 4, open: 5 };
 
-var ROWS = window.WELLS.wells.concat(window.WELLS.extra || []);
-
-document.getElementById('tbody').innerHTML = ROWS.slice().sort(function (a, b) {
+document.getElementById('tbody').innerHTML = window.WELLS.wells.slice().sort(function (a, b) {
   return SEAL_RANK[a.seal.code] - SEAL_RANK[b.seal.code];
 }).map(function (w) {
   var s = w.seal, cls = SEAL_CLS[s.code];
-  /* у внефондовых заходов своей страницы нет — выводим номер без ссылки */
-  var name = w.href === 'sealing.html' ? w.id : '<a href="' + w.href + '">' + w.id + '</a>';
-  return '<tr><td class="c-well">' + name + '</td>' +
+  return '<tr><td class="c-well"><a href="' + w.href + '">' + w.id + '</a></td>' +
     '<td class="c-mono">' + s.entries + '</td>' +
     '<td><span class="res ' + (cls === 'r' ? 'r' : '') + '"><i class="dot ' + cls + '"></i>' + s.label + '</span></td>' +
     '<td class="c-mono">' + s.date + '</td>' +
@@ -570,7 +566,7 @@ document.getElementById('tbody').innerHTML = ROWS.slice().sort(function (a, b) {
     '<td class="c-note">' + s.note + '</td></tr>';
 }).join('');
 </script>
-<script src="i18n.js?v=20260929b" defer></script>
+<script src="i18n.js?v=20260929c" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
