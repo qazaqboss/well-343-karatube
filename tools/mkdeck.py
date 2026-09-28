@@ -53,7 +53,7 @@ def case_svg(t):
 RU = dict(
  lang="ru", file="nanocem-ut9-presentation.pdf",
  title="NanoCem UT-9 — презентация продукта",
- brand="IC Petroleum", foot_l="NanoCem UT-9 · ТУ 5745-001-171140033124-2025",
+ foot_l="NanoCem UT-9 · ТУ 5745-001-171140033124-2025",
  foot_r="ТОО «ЭкоМикс» · EASYMIX · nanocem.app",
  g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="канал остаётся открытым — вода идёт дальше",
  g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="канал заполнен на всю глубину",
@@ -61,13 +61,13 @@ RU = dict(
  cnote="Дебит нефти, т/сут. Восьмой месяц после изоляции.",
  s=[
   # 1. Титул
-  dict(kind="title", eyebrow="ТОО «ЭкоМикс» · EASYMIX · Каратюбе, горизонт J1-IV",
+  dict(kind="title", eyebrow="ТОО «ЭкоМикс» · EASYMIX · изоляция водопритока",
        h1='NANOCEM <span class="light">UT-9</span>',
        lead="Ультратонкая изоляционно-инъекционная смесь для ликвидации водопритока. "
             "Помол D95 ≤ 9 мкм — состав входит туда, куда обычный тампонажный цемент не проходит.",
        stats=[("Тонкость помола","D95 ≤ 9 мкм","D50 ~3,5 мкм"),
               ("Прочность 28 сут","65–75 МПа","марка М500"),
-              ("Заходов на Каратюбе","7 скважин","январь — сентябрь 2026"),
+              ("Выполнено заходов","7 скважин","январь — сентябрь 2026"),
               ("Опорный результат","1,1 → 16,4","т/сут на скважине 343")]),
   # 2. Задача
   dict(kind="text", kicker="Задача", h2="Скважина добывает воду, а не нефть",
@@ -109,7 +109,7 @@ RU = dict(
              ("Хранение","12 месяцев")]),
   # 5. Задачи
   dict(kind="text", kicker="Применение", h2="Что закрывает состав",
-       lead="Три направления, отработанные на фонде Каратюбе.",
+       lead="Три направления, отработанные на действующем эксплуатационном фонде.",
        cols=[("Задача 01","Ликвидация водопритока","Отсечение обводнённых интервалов и каналов "
               "поступления воды к забою. Нефтенасыщенная часть пласта остаётся работающей — "
               "скважина возвращается в добычу."),
@@ -138,8 +138,8 @@ RU = dict(
               ("06","Перфорация и запуск","ГИС, прострелочно-взрывные работы, вывод на режим. "
                "Эффект оценивается по кривой обводнённости за две-три недели.")]),
   # 7. Фонд
-  dict(kind="fund", kicker="Результаты на промысле", h2="Семь заходов на Каратюбе",
-       sub="Горизонт J1-IV · оператор IC Petroleum · данные суточных режимных листов на 27.09.2026",
+  dict(kind="fund", kicker="Результаты на промысле", h2="Семь заходов на эксплуатационном фонде",
+       sub="Терригенный коллектор, глубины 620–760 м · данные суточных режимных листов на 27.09.2026",
        head=("Скв.","Заходов","Итог изоляции","Дата","Результат"),
        rows=[("343","1","d-ok","Герметично с 1-го","янв 2026","1,10 → 16,40 т/сут на пике · обводнённость 89,4 → 27,5%"),
              ("301","1","d-ok","Герметично с 1-го","06.06.2026","10,28 т/сут · обводнённость 37,1%"),
@@ -147,7 +147,7 @@ RU = dict(
              ("342","2","d-mid","Герметично со 2-го","10.05 → 31.05","7,86 т/сут · обводнённость 37,1% · ×13,3 от базы"),
              ("311","1","d-mid","Подтверждено после освоения","09.07.2026","обводнённость 90,5 → 49%, закрепилась на 60%"),
              ("357","1","d-ok","Герметично по опрессовке","24.09.2026","прямое испытание: 3 из 3 интервалов держат"),
-             ("305","1","d-no","Оценить нельзя — объект сменён","18.07.2026","в сентябре переведена на горизонт T1-II")]),
+             ("305","1","d-no","Оценить нельзя — объект сменён","18.07.2026","в сентябре переведена на вышележащий горизонт")]),
   # 8. Кейс 343
   dict(kind="case", kicker="Опорный кейс", h2="Скважина 343",
        lead="Изоляция в январе 2026. Дебит вырос почти в пятнадцать раз, обводнённость упала "
@@ -195,20 +195,20 @@ RU = dict(
 EN = dict(
  lang="en", file="nanocem-ut9-presentation-en.pdf",
  title="NanoCem UT-9 — product presentation",
- brand="IC Petroleum", foot_l="NanoCem UT-9 · TU 5745-001-171140033124-2025",
+ foot_l="NanoCem UT-9 · TU 5745-001-171140033124-2025",
  foot_r="EcoMix LLP · EASYMIX · nanocem.app",
  g1="ORDINARY CEMENT · 40–80 µm", g1s="the channel stays open — water keeps coming",
  g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the channel is filled to its full depth",
  c1="BEFORE · 28.01", c2="PEAK · 19.03", c3="NOW · 27.09", wc="Water cut",
  cnote="Oil rate, t/day. Eighth month after the shut-off.",
  s=[
-  dict(kind="title", eyebrow="EcoMix LLP · EASYMIX · Karatobe field, J1-IV horizon",
+  dict(kind="title", eyebrow="EcoMix LLP · EASYMIX · water shut-off",
        h1='NANOCEM <span class="light">UT-9</span>',
        lead="An ultra-fine injection grout for water shut-off. A D95 of 9 µm or finer lets the "
             "compound enter channels that ordinary oil-well cement cannot reach.",
        stats=[("Particle fineness","D95 ≤ 9 µm","D50 ~3.5 µm"),
               ("28-day strength","65–75 MPa","grade M500"),
-              ("Treatments at Karatobe","7 wells","January — September 2026"),
+              ("Treatments completed","7 wells","January — September 2026"),
               ("Reference result","1.1 → 16.4","t/day on well 343")]),
   dict(kind="text", kicker="The problem", h2="The well produces water, not oil",
        lead="On a mature field water cut reaches 80–95%. The pump lifts liquid, but only a few "
@@ -246,7 +246,7 @@ EN = dict(
              ("Chemical resistance","oil, brines, sulphates"),
              ("Shelf life","12 months")]),
   dict(kind="text", kicker="Applications", h2="What the compound seals",
-       lead="Three uses proven on the Karatobe well stock.",
+       lead="Three uses proven on a producing well stock.",
        cols=[("Use 01","Water shut-off","Cutting off watered-out intervals and the channels feeding "
               "water to the bottomhole. The oil-bearing part of the reservoir keeps working — "
               "the well returns to production."),
@@ -271,8 +271,8 @@ EN = dict(
                "separately as it is opened, so a leaking interval is located immediately."),
               ("06","Perforation and start-up","Logging, perforation, ramp-up. The effect is judged from "
                "the water-cut curve over two to three weeks.")]),
-  dict(kind="fund", kicker="Field results", h2="Seven treatments at Karatobe",
-       sub="J1-IV horizon · operator IC Petroleum · daily operating logs as of 27.09.2026",
+  dict(kind="fund", kicker="Field results", h2="Seven treatments on a producing well stock",
+       sub="Clastic reservoir, 620–760 m · daily operating logs as of 27.09.2026",
        head=("Well","Entries","Isolation outcome","Date","Result"),
        rows=[("343","1","d-ok","Tight on the 1st","Jan 2026","1.10 → 16.40 t/day at the peak · water cut 89.4 → 27.5%"),
              ("301","1","d-ok","Tight on the 1st","06.06.2026","10.28 t/day · water cut 37.1%"),
@@ -280,7 +280,7 @@ EN = dict(
              ("342","2","d-mid","Tight on the 2nd","10.05 → 31.05","7.86 t/day · water cut 37.1% · ×13.3 over baseline"),
              ("311","1","d-mid","Confirmed after ramp-up","09.07.2026","water cut 90.5 → 49%, settled at 60%"),
              ("357","1","d-ok","Tight on pressure test","24.09.2026","direct test: 3 of 3 intervals hold"),
-             ("305","1","d-no","Cannot be assessed — target changed","18.07.2026","switched to the T1-II horizon in September")]),
+             ("305","1","d-no","Cannot be assessed — target changed","18.07.2026","switched to a shallower horizon in September")]),
   dict(kind="case", kicker="Reference case", h2="Well 343",
        lead="Treated in January 2026. The rate rose almost fifteenfold and water cut fell from 89.4% "
             "to 27.5% at the peak. The effect is holding into its eighth month.",
