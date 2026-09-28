@@ -320,8 +320,8 @@ tbody tr:hover{background:var(--bg-2)}
 <section class="section">
   <div class="section-head">
     <div>
-      <div class="section-title">Фонд под наблюдением — август 2026</div>
-      <div class="section-sub">Шесть скважин, по которым мы ведём суточный мониторинг. Это фактическая база под программу: видно, как ведёт себя обводнённость после РИР и где она снова подбирается к контрольному порогу. Данные на <span data-wells-updated>30.08.2026</span> · разбор итогов изоляции — на странице <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a>.</div>
+      <div class="section-title">Фонд под наблюдением — сентябрь 2026</div>
+      <div class="section-sub">Шесть скважин, по которым мы ведём суточный мониторинг. Это фактическая база под программу: видно, как ведёт себя обводнённость после РИР и где она снова подбирается к контрольному порогу. Данные на <span data-wells-updated>27.09.2026</span> · разбор итогов изоляции — на странице <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a>.</div>
     </div>
   </div>
   <div class="fund" id="fund"></div>
@@ -336,9 +336,9 @@ tbody tr:hover{background:var(--bg-2)}
       <div class="case-row"><span class="case-k">Пик после РИР (19.03)</span><span class="case-v">16,4 т/сут</span></div>
       <div class="case-row"><span class="case-k">Обводнённость до / после</span><span class="case-v">89,4% → 27,5%</span></div>
       <div class="case-row"><span class="case-k">Удержание эффекта</span><span class="case-v">7-й месяц</span></div>
-      <div class="case-row"><span class="case-k">На 30.08.2026</span><span class="case-v">10,5 т/сут · обв. 45,0%</span></div>
+      <div class="case-row"><span class="case-k">На 27.09.2026</span><span class="case-v">10,6 т/сут · обв. 48,1%</span></div>
       <div class="case-row"><span class="case-k">Сценарий</span><span class="case-v">ЦПД + реперфорация</span></div>
-      <div style="font-size:12.5px;color:var(--white-dim);line-height:1.6;margin-top:14px">Двенадцать кандидатов первой группы повторяют этот сценарий один в один — те же горизонт, конструкция и характер обводнения. Это основание для переноса рецептуры без переработки программы. Август показал и обратную сторону: на 343 обводнённость снова подошла к 45%, то есть эффект изоляции конечен и требует повторного захода — это стоит закладывать в план.</div>
+      <div style="font-size:12.5px;color:var(--white-dim);line-height:1.6;margin-top:14px">Двенадцать кандидатов первой группы повторяют этот сценарий один в один — те же горизонт, конструкция и характер обводнения. Это основание для переноса рецептуры без переработки программы. Сентябрь добавил к этому урок по режиму: на 343 снижение оборотов 160 → 150 подняло дебит с 9,4 до 10,7 т/сут и снизило обводнённость на 1,5 пункта, причём подъём жидкости не упал, а вырос. То есть на форсированных оборотах насос отдавал меньше — выжимать скважину после изоляции смысла нет. Режим стоит подбирать замером, а не по максимуму оборотов.</div>
       <a class="case-link" href="well-343.html">Полный отчёт по 343 →</a>
     </div>
     <div class="pane">
@@ -362,7 +362,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
-<script src="wells.js?v=20260908"></script>
+<script src="wells.js?v=20260928"></script>
 <script>
 const MONTHS = {'08':'Август','09':'Сентябрь','10':'Октябрь','11':'Ноябрь'};
 const DECS = ['I','II','III'];
@@ -421,7 +421,7 @@ document.getElementById('fund').innerHTML = window.WELLS.wells.map(function (f) 
   var on = f.status.code === 'work';
   return '<a class="fw" href="' + f.href + '"><div class="fw-top"><div class="fw-num">' + f.id + '</div>' +
     '<div class="fw-status' + (on ? ' on' : '') + '">' + f.status.label + '</div></div>' +
-    '<div class="fw-rows">' + f.aug.map(function (r) {
+    '<div class="fw-rows">' + f.stats.map(function (r) {
       return '<div class="fw-row"><span class="fw-k">' + r[0] + '</span><span class="fw-v">' + r[1] + '</span></div>';
     }).join('') + '</div>' +
     '<div class="fw-note">' + f.note + '</div>' +
@@ -481,7 +481,7 @@ document.getElementById('filters').addEventListener('click', e => {
 });
 render();
 </script>
-<script src="i18n.js?v=20260908" defer></script>
+<script src="i18n.js?v=20260928" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

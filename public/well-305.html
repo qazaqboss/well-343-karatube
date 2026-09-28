@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="КаратюбеМонитор">
 <meta property="og:url" content="https://nanocem.app/well-305.html">
 <meta property="og:title" content="Скважина №305 — КРС (ремонт)">
-<meta property="og:description" content="Весь август в КРС, добычи нет. Остановлена 05.07 при 0,7 м³/сут. Пик 4,67 т/сут (19.01).">
+<meta property="og:description" content="После ГРП 05–07.09 переведена на горизонт T1-II: обводнённость 18,6%, но Qж всего 0,4 м³/сут.">
 <meta property="og:image" content="https://nanocem.app/og-305.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -117,6 +117,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .month-label{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
 .ev{display:inline-block;font-family:var(--font-data);font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
 .ev-peak{background:#111;color:#fff}
+.ev-start{background:#111;color:#fff}
 .ev-crash{background:#EF4444;color:#fff}
 .ev-low{background:rgba(239,68,68,.15);color:#EF4444}
 .ev-krs{background:var(--white);color:var(--bg)}
@@ -165,6 +166,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .phase-work{background:rgba(34,197,94,.12);color:#16A34A}
 .phase-decline{background:rgba(249,115,22,.14);color:#EA580C}
 .phase-gis{background:rgba(13,148,136,.14);color:#0D9488}
+.phase-restart{background:rgba(139,92,246,.14);color:#7C3AED}
 .phase-krs{background:#111;color:#fff}
 .ev-badge{display:inline-block;font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;margin-right:6px;white-space:nowrap;vertical-align:middle}
 .evb-peak{background:#111;color:#fff}
@@ -235,7 +237,7 @@ a{text-decoration:none;color:inherit}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">30.08.2026 / КРС</div>
+    <div class="header-date">27.09.2026 / В РАБОТЕ</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -263,12 +265,12 @@ a{text-decoration:none;color:inherit}
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">М/Р <span>Каратюбе</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ПЕРИОД <span>01.01–30.08.2026</span></div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–27.09.2026</span></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill"><div class="status-dot"></div>КРС · нет добычи</div>
-      <div class="hero-date-note">Остановка 05.07.2026 при 0,7 м³/сут · КРС с 06.07 · весь август в ремонте, добычи нет</div>
+      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>В работе с 08.09 · горизонт T1-II</div>
+      <div class="hero-date-note">ГРП 05–07.09 на T1-II (744–754 м) · запуск 08.09 · обводнённость 100 → 18,6%, но Qж всего 0,4 м³/сут</div>
     </div>
   </div>
 </section>
@@ -282,26 +284,26 @@ a{text-decoration:none;color:inherit}
   <div class="kpi-card dark">
     <div class="kpi-note">за период</div>
     <div class="kpi-label">Qн · средний</div>
-    <div class="kpi-value">2.78</div>
+    <div class="kpi-value">2.60</div>
     <div class="kpi-unit">Т / СУТ</div>
   </div>
   <div class="kpi-card grey">
     <div class="kpi-note">за период</div>
     <div class="kpi-label">Обводнённость средн.</div>
-    <div class="kpi-value grey">25.6</div>
+    <div class="kpi-value grey">28.6</div>
     <div class="kpi-unit">%</div>
   </div>
-  <div class="kpi-card red">
-    <div class="kpi-note">30.08.2026</div>
-    <div class="kpi-label">Текущий статус</div>
-    <div class="kpi-value red">КРС</div>
-    <div class="kpi-unit">ремонт · нет добычи</div>
+  <div class="kpi-card dark">
+    <div class="kpi-note">27.09.2026</div>
+    <div class="kpi-label">Qн · текущий</div>
+    <div class="kpi-value">1.42</div>
+    <div class="kpi-unit">Т / СУТ · обв. 18,6%</div>
   </div>
-  <div class="kpi-card red">
+  <div class="kpi-card dark">
     
-    <div class="kpi-label">Дней в КРС</div>
-    <div class="kpi-value red"><span id="daysSince">1</span></div>
-    <div class="kpi-unit">с 06.07.2026</div>
+    <div class="kpi-label">Дней после запуска</div>
+    <div class="kpi-value"><span id="daysSince">1</span></div>
+    <div class="kpi-unit">запуск 08.09.2026 после ГРП</div>
   </div></div>
 
 <div class="section-label">Ключевые точки периода наблюдений</div>
@@ -315,18 +317,13 @@ a{text-decoration:none;color:inherit}
     <div class="compare-big">4.67</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv">Обв. 22,5%</div>
   </div>
   <div class="compare-divider"></div>
-  <div class="compare-col last">
-    <div class="compare-label">Перед остановкой</div><div class="compare-date">05.07.2026</div>
-    <div class="compare-big" style="color:#EF4444">0.44</div><div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv" style="color:#EF4444">Обв. 22,0%</div>
+  <div class="compare-col last" style="border-left-color:#16A34A">
+    <div class="compare-label">После ГРП · текущее</div><div class="compare-date">27.09.2026</div>
+    <div class="compare-big" style="color:#16A34A">1.42</div><div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 18,6%</div>
   </div></div>
 
 <div class="stats-bar">
-  <div class="stat-cell">
-    <div class="stat-label">Апрель 2026</div>
-    <div class="stat-value">3.23</div>
-    <div class="stat-sub">т/сут · обв. 28,8% · 30 сут</div>
-  </div>
   <div class="stat-cell">
     <div class="stat-label">Май 2026</div>
     <div class="stat-value">2.19</div>
@@ -342,13 +339,18 @@ a{text-decoration:none;color:inherit}
     <div class="stat-value" style="color:#EF4444">0.73</div>
     <div class="stat-sub">т/сут · обв. 22,2% · 5 сут</div>
   </div>
+  <div class="stat-cell">
+    <div class="stat-label">Сентябрь 2026</div>
+    <div class="stat-value">0.93</div>
+    <div class="stat-sub">т/сут · обв. 56,8% · 19 сут</div>
+  </div>
 </div>
 
 <div class="main-layout">
   <div class="main-left">
     <div class="chart-block">
       <div class="chart-title">Динамика добычи — весь период</div>
-      <div class="chart-sub">01.01.2026 — 30.08.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта исключены</div>
+      <div class="chart-sub">01.01.2026 — 27.09.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -357,6 +359,30 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">22</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-low">Обводнённость 20,6%</div>
+          <div class="event-note">Минимум за весь период наблюдений. К 27.09 показатель опустился до 18,6%. Но радоваться рано: дебит жидкости всего 0,4–0,5 м³/сут — новый объект отдаёт практически безводную, но крайне скудную продукцию.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">08</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-start">Запуск на T1-II</div>
+          <div class="event-note">Пуск в 22:35 после ГРП. Первые сутки — 100% воды: отработка жидкости разрыва. Перелом наступил 18.09, когда обводнённость упала до 46,8%. Обороты по ходу вывода снижали дважды: 100 → 80 (11.09) и 80 → 60 (14.09).</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">05</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-krs">ГРП · смена объекта</div>
+          <div class="event-note">Гидроразрыв пласта на горизонте T1-II, интервал 744–754 м. Скважина переведена с J1-IV на вышележащий объект — оценить результат июльского захода по прежнему горизонту теперь невозможно.</div>
+        </div>
+      </div>
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">30</div><div class="month-label">АВГ</div></div>
         <div class="event-body">
@@ -418,32 +444,32 @@ a{text-decoration:none;color:inherit}
     <div class="rir-block">
       <div class="rir-block-title">Состояние скважины</div>
       <div class="days-big" id="daysBig">1</div>
-      <div class="days-label">дней в КРС</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EF4444">КРС · ремонт</span></div>
-      <div class="rir-row"><span class="rir-key">ОСТАНОВКА</span><span class="rir-val">05.07.2026 (0,7 м³/сут)</span></div>
-      <div class="rir-row"><span class="rir-key">ПОСЛ. ДОБЫЧА</span><span class="rir-val">0,44 т/сут (05.07)</span></div>
+      <div class="days-label">дней после запуска</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">В работе с 08.09 · 60 об/мин</span></div>
+      <div class="rir-row"><span class="rir-key">ГРП</span><span class="rir-val">05–07.09.2026 · горизонт T1-II</span></div>
+      <div class="rir-row"><span class="rir-key">ДОБЫЧА (27.09)</span><span class="rir-val">1,42 т/сут · обв. 18,6%</span></div>
       <div class="rir-row"><span class="rir-key">БРИГАДА</span><span class="rir-val">АПРС-40 №1</span></div>
       <div class="rir-row"><span class="rir-key">ВЫПОЛНЕНО</span><span class="rir-val">пакер ПРО-ЯМО на 425 м</span></div>
-      <div class="rir-row"><span class="rir-key">ПЛАН</span><span class="rir-val">ЦПД выполнена · ОЗЦ</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК</span><span class="rir-val">08.09.2026 · 22:35</span></div>
     </div>
     <div class="tech-block">
       <div class="tech-title">Технические данные</div>
       <div class="tech-row"><span class="tech-key">НАСОС</span><span class="tech-val">УШВН 33/900</span></div>
-      <div class="tech-row"><span class="tech-key">ГОРИЗОНТ</span><span class="tech-val">J1-IV</span></div>
-      <div class="tech-row"><span class="tech-key">ОБОРОТЫ ВН</span><span class="tech-val">100 → 70 об/мин (21.05)</span></div>
+      <div class="tech-row"><span class="tech-key">ГОРИЗОНТ</span><span class="tech-val">T1-II · 744–754 м (с 09.2026)</span></div>
+      <div class="tech-row"><span class="tech-key">ОБОРОТЫ ВН</span><span class="tech-val">100 → 80 → 60 об/мин (сентябрь)</span></div>
       <div class="tech-row"><span class="tech-key">ИНТЕРВАЛЫ ПВР</span><span class="tech-val">454–457,3; 474–477,4 м</span></div>
       <div class="tech-row"><span class="tech-key">ПАКЕР</span><span class="tech-val">ПРО-ЯМО-142 мм на 425 м</span></div>
       <div class="tech-row"><span class="tech-key">ХАРАКТЕР</span><span class="tech-val">низкая обводнённость, слабый приток</span></div>
     </div>
     <div class="stat-block">
       <div class="stat-block-title">Итоги периода</div>
-      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 30.08.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">202</span></div>
-      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">176</span></div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 27.09.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">259</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">195</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">4,67 т/сут (19.01)</span></div>
       <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">6,9 м³/сут (19.01)</span></div>
-      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">19,0% (21.01)</span></div>
-      <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val">30,7% (08.04)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">18,6% (27.09)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val red">100% (09, 15.09 — после ГРП)</span></div>
     </div>
   </div>
 </div>
@@ -477,8 +503,8 @@ a{text-decoration:none;color:inherit}
     <div class="passport-cell"><div class="passport-key">Хвостовик</div><div class="passport-val">ВНКТ-73 мм, 20 м</div></div>
     <div class="passport-cell"><div class="passport-key">Остановка</div><div class="passport-val">05.07.2026</div></div>
     <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС · ЦПД ультратонким цементом</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">КРС (на 30.08.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–30.08.2026 (232 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">В работе с 08.09 · горизонт T1-II (27.09.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–27.09.2026 (259 сут)</div></div>
     <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">4,67 т/сут (19.01.2026)</div></div>
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">25,6%</div></div></div>
 </div>
@@ -487,13 +513,13 @@ a{text-decoration:none;color:inherit}
 <section style="padding:28px 40px;border-top:1px solid var(--border)">
   <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
     <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
-    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>27.09.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
   </div>
   <div id="fundStrip"></div>
 </section>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратюбе · Скв. 305 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 30.08.2026</div>
+  <div class="footer-left">М/Р Каратюбе · Скв. 305 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 27.09.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -731,6 +757,33 @@ const DATA = [
   {d:"28.08",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
   {d:"29.08",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
   {d:"30.08",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"01.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"КРС."},
+  {d:"02.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ОГРП — ожидание гидроразрыва пласта."},
+  {d:"03.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ОГРП"},
+  {d:"04.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ОГРП"},
+  {d:"05.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ГРП на горизонте T1-II, интервал 744–754 м. Скважина переводится на вышележащий объект."},
+  {d:"06.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ГРП"},
+  {d:"07.09",qzh:null,qn:null,obv:null,phase:"krs",ev:"",comment:"ГРП"},
+  {d:"08.09",qzh:null,qn:null,obv:null,phase:"restart",ev:"start",comment:"Запуск в 22:35 после ГРП. Начат вывод на режим."},
+  {d:"09.09",qzh:4.5,qn:0.00,obv:100.0,phase:"restart",ev:"",comment:"Первые сутки: жидкость идёт, нефти нет — 100% воды. Отработка жидкости ГРП."},
+  {d:"10.09",qzh:3.8,qn:0.33,obv:90.0,phase:"restart",ev:"",comment:""},
+  {d:"11.09",qzh:4.5,qn:0.12,obv:97.0,phase:"restart",ev:"rpm",comment:"Обороты снижены 100 → 80: уровень ушёл на 628–658 м, отбор опережает приток."},
+  {d:"12.09",qzh:3.3,qn:0.09,obv:97.0,phase:"restart",ev:"",comment:""},
+  {d:"13.09",qzh:2.9,qn:0.76,obv:70.0,phase:"restart",ev:"",comment:""},
+  {d:"14.09",qzh:2.6,qn:0.23,obv:90.0,phase:"restart",ev:"rpm",comment:"Обороты снижены 80 → 60. Режим подбирается под низкую продуктивность нового объекта."},
+  {d:"15.09",qzh:2.0,qn:0.00,obv:100.0,phase:"restart",ev:"",comment:""},
+  {d:"16.09",qzh:1.4,qn:0.03,obv:97.5,phase:"restart",ev:"",comment:""},
+  {d:"17.09",qzh:2.7,qn:0.71,obv:70.0,phase:"restart",ev:"",comment:"Первая заметная нефть: 0,71 т/сут при 70% воды."},
+  {d:"18.09",qzh:2.8,qn:1.26,obv:46.8,phase:"restart",ev:"rise",comment:"Перелом: обводнённость 46,8%, дебит 1,26 т/сут. Жидкость ГРП отработана."},
+  {d:"19.09",qzh:2.8,qn:1.50,obv:36.3,phase:"restart",ev:"",comment:""},
+  {d:"20.09",qzh:3.4,qn:2.08,obv:32.0,phase:"restart",ev:"",comment:""},
+  {d:"21.09",qzh:3.5,qn:2.11,obv:31.0,phase:"work",ev:"peak",comment:"Максимум месяца — 2,11 т/сут при 31% воды."},
+  {d:"22.09",qzh:1.9,qn:1.18,obv:20.6,phase:"work",ev:"",comment:"Обводнённость 20,6% — минимум за всё время наблюдений по скважине."},
+  {d:"23.09",qzh:1.9,qn:1.39,obv:20.6,phase:"work",ev:"",comment:""},
+  {d:"24.09",qzh:1.9,qn:1.39,obv:20.6,phase:"work",ev:"",comment:""},
+  {d:"25.09",qzh:2.4,qn:1.53,obv:20.6,phase:"work",ev:"",comment:""},
+  {d:"26.09",qzh:2.4,qn:1.60,obv:20.5,phase:"work",ev:"",comment:""},
+  {d:"27.09",qzh:2.2,qn:1.42,obv:18.6,phase:"work",ev:"low",comment:"Конец наблюдений. 1,42 т/сут при 18,6% воды. По горизонту T1-II скважина работает практически безводно, но отдача низкая: Qж всего 0,4–0,5 м³/сут."},
 ];
 
 Chart.defaults.color = '#AAAAAA';
@@ -762,18 +815,18 @@ new Chart(ctx, {
     }}
 });
 
-const KRS_DATE = new Date('2026-07-06');
+const KRS_DATE = new Date('2026-09-08');
 const today = new Date();
 const daysIn = Math.max(1, Math.floor((today - KRS_DATE) / 86400000));
 document.getElementById('daysBig').textContent = daysIn;
 document.getElementById('daysSince').textContent = daysIn;
 
 (function(){
-  const PHASE_LABEL = { work:'Работа', decline:'Спад', krs:'КРС' };
+  const PHASE_LABEL = { work:'Работа', decline:'Спад', krs:'КРС / ГРП', restart:'Вывод на режим' };
   const EV_LABEL = {
     peak:{text:'пик',cls:'evb-peak'}, rise:{text:'рост',cls:'evb-rise'}, low:{text:'минимум',cls:'evb-low'},
     warn:{text:'осложнение',cls:'evb-warn'}, rpm:{text:'обороты',cls:'evb-rpm'}, stop:{text:'остановка',cls:'evb-crash'},
-    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}, ogn:{text:'ОГН',cls:'evb-rpm'}, ogv:{text:'ОГВ',cls:'evb-rpm'}
+    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}, ogn:{text:'ОГН',cls:'evb-rpm'}, ogv:{text:'ОГВ',cls:'evb-rpm'}, start:{text:'запуск',cls:'evb-peak'}
   };
   function fmt(v,d){ return (v===null||v===undefined)?'—':Number(v).toFixed(d); }
   function buildRow(item){
@@ -806,8 +859,8 @@ document.getElementById('daysSince').textContent = daysIn;
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 </script>
-<script src="wells.js?v=20260908" defer></script>
-<script src="i18n.js?v=20260908" defer></script>
+<script src="wells.js?v=20260928" defer></script>
+<script src="i18n.js?v=20260928" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

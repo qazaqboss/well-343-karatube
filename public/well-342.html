@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="КаратюбеМонитор">
 <meta property="og:url" content="https://nanocem.app/well-342.html">
 <meta property="og:title" content="Скважина №342 — после РИР NanoCem UT-9">
-<meta property="og:description" content="После ТРС вышла на 10,36 т/сут · обв. 41% · ×17,6 от базы. М/Р Каратюбе, J1-IV.">
+<meta property="og:description" content="Лучшая динамика месяца: 7,86 т/сут · обв. 37,1% · ×13,3 от базы. М/Р Каратюбе, J1-IV.">
 <meta property="og:image" content="https://nanocem.app/og-342.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -143,6 +143,8 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .ev-fall{background:rgba(0,0,0,.1);color:#555}
 .ev-krs{background:var(--white);color:var(--bg)}
 .ev-rise{background:rgba(0,0,0,.07);color:#444}
+.ev-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
+.ev-warn{background:rgba(249,115,22,.14);color:#EA580C}
 .event-note{font-size:13px;color:var(--white-dim);line-height:1.4}
 
 /* ── SIDEBAR ── */
@@ -208,6 +210,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .evb-peak{background:#111;color:#fff}
 .evb-crash{background:#EF4444;color:#fff}
 .evb-low{background:rgba(239,68,68,.15);color:#EF4444}
+.evb-rpm{background:rgba(139,92,246,.14);color:#7C3AED}
 .evb-fall{background:rgba(0,0,0,.1);color:#555}
 .evb-rise{background:rgba(0,0,0,.07);color:#444}
 .evb-krs{background:#111;color:#fff}
@@ -326,7 +329,7 @@ a{text-decoration:none;color:inherit}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">30.08.2026 / ПОСЛЕ РИР</div>
+    <div class="header-date">27.09.2026 / ПОСЛЕ РИР</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -361,7 +364,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="hero-right">
       <div class="rir-badge"><div class="rir-dot"></div>Запуск после РИР: 06.06.2026</div>
-      <div class="hero-date-note">Замер после ТРС: 30.08.2026 · 7,14 т/сут · 39,0%</div>
+      <div class="hero-date-note">27.09.2026 · 7,86 т/сут · 37,1% — за сентябрь дебит вырос на 13% при снижении обводнённости</div>
     </div>
   </div>
 </section>
@@ -369,21 +372,21 @@ a{text-decoration:none;color:inherit}
 <!-- KPI STRIP -->
 <div class="kpi-strip">
   <div class="kpi-card dark">
-    <div class="kpi-note ok">максимум августа · 27.08</div>
+    <div class="kpi-note ok">27.09 · текущий</div>
     <div class="kpi-label">Дебит нефти</div>
-    <div class="kpi-value">10.36</div>
-    <div class="kpi-unit">Т / СУТ · ×17,6 от 0,59</div>
+    <div class="kpi-value">7.86</div>
+    <div class="kpi-unit">Т / СУТ · ×13,3 от 0,59</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note ok">30.08 · после ТРС</div>
+    <div class="kpi-note ok">27.09</div>
     <div class="kpi-label">Обводнённость</div>
-    <div class="kpi-value">39.0</div>
-    <div class="kpi-unit">% · −52,0 п.п. от 91,0</div>
+    <div class="kpi-value">37.1</div>
+    <div class="kpi-unit">% · −53,9 п.п. от 91,0</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note ok">30.08</div>
+    <div class="kpi-note ok">27.09</div>
     <div class="kpi-label">Дебит жидкости</div>
-    <div class="kpi-value">13.4</div>
+    <div class="kpi-value">14.3</div>
     <div class="kpi-unit">М³ / СУТ</div>
   </div>
   <div class="kpi-card red">
@@ -420,20 +423,15 @@ a{text-decoration:none;color:inherit}
   <div class="compare-divider"></div>
   <div class="compare-col last" style="border-left-color:#16A34A">
     <div class="compare-label">После РИР · текущий</div>
-    <div class="compare-date">30.08.2026</div>
-    <div class="compare-big" style="color:#16A34A">7.14</div>
+    <div class="compare-date">27.09.2026</div>
+    <div class="compare-big" style="color:#16A34A">7.86</div>
     <div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv" style="color:#16A34A">Обв. 39,0%</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 37,1%</div>
   </div>
 </div>
 
 <!-- MONTHLY STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-cell">
-    <div class="stat-label">Май 2026</div>
-    <div class="stat-value" style="color:#EF4444">1.20</div>
-    <div class="stat-sub">т/сут · обв. 88,4% · 7 сут</div>
-  </div>
   <div class="stat-cell">
     <div class="stat-label">Июнь 2026</div>
     <div class="stat-value">8.37</div>
@@ -446,8 +444,13 @@ a{text-decoration:none;color:inherit}
   </div>
   <div class="stat-cell">
     <div class="stat-label">Август 2026</div>
-    <div class="stat-value">7.45</div>
+    <div class="stat-value" style="color:#EF4444">7.45</div>
     <div class="stat-sub">т/сут · обв. 38,0% · 28 сут</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Сентябрь 2026</div>
+    <div class="stat-value">7.40</div>
+    <div class="stat-sub">т/сут · обв. 38,2% · 27 сут</div>
   </div>
 </div>
 
@@ -458,7 +461,7 @@ a{text-decoration:none;color:inherit}
   <div class="main-left">
     <div class="chart-block">
       <div class="chart-title">Динамика — до и после РИР</div>
-      <div class="chart-sub">01.01.2026 — 30.08.2026 · Qн (т/сут) и Обводнённость (%) · дни КРС исключены</div>
+      <div class="chart-sub">01.01.2026 — 27.09.2026 · Qн (т/сут) и Обводнённость (%) · дни КРС исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -468,6 +471,22 @@ a{text-decoration:none;color:inherit}
 
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">25</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Максимум сентября</div>
+          <div class="event-note">7,87 т/сут при обводнённости 37,0% — минимуме с момента майской изоляции. За месяц дебит вырос на 13% при одновременном снижении воды на 2 пункта: сочетание редкое и говорит о том, что запас по режиму ещё есть.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">10</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-rpm">Обороты 150 → 160</div>
+          <div class="event-note">Подъём оборотов дал прирост дебита 7,20 → 7,51 т/сут, обводнённость при этом снизилась до 38,2%. Изоляция от майского РИР воду держит — форсирование здесь работает иначе, чем на 343.</div>
+        </div>
+      </div>
 
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">27</div><div class="month-label">АВГ</div></div>
@@ -562,9 +581,9 @@ a{text-decoration:none;color:inherit}
       <div class="rir-row"><span class="rir-key">КРС (РИР)</span><span class="rir-val">07.05 – 06.06.2026</span></div>
       <div class="rir-row"><span class="rir-key">СОСТАВ</span><span class="rir-val">NanoCem UT-9</span></div>
       <div class="rir-row"><span class="rir-key">ЗАПУСК / СТАРТ ЗАМЕРОВ</span><span class="rir-val">06.06 / 07.06.2026</span></div>
-      <div class="rir-row"><span class="rir-key">ДЕБИТ ПОСЛЕ РИР</span><span class="rir-val">7,14 т/сут (30.08)</span></div>
-      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">39,0% (30.08)</span></div>
-      <div class="rir-row"><span class="rir-key">ЭФФЕКТ</span><span class="rir-val">×17,6 от базы · после ТРС 14.08</span></div>
+      <div class="rir-row"><span class="rir-key">ДЕБИТ ПОСЛЕ РИР</span><span class="rir-val">7,86 т/сут (27.09)</span></div>
+      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">37,1% (27.09)</span></div>
+      <div class="rir-row"><span class="rir-key">ЭФФЕКТ</span><span class="rir-val" style="color:#16A34A">×13,3 от базы · 160 об/мин с 10.09</span></div>
     </div>
 
     <div class="tech-block">
@@ -641,13 +660,13 @@ a{text-decoration:none;color:inherit}
 <section style="padding:28px 40px;border-top:1px solid var(--border)">
   <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
     <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
-    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>27.09.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
   </div>
   <div id="fundStrip"></div>
 </section>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратобе · Скв. 342 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 30.08.2026</div>
+  <div class="footer-left">М/Р Каратобе · Скв. 342 · Горизонт J1-IV · УШВН 33/900<br>Данные: суточные режимные листы · 01.01 – 27.09.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -896,6 +915,33 @@ const DATA = [
   {d:"28.08",qn:10.36,obv:41,phase:"after",ev:"",comment:"Режим подтверждён замером."},
   {d:"29.08",qn:8.87,obv:41,phase:"after",ev:"fall",comment:"Снижение до 8,87 т/сут без роста обводнённости. Qж 17,2 м³/сут."},
   {d:"30.08",qn:7.14,obv:39,phase:"after",ev:"",comment:"Замер на емкость с устья: вытеснено 2,240 м³ за 4 часа, ожидаемый Qж 13,44 м³/сут. Дебит 7,14 т/сут, обводнённость 39%."},
+  {d:"01.09",qn:6.93,obv:39.0,phase:"after",ev:"",comment:"Сентябрь начат на 150 об/мин после августовского ТРС. 6,93 т/сут, обводнённость 39,0%."},
+  {d:"02.09",qn:7.14,obv:39.0,phase:"after",ev:"",comment:""},
+  {d:"03.09",qn:7.11,obv:38.8,phase:"after",ev:"",comment:""},
+  {d:"04.09",qn:7.11,obv:38.8,phase:"after",ev:"",comment:""},
+  {d:"05.09",qn:7.06,obv:38.8,phase:"after",ev:"",comment:""},
+  {d:"06.09",qn:7.20,obv:38.5,phase:"after",ev:"",comment:""},
+  {d:"07.09",qn:7.10,obv:38.5,phase:"after",ev:"",comment:""},
+  {d:"08.09",qn:6.64,obv:38.5,phase:"after",ev:"warn",comment:"Отключение электроэнергии, простой 85 минут. Дебит просел до 6,64 т/сут."},
+  {d:"09.09",qn:7.20,obv:38.5,phase:"after",ev:"",comment:""},
+  {d:"10.09",qn:7.51,obv:38.2,phase:"after",ev:"rpm",comment:"Обороты подняты 150 → 160. Дебит вырос до 7,51 т/сут, обводнённость при этом снизилась до 38,2%."},
+  {d:"11.09",qn:7.35,obv:38.2,phase:"after",ev:"",comment:""},
+  {d:"12.09",qn:7.29,obv:38.2,phase:"after",ev:"",comment:""},
+  {d:"13.09",qn:7.64,obv:38.0,phase:"after",ev:"",comment:""},
+  {d:"14.09",qn:7.41,obv:37.7,phase:"after",ev:"",comment:""},
+  {d:"15.09",qn:7.41,obv:37.7,phase:"after",ev:"",comment:""},
+  {d:"16.09",qn:7.41,obv:37.7,phase:"after",ev:"",comment:""},
+  {d:"17.09",qn:7.41,obv:37.7,phase:"after",ev:"",comment:""},
+  {d:"18.09",qn:7.68,obv:37.7,phase:"after",ev:"",comment:"7,68 т/сут — рост продолжается при обводнённости 37,7%."},
+  {d:"19.09",qn:7.68,obv:37.7,phase:"after",ev:"",comment:""},
+  {d:"20.09",qn:7.47,obv:39.4,phase:"after",ev:"",comment:""},
+  {d:"21.09",qn:7.47,obv:39.4,phase:"after",ev:"",comment:""},
+  {d:"22.09",qn:7.47,obv:39.4,phase:"after",ev:"",comment:""},
+  {d:"23.09",qn:7.76,obv:37.0,phase:"after",ev:"",comment:"Обводнённость 37,0% — минимум с момента майской изоляции."},
+  {d:"24.09",qn:7.76,obv:37.0,phase:"after",ev:"",comment:""},
+  {d:"25.09",qn:7.87,obv:37.0,phase:"after",ev:"peak",comment:"Максимум месяца — 7,87 т/сут."},
+  {d:"26.09",qn:7.79,obv:37.2,phase:"after",ev:"",comment:""},
+  {d:"27.09",qn:7.86,obv:37.1,phase:"after",ev:"",comment:"Конец наблюдений. 7,86 т/сут при 37,1% воды. За месяц дебит вырос на 13% при снижении обводнённости на 2 пункта — редкое сочетание."},
 ];
 
 // Chart
@@ -1049,6 +1095,7 @@ document.getElementById('daysBig').textContent = daysSince;
     stop:  { text:'остановка', cls:'evb-krs'   },
     start: { text:'запуск',    cls:'evb-peak'  },
     jump:  { text:'скачок',    cls:'evb-peak'  },
+    rpm:   { text:'обороты',   cls:'evb-rpm'   },
   };
   function fmt(v){ return v === null || v === undefined ? '—' : Number(v).toFixed(2); }
   function buildRow(item){
@@ -1092,8 +1139,8 @@ function closeNav(){
   document.getElementById('navToggle').classList.remove('active');
 }
 </script>
-<script src="wells.js?v=20260908" defer></script>
-<script src="i18n.js?v=20260908" defer></script>
+<script src="wells.js?v=20260928" defer></script>
+<script src="i18n.js?v=20260928" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

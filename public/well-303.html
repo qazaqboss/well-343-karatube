@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="КаратюбеМонитор">
 <meta property="og:url" content="https://nanocem.app/well-303.html">
 <meta property="og:title" content="Скважина №303 — КРС (ремонт)">
-<meta property="og:description" content="ТРС 21–23.08, с 28.08 выхода жидкости нет — скважина в ОТРС. Максимум августа 1,43 т/сут. М/Р Каратюбе.">
+<meta property="og:description" content="Запуск после ТРС 11.09: обводнённость 95 → 65%, дебит 2,86 т/сут — рекорд скважины. М/Р Каратюбе.">
 <meta property="og:image" content="https://nanocem.app/og-303.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -137,6 +137,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .event-body{}
 .ev{display:inline-block;font-family:var(--font-data);font-size:9px;font-weight:600;padding:2px 7px;border-radius:2px;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
 .ev-peak{background:#111;color:#fff}
+.ev-start{background:#111;color:#fff}
 .ev-crash{background:#EF4444;color:#fff}
 .ev-low{background:rgba(239,68,68,.15);color:#EF4444}
 .ev-fall{background:rgba(0,0,0,.1);color:#555}
@@ -326,7 +327,7 @@ a{text-decoration:none;color:inherit}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">30.08.2026 / ОТРС</div>
+    <div class="header-date">27.09.2026 / В РАБОТЕ</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -356,12 +357,12 @@ a{text-decoration:none;color:inherit}
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">ОПЕРАТОР <span>IC Petroleum</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ПЕРИОД <span>01.01–30.08.2026</span></div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–27.09.2026</span></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill"><div class="status-dot"></div>ОТРС · выхода жидкости нет</div>
-      <div class="hero-date-note">ТРС 21–23.08 · с 28.08 выхода жидкости нет, скважина в ОТРС</div>
+      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>В работе с 11.09 · 100 об/мин</div>
+      <div class="hero-date-note">ТРС 09–10.09 · запуск 11.09 · обводнённость 95 → 65%, дебит 0,45 → 2,78 т/сут — лучший результат скважины</div>
     </div>
   </div>
 </section>
@@ -369,33 +370,33 @@ a{text-decoration:none;color:inherit}
 <!-- KPI STRIP -->
 <div class="kpi-strip">
   <div class="kpi-card dark">
-    <div class="kpi-note ok">05.01.2026</div>
+    <div class="kpi-note ok">23.09.2026</div>
     <div class="kpi-label">Qн · пик</div>
-    <div class="kpi-value">0.762</div>
+    <div class="kpi-value">2.86</div>
     <div class="kpi-unit">Т / СУТ</div>
   </div>
   <div class="kpi-card dark">
     <div class="kpi-note ok">за период</div>
     <div class="kpi-label">Qн · средний</div>
-    <div class="kpi-value">0.27</div>
+    <div class="kpi-value">0.93</div>
     <div class="kpi-unit">Т / СУТ</div>
   </div>
   <div class="kpi-card grey">
     <div class="kpi-note ok">за период</div>
     <div class="kpi-label">Обводнённость средн.</div>
-    <div class="kpi-value grey">96.9</div>
+    <div class="kpi-value grey">68.2</div>
     <div class="kpi-unit">%</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note ok">19.08.2026 · максимум августа</div>
-    <div class="kpi-label">Qн · освоение</div>
-    <div class="kpi-value">1.43</div>
-    <div class="kpi-unit">Т / СУТ · обв. 29,0%</div>
+    <div class="kpi-note ok">27.09.2026</div>
+    <div class="kpi-label">Qн · текущий</div>
+    <div class="kpi-value">2.78</div>
+    <div class="kpi-unit">Т / СУТ · обв. 65,4%</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-label">Дней освоения</div>
+    <div class="kpi-label">Дней после запуска</div>
     <div class="kpi-value" id="daysSince">1</div>
-    <div class="kpi-unit">запуск ВН 22.06.2026</div>
+    <div class="kpi-unit">запуск после ТРС 11.09.2026</div>
   </div>
 </div>
 
@@ -412,42 +413,42 @@ a{text-decoration:none;color:inherit}
   <div class="compare-divider"></div>
   <div class="compare-col center">
     <div class="compare-label">Пиковый дебит</div>
-    <div class="compare-date">05.01.2026</div>
-    <div class="compare-big">0.762</div>
+    <div class="compare-date">23.09.2026</div>
+    <div class="compare-big">2.86</div>
     <div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv">Обв. 92,0%</div>
+    <div class="compare-obv">Обв. 72,0%</div>
   </div>
   <div class="compare-divider"></div>
   <div class="compare-col last" style="border-left-color:#16A34A">
     <div class="compare-label">Текущее состояние</div>
-    <div class="compare-date">19.08.2026</div>
-    <div class="compare-big" style="color:#16A34A">1.43</div>
+    <div class="compare-date">27.09.2026</div>
+    <div class="compare-big" style="color:#16A34A">2.78</div>
     <div class="compare-unit">т/сут нефти</div>
-    <div class="compare-obv" style="color:#16A34A">Обв. 29,0%</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 65,4%</div>
   </div>
 </div>
 
 <!-- MONTHLY STATS BAR -->
 <div class="stats-bar">
   <div class="stat-cell">
-    <div class="stat-label">Март 2026</div>
-    <div class="stat-value" style="color:#EF4444">0.12</div>
-    <div class="stat-sub">т/сут · обв. 98,4% · 13 сут</div>
-  </div>
-  <div class="stat-cell">
     <div class="stat-label">Июнь 2026</div>
-    <div class="stat-value" style="color:#EF4444">1.81</div>
+    <div class="stat-value">1.81</div>
     <div class="stat-sub">т/сут · обв. 51,2% · 7 сут</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Июль 2026</div>
-    <div class="stat-value" style="color:#EF4444">1.97</div>
+    <div class="stat-value">1.97</div>
     <div class="stat-sub">т/сут · обв. 22,1% · 31 сут</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Август 2026</div>
     <div class="stat-value" style="color:#EF4444">0.77</div>
-    <div class="stat-sub">т/сут · обв. 39,2% · 28 сут</div>
+    <div class="stat-sub">т/сут · обв. 42,2% · 28 сут</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Сентябрь 2026</div>
+    <div class="stat-value">1.77</div>
+    <div class="stat-sub">т/сут · обв. 78,3% · 16 сут</div>
   </div>
 </div>
 
@@ -458,7 +459,7 @@ a{text-decoration:none;color:inherit}
   <div class="main-left">
     <div class="chart-block">
       <div class="chart-title">Динамика добычи — весь период</div>
-      <div class="chart-sub">01.01.2026 — 30.08.2026 · Qн (т/сут) и Обводнённость (%) · дни простоя/КРС исключены</div>
+      <div class="chart-sub">01.01.2026 — 27.09.2026 · Qн (т/сут) и Обводнённость (%) · дни простоя/КРС исключены</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -468,6 +469,30 @@ a{text-decoration:none;color:inherit}
 
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">23</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Рекорд скважины</div>
+          <div class="event-note">2,86 т/сут при обводнённости 72% — максимум за весь период наблюдений. Прежний рекорд 0,762 т/сут (05.01) перекрыт почти в четыре раза.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">11</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-start">Запуск после ТРС</div>
+          <div class="event-note">Пуск в 18:25. Первые сутки — 0,45 т/сут при 95% воды: отработка технической жидкости. К 24.09 обводнённость опустилась до 65%. Августовская остановка была механикой подвески, изоляция интервала не пострадала.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">09</div><div class="month-label">СЕН</div></div>
+        <div class="event-body">
+          <div class="ev ev-krs">ТРС</div>
+          <div class="event-note">Бригада на скважине: ревизия и замена подвески после августовской негерметичности подземного оборудования. С 01.09 по 08.09 — ожидание бригады.</div>
+        </div>
+      </div>
 
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">28</div><div class="month-label">АВГ</div></div>
@@ -542,13 +567,13 @@ a{text-decoration:none;color:inherit}
     <div class="rir-block">
       <div class="rir-block-title">Состояние скважины</div>
       <div class="days-big" id="daysBig">1</div>
-      <div class="days-label">дней освоения</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EF4444">Остановлена · ОТРС с 29.08</span></div>
-      <div class="rir-row"><span class="rir-key">ЗАПУСК ВН</span><span class="rir-val">22.06.2026</span></div>
-      <div class="rir-row"><span class="rir-key">ДОБЫЧА (19.08)</span><span class="rir-val">1,43 т/сут</span></div>
-      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">29,0% (19.08)</span></div>
+      <div class="days-label">дней после запуска</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">В работе с 11.09 · 100 об/мин</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК ПОСЛЕ ТРС</span><span class="rir-val">11.09.2026 · 18:25</span></div>
+      <div class="rir-row"><span class="rir-key">ДОБЫЧА (27.09)</span><span class="rir-val" style="color:#16A34A">2,78 т/сут</span></div>
+      <div class="rir-row"><span class="rir-key">ОБВОДНЁННОСТЬ</span><span class="rir-val">65,4% (27.09) · было 95,0 на запуске</span></div>
       <div class="rir-row"><span class="rir-key">ПРОСТОЙ / КРС</span><span class="rir-val">14.03–21.06.2026</span></div>
-      <div class="rir-row"><span class="rir-key">КРС</span><span class="rir-val red">с 11.06.2026</span></div>
+      <div class="rir-row"><span class="rir-key">ТРС</span><span class="rir-val">09–10.09.2026 · замена подвески</span></div>
     </div>
 
     <div class="tech-block">
@@ -563,12 +588,12 @@ a{text-decoration:none;color:inherit}
 
     <div class="stat-block">
       <div class="stat-block-title">Итоги периода</div>
-      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 30.08.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">212</span></div>
-      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">94</span></div>
-      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">0,762 т/сут (05.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 27.09.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">269</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">154</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">2,86 т/сут (23.09)</span></div>
       <div class="stat-row"><span class="stat-key">Мин. Qн</span><span class="stat-val red">0,035 т/сут (12.03)</span></div>
-      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">92,0% (05.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">11,0% (01.08)</span></div>
       <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val red">100% (13.03)</span></div>
     </div>
 
@@ -613,8 +638,8 @@ a{text-decoration:none;color:inherit}
     <div class="passport-cell"><div class="passport-key">Остановка ВН</div><div class="passport-val">13.03.2026 (обводнение)</div></div>
     <div class="passport-cell"><div class="passport-key">Простой</div><div class="passport-val">14.03 – 10.06.2026</div></div>
     <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС (с 11.06.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">ОТРС (на 30.08.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–30.08.2026 (242 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">В работе с 11.09 · 100 об/мин (27.09.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–27.09.2026 (269 сут)</div></div>
     <div class="passport-cell"><div class="passport-key">Дней с добычей</div><div class="passport-val">94 из 198</div></div>
     <div class="passport-cell"><div class="passport-key">Пиковый дебит</div><div class="passport-val">0,762 т/сут (05.01.2026)</div></div>
     <div class="passport-cell"><div class="passport-key">Средняя обводнённость</div><div class="passport-val">96,9%</div></div>
@@ -626,13 +651,13 @@ a{text-decoration:none;color:inherit}
 <section style="padding:28px 40px;border-top:1px solid var(--border)">
   <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
     <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
-    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.08.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>27.09.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
   </div>
   <div id="fundStrip"></div>
 </section>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратюбе · Скв. 303 · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 30.08.2026</div>
+  <div class="footer-left">М/Р Каратюбе · Скв. 303 · Насос ВН<br>Данные: суточные режимные листы · 01.01 – 27.09.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
@@ -881,6 +906,33 @@ const DATA = [
   {d:"28.08",qn:0.00,obv:null,phase:"restart",ev:"warn",comment:"Выход жидкости отсутствует. Опрессовка ПО (ЦА-320, 15 атм) — резкое падение давления до 0: подземное оборудование негерметично. Расхаживание ротора автокраном, вес штанг 2,2 т в норме. Повторный запуск при 120 об/мин результата не дал."},
   {d:"29.08",qn:0.00,obv:null,phase:"decline",ev:"stop",comment:"Выхода жидкости нет. В 09:00 скважина остановлена, выведена в ОТРС."},
   {d:"30.08",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС. Ндин 90 м."},
+  {d:"01.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС. Ожидание бригады после августовской негерметичности подземного оборудования."},
+  {d:"02.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"03.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"04.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"05.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"06.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"07.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"08.09",qn:null,obv:null,phase:"idle",ev:"",comment:"ОТРС"},
+  {d:"09.09",qn:null,obv:null,phase:"krs",ev:"",comment:"ТРС: бригада на скважине, ревизия и замена подвески."},
+  {d:"10.09",qn:null,obv:null,phase:"krs",ev:"",comment:"ТРС"},
+  {d:"11.09",qn:null,obv:null,phase:"restart",ev:"start",comment:"Запуск в 18:25 после ТРС. Начат вывод на режим."},
+  {d:"12.09",qn:0.45,obv:95.0,phase:"restart",ev:"",comment:"Первые сутки после запуска: 0,45 т/сут при обводнённости 95% — отработка технической воды, как и после июльского захода."},
+  {d:"13.09",qn:0.66,obv:92.0,phase:"restart",ev:"",comment:""},
+  {d:"14.09",qn:0.63,obv:94.0,phase:"restart",ev:"",comment:""},
+  {d:"15.09",qn:0.94,obv:90.0,phase:"restart",ev:"",comment:""},
+  {d:"16.09",qn:1.35,obv:82.0,phase:"restart",ev:"",comment:"Обводнённость упала до 82%, дебит 1,35 т/сут. Скважина начала отдавать нефть."},
+  {d:"17.09",qn:1.07,obv:82.0,phase:"restart",ev:"",comment:""},
+  {d:"18.09",qn:1.09,obv:85.5,phase:"restart",ev:"rpm",comment:"Обороты подняты 80 → 100."},
+  {d:"19.09",qn:1.94,obv:78.0,phase:"restart",ev:"rise",comment:"1,94 т/сут при 78% воды — дебит перекрыл августовский максимум."},
+  {d:"20.09",qn:1.73,obv:78.0,phase:"restart",ev:"",comment:""},
+  {d:"21.09",qn:2.50,obv:72.0,phase:"work",ev:"",comment:"2,50 т/сут, обводнённость 72%. Тренд устойчивый: вода уходит, нефть растёт."},
+  {d:"22.09",qn:2.79,obv:72.0,phase:"work",ev:"",comment:""},
+  {d:"23.09",qn:2.86,obv:72.0,phase:"work",ev:"peak",comment:"Максимум месяца — 2,86 т/сут."},
+  {d:"24.09",qn:2.54,obv:65.0,phase:"work",ev:"rise",comment:"Обводнённость опустилась до 65% — против 92–100% на старте вывода. Изоляция интервала держит, августовская остановка действительно была механикой подвески."},
+  {d:"25.09",qn:2.51,obv:65.0,phase:"work",ev:"",comment:""},
+  {d:"26.09",qn:2.46,obv:65.3,phase:"work",ev:"",comment:""},
+  {d:"27.09",qn:2.78,obv:65.4,phase:"work",ev:"",comment:"Конец наблюдений. 2,78 т/сут при 65,4% воды — лучший результат скважины за весь период наблюдений."},
 ];
 
 // ── Chart ──────────────────────────────────────────────────────────
@@ -988,7 +1040,7 @@ new Chart(ctx, {
       y: {
         position: 'left',
         min: 0,
-        max: 3,
+        max: 3.5,
         grid: { color: 'rgba(0,0,0,0.05)' },
         border: { color: 'transparent' },
         ticks: { color: '#BBBBBB', font: { size: 8 }, stepSize: 0.5, callback: v => v + ' т' }
@@ -1006,7 +1058,7 @@ new Chart(ctx, {
 });
 
 // ── Days in KRS (с 11.06.2026) ─────────────────────────────────────
-const KRS_DATE = new Date('2026-06-22');
+const KRS_DATE = new Date('2026-09-11');
 const today = new Date();
 const daysIn = Math.max(1, Math.floor((today - KRS_DATE) / 86400000));
 document.getElementById('daysSince').textContent = daysIn;
@@ -1066,8 +1118,8 @@ function closeNav(){
   document.getElementById('navToggle').classList.remove('active');
 }
 </script>
-<script src="wells.js?v=20260908" defer></script>
-<script src="i18n.js?v=20260908" defer></script>
+<script src="wells.js?v=20260928" defer></script>
+<script src="i18n.js?v=20260928" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
