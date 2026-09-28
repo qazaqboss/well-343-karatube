@@ -389,7 +389,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="section-head">
     <div>
       <div class="section-title">Последний заход — скважина 357</div>
-      <div class="section-sub">ЦПД 24.09.2026, разбурка моста и опрессовка интервалов 25.09.2026. Единственный заход в фонде, где герметичность подтверждена прямым испытанием ещё до запуска скважины. Суточные замеры начнутся после перфорации и вывода на режим — до тех пор промысловый эффект не оценивается. Подробности операции — на <a href="well-357.html" style="border-bottom:1px solid var(--grey-muted)">странице скважины</a>.</div>
+      <div class="section-sub">ЦПД 24.09.2026, разбурка моста и опрессовка интервалов 25.09.2026. Единственный заход в фонде, где герметичность подтверждена прямым испытанием ещё до запуска скважины. База для оценки эффекта известна точно: до остановки 25.06 скважина давала 1,50 т/сут при 80,6% воды. Подробности операции и вся история добычи — на <a href="well-357.html" style="border-bottom:1px solid var(--grey-muted)">странице скважины</a>.</div>
     </div>
   </div>
   <div class="cards">
@@ -447,6 +447,7 @@ tbody tr:hover{background:var(--bg-2)}
       <div class="card-text">Задавливали состав до 80 атм, а испытывали изоляцию на 30–40. То есть подтверждено, что интервалы держат рабочее давление опрессовки, — но запас до давления закачки не проверялся. При выводе на режим депрессия на пласт будет другой, и это стоит держать в уме.</div>
       <div class="card-text">Опрессовка также не отвечает на вопрос заколонного перетока: она проверяет герметичность самих интервалов, а не путь воды за колонной. Именно на этом развернулись 305 и 311 — заключений АКЦ по 357 у нас нет.</div>
       <div class="card-text">Дальше по плану: спуск до искусственного забоя 830 м, промывка, подъём компоновки и ГИС с прострелочно-взрывными работами. То есть повторяется сценарий «ЦПД + реперфорация» — тот самый, что дал результат на 343.</div>
+      <div class="card-text">С чем сравнивать при запуске: <b>1,50 т/сут при 80,6% воды</b> — среднее за десять суток до остановки. По остальным скважинам фонда база восстанавливалась приблизительно, здесь она замерена вплотную к ремонту.</div>
     </div>
 
   </div>
@@ -544,7 +545,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
-<script src="wells.js?v=20260929c"></script>
+<script src="wells.js?v=20260929d"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
@@ -566,7 +567,7 @@ document.getElementById('tbody').innerHTML = window.WELLS.wells.slice().sort(fun
     '<td class="c-note">' + s.note + '</td></tr>';
 }).join('');
 </script>
-<script src="i18n.js?v=20260929c" defer></script>
+<script src="i18n.js?v=20260929d" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

@@ -16,12 +16,14 @@
 <meta property="og:site_name" content="КаратюбеМонитор">
 <meta property="og:url" content="https://nanocem.app/well-305.html">
 <meta property="og:title" content="Скважина №305 — КРС (ремонт)">
-<meta property="og:description" content="ЦПД в трёх интервалах 657–684 м, 24.09.2026. Опрессовка 25.09 — держат все три. Единственный заход фонда с прямым испытанием.">
+<meta property="og:description" content="До изоляции 1,50 т/сут при 80,6% воды. ЦПД 24.09 в трёх интервалах, опрессовка 25.09 — держат все три. М/Р Каратюбе, J1-IV.">
 <meta property="og:image" content="https://nanocem.app/og-sealing.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://nanocem.app/og-sealing.png">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -164,6 +166,8 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .phase-work{background:rgba(34,197,94,.12);color:#16A34A}
 .phase-decline{background:rgba(249,115,22,.14);color:#EA580C}
 .phase-gis{background:rgba(13,148,136,.14);color:#0D9488}
+.phase-before{background:rgba(0,0,0,.05);color:#555}
+.phase-idle{background:rgba(239,68,68,.1);color:#EF4444}
 .phase-cpd{background:#111;color:#fff}
 .phase-drill{background:rgba(0,0,0,.08);color:#444}
 .phase-test{background:rgba(34,197,94,.12);color:#16A34A}
@@ -259,7 +263,7 @@ a{text-decoration:none;color:inherit}
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Изоляция водопритока · Капитальный ремонт скважины</div>
+      <div class="hero-eyebrow">Ежедневный мониторинг · Изоляция водопритока</div>
       <h1 class="hero-title">СКВАЖИНА <span class="light">№</span>357</h1>
       <div class="hero-meta">
         <div class="hero-meta-item">ГОРИЗОНТ <span>J1-IV</span></div>
@@ -268,99 +272,103 @@ a{text-decoration:none;color:inherit}
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">ОПЕРАТОР <span>IC Petroleum</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ПЕРИОД <span>24–25.09.2026</span></div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–27.09.2026</span></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill" style="border-color:#16A34A;color:#16A34A"><div class="status-dot" style="background:#16A34A"></div>Герметично по опрессовке</div>
-      <div class="hero-date-note">ЦПД 24.09 в трёх интервалах · опрессовка 25.09 — держат все три · далее ГИС и перфорация</div>
+      <div class="status-pill"><div class="status-dot"></div>КРС · остановлена с 25.06</div>
+      <div class="hero-date-note">База до изоляции — 1,50 т/сут при 80,6% воды · ЦПД 24.09 · опрессовка 25.09 держит</div>
     </div>
   </div>
 </section>
 
 <div class="kpi-strip">
   <div class="kpi-card dark">
-    <div class="kpi-note">657–684 м</div>
-    <div class="kpi-label">Интервалов изолировано</div>
-    <div class="kpi-value">3</div>
-    <div class="kpi-unit">ИЗ ТРЁХ ОБРАБОТАННЫХ</div>
+    <div class="kpi-note">26–28.02.2026</div>
+    <div class="kpi-label">Qн · пик</div>
+    <div class="kpi-value">2.22</div>
+    <div class="kpi-unit">Т / СУТ · обв. 71,2%</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note">30–40 атм</div>
-    <div class="kpi-label">Опрессовка</div>
-    <div class="kpi-value">3 / 3</div>
-    <div class="kpi-unit">ИНТЕРВАЛА ДЕРЖАТ</div>
+    <div class="kpi-note">за период</div>
+    <div class="kpi-label">Qн · средний</div>
+    <div class="kpi-value">1.50</div>
+    <div class="kpi-unit">Т / СУТ · 176 суток</div>
+  </div>
+  <div class="kpi-card red">
+    <div class="kpi-note">за период</div>
+    <div class="kpi-label">Обводнённость средн.</div>
+    <div class="kpi-value red">78.8</div>
+    <div class="kpi-unit">% · диапазон 70,5–83,7</div>
   </div>
   <div class="kpi-card dark">
-    <div class="kpi-note">рост с 40</div>
-    <div class="kpi-label">Давление закачки</div>
-    <div class="kpi-value">80</div>
-    <div class="kpi-unit">АТМ · ПРИЁМ ПРЕКРАТИЛСЯ</div>
+    <div class="kpi-note">16–25.06.2026</div>
+    <div class="kpi-label">База до изоляции</div>
+    <div class="kpi-value">1.50</div>
+    <div class="kpi-unit">Т / СУТ · обв. 80,6%</div>
   </div>
-  <div class="kpi-card grey">
-    <div class="kpi-note">ρ 1,52 г/см³</div>
-    <div class="kpi-label">Состав</div>
-    <div class="kpi-value grey">3</div>
-    <div class="kpi-unit">Т · УЛЬТРАТОНКИЙ</div>
-  </div>
-  <div class="kpi-card dark">
-    <div class="kpi-label">Дней после ЦПД</div>
-    <div class="kpi-value"><span id="daysSince">1</span></div>
-    <div class="kpi-unit">ЦПД 24.09.2026</div>
+  <div class="kpi-card red">
+    <div class="kpi-label">Дней простоя</div>
+    <div class="kpi-value red"><span id="daysSince">1</span></div>
+    <div class="kpi-unit">остановка 25.06.2026</div>
   </div>
 </div>
 
-<div class="section-label">Ключевые точки операции</div>
+<div class="section-label">Ключевые точки периода наблюдений</div>
 <div class="compare-strip">  <div class="compare-col">
-    <div class="compare-label">ЦПД</div><div class="compare-date">24.09.2026 · четверг</div>
-    <div class="compare-big">3.0</div><div class="compare-unit">м³ состава закачано</div><div class="compare-obv">Три интервала</div>
+    <div class="compare-label">Начало наблюдений</div><div class="compare-date">01.01.2026</div>
+    <div class="compare-big dim">1.38</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv dim">Обв. 83,0%</div>
   </div>
   <div class="compare-divider"></div>
   <div class="compare-col center">
-    <div class="compare-label">Опрессовка</div><div class="compare-date">25.09.2026 · пятница</div>
-    <div class="compare-big" style="color:#16A34A">3 / 3</div><div class="compare-unit">интервала держат</div>
-    <div class="compare-obv" style="color:#16A34A">30–40 атм</div>
+    <div class="compare-label">Пиковый дебит</div><div class="compare-date">26–28.02.2026</div>
+    <div class="compare-big">2.22</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv">Обв. 71,2%</div>
   </div>
   <div class="compare-divider"></div>
-  <div class="compare-col last" style="border-left-color:var(--border)">
-    <div class="compare-label">Запуск</div><div class="compare-date">предстоит</div>
-    <div class="compare-big dim">—</div><div class="compare-unit">ГИС и перфорация</div>
-    <div class="compare-obv dim">Промысловый эффект не оценён</div>
+  <div class="compare-col last">
+    <div class="compare-label">База перед изоляцией</div><div class="compare-date">16–25.06.2026</div>
+    <div class="compare-big" style="color:#EF4444">1.50</div><div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv" style="color:#EF4444">Обв. 80,6%</div>
   </div></div>
 
 <div class="stats-bar">
   <div class="stat-cell">
-    <div class="stat-label">Интервалы ЦПД</div>
-    <div class="stat-value">3</div>
-    <div class="stat-sub">657–663 · 669,5–672 · 679–684 м</div>
+    <div class="stat-label">Март 2026</div>
+    <div class="stat-value">1.91</div>
+    <div class="stat-sub">т/сут · обв. 73,2% · 31 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Закачано</div>
-    <div class="stat-value">3.0</div>
-    <div class="stat-sub">м³ · из ≈3,7 м³ замеса</div>
+    <div class="stat-label">Апрель 2026</div>
+    <div class="stat-value" style="color:#EF4444">1.00</div>
+    <div class="stat-sub">т/сут · обв. 81,6% · 30 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Водоцементное отношение</div>
-    <div class="stat-value">0.87</div>
-    <div class="stat-sub">по массе · 2,6 м³ воды на 3 т</div>
+    <div class="stat-label">Май 2026</div>
+    <div class="stat-value">1.26</div>
+    <div class="stat-sub">т/сут · обв. 80,0% · 31 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">ОЗЦ</div>
-    <div class="stat-value">36</div>
-    <div class="stat-sub">часов · под давлением 80 атм</div>
+    <div class="stat-label">Июнь 2026</div>
+    <div class="stat-value">1.33</div>
+    <div class="stat-sub">т/сут · обв. 79,9% · 25 сут</div>
   </div>
 </div>
 
 <div class="main-layout">
   <div class="main-left">
     <div class="chart-block">
+      <div class="chart-title">Динамика добычи до изоляции</div>
+      <div class="chart-sub">01.01.2026 — 25.06.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта и ожидания исключены</div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart357"></canvas></div>
+    </div>
+
+    <div class="chart-block" style="border-top:1px solid var(--border)">
       <div class="chart-title">Схема изоляции по глубине</div>
       <div class="chart-sub">585 — 700 м · чёрным — изолированные интервалы, серым — цементный мост, белым — открытый ствол ниже башмака</div>
-      <div class="chart-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Изолированный интервал</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#E3E3E3"></div>Цементный мост</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#fff;border:1px solid #D8D8D8"></div>Открытый ствол</div>
-      </div>
       <div style="padding:6px 0 4px">
         <svg viewBox="0 0 700 190" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Схема изоляции скважины 357 по глубине">
         <rect x="34.0" y="74" width="636.0" height="30" fill="#F4F4F4" stroke="#D8D8D8"/>
@@ -393,6 +401,7 @@ a{text-decoration:none;color:inherit}
         </svg>
       </div>
     </div>
+
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
 
@@ -400,31 +409,71 @@ a{text-decoration:none;color:inherit}
         <div class="event-date-col"><div class="day-num">25</div><div class="month-label">СЕН</div></div>
         <div class="event-body">
           <div class="ev ev-peak">Все три интервала держат</div>
-          <div class="event-note">Опрессовку вели ступенями, по мере разбурки — каждый интервал проверяли сразу после вскрытия. Мост 40 атм/15 мин, интервалы 657–663 и 669,5–672 на 30 атм, интервал 679–684 на 40 атм/15 мин: везде герметично. Это единственный заход фонда, где изоляция подтверждена прямым испытанием ещё до запуска скважины, — по остальным её оценивали косвенно, по кривой обводнённости за недели работы.</div>
-        </div>
-      </div>
-
-      <div class="event-item">
-        <div class="event-date-col"><div class="day-num">25</div><div class="month-label">СЕН</div></div>
-        <div class="event-body">
-          <div class="ev ev-krs">Мост разбурен до забоя</div>
-          <div class="event-note">Кровля цементного моста встретилась на 650 м — на 15 м ниже точки срезки: часть раствора осела после промывки. Разбуривали двумя проходами, 650 → 672 и 672 → 684 м, на одном режиме: 1300 об/мин, 30/35 атм, нагрузка 0,8 т. На выходе шёл цемент — мост стоял по всей длине, пустот не было. На 686 м провал: ниже башмака хвостовика ствол чистый, как и должно быть.</div>
+          <div class="event-note">Мост разбурен 650 → 684 м, опрессовка шла ступенями: мост 40 атм/15 мин, интервалы 657–663 и 669,5–672 на 30 атм, интервал 679–684 на 40 атм/15 мин — герметично везде. Единственный заход фонда, где изоляция подтверждена прямым испытанием ещё до запуска.</div>
         </div>
       </div>
 
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">24</div><div class="month-label">СЕН</div></div>
         <div class="event-body">
-          <div class="ev ev-rise">Давление выросло 40 → 80 атм</div>
-          <div class="event-note">На закрытой ступени давление поднялось с 40 до 80 атм и на 80 остановилось — пласт перестал принимать раствор. Пока каналы открыты, давление при постоянной подаче не растёт, так что остановка роста и есть рабочий признак герметизации. Скважину оставили под 80 атм на весь срок ОЗЦ: состав набирал прочность в сжатом состоянии.</div>
+          <div class="ev ev-krs">ЦПД NanoCem UT-9</div>
+          <div class="event-note">Три интервала, 3 т ультратонкого состава при В/Ц 0,87. Закачка в три ступени: две при открытом затрубе, третья через пакер на 595 м. Давление выросло 40 → 80 атм и остановилось — приём прекратился. ОЗЦ 36 ч под 80 атм.</div>
         </div>
       </div>
 
       <div class="event-item">
-        <div class="event-date-col"><div class="day-num">24</div><div class="month-label">СЕН</div></div>
+        <div class="event-date-col"><div class="day-num">03</div><div class="month-label">ИЮЛ</div></div>
         <div class="event-body">
-          <div class="ev ev-krs">ЦПД в три ступени</div>
-          <div class="event-note">Сначала 0,4 м³ при открытом затрубе с продавкой 2 м³ — заполнение интервалов без давления. Затем подъём НКТ 685 → 635 м и ещё 1,4 м³, тоже при открытом затрубе. И только на третьей ступени пакер сажали на 595 м и додавливали 1,2 м³ в закрытую. Схема сначала расставляет раствор по всем трём интервалам и лишь потом прижимает его в пласт — при закачке сразу «в закрытую» состав ушёл бы в самый проницаемый интервал.</div>
+          <div class="ev ev-warn">81 сутки ожидания бригады</div>
+          <div class="event-note">С 03.07 по 21.09 скважина числилась в ОКРС — ожидании капитального ремонта. Вместе с остановкой 25.06 простой составил 94 суток. При дореремонтном режиме 1,4–1,5 т/сут это порядка 130 т непополученной нефти — половина всего, что скважина дала за первое полугодие.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">29</div><div class="month-label">ИЮН</div></div>
+        <div class="event-body">
+          <div class="ev ev-gis">ГИС: вытеснено 86,4 м³</div>
+          <div class="event-note">Запись в динамическом режиме с компрессором, 09:00–18:30. За две операции (27 и 29.06) вытеснено 86,4 м³ жидкости, из них 72,7 м³ — пластовая вода с нефтью 5–10%. Прямое подтверждение того, что скважина работает на воде, а не на нефти: обоснование под изоляцию.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">25</div><div class="month-label">ИЮН</div></div>
+        <div class="event-body">
+          <div class="ev ev-crash">Остановка на КРС</div>
+          <div class="event-note">В 18:00 скважина остановлена. Последний режим — 1,21 т/сут при обводнённости 80%, за десять суток до этого в среднем 1,50 т/сут при 80,6%. Именно эта цифра будет базой для оценки эффекта изоляции после запуска.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">11</div><div class="month-label">АПР</div></div>
+        <div class="event-body">
+          <div class="ev ev-warn">Смена метода замера</div>
+          <div class="event-note">Замер на замерную ёмкость через БГ дал Qж 5,2 м³/сут вместо 8,1 по групповому счётчику АГЗУ-4 — разница 36%. Обороты и обводнённость при этом не менялись, так что это поправка учёта, а не обвал притока. До 11.04 скважину считали по счётчику, общему на четыре скважины: 357, 359, 364 и 365.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">26</div><div class="month-label">МАР</div></div>
+        <div class="event-body">
+          <div class="ev ev-warn">Обводнённость 71 → 83%</div>
+          <div class="event-note">Скачок на 12 пунктов за сутки при неизменном отборе жидкости 8,6 м³/сут. Дебит нефти упал вдвое — с 1,98 до 1,28 т/сут. Февральско-мартовское улучшение до 70–72% воды не удержалось.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">26</div><div class="month-label">ФЕВ</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Максимум периода</div>
+          <div class="event-note">2,22 т/сут при обводнённости 71,2% — верхняя планка скважины до изоляции. Достигнут не ростом отбора, а снижением доли воды: Qж при этом даже упал с 9,2 до 8,8 м³/сут.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">09</div><div class="month-label">ФЕВ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rpm">Обороты 80 → 60</div>
+          <div class="event-note">Первое из двух снижений; 04.04 обороты уйдут ещё ниже, до 50. Подача следует за оборотами: Qж 10,1 → 9,6 → 8,4 м³/сут. При этом динамический уровень весь период держится на 35–55 м, то есть скважина не срабатывалась — ограничением был режим насоса, а не приток.</div>
         </div>
       </div>
     </div>
@@ -433,12 +482,13 @@ a{text-decoration:none;color:inherit}
   <div class="main-right">
     <div class="rir-block">
       <div class="rir-block-title">Заход NanoCem UT-9</div>
-      <div class="days-big" id="daysBig" style="color:#16A34A">1</div>
-      <div class="days-label">дней после ЦПД</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">Герметично по опрессовке</span></div>
-      <div class="rir-row"><span class="rir-key">ЦПД</span><span class="rir-val">24.09.2026</span></div>
+      <div class="days-big" id="daysBig" style="color:#EF4444">1</div>
+      <div class="days-label">дней простоя с 25.06</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#EA580C">КРС · разбурка, далее ПВР</span></div>
+      <div class="rir-row"><span class="rir-key">БАЗА ДО ИЗОЛЯЦИИ</span><span class="rir-val">1,50 т/сут · обв. 80,6%</span></div>
+      <div class="rir-row"><span class="rir-key">ЦПД</span><span class="rir-val" style="color:#16A34A">24.09.2026</span></div>
       <div class="rir-row"><span class="rir-key">ИНТЕРВАЛЫ</span><span class="rir-val">657–663 · 669,5–672 · 679–684 м</span></div>
-      <div class="rir-row"><span class="rir-key">СОСТАВ</span><span class="rir-val">ультратонкий, 3 т</span></div>
+      <div class="rir-row"><span class="rir-key">СОСТАВ</span><span class="rir-val">ультратонкий, 3 т · В/Ц 0,87</span></div>
       <div class="rir-row"><span class="rir-key">ДАВЛЕНИЕ ЗАКАЧКИ</span><span class="rir-val">40 → 80 атм, стоп 80</span></div>
       <div class="rir-row"><span class="rir-key">ОПРЕССОВКА</span><span class="rir-val" style="color:#16A34A">3 из 3 · 30–40 атм</span></div>
       <div class="rir-row"><span class="rir-key">ДАЛЬШЕ</span><span class="rir-val">ГИС и ПВР · забой 830 м</span></div>
@@ -446,41 +496,43 @@ a{text-decoration:none;color:inherit}
     <div class="tech-block">
       <div class="tech-title">Технические данные</div>
       <div class="tech-row"><span class="tech-key">ГОРИЗОНТ</span><span class="tech-val">J1-IV</span></div>
+      <div class="tech-row"><span class="tech-key">ПЕРФОРАЦИЯ</span><span class="tech-val">657–663; 669,5–672; 679–684 м</span></div>
+      <div class="tech-row"><span class="tech-key">НАСОС ДО КРС</span><span class="tech-val">УВШН 32Е1500 на 623,69 м</span></div>
+      <div class="tech-row"><span class="tech-key">СПУСК НАСОСА</span><span class="tech-val">19.10.2025</span></div>
+      <div class="tech-row"><span class="tech-key">ПОСЛЕ КРС</span><span class="tech-val">ВНКТ Ø73 мм с воронкой на 635 м</span></div>
+      <div class="tech-row"><span class="tech-key">ОБОРОТЫ ВН</span><span class="tech-val">80 → 60 (09.02) → 50 (04.04)</span></div>
       <div class="tech-row"><span class="tech-key">ХВОСТОВИК</span><span class="tech-val">684,47 м</span></div>
-      <div class="tech-row"><span class="tech-key">ПАКЕР</span><span class="tech-val">643,96 м → посадка 595 м</span></div>
-      <div class="tech-row"><span class="tech-key">СРЕЗКА · КЦМ</span><span class="tech-val">635 м · мост на 650 м</span></div>
-      <div class="tech-row"><span class="tech-key">КОМПОНОВКА</span><span class="tech-val">долото Ø146 · ВЗД Ø105 · УБТ Ø108 ×3</span></div>
-      <div class="tech-row"><span class="tech-key">РЕЖИМ РАЗБУРКИ</span><span class="tech-val">1300 об/мин · 30/35 атм · 0,8 т</span></div>
-      <div class="tech-row"><span class="tech-key">ЗАБОЙ НА 25.09</span><span class="tech-val">700 м · план до 830 м</span></div>
+      <div class="tech-row"><span class="tech-key">УЧЁТ</span><span class="tech-val">АГЗУ-4 · с 11.04 замерная ёмкость</span></div>
     </div>
     <div class="stat-block">
-      <div class="stat-block-title">Рецептура</div>
-      <div class="stat-row"><span class="stat-key">Состав</span><span class="stat-val">ультратонкий, 3 т</span></div>
-      <div class="stat-row"><span class="stat-key">Затворение</span><span class="stat-val">2,6 м³ технической воды</span></div>
-      <div class="stat-row"><span class="stat-key">Плотность</span><span class="stat-val">1,52 г/см³</span></div>
-      <div class="stat-row"><span class="stat-key">В/Ц по массе</span><span class="stat-val">0,87</span></div>
-      <div class="stat-row"><span class="stat-key">Объём замеса</span><span class="stat-val">≈3,7 м³ расчётных</span></div>
-      <div class="stat-row"><span class="stat-key">Закачано</span><span class="stat-val">3,0 м³ (0,4 + 1,4 + 1,2)</span></div>
-      <div class="stat-row"><span class="stat-key">Продавка</span><span class="stat-val">2 м³ · дважды</span></div>
+      <div class="stat-block-title">Итоги периода</div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 27.09.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">270</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">176</span></div>
+      <div class="stat-row"><span class="stat-key">Дней простоя</span><span class="stat-val red">94 (с 26.06)</span></div>
+      <div class="stat-row"><span class="stat-key">Накоплено нефти</span><span class="stat-val">≈264 т</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">2,22 т/сут (26.02)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. Qн</span><span class="stat-val red">0,71 т/сут (15.04)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">11,2 м³/сут (05.01)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">70,5% (01–04.03)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val red">83,7% (05–07.04)</span></div>
     </div>
   </div>
 </div>
 
 <div class="log-section">
-  <div class="log-top"><div class="log-heading">Журнал операций</div></div>
-  <div class="log-filters" id="logFilters"><button class="log-filter active" data-phase="all">Все шаги</button>
-    <button class="log-filter" data-phase="cpd">ЦПД</button>
-    <button class="log-filter" data-phase="drill">Разбурка</button>
-    <button class="log-filter" data-phase="test">Опрессовка</button>
-    <button class="log-filter" data-phase="trip">СПО</button>
-    <button class="log-filter" data-phase="plan">План</button></div>
+  <div class="log-top"><div class="log-heading">Ежедневный журнал</div></div>
+  <div class="log-filters" id="logFilters"><button class="log-filter active" data-phase="all">Все дни</button>
+    <button class="log-filter" data-phase="before">До изоляции</button>
+    <button class="log-filter" data-phase="idle">Ожидание ремонта</button>
+    <button class="log-filter" data-phase="krs">КРС</button></div>
   <div class="log-count" id="logCount"></div>
   <div class="log-table-wrap">
     <table class="log-table">
       <thead><tr>
-        <th>Дата</th><th class="log-col-phase">Этап</th>
-        <th class="log-col-qzh">Глубина / интервал</th><th class="num">Давление</th>
-        <th>Что сделано</th>
+        <th>Дата</th><th class="log-col-phase">Фаза</th>
+        <th class="num log-col-qzh">Qж, м³/сут</th><th class="num">Qн, т/сут</th><th class="num">Обв., %</th>
+        <th>Комментарий</th>
       </tr></thead>
       <tbody id="logBody"></tbody>
     </table>
@@ -490,17 +542,17 @@ a{text-decoration:none;color:inherit}
 <div class="passport-section">
   <div class="passport-title">Технический паспорт · Скважина 357</div>
   <div class="passport-grid">    <div class="passport-cell"><div class="passport-key">Горизонт</div><div class="passport-val">J1-IV</div></div>
-    <div class="passport-cell"><div class="passport-key">Интервалы ЦПД</div><div class="passport-val">657–663; 669,5–672; 679–684 м</div></div>
-    <div class="passport-cell"><div class="passport-key">Состав</div><div class="passport-val">NanoCem UT-9 · ультратонкий, 3 т</div></div>
-    <div class="passport-cell"><div class="passport-key">Плотность раствора</div><div class="passport-val">1,52 г/см³ · В/Ц 0,87</div></div>
+    <div class="passport-cell"><div class="passport-key">Интервалы перфорации</div><div class="passport-val">657–663; 669,5–672; 679–684 м</div></div>
+    <div class="passport-cell"><div class="passport-key">Насос до КРС</div><div class="passport-val">УВШН 32Е1500 на 623,69 м</div></div>
+    <div class="passport-cell"><div class="passport-key">Компоновка после КРС</div><div class="passport-val">ВНКТ Ø73 мм с воронкой на 635 м</div></div>
     <div class="passport-cell"><div class="passport-key">Хвостовик</div><div class="passport-val">684,47 м</div></div>
-    <div class="passport-cell"><div class="passport-key">Пакер</div><div class="passport-val">643,96 м · посадка на 595 м</div></div>
-    <div class="passport-cell"><div class="passport-key">Срезка · ОЗЦ</div><div class="passport-val">635 м · 36 ч под 80 атм</div></div>
+    <div class="passport-cell"><div class="passport-key">Состав изоляции</div><div class="passport-val">NanoCem UT-9 · 3 т · ρ 1,52 г/см³</div></div>
+    <div class="passport-cell"><div class="passport-key">ЦПД</div><div class="passport-val">24.09.2026 · 40 → 80 атм</div></div>
+    <div class="passport-cell"><div class="passport-key">Опрессовка</div><div class="passport-val">25.09.2026 · 3 из 3 герметичны</div></div>
     <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС · ЦПД + реперфорация</div></div>
-    <div class="passport-cell"><div class="passport-key">Опрессовка</div><div class="passport-val">3 из 3 интервалов герметичны</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">КРС · разбурка завершена, далее ПВР (25.09.2026)</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">24–25.09.2026 (2 сут)</div></div>
-    <div class="passport-cell"><div class="passport-key">Суточные замеры</div><div class="passport-val">начнутся после запуска</div></div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">КРС · разбурка завершена, далее ПВР (27.09.2026)</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–27.09.2026 (270 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">База до изоляции</div><div class="passport-val">1,50 т/сут · обв. 80,6%</div></div></div>
 </div>
 
 <!-- ══════════════════════ ФОНД (общий источник wells.js) ══════════════════════ -->
@@ -513,55 +565,341 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <footer class="footer">
-  <div class="footer-left">М/Р Каратюбе · Скв. 357 · Горизонт J1-IV<br>Данные: сводки КРС · 24–25.09.2026</div>
+  <div class="footer-left">М/Р Каратюбе · Скв. 357 · Горизонт J1-IV<br>Данные: суточные режимные листы и сводки КРС · 01.01 – 27.09.2026</div>
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
 <script>
-/* Журнал операций: шаг ремонта вместо суточного замера.
-   Поля: d — дата, phase — этап, z — глубина или интервал, p — давление, comment — что сделано. */
+/* Суточные режимные листы 01.01–25.06 и сводки КРС до 27.09.
+   Ндин на 13–16.03, 22–25.03 и 02–08.04 в источнике записан как «4» при соседних
+   значениях 36–41 м — очевидная потеря нуля, приведено к 40. */
 const DATA = [
-  {d:"24.09", phase:"cpd",   z:"—",             p:"—",            ev:"krs",  comment:"Приготовление раствора: 2,6 м³ технической воды и 3 т ультратонкого состава, удельный вес 1,52 г/см³. Расчётный объём замеса ≈3,7 м³."},
-  {d:"24.09", phase:"cpd",   z:"657–684 м",     p:"—",            ev:"",     comment:"Закачка 0,4 м³ при открытом затрубе, продавка 2 м³. Первая ступень заполняет интервалы без давления на пласт."},
-  {d:"24.09", phase:"trip",  z:"685 → 635 м",   p:"—",            ev:"",     comment:"Подъём ВНКТ Ø73 мм."},
-  {d:"24.09", phase:"cpd",   z:"657–684 м",     p:"—",            ev:"",     comment:"Закачка 1,4 м³ при открытом затрубе. Вторая ступень — раствор расставляется по всем трём интервалам."},
-  {d:"24.09", phase:"cpd",   z:"пакер 595 м",   p:"40 → 80 атм",  ev:"peak", comment:"Пакеровка на 595 м, закачка 1,2 м³ в закрытую, продавка 2 м³. Давление выросло с 40 до 80 атм и остановилось на 80 — пласт перестал принимать раствор."},
-  {d:"24.09", phase:"trip",  z:"635 м",         p:"—",            ev:"",     comment:"Распакеровка, срезка на 635 м."},
-  {d:"24.09", phase:"cpd",   z:"—",             p:"80 атм",       ev:"",     comment:"ОЗЦ с 15:00, 36 часов. Скважина оставлена под давлением 80 атм — состав набирал прочность в сжатом состоянии."},
-  {d:"24.09", phase:"trip",  z:"635 → 585 м",   p:"—",            ev:"",     comment:"Подъём."},
-
-  {d:"25.09", phase:"trip",  z:"0 → 650 м",     p:"—",            ev:"",     comment:"Сборка и спуск компоновки с замером и шаблонированием: долото Ø146 мм, ВЗД Ø105 мм, УБТ Ø108 мм ×3 на технологических ВНКТ Ø73 мм. Кровля цементного моста — 650 м, на 15 м ниже точки срезки: часть раствора осела после промывки."},
-  {d:"25.09", phase:"test",  z:"мост",          p:"40 атм, 15 мин", ev:"rise", comment:"Опрессовка цементного моста ЦА-320 — герметично."},
-  {d:"25.09", phase:"drill", z:"650 → 672 м",   p:"30/35 атм",    ev:"",     comment:"Разбурка моста: 3-я скорость, 1300 об/мин, нагрузка 0,8 т. На выходе цемент."},
-  {d:"25.09", phase:"test",  z:"657–663 и 669,5–672 м", p:"30 атм", ev:"rise", comment:"Опрессовка интервалов изоляции — герметично."},
-  {d:"25.09", phase:"drill", z:"672 → 684 м",   p:"30/35 атм",    ev:"",     comment:"Разбурка моста: 3-я скорость, 1300 об/мин, нагрузка 0,8 т. На выходе цемент — мост стоял по всей длине, пустот не было."},
-  {d:"25.09", phase:"test",  z:"679–684 м",     p:"40 атм, 15 мин", ev:"peak", comment:"Опрессовка интервала — герметично. Все три интервала подтверждены прямым испытанием."},
-  {d:"25.09", phase:"drill", z:"686 м",         p:"—",            ev:"",     comment:"Провал. Ниже башмака хвостовика (684,47 м) ствол чистый, как и должно быть."},
-  {d:"25.09", phase:"trip",  z:"686 → 700 м",   p:"—",            ev:"",     comment:"Спуск с наращиванием. Спуск в процессе."},
-
-  {d:"план",  phase:"plan",  z:"до 830 м",      p:"—",            ev:"gis",  comment:"Спуск до искусственного забоя 830 м, промывка, подъём компоновки под ГИС и прострелочно-взрывные работы. Отрабатывается сценарий «ЦПД + реперфорация» — тот же, что дал результат на скважине 343."},
+  {d:"01.01",qzh:9.3,qn:1.38,obv:83.0,qv:7.72,rpm:80,ndin:54,phase:"before",ev:"",comment:"Начало наблюдений. 1,38 т/сут при обводнённости 83% — скважина изначально работает почти на воде."},
+  {d:"02.01",qzh:9.6,qn:1.54,obv:81.7,qv:7.84,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"03.01",qzh:9.6,qn:1.43,obv:83.0,qv:7.97,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"04.01",qzh:10.9,qn:1.62,obv:83.0,qv:9.05,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"05.01",qzh:11.2,qn:1.82,obv:81.4,qv:9.12,rpm:80,ndin:55,phase:"before",ev:"peak",comment:"Максимум января — 1,82 т/сут. Qж 11,2 м³/сут, самый высокий отбор жидкости за период."},
+  {d:"06.01",qzh:10.8,qn:1.76,obv:81.4,qv:8.79,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"07.01",qzh:10.4,qn:1.64,obv:82.0,qv:8.53,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"08.01",qzh:10.4,qn:1.64,obv:82.0,qv:8.53,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"09.01",qzh:10.2,qn:1.60,obv:82.0,qv:8.36,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"10.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:55,phase:"before",ev:"",comment:""},
+  {d:"11.01",qzh:9.7,qn:1.53,obv:82.0,qv:7.95,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"12.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"13.01",qzh:9.5,qn:1.49,obv:82.0,qv:7.79,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"14.01",qzh:9.5,qn:1.49,obv:82.0,qv:7.79,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"15.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:52,phase:"before",ev:"",comment:""},
+  {d:"16.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:52,phase:"before",ev:"",comment:""},
+  {d:"17.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"18.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"19.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"20.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"21.01",qzh:9.6,qn:1.51,obv:82.0,qv:7.87,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"22.01",qzh:10.2,qn:1.87,obv:79.0,qv:8.06,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"23.01",qzh:10.8,qn:1.98,obv:79.0,qv:8.53,rpm:80,ndin:53,phase:"before",ev:"",comment:""},
+  {d:"24.01",qzh:10.8,qn:1.98,obv:79.0,qv:8.53,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"25.01",qzh:10.8,qn:1.98,obv:79.0,qv:8.53,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"26.01",qzh:10.4,qn:1.91,obv:79.0,qv:8.22,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"27.01",qzh:10.4,qn:1.91,obv:79.0,qv:8.22,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"28.01",qzh:10.4,qn:1.91,obv:79.0,qv:8.22,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"29.01",qzh:10.1,qn:1.81,obv:79.5,qv:8.03,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"30.01",qzh:10.1,qn:1.81,obv:79.5,qv:8.03,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"31.01",qzh:10.1,qn:1.81,obv:79.5,qv:8.03,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"01.02",qzh:10.1,qn:1.85,obv:79.0,qv:7.98,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"02.02",qzh:10.1,qn:1.85,obv:79.0,qv:7.98,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"03.02",qzh:10.1,qn:1.85,obv:79.0,qv:7.98,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"04.02",qzh:10.1,qn:1.94,obv:78.0,qv:7.88,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"05.02",qzh:10.0,qn:1.92,obv:78.0,qv:7.80,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"06.02",qzh:10.1,qn:1.94,obv:78.0,qv:7.88,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"07.02",qzh:10.0,qn:1.93,obv:77.9,qv:7.79,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"08.02",qzh:10.1,qn:1.95,obv:77.9,qv:7.87,rpm:80,ndin:54,phase:"before",ev:"",comment:""},
+  {d:"09.02",qzh:9.6,qn:1.76,obv:79.0,qv:7.58,rpm:60,ndin:54,phase:"before",ev:"rpm",comment:"Обороты снижены 80 → 60. Подача пошла вниз вместе с оборотами: Qж 10,1 → 9,6 м³/сут."},
+  {d:"10.02",qzh:9.5,qn:1.74,obv:79.0,qv:7.50,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"11.02",qzh:9.0,qn:1.65,obv:79.0,qv:7.11,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"12.02",qzh:8.9,qn:1.63,obv:79.0,qv:7.03,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"13.02",qzh:8.6,qn:1.58,obv:79.0,qv:6.79,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"14.02",qzh:8.5,qn:1.56,obv:79.0,qv:6.71,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"15.02",qzh:8.4,qn:1.53,obv:79.1,qv:6.64,rpm:60,ndin:51,phase:"before",ev:"",comment:""},
+  {d:"16.02",qzh:8.4,qn:1.53,obv:79.1,qv:6.64,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"17.02",qzh:8.4,qn:1.53,obv:79.1,qv:6.64,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"18.02",qzh:8.1,qn:1.51,obv:78.6,qv:6.37,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"19.02",qzh:8.1,qn:1.51,obv:78.6,qv:6.37,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"20.02",qzh:8.1,qn:1.51,obv:78.6,qv:6.37,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"21.02",qzh:9.2,qn:1.69,obv:79.0,qv:7.27,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"22.02",qzh:9.2,qn:1.69,obv:79.0,qv:7.27,rpm:60,ndin:48,phase:"before",ev:"",comment:""},
+  {d:"23.02",qzh:9.2,qn:2.21,obv:72.5,qv:6.67,rpm:60,ndin:48,phase:"before",ev:"",comment:"Обводнённость упала до 72,5%, дебит вырос до 2,21 т/сут — лучший режим за период при том же отборе жидкости."},
+  {d:"24.02",qzh:9.2,qn:2.21,obv:72.5,qv:6.67,rpm:60,ndin:49,phase:"before",ev:"",comment:""},
+  {d:"25.02",qzh:9.2,qn:2.21,obv:72.5,qv:6.67,rpm:60,ndin:49,phase:"before",ev:"",comment:""},
+  {d:"26.02",qzh:8.8,qn:2.22,obv:71.2,qv:6.27,rpm:60,ndin:49,phase:"before",ev:"peak",comment:"Максимум периода — 2,22 т/сут при обводнённости 71,2%. Это верхняя планка скважины до изоляции."},
+  {d:"27.02",qzh:8.8,qn:2.22,obv:71.2,qv:6.27,rpm:60,ndin:49,phase:"before",ev:"",comment:""},
+  {d:"28.02",qzh:8.8,qn:2.22,obv:71.2,qv:6.27,rpm:60,ndin:49,phase:"before",ev:"",comment:""},
+  {d:"01.03",qzh:8.3,qn:2.14,obv:70.5,qv:5.85,rpm:60,ndin:49,phase:"before",ev:"",comment:"Групповой замер АГЗУ-4: счётчик общий на четыре скважины — 357, 359, 364 и 365."},
+  {d:"02.03",qzh:8.3,qn:2.14,obv:70.5,qv:5.85,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"03.03",qzh:8.3,qn:2.14,obv:70.5,qv:5.85,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"04.03",qzh:8.4,qn:2.17,obv:70.5,qv:5.92,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"05.03",qzh:8.5,qn:2.18,obv:70.6,qv:6.00,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"06.03",qzh:8.6,qn:2.21,obv:70.6,qv:6.07,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"07.03",qzh:8.6,qn:2.21,obv:70.6,qv:6.07,rpm:60,ndin:47,phase:"before",ev:"",comment:""},
+  {d:"08.03",qzh:8.4,qn:2.16,obv:70.6,qv:5.93,rpm:60,ndin:41,phase:"before",ev:"",comment:""},
+  {d:"09.03",qzh:8.1,qn:2.08,obv:70.6,qv:5.72,rpm:60,ndin:41,phase:"before",ev:"",comment:""},
+  {d:"10.03",qzh:8.0,qn:2.06,obv:70.6,qv:5.65,rpm:60,ndin:41,phase:"before",ev:"",comment:""},
+  {d:"11.03",qzh:8.0,qn:2.04,obv:70.8,qv:5.66,rpm:60,ndin:41,phase:"before",ev:"",comment:""},
+  {d:"12.03",qzh:7.9,qn:2.02,obv:70.8,qv:5.59,rpm:60,ndin:41,phase:"before",ev:"",comment:""},
+  {d:"13.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"14.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"15.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"16.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"17.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"18.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"19.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"20.03",qzh:8.0,qn:2.01,obv:71.3,qv:5.70,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"21.03",qzh:7.8,qn:1.96,obv:71.3,qv:5.56,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"22.03",qzh:7.8,qn:1.96,obv:71.3,qv:5.56,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"23.03",qzh:7.8,qn:1.96,obv:71.3,qv:5.56,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"24.03",qzh:7.9,qn:1.98,obv:71.3,qv:5.63,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"25.03",qzh:7.9,qn:1.98,obv:71.3,qv:5.63,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"26.03",qzh:8.6,qn:1.28,obv:83.0,qv:7.14,rpm:60,ndin:39,phase:"before",ev:"warn",comment:"Обводнённость скакнула 71,3 → 83% при том же отборе жидкости. Дебит упал вдвое, до 1,28 т/сут."},
+  {d:"27.03",qzh:8.6,qn:1.28,obv:83.0,qv:7.14,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"28.03",qzh:8.6,qn:1.28,obv:83.0,qv:7.14,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"29.03",qzh:8.6,qn:1.28,obv:83.0,qv:7.14,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"30.03",qzh:8.6,qn:1.38,obv:81.7,qv:7.03,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"31.03",qzh:8.6,qn:1.38,obv:81.7,qv:7.03,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"01.04",qzh:8.6,qn:1.38,obv:81.7,qv:7.03,rpm:60,ndin:39,phase:"before",ev:"",comment:""},
+  {d:"02.04",qzh:9.1,qn:1.35,obv:83.0,qv:7.55,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"03.04",qzh:9.1,qn:1.35,obv:83.0,qv:7.55,rpm:60,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"04.04",qzh:8.6,qn:1.28,obv:83.0,qv:7.14,rpm:50,ndin:40,phase:"before",ev:"rpm",comment:"Обороты снижены 60 → 50."},
+  {d:"05.04",qzh:8.2,qn:1.17,obv:83.7,qv:6.86,rpm:50,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"06.04",qzh:8.2,qn:1.17,obv:83.7,qv:6.86,rpm:50,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"07.04",qzh:8.4,qn:1.20,obv:83.7,qv:7.03,rpm:50,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"08.04",qzh:8.1,qn:1.35,obv:81.0,qv:6.56,rpm:50,ndin:40,phase:"before",ev:"",comment:""},
+  {d:"09.04",qzh:8.1,qn:1.35,obv:81.0,qv:6.56,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"10.04",qzh:8.1,qn:1.35,obv:81.0,qv:6.56,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"11.04",qzh:5.2,qn:0.86,obv:81.0,qv:4.21,rpm:50,ndin:37,phase:"before",ev:"warn",comment:"Замер на замерную ёмкость через БГ: Qж 5,2 вместо 8,1 м³/сут по групповому счётчику. Скачок в 36% — смена метода замера, а не обвал притока: обводнённость и обороты не менялись."},
+  {d:"12.04",qzh:5.2,qn:0.86,obv:81.0,qv:4.21,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"13.04",qzh:5.2,qn:0.86,obv:81.0,qv:4.21,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"14.04",qzh:4.9,qn:0.73,obv:83.0,qv:4.07,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"15.04",qzh:4.8,qn:0.71,obv:83.0,qv:3.98,rpm:50,ndin:37,phase:"before",ev:"low",comment:"Минимум периода — 0,71 т/сут."},
+  {d:"16.04",qzh:4.8,qn:0.71,obv:83.0,qv:3.96,rpm:50,ndin:37,phase:"before",ev:"warn",comment:"Полное отключение по ВЛ-10 кВ в 09:23, перевод на дизельные станции, возврат на сеть к 10:13."},
+  {d:"17.04",qzh:4.9,qn:0.75,obv:82.4,qv:4.04,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"18.04",qzh:4.7,qn:0.77,obv:81.2,qv:3.82,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"19.04",qzh:4.7,qn:0.77,obv:81.2,qv:3.82,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"20.04",qzh:4.7,qn:0.77,obv:81.2,qv:3.82,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"21.04",qzh:4.8,qn:0.79,obv:81.2,qv:3.90,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"22.04",qzh:5.1,qn:0.86,obv:80.8,qv:4.12,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"23.04",qzh:5.2,qn:0.89,obv:80.5,qv:4.19,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"24.04",qzh:5.6,qn:0.96,obv:80.5,qv:4.52,rpm:50,ndin:36,phase:"before",ev:"warn",comment:"Отключение электроэнергии 10:36–11:05: захлёст фаз на шлейфе КТПН из-за штормового бокового ветра. Перевод на ДЭС, возврат в 11:50."},
+  {d:"25.04",qzh:5.7,qn:0.97,obv:80.5,qv:4.59,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"26.04",qzh:5.7,qn:0.97,obv:80.5,qv:4.57,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"27.04",qzh:5.6,qn:0.95,obv:80.5,qv:4.51,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"28.04",qzh:5.7,qn:0.97,obv:80.6,qv:4.59,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"29.04",qzh:5.7,qn:0.97,obv:80.6,qv:4.59,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"30.04",qzh:5.7,qn:0.97,obv:80.6,qv:4.59,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"01.05",qzh:5.7,qn:0.97,obv:80.6,qv:4.59,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"02.05",qzh:5.4,qn:0.90,obv:81.0,qv:4.37,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"03.05",qzh:5.4,qn:0.90,obv:81.0,qv:4.37,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"04.05",qzh:5.4,qn:0.90,obv:81.0,qv:4.37,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"05.05",qzh:6.8,qn:1.05,obv:82.4,qv:5.60,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"06.05",qzh:6.8,qn:1.05,obv:82.4,qv:5.60,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"07.05",qzh:6.8,qn:1.05,obv:82.4,qv:5.60,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"08.05",qzh:7.2,qn:1.17,obv:81.4,qv:5.86,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"09.05",qzh:7.2,qn:1.17,obv:81.4,qv:5.86,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"10.05",qzh:7.2,qn:1.17,obv:81.4,qv:5.86,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"11.05",qzh:7.5,qn:1.18,obv:82.0,qv:6.15,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"12.05",qzh:7.5,qn:1.18,obv:82.0,qv:6.15,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"13.05",qzh:7.5,qn:1.18,obv:82.0,qv:6.15,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"14.05",qzh:7.4,qn:1.16,obv:82.0,qv:6.07,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"15.05",qzh:7.5,qn:1.18,obv:82.0,qv:6.15,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"16.05",qzh:7.7,qn:1.21,obv:82.0,qv:6.31,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"17.05",qzh:7.6,qn:1.20,obv:82.0,qv:6.23,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"18.05",qzh:7.7,qn:1.22,obv:81.8,qv:6.30,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"19.05",qzh:7.6,qn:1.21,obv:81.8,qv:6.22,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"20.05",qzh:7.6,qn:1.53,obv:77.0,qv:5.85,rpm:50,ndin:35,phase:"before",ev:"",comment:"Обводнённость опустилась до 77% — дебит вырос до 1,53 т/сут без прироста отбора жидкости."},
+  {d:"21.05",qzh:7.6,qn:1.53,obv:77.0,qv:5.85,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"22.05",qzh:7.7,qn:1.48,obv:78.0,qv:6.01,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"23.05",qzh:7.9,qn:1.48,obv:78.6,qv:6.21,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"24.05",qzh:8.2,qn:1.53,obv:78.6,qv:6.45,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"25.05",qzh:8.2,qn:1.55,obv:78.4,qv:6.43,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"26.05",qzh:8.1,qn:1.53,obv:78.4,qv:6.35,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"27.05",qzh:8.1,qn:1.53,obv:78.4,qv:6.35,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"28.05",qzh:8.1,qn:1.53,obv:78.4,qv:6.35,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"29.05",qzh:6.6,qn:1.44,obv:75.0,qv:4.95,rpm:50,ndin:35,phase:"before",ev:"",comment:"Обводнённость 75% — минимум с февраля."},
+  {d:"30.05",qzh:6.6,qn:1.44,obv:75.0,qv:4.95,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"31.05",qzh:6.6,qn:1.44,obv:75.0,qv:4.95,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"01.06",qzh:7.2,qn:1.57,obv:75.0,qv:5.40,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"02.06",qzh:7.2,qn:1.57,obv:75.0,qv:5.40,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"03.06",qzh:7.2,qn:1.57,obv:75.0,qv:5.40,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"04.06",qzh:6.4,qn:1.20,obv:78.6,qv:5.03,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"05.06",qzh:6.4,qn:1.20,obv:78.6,qv:5.03,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"06.06",qzh:6.4,qn:1.20,obv:78.6,qv:5.03,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"07.06",qzh:5.8,qn:0.99,obv:80.4,qv:4.66,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"08.06",qzh:5.8,qn:0.99,obv:80.4,qv:4.66,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"09.06",qzh:5.8,qn:0.99,obv:80.4,qv:4.66,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"10.06",qzh:5.9,qn:1.01,obv:80.4,qv:4.74,rpm:50,ndin:35,phase:"before",ev:"",comment:""},
+  {d:"11.06",qzh:7.7,qn:1.32,obv:80.4,qv:6.19,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"12.06",qzh:7.3,qn:1.15,obv:82.0,qv:5.99,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"13.06",qzh:7.1,qn:1.12,obv:82.0,qv:5.82,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"14.06",qzh:7.1,qn:1.12,obv:82.0,qv:5.82,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"15.06",qzh:8.0,qn:1.26,obv:82.0,qv:6.56,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"16.06",qzh:8.0,qn:1.26,obv:82.0,qv:6.56,rpm:50,ndin:36,phase:"before",ev:"",comment:""},
+  {d:"17.06",qzh:8.2,qn:1.29,obv:82.0,qv:6.72,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"18.06",qzh:8.7,qn:1.37,obv:82.0,qv:7.13,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"19.06",qzh:9.2,qn:1.61,obv:80.0,qv:7.36,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"20.06",qzh:9.2,qn:1.61,obv:80.0,qv:7.36,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"21.06",qzh:9.6,qn:1.68,obv:80.0,qv:7.68,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"22.06",qzh:9.8,qn:1.71,obv:80.0,qv:7.84,rpm:50,ndin:37,phase:"before",ev:"",comment:"Последний максимум перед остановкой: 1,71 т/сут, Qж 9,8 м³/сут."},
+  {d:"23.06",qzh:9.2,qn:1.61,obv:80.0,qv:7.36,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"24.06",qzh:9.2,qn:1.61,obv:80.0,qv:7.36,rpm:50,ndin:37,phase:"before",ev:"",comment:""},
+  {d:"25.06",qzh:6.9,qn:1.21,obv:80.0,qv:5.52,rpm:50,ndin:37,phase:"before",ev:"stop",comment:"В 18:00 остановка на капитальный ремонт. Последний режим: 1,21 т/сут при обводнённости 80%."},
+  {d:"26.06",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"КРС. Демонтаж, подготовка ствола."},
+  {d:"27.06",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"Снижение уровня компрессированием 15:00–18:30: Рнач 10, Рмакс 40, Ркон 34 атм. Вытеснено 13,7 м³ технической воды. Статический уровень после стравливания — 128 м."},
+  {d:"28.06",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"ГИС."},
+  {d:"29.06",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"gis",comment:"ГИС в динамическом режиме с компрессором, 09:00–18:30. Вытеснено 72,7 м³ жидкости — пластовая вода с нефтью 5–10%. Всего за две операции 86,4 м³. Прямое подтверждение массивного водопритока."},
+  {d:"30.06",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"Обработка материалов ГИС."},
+  {d:"01.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"Обработка материалов ГИС."},
+  {d:"02.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"03.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"warn",comment:"Начало ожидания капитального ремонта. Простой продлится до 21.09 — 81 сутки."},
+  {d:"04.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"05.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"06.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"07.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"08.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"09.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"10.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"11.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"12.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"13.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"14.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"15.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"16.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"17.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"18.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"19.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"20.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"21.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"22.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"23.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"24.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"25.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"26.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"27.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"28.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"29.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"30.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"31.07",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"01.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС. Второй месяц ожидания бригады."},
+  {d:"02.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"03.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"04.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"05.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"06.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"07.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"08.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"09.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"10.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"11.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"12.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"13.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"14.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"15.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"16.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"17.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"18.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"19.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"20.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"21.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"22.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"23.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"24.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"25.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"26.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"27.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"28.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"29.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"30.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"31.08",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"01.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС. Третий месяц ожидания."},
+  {d:"02.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"03.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"04.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"05.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"06.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"07.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"08.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"09.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"10.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"11.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"12.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"13.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"14.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"15.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"16.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"17.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"18.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"19.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"20.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"ОКРС — ожидание бригады."},
+  {d:"21.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"idle",ev:"",comment:"Последние сутки ожидания. Всего в ОКРС — 81 сутки."},
+  {d:"22.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"КРС: бригада на скважине."},
+  {d:"23.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"КРС: подготовка к изоляции."},
+  {d:"24.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"krs",comment:"ЦПД NanoCem UT-9 в интервалах 657–663, 669,5–672 и 679–684 м. 3 т ультратонкого состава, 2,6 м³ воды, ρ 1,52 г/см³. Закачка в три ступени, на закрытой давление выросло 40 → 80 атм и остановилось — приём прекратился. Срезка на 635 м, ОЗЦ 36 ч под 80 атм."},
+  {d:"25.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"rise",comment:"Разбурка моста 650 → 684 м и опрессовка: мост 40 атм/15 мин, интервалы 657–663 и 669,5–672 на 30 атм, интервал 679–684 на 40 атм/15 мин — герметично везде. Провал на 686 м. Спуск 686 → 700 м."},
+  {d:"26.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"КРС продолжается: спуск до искусственного забоя 830 м."},
+  {d:"27.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:null,phase:"krs",ev:"",comment:"КРС. Далее промывка, подъём компоновки под ГИС и перфорацию."},
 ];
 
-const CPD_DATE = new Date('2026-09-24');
+Chart.defaults.color = '#AAAAAA';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 10;
+const chartData = DATA.filter(d => d.qn !== null);
+const labels = chartData.map(d => d.d);
+const ctx = document.getElementById('chart357').getContext('2d');
+new Chart(ctx, {
+  type:'line',
+  data:{labels,datasets:[
+    {label:'Qн, т/сут',data:chartData.map(d=>d.qn),borderColor:'#111111',backgroundColor:'transparent',borderWidth:1.5,pointRadius:0,pointHoverRadius:3,tension:0.3,yAxisID:'y',order:1},
+    {label:'Обв., %',data:chartData.map(d=>d.obv),borderColor:'#BBBBBB',backgroundColor:'transparent',borderWidth:1,pointRadius:0,pointHoverRadius:3,tension:0.3,yAxisID:'y2',order:2,borderDash:[4,3]}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'rgba(17,17,17,0.9)',titleColor:'#fff',bodyColor:'#ccc',padding:10,
+        callbacks:{label:c=>c.datasetIndex===0?`Qн: ${c.parsed.y} т/сут`:`Обв.: ${c.parsed.y}%`}},
+      annotation:{annotations:{
+        peakLine:{type:'line',xMin:labels.indexOf('26.02'),xMax:labels.indexOf('26.02'),borderColor:'rgba(0,0,0,0.15)',borderWidth:1,borderDash:[3,4]},
+        peakLabel:{type:'label',xValue:labels.indexOf('26.02'),yValue:2.45,yScaleID:'y',content:['ПИК 2,22'],color:'rgba(0,0,0,0.45)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
+        meterLine:{type:'line',xMin:labels.indexOf('11.04'),xMax:labels.indexOf('11.04'),borderColor:'rgba(249,115,22,0.5)',borderWidth:1.5,borderDash:[3,4]},
+        meterLabel:{type:'label',xValue:labels.indexOf('11.04'),yValue:0.45,yScaleID:'y',content:['СМЕНА ЗАМЕРА'],color:'rgba(234,88,12,0.85)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
+        stopLine:{type:'line',xMin:labels.indexOf('25.06'),xMax:labels.indexOf('25.06'),borderColor:'rgba(239,68,68,0.5)',borderWidth:1.5},
+        stopLabel:{type:'label',xValue:labels.indexOf('25.06'),yValue:2.1,yScaleID:'y',content:['ОСТАНОВКА'],color:'rgba(239,68,68,0.8)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}}
+      }}},
+    scales:{
+      x:{grid:{color:'rgba(0,0,0,0.05)',tickLength:0},border:{color:'rgba(0,0,0,0.1)'},ticks:{maxTicksLimit:12,maxRotation:0,color:'#BBBBBB',font:{size:8}}},
+      y:{position:'left',min:0,max:2.6,grid:{color:'rgba(0,0,0,0.05)'},border:{color:'transparent'},ticks:{color:'#BBBBBB',font:{size:8},stepSize:0.5,callback:v=>v+' т'}},
+      y2:{position:'right',min:65,max:90,grid:{display:false},border:{color:'transparent'},ticks:{color:'#CCCCCC',font:{size:8},stepSize:5,callback:v=>v+'%'}}
+    }}
+});
+
+const STOP_DATE = new Date('2026-06-25');
 const today = new Date();
-const daysIn = Math.max(1, Math.floor((today - CPD_DATE) / 86400000));
+const daysIn = Math.max(1, Math.floor((today - STOP_DATE) / 86400000));
 document.getElementById('daysBig').textContent = daysIn;
 document.getElementById('daysSince').textContent = daysIn;
 
 (function(){
-  const PHASE_LABEL = { cpd:'ЦПД', drill:'Разбурка', test:'Опрессовка', trip:'СПО', plan:'План' };
+  const PHASE_LABEL = { before:'До изоляции', idle:'ОКРС', krs:'КРС' };
   const EV_LABEL = {
-    peak:{text:'ключевой шаг',cls:'evb-peak'}, rise:{text:'герметично',cls:'evb-rise'},
-    krs:{text:'КРС',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}
+    peak:{text:'пик',cls:'evb-peak'}, rise:{text:'герметично',cls:'evb-rise'}, low:{text:'минимум',cls:'evb-low'},
+    warn:{text:'осложнение',cls:'evb-warn'}, rpm:{text:'обороты',cls:'evb-rpm'}, stop:{text:'остановка',cls:'evb-crash'},
+    krs:{text:'ЦПД',cls:'evb-krs'}, gis:{text:'ГИС',cls:'evb-gis'}
   };
+  function fmt(v,d){ return (v===null||v===undefined)?'—':Number(v).toFixed(d); }
   function buildRow(item){
     const tr=document.createElement('tr');
     tr.className='log-row'+(item.ev?' log-row--ev':'');
     const b=item.ev&&EV_LABEL[item.ev]?`<span class="ev-badge ${EV_LABEL[item.ev].cls}">${EV_LABEL[item.ev].text}</span>`:'';
     tr.innerHTML=`<td class="log-date">${item.d}</td>
       <td class="log-col-phase"><span class="phase-tag phase-${item.phase}">${PHASE_LABEL[item.phase]||item.phase}</span></td>
-      <td class="log-col-qzh">${item.z||'—'}</td>
-      <td class="num">${item.p||'—'}</td>
+      <td class="num log-col-qzh">${fmt(item.qzh,1)}</td>
+      <td class="num">${fmt(item.qn,2)}</td>
+      <td class="num">${fmt(item.obv,1)}</td>
       <td class="log-comment">${b}${item.comment||''}</td>`;
     return tr;
   }
@@ -583,8 +921,8 @@ document.getElementById('daysSince').textContent = daysIn;
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 </script>
-<script src="wells.js?v=20260929c" defer></script>
-<script src="i18n.js?v=20260929c" defer></script>
+<script src="wells.js?v=20260929d" defer></script>
+<script src="i18n.js?v=20260929d" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
