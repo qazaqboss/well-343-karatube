@@ -307,6 +307,12 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 a{text-decoration:none;color:inherit}
 .logo{cursor:pointer;transition:opacity .15s}
 .logo:hover{opacity:.65}
+
+/* ── Телефон: бейдж KPI встаёт в поток, чтобы не наезжать на подпись ── */
+@media(max-width:560px){
+  .kpi-card{padding-top:18px}
+  .kpi-note{position:static;display:inline-block;margin-bottom:9px}
+}
 </style>
 </head>
 <body data-well-id="301">
@@ -1172,8 +1178,8 @@ function closeNav(){
   document.getElementById('navToggle').classList.remove('active');
 }
 </script>
-<script src="wells.js?v=20260929e" defer></script>
-<script src="i18n.js?v=20260929e" defer></script>
+<script src="wells.js?v=20260929f" defer></script>
+<script src="i18n.js?v=20260929f" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

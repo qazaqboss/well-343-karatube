@@ -189,6 +189,30 @@ tbody tr:hover{background:var(--bg-2)}
 @media(max-width:1250px){.nav{display:none}.nav-toggle{display:flex}}
 .logo{cursor:pointer;transition:opacity .15s}
 .logo:hover{opacity:.65}
+
+/* ── Телефон ─────────────────────────────────────────────────────────────── */
+@media(max-width:560px){
+  .kpi-card{padding-top:18px}
+  .kpi-note{position:static;display:inline-block;margin-bottom:9px}
+}
+@media(max-width:700px){
+  /* перечень кандидатов разворачивается в карточки вместо прокрутки вбок */
+  .tbl-wrap{overflow-x:visible;border:none}
+  table{min-width:0;display:block}
+  thead{display:none}
+  tbody,tr,td{display:block;width:auto}
+  tr{border:1px solid var(--border);margin-bottom:-1px;padding:16px 18px;background:var(--bg)}
+  tbody tr:hover{background:var(--bg)}
+  td{border:none;padding:5px 0;font-size:12.5px;display:flex;align-items:baseline;
+     justify-content:space-between;gap:14px;text-align:right}
+  td::before{content:attr(data-k);flex-shrink:0;font-family:var(--font-data);font-size:9px;
+             letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim);text-align:left}
+  td.c-well{display:block;text-align:left;font-size:22px;padding:0 0 10px;
+            border-bottom:1px solid var(--border-dim);margin-bottom:8px}
+  td.c-well::before{content:none}
+  td.c-obj,td.c-fit{display:block;text-align:left;padding-top:9px}
+  td.c-obj::before,td.c-fit::before{display:block;margin-bottom:5px}
+}
 </style>
 </head>
 <body>
@@ -362,7 +386,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">IC Petroleum · ТОО «ЭкоМикс»</div>
 </footer>
 
-<script src="wells.js?v=20260929e"></script>
+<script src="wells.js?v=20260929f"></script>
 <script>
 const MONTHS = {'08':'Август','09':'Сентябрь','10':'Октябрь','11':'Ноябрь'};
 const DECS = ['I','II','III'];
@@ -468,9 +492,11 @@ let f = 'all';
 function render(){
   const list = WELLS.filter(w => f === 'all' || w.sc === f);
   document.getElementById('tbody').innerHTML = list.map(w =>
-    '<tr><td class="c-well">'+w.w+'</td><td class="c-per">'+period(w)+'</td>'+
-    '<td><span class="tag '+(w.sc==='s1'?'s1':'')+'">'+SCEN[w.sc].name+'</span></td>'+
-    '<td class="c-obj">'+w.obj+'</td><td class="c-fit">'+SCEN[w.sc].fit+'</td></tr>').join('');
+    '<tr><td class="c-well">'+w.w+'</td>'+
+    '<td class="c-per" data-k="Ориентир">'+period(w)+'</td>'+
+    '<td data-k="Сценарий"><span class="tag '+(w.sc==='s1'?'s1':'')+'">'+SCEN[w.sc].name+'</span></td>'+
+    '<td class="c-obj" data-k="Объект изоляции">'+w.obj+'</td>'+
+    '<td class="c-fit" data-k="Применимость UT-9">'+SCEN[w.sc].fit+'</td></tr>').join('');
   document.getElementById('cnt').textContent = 'Показано ' + list.length + ' из ' + WELLS.length + ' кандидатов';
 }
 document.getElementById('filters').addEventListener('click', e => {
@@ -481,7 +507,7 @@ document.getElementById('filters').addEventListener('click', e => {
 });
 render();
 </script>
-<script src="i18n.js?v=20260929e" defer></script>
+<script src="i18n.js?v=20260929f" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

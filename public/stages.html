@@ -160,6 +160,16 @@ a{text-decoration:none;color:inherit}
 
 .logo{cursor:pointer;transition:opacity .15s}
 .logo:hover{opacity:.65}
+
+/* ── Телефон: карточка этапа не выталкивает страницу вбок ────────────────── */
+@media(max-width:640px){
+  .stage{padding:18px 16px}
+  .stage-head{flex-wrap:wrap;gap:10px}
+  .stage-row{flex-wrap:wrap;gap:2px}
+  .stage-v{text-align:left}
+  .kpi-card{padding-top:18px}
+  .kpi-note{position:static;display:inline-block;margin-bottom:9px}
+}
 </style>
 </head>
 <body>
@@ -307,7 +317,7 @@ document.getElementById('stages').innerHTML = STAGES.map(function(s){
     '</div>';
 }).join('');
 </script>
-<script src="i18n.js?v=20260929e" defer></script>
+<script src="i18n.js?v=20260929f" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
