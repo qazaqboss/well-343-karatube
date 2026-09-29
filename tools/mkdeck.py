@@ -53,7 +53,7 @@ def case_svg(t):
 RU = dict(
  lang="ru", file="nanocem-ut9-presentation.pdf",
  title="NanoCem UT-9 — презентация продукта",
- foot_l="NanoCem UT-9 · ТУ 5745-001-171140033124-2025",
+ foot_l="NanoCem UT-9 · ультратонкий цемент",
  foot_r="ТОО «ЭкоМикс» · EASYMIX · nanocem.app",
  g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="частицы сводятся в перемычку у стенки",
  g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="твёрдая фаза проникает в интервал",
@@ -84,7 +84,7 @@ RU = dict(
             "а не поверх него."),
   # 4. Характеристики
   dict(kind="spec", kicker="Технические характеристики", h2="Паспорт продукта",
-       sub="ТУ 5745-001-171140033124-2025 · сухая смесь, порошок серого цвета · 25 кг / 1000 кг",
+       sub="Сухая смесь, порошок серого цвета · фасовка 25 кг и 1000 кг",
        rows=[("Тонкость помола D50 / D95","~3,5 мкм / ≤ 9 мкм"),
              ("Плотность сухого продукта","2,95 г/см³"),
              ("Плотность суспензии","1,85–1,95 г/см³"),
@@ -176,8 +176,8 @@ RU = dict(
   # 11. Итог
   dict(kind="final", kicker="Итог", h2="Что мы предлагаем",
        lead="Цемент, отработанная технология закачки и прозрачная аналитика по каждому заходу.",
-       cols=[("01","Цемент","Ультратонкая смесь собственного производства, ТУ 5745-001-171140033124-2025. "
-              "Фасовка 25 кг и 1000 кг, срок хранения 12 месяцев."),
+       cols=[("01","Цемент","Ультратонкая смесь собственного производства. Фасовка 25 кг "
+              "и 1000 кг, срок хранения 12 месяцев."),
              ("02","Технология","Схема ЦПД в три ступени с контролем по давлению, опрессовкой "
               "каждого интервала и последующей реперфорацией."),
              ("03","Аналитика","Суточный мониторинг фонда, оценка эффекта по приросту дебита "
@@ -188,7 +188,7 @@ RU = dict(
 EN = dict(
  lang="en", file="nanocem-ut9-presentation-en.pdf",
  title="NanoCem UT-9 — product presentation",
- foot_l="NanoCem UT-9 · TU 5745-001-171140033124-2025",
+ foot_l="NanoCem UT-9 · ultra-fine cement",
  foot_r="EcoMix LLP · EASYMIX · nanocem.app",
  g1="ORDINARY CEMENT · 40–80 µm", g1s="particles bridge at the wall",
  g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the solid phase enters the interval",
@@ -215,7 +215,7 @@ EN = dict(
             "the rest builds set cement in the perforation channels. After WOC the barrier sits inside "
             "the interval, not on top of it."),
   dict(kind="spec", kicker="Technical data", h2="Product data sheet",
-       sub="TU 5745-001-171140033124-2025 · dry blend, grey powder · 25 kg / 1000 kg",
+       sub="Dry blend, grey powder · supplied in 25 kg and 1000 kg packs",
        rows=[("Fineness D50 / D95","~3.5 µm / ≤ 9 µm"),
              ("Dry product density","2.95 g/cm³"),
              ("Slurry density","1.85–1.95 g/cm³"),
@@ -299,8 +299,8 @@ EN = dict(
             "nothing about crossflow behind the casing."),
   dict(kind="final", kicker="Summary", h2="What we offer",
        lead="The cement, a proven squeeze procedure and transparent analytics on every treatment.",
-       cols=[("01","The cement","An ultra-fine blend of our own manufacture, TU 5745-001-171140033124-2025. "
-              "Supplied in 25 kg and 1000 kg packs, 12-month shelf life."),
+       cols=[("01","The cement","An ultra-fine blend of our own manufacture. Supplied in 25 kg "
+              "and 1000 kg packs, 12-month shelf life."),
              ("02","The procedure","A three-stage squeeze with pressure control, a separate pressure test "
               "on each interval and subsequent re-perforation."),
              ("03","The analytics","Daily monitoring of the well stock, effect measured from the "
