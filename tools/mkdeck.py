@@ -55,8 +55,8 @@ RU = dict(
  title="NanoCem UT-9 — презентация продукта",
  foot_l="NanoCem UT-9 · ТУ 5745-001-171140033124-2025",
  foot_r="ТОО «ЭкоМикс» · EASYMIX · nanocem.app",
- g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="канал в глубине остаётся открытым",
- g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="канал заполнен на всю глубину",
+ g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="частицы задерживаются на входе",
+ g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="цемент проникает на всю глубину",
  c1="ДО ИЗОЛЯЦИИ · 28.01", c2="ПИК · 19.03", c3="СЕЙЧАС · 27.09",
  cnote="Дебит нефти, т/сут. Восьмой месяц после изоляции — эффект держится.",
  s=[
@@ -71,12 +71,13 @@ RU = dict(
               ("Опорный результат","1,1 → 16,4","т/сут на скважине 343")]),
   # 3. Помол
   dict(kind="grind", kicker="Принцип", h2="Решает помол, а не давление закачки",
-       lead="Разница между «состав зашёл в трещину» и «состав встал пробкой на её устье» — "
-            "это размер частиц.",
-       note="Частицы обычного цемента 40–80 мкм кольматируют устье канала, не заполняя его: "
-            "канал в глубине остаётся незаполненным. У NanoCem UT-9 подавляющая часть частиц "
-            "мельче 9 мкм — смесь проходит вглубь и заполняет канал целиком. После твердения "
-            "это не пломба, а конструкционный камень."),
+       lead="Проникнет цемент в мелкие трещины и поры или задержится на входе — решает "
+            "размер частиц.",
+       note="Частицы обычного цемента 40–80 мкм крупнее самих каналов: они задерживаются "
+            "на входе, и трещина в глубине остаётся незаполненной. У NanoCem UT-9 подавляющая "
+            "часть частиц мельче 9 мкм — цемент проникает в мелкие трещины и поры и заполняет "
+            "их на всю глубину. После твердения это полноценный конструкционный камень: "
+            "65–75 МПа за 28 суток."),
   # 4. Характеристики
   dict(kind="spec", kicker="Технические характеристики", h2="Паспорт состава",
        sub="ТУ 5745-001-171140033124-2025 · сухая смесь, порошок серого цвета · 25 кг / 1000 кг",
@@ -185,8 +186,8 @@ EN = dict(
  title="NanoCem UT-9 — product presentation",
  foot_l="NanoCem UT-9 · TU 5745-001-171140033124-2025",
  foot_r="EcoMix LLP · EASYMIX · nanocem.app",
- g1="ORDINARY CEMENT · 40–80 µm", g1s="deeper in, the channel stays open",
- g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the channel is filled to its full depth",
+ g1="ORDINARY CEMENT · 40–80 µm", g1s="particles are held back at the entrance",
+ g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the cement penetrates to full depth",
  c1="BEFORE · 28.01", c2="PEAK · 19.03", c3="NOW · 27.09",
  cnote="Oil rate, t/day. Eighth month after the treatment — the effect is holding.",
  s=[
@@ -199,12 +200,13 @@ EN = dict(
               ("Treatments completed","7 wells","January — September 2026"),
               ("Reference result","1.1 → 16.4","t/day on well 343")]),
   dict(kind="grind", kicker="The principle", h2="Fineness decides it, not pump pressure",
-       lead="The difference between “the grout entered the fracture” and “the grout "
-            "bridged off at its mouth” is particle size.",
-       note="Ordinary cement particles of 40–80 µm bridge off at the mouth of the channel without "
-            "filling it: deeper in, the channel is left unfilled. In NanoCem UT-9 the overwhelming "
-            "majority of particles are finer than 9 µm — the grout travels in and fills the channel "
-            "completely. Once set, it is not a plug but structural stone."),
+       lead="Whether the cement penetrates fine fractures and pores or is held back at the "
+            "entrance is decided by particle size.",
+       note="Ordinary cement particles of 40–80 µm are larger than the channels themselves: they "
+            "are held back at the entrance and the fracture is left unfilled deeper in. In NanoCem "
+            "UT-9 the overwhelming majority of particles are finer than 9 µm — the cement penetrates "
+            "fine fractures and pores and fills them to their full depth. Once set it is a structural "
+            "stone in its own right: 65–75 MPa at 28 days."),
   dict(kind="spec", kicker="Technical data", h2="Product data sheet",
        sub="TU 5745-001-171140033124-2025 · dry blend, grey powder · 25 kg / 1000 kg",
        rows=[("Fineness D50 / D95","~3.5 µm / ≤ 9 µm"),
