@@ -64,7 +64,8 @@ RU = dict(
   dict(kind="title", eyebrow="ТОО «ЭкоМикс» · EASYMIX · селективная изоляция пласта",
        h1='NANOCEM <span class="light">UT-9</span>',
        lead="Ультратонкая изоляционно-инъекционная смесь для селективной изоляции интервалов. "
-            "Помол D95 ≤ 9 мкм — состав входит туда, куда обычный тампонажный цемент не проходит.",
+            "Помол D95 ≤ 9 мкм — проникает в микротрещины и поры, недоступные обычному "
+            "тампонажному цементу.",
        stats=[("Тонкость помола","D95 ≤ 9 мкм","D50 ~3,5 мкм"),
               ("Прочность 28 сут","65–75 МПа","марка М500"),
               ("Выполнено заходов","7 скважин","январь — сентябрь 2026"),
@@ -82,7 +83,7 @@ RU = dict(
             "формирует камень в перфорационных каналах. После ОЗЦ экран стоит внутри интервала, "
             "а не поверх него."),
   # 4. Характеристики
-  dict(kind="spec", kicker="Технические характеристики", h2="Паспорт состава",
+  dict(kind="spec", kicker="Технические характеристики", h2="Паспорт продукта",
        sub="ТУ 5745-001-171140033124-2025 · сухая смесь, порошок серого цвета · 25 кг / 1000 кг",
        rows=[("Тонкость помола D50 / D95","~3,5 мкм / ≤ 9 мкм"),
              ("Плотность сухого продукта","2,95 г/см³"),
@@ -98,14 +99,14 @@ RU = dict(
              ("Химическая стойкость","нефть, солевые растворы, сульфаты"),
              ("Хранение","12 месяцев")]),
   # 5. Задачи
-  dict(kind="text", kicker="Применение", h2="Что закрывает состав",
+  dict(kind="text", kicker="Применение", h2="Что изолирует NanoCem UT-9",
        lead="Три направления, отработанные на действующем эксплуатационном фонде.",
        cols=[("Задача 01","Селективная изоляция интервалов","Отсечение отработавших интервалов "
               "перфорации. Нефтенасыщенная часть пласта остаётся работающей — скважина "
               "возвращается в добычу с более высоким дебитом."),
              ("Задача 02","Разобщение горизонтов","Герметизация каналов за обсадной колонной, "
               "связывающих выше- и нижележащие пласты. Ультратонкость позволяет заполнить "
-              "узкие зазоры, недоступные обычному составу."),
+              "узкие зазоры, недоступные обычному тампонажному цементу."),
              ("Задача 03","Ремонт цементного кольца","Заполнение трещин и микрозазоров в крепи, "
               "восстановление разобщения пластов. Адгезия от 2,5 МПа даёт сцепление "
               "с существующим камнем.")]),
@@ -113,7 +114,7 @@ RU = dict(
   dict(kind="tech", kicker="Технология", h2="Как это делается на скважине",
        sub="Отработанная схема ЦПД — на примере скважины 357, сентябрь 2026",
        steps=[("01","Подготовка","Остановка, ГИС, определение интервалов притока. Раствор "
-               "затворяется при В/Ц около 0,87 — состав намеренно подвижный, иначе он не войдёт "
+               "затворяется при В/Ц около 0,87 — раствор намеренно подвижный, иначе твёрдая фаза не войдёт "
                "в каналы, ради которых его и берут."),
               ("02","Закачка в три ступени","Сначала порция при открытом затрубе — раствор "
                "расставляется по всем интервалам. Затем подъём НКТ и вторая порция. И только "
@@ -121,7 +122,7 @@ RU = dict(
               ("03","Контроль по давлению","На закрытой ступени давление растёт и останавливается: "
                "пласт перестал принимать. Это рабочий признак герметизации — пока каналы открыты, "
                "давление при постоянной подаче не растёт."),
-              ("04","ОЗЦ под давлением","Скважина остаётся под давлением весь срок — состав "
+              ("04","ОЗЦ под давлением","Скважина остаётся под давлением весь срок — цемент "
                "набирает прочность в сжатом состоянии, а не просто стоит в стволе."),
               ("05","Разбурка и опрессовка","Мост разбуривают и каждый интервал опрессовывают "
                "отдельно, по мере вскрытия. Так негерметичный интервал сразу локализуется."),
@@ -147,7 +148,7 @@ RU = dict(
               ("Текущий режим","10,61 т/сут","на 27.09.2026"),
               ("Срок эффекта","8 месяцев","и продолжается")]),
   # 9. Честно
-  dict(kind="text", kicker="Где состав не решает", h2="Честная граница применимости",
+  dict(kind="text", kicker="Границы метода", h2="Честная граница применимости",
        lead="Изоляция перфорации даёт полный эффект только там, где цементное кольцо за "
             "колонной целое.",
        note="По заключениям ПГИ на двух краевых скважинах заколонный цементный камень "
@@ -174,8 +175,8 @@ RU = dict(
             "и отдельно от вопроса заколонного перетока."),
   # 11. Итог
   dict(kind="final", kicker="Итог", h2="Что мы предлагаем",
-       lead="Состав, отработанная технология закачки и прозрачная аналитика по каждому заходу.",
-       cols=[("01","Состав","Ультратонкая смесь собственного производства, ТУ 5745-001-171140033124-2025. "
+       lead="Цемент, отработанная технология закачки и прозрачная аналитика по каждому заходу.",
+       cols=[("01","Цемент","Ультратонкая смесь собственного производства, ТУ 5745-001-171140033124-2025. "
               "Фасовка 25 кг и 1000 кг, срок хранения 12 месяцев."),
              ("02","Технология","Схема ЦПД в три ступени с контролем по давлению, опрессовкой "
               "каждого интервала и последующей реперфорацией."),
@@ -197,7 +198,7 @@ EN = dict(
   dict(kind="title", eyebrow="EcoMix LLP · EASYMIX · selective zonal isolation",
        h1='NANOCEM <span class="light">UT-9</span>',
        lead="An ultra-fine injection grout for selective zonal isolation. A D95 of 9 µm or finer "
-            "lets the compound enter channels that ordinary oil-well cement cannot reach.",
+            "penetrates the microfractures and pores that ordinary oil-well cement cannot reach.",
        stats=[("Particle fineness","D95 ≤ 9 µm","D50 ~3.5 µm"),
               ("28-day strength","65–75 MPa","grade M500"),
               ("Treatments completed","7 wells","January — September 2026"),
@@ -228,14 +229,14 @@ EN = dict(
              ("Layer thickness","5–100 mm"),
              ("Chemical resistance","oil, brines, sulphates"),
              ("Shelf life","12 months")]),
-  dict(kind="text", kicker="Applications", h2="What the compound seals",
+  dict(kind="text", kicker="Applications", h2="What NanoCem UT-9 isolates",
        lead="Three uses proven on a producing well stock.",
        cols=[("Use 01","Selective interval isolation","Cutting off spent perforation intervals. "
               "The oil-bearing part of the reservoir keeps working — the well returns to "
               "production at a higher rate."),
              ("Use 02","Zonal separation","Sealing the channels behind the casing that connect "
               "horizons above and below. The ultra-fine grind fills narrow gaps that an ordinary "
-              "compound cannot reach."),
+              "oil-well cement cannot reach."),
              ("Use 03","Repairing the cement sheath","Filling cracks and micro-gaps in the sheath and "
               "restoring zonal isolation. A bond of 2.5 MPa or better grips the existing stone.")]),
   dict(kind="tech", kicker="Procedure", h2="How it is done at the well",
@@ -250,7 +251,7 @@ EN = dict(
                "the formation has stopped taking. That is the working sign of a seal — while the channels "
                "are open, pressure does not build at a constant pump rate."),
               ("04","Waiting on cement under pressure","The well stays under pressure throughout — the "
-               "compound gains strength under compression rather than simply standing in the hole."),
+               "cement gains strength under compression rather than simply standing in the hole."),
               ("05","Drill-out and pressure test","The bridge is drilled out and each interval is tested "
                "separately as it is opened, so a leaking interval is located immediately."),
               ("06","Perforation and start-up","Logging, perforation, ramp-up. The effect is judged from "
@@ -297,8 +298,8 @@ EN = dict(
             "A caveat: the test was at 30–40 atm against a squeeze pressure of 80 atm, and it says "
             "nothing about crossflow behind the casing."),
   dict(kind="final", kicker="Summary", h2="What we offer",
-       lead="The compound, a proven squeeze procedure and transparent analytics on every treatment.",
-       cols=[("01","The compound","An ultra-fine blend of our own manufacture, TU 5745-001-171140033124-2025. "
+       lead="The cement, a proven squeeze procedure and transparent analytics on every treatment.",
+       cols=[("01","The cement","An ultra-fine blend of our own manufacture, TU 5745-001-171140033124-2025. "
               "Supplied in 25 kg and 1000 kg packs, 12-month shelf life."),
              ("02","The procedure","A three-stage squeeze with pressure control, a separate pressure test "
               "on each interval and subsequent re-perforation."),
