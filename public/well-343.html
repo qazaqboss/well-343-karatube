@@ -507,7 +507,7 @@ a{text-decoration:none;color:inherit}
         <div class="event-date-col"><div class="day-num">20</div><div class="month-label">АВГ</div></div>
         <div class="event-body">
           <div class="ev ev-warn">Порог 40% превышен</div>
-          <div class="event-note">С 16.08 обводнённость закрепилась на контрольном уровне 40%, к 20.08 выросла до 44%, к концу месяца — до 45,0%. Подъём жидкости при этом снизился с 24,6 до 21,8 м³/сут: приток воды растёт на фоне падения общего отбора. Дебит нефти 10,48 т/сут — минимум после РИР, но всё ещё в 9,5 раза выше базового уровня 1,1 т/сут.</div>
+          <div class="event-note">С 16.08 обводнённость закрепилась на контрольном уровне 40%, к 20.08 выросла до 44%, к концу месяца — до 45,0%. Подъём жидкости при этом снизился с 24,6 до 21,8 м³/сут: водоприток растёт на фоне падения общего отбора. Дебит нефти 10,48 т/сут — минимум после РИР, но всё ещё в 9,5 раза выше базового уровня 1,1 т/сут.</div>
         </div>
       </div>
 
@@ -571,7 +571,7 @@ a{text-decoration:none;color:inherit}
         <div class="event-date-col"><div class="day-num">19</div><div class="month-label">ФЕВ</div></div>
         <div class="event-body">
           <div class="ev ev-peak">Резкий перелом</div>
-          <div class="event-note">Скачок за сутки: 6,9 → 11,5 т/сут, обводнённость 62,9 → 38,4% (−24,5 п.п.). Завершение набора прочности изолирующего состава.</div>
+          <div class="event-note">Скачок за сутки: 6,9 → 11,5 т/сут, обводнённость 62,9 → 38,4% (−24,5 п.п.). Завершение набора прочности цементного камня.</div>
         </div>
       </div>
 
@@ -611,7 +611,7 @@ a{text-decoration:none;color:inherit}
       <div class="days-label">дней после РИР</div>
       <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">Эффект держится · форсирование снято</span></div>
       <div class="rir-row"><span class="rir-key">КРС / РИР</span><span class="rir-val">29.01 – 02.02.2026</span></div>
-      <div class="rir-row"><span class="rir-key">СОСТАВ</span><span class="rir-val">NanoCem UT-9</span></div>
+      <div class="rir-row"><span class="rir-key">СОСТАВ РИР</span><span class="rir-val">NanoCem UT-9</span></div>
       <div class="rir-row"><span class="rir-key">ЗАПУСК</span><span class="rir-val">03.02.2026</span></div>
       <div class="rir-row"><span class="rir-key">ПИК ЭФФЕКТА</span><span class="rir-val" style="color:#16A34A">16,4 т/сут · 27,5% (19.03)</span></div>
       <div class="rir-row"><span class="rir-key">ТЕКУЩИЙ РЕЖИМ</span><span class="rir-val">10,61 т/сут · 48,1% · 150 об/мин</span></div>
@@ -728,9 +728,9 @@ const DATA = [
   { d:"28.01", qn:1.1,  obv:89.4, qzh:11.4, ndin:43,  phase:"before", ev:"stop",   comment:"Минимальный дебит 1,1 т/сут. Остановка после замера в 15:00. Принято решение о РИР." },
   { d:"29.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 1. Подготовка ствола скважины." },
   { d:"30.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 2. Промывка и обработка." },
-  { d:"31.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 3. Подготовка к закачке изолирующего состава." },
+  { d:"31.01", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"КРС. День 3. Подготовка к закачке тампонажного раствора." },
   { d:"01.02", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"РИР. Закачка изолирующего состава в интервалы перфорации 629,8–660 м." },
-  { d:"02.02", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"Технологическая выдержка. Набор прочности изолирующего состава." },
+  { d:"02.02", qn:null, obv:null, qzh:null,  ndin:null, phase:"krs",   ev:"krs",   comment:"Технологическая выдержка. Набор прочности цементного камня." },
   { d:"03.02", qn:2.1,  obv:83.0, qzh:14.2, ndin:150, phase:"after",  ev:"start",  comment:"Запуск после РИР. Пробы: инт.1 – 93% воды, инт.2 – 82%, инт.3 – 74%. Дебит 2,1 т/сут, обв. 83%." },
   { d:"04.02", qn:6.2,  obv:66.8, qzh:21.2, ndin:160, phase:"after",  ev:"jump",   comment:"Перелом! Перевод на выкидную линию. Дебит вырос с 2,1 до 6,2 т/сут (+4,1). Обводнённость 83% → 66,8% за сутки." },
   { d:"05.02", qn:6.2,  obv:66.7, qzh:21.2, ndin:177, phase:"after",  ev:"",       comment:"Стабилизация на новом уровне. Обороты насоса 120 об/мин." },
@@ -747,7 +747,7 @@ const DATA = [
   { d:"16.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"Стабильно." },
   { d:"17.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"После замера." },
   { d:"18.02", qn:6.9,  obv:62.9, qzh:21.4, ndin:248, phase:"after",  ev:"",       comment:"Последний день перед резким переломом." },
-  { d:"19.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"jump",   comment:"Резкий перелом! 6,9 → 11,5 т/сут. Обводнённость 62,9% → 38,4% (−24,5 п.п. за сутки). Завершение набора прочности состава." },
+  { d:"19.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"jump",   comment:"Резкий перелом! 6,9 → 11,5 т/сут. Обводнённость 62,9% → 38,4% (−24,5 п.п. за сутки). Завершение набора прочности цементного камня." },
   { d:"20.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Подтверждение нового режима. Стабильно." },
   { d:"21.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Третий день стабильности — перелом подтверждён." },
   { d:"22.02", qn:11.5, obv:38.4, qzh:21.4, ndin:189, phase:"after",  ev:"",       comment:"Стабильно." },
@@ -928,7 +928,7 @@ const DATA = [
   { d:"17.08", qn:11.59, obv:40.0, qzh:22.1, ndin:143, phase:"forced", ev:"", comment:"Обводнённость держится на 40%." },
   { d:"18.08", qn:11.85, obv:40.0, qzh:22.6, ndin:143, phase:"forced", ev:"", comment:"Лёгкое восстановление дебита до 11,85 т/сут." },
   { d:"19.08", qn:12.06, obv:40.0, qzh:23.0, ndin:143, phase:"forced", ev:"", comment:"12,06 т/сут, обводнённость без изменений." },
-  { d:"20.08", qn:11.26, obv:44.0, qzh:23.0, ndin:145, phase:"forced", ev:"warn", comment:"Обводнённость выросла до 44% при том же подъёме жидкости — приток воды усиливается." },
+  { d:"20.08", qn:11.26, obv:44.0, qzh:23.0, ndin:145, phase:"forced", ev:"warn", comment:"Обводнённость выросла до 44% при том же подъёме жидкости — водоприток усиливается." },
   { d:"21.08", qn:11.26, obv:44.0, qzh:23.0, ndin:145, phase:"forced", ev:"", comment:"Показатели подтверждены замером." },
   { d:"22.08", qn:11.51, obv:42.0, qzh:22.7, ndin:145, phase:"forced", ev:"", comment:"Откат обводнённости до 42%, дебит 11,51 т/сут." },
   { d:"23.08", qn:11.51, obv:42.0, qzh:22.7, ndin:145, phase:"forced", ev:"", comment:"Без изменений." },
@@ -1173,8 +1173,8 @@ function closeNav(){
   document.getElementById('navToggle').classList.remove('active');
 }
 </script>
-<script src="wells.js?v=20260929j" defer></script>
-<script src="i18n.js?v=20260929j" defer></script>
+<script src="wells.js?v=20260929k" defer></script>
+<script src="i18n.js?v=20260929k" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
