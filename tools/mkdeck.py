@@ -55,8 +55,8 @@ RU = dict(
  title="NanoCem UT-9 — презентация продукта",
  foot_l="NanoCem UT-9 · ТУ 5745-001-171140033124-2025",
  foot_r="ТОО «ЭкоМикс» · EASYMIX · nanocem.app",
- g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="частицы задерживаются на входе",
- g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="цемент проникает на всю глубину",
+ g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="частицы сводятся в перемычку у стенки",
+ g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="твёрдая фаза проникает в интервал",
  c1="ДО ИЗОЛЯЦИИ · 28.01", c2="ПИК · 19.03", c3="СЕЙЧАС · 27.09",
  cnote="Дебит нефти, т/сут. Восьмой месяц после изоляции — эффект держится.",
  s=[
@@ -71,13 +71,16 @@ RU = dict(
               ("Опорный результат","1,1 → 16,4","т/сут на скважине 343")]),
   # 3. Помол
   dict(kind="grind", kicker="Принцип", h2="Решает помол, а не давление закачки",
-       lead="Проникнет цемент в мелкие трещины и поры или задержится на входе — решает "
-            "размер частиц.",
-       note="Частицы обычного цемента 40–80 мкм крупнее самих каналов: они задерживаются "
-            "на входе, и трещина в глубине остаётся незаполненной. У NanoCem UT-9 подавляющая "
-            "часть частиц мельче 9 мкм — цемент проникает в мелкие трещины и поры и заполняет "
-            "их на всю глубину. После твердения это полноценный конструкционный камень: "
-            "65–75 МПа за 28 суток."),
+       lead="Изолирует не объём закачки, а твёрдая фаза, дошедшая до места.",
+       note="Под давлением раствор фильтруется: жидкость затворения отжимается в пласт, "
+            "а частицы движутся к каналам. Частица проходит в канал, если она примерно втрое "
+            "мельче его раскрытия. Если крупнее — частицы сводятся в перемычку у стенки скважины, "
+            "образуют наружную корку, и дальше идёт один фильтрат. Обычный тампонажный цемент "
+            "с частицами 40–80 мкм упирается в этот предел на любом давлении.\n\n"
+            "D50 ~3,5 мкм и D95 ≤ 9 мкм переводят задачу в другой диапазон: часть закачанной "
+            "порции проникает в микротрещины и поровое пространство призабойной зоны, остальное "
+            "формирует камень в перфорационных каналах. После ОЗЦ экран стоит внутри интервала, "
+            "а не поверх него."),
   # 4. Характеристики
   dict(kind="spec", kicker="Технические характеристики", h2="Паспорт состава",
        sub="ТУ 5745-001-171140033124-2025 · сухая смесь, порошок серого цвета · 25 кг / 1000 кг",
@@ -186,8 +189,8 @@ EN = dict(
  title="NanoCem UT-9 — product presentation",
  foot_l="NanoCem UT-9 · TU 5745-001-171140033124-2025",
  foot_r="EcoMix LLP · EASYMIX · nanocem.app",
- g1="ORDINARY CEMENT · 40–80 µm", g1s="particles are held back at the entrance",
- g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the cement penetrates to full depth",
+ g1="ORDINARY CEMENT · 40–80 µm", g1s="particles bridge at the wall",
+ g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the solid phase enters the interval",
  c1="BEFORE · 28.01", c2="PEAK · 19.03", c3="NOW · 27.09",
  cnote="Oil rate, t/day. Eighth month after the treatment — the effect is holding.",
  s=[
@@ -200,13 +203,16 @@ EN = dict(
               ("Treatments completed","7 wells","January — September 2026"),
               ("Reference result","1.1 → 16.4","t/day on well 343")]),
   dict(kind="grind", kicker="The principle", h2="Fineness decides it, not pump pressure",
-       lead="Whether the cement penetrates fine fractures and pores or is held back at the "
-            "entrance is decided by particle size.",
-       note="Ordinary cement particles of 40–80 µm are larger than the channels themselves: they "
-            "are held back at the entrance and the fracture is left unfilled deeper in. In NanoCem "
-            "UT-9 the overwhelming majority of particles are finer than 9 µm — the cement penetrates "
-            "fine fractures and pores and fills them to their full depth. Once set it is a structural "
-            "stone in its own right: 65–75 MPa at 28 days."),
+       lead="What isolates the interval is the solid phase that reaches it, not the volume pumped.",
+       note="Under squeeze pressure the slurry dehydrates: the mixing water is forced off into the "
+            "formation while the particles travel towards the channels. A particle enters a channel "
+            "only if it is roughly three times finer than the aperture. If it is coarser, the particles "
+            "bridge at the borehole wall, build an external filter cake, and nothing but filtrate goes "
+            "further. Ordinary oil-well cement at 40–80 µm runs into that limit at any pressure.\n\n"
+            "A D50 of ~3.5 µm and a D95 of 9 µm or finer move the job into a different range: part of "
+            "the pumped volume penetrates the microfractures and pore space of the near-wellbore zone, "
+            "the rest builds set cement in the perforation channels. After WOC the barrier sits inside "
+            "the interval, not on top of it."),
   dict(kind="spec", kicker="Technical data", h2="Product data sheet",
        sub="TU 5745-001-171140033124-2025 · dry blend, grey powder · 25 kg / 1000 kg",
        rows=[("Fineness D50 / D95","~3.5 µm / ≤ 9 µm"),
@@ -315,6 +321,14 @@ def slide(t, s, n, total, m=False):
                         for a, b, c in items)
         return f'<div class="cols {cls}">{cells}</div>'
 
+    def note(txt, style=""):
+        """Примечание с абзацами: пустая строка в тексте разбивает его на блоки."""
+        parts = [x.strip() for x in txt.split("\n\n") if x.strip()]
+        first = f' style="{style}"' if style else ""
+        out = [f'<div class="note"{first}>{parts[0]}</div>']
+        out += [f'<div class="note" style="margin-top:14px">{x}</div>' for x in parts[1:]]
+        return "".join(out)
+
     def stats(items):
         cells = "".join(f'<div class="stat"><div class="stat-k">{a}</div>'
                         f'<div class="stat-v">{b}</div><div class="stat-s">{c}</div></div>'
@@ -329,12 +343,12 @@ def slide(t, s, n, total, m=False):
                 f'<div class="stats-wrap">{stats(s["stats"])}</div>')
     elif k == "text":
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2><div class="lead">{s["lead"]}</div>'
-                + (f'<div class="note">{s["note"]}</div>' if s.get("note") else "")
+                + (note(s["note"]) if s.get("note") else "")
                 + cols(s["cols"]) + '</div>')
     elif k == "grind":
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2><div class="lead">{s["lead"]}</div>'
                 f'<div style="display:grid;grid-template-columns:{"1fr" if m else "1.1fr 1fr"};gap:{44 if m else 52}px;align-items:center;margin-top:30px">'
-                f'<div>{grind_svg(t)}</div><div class="note" style="margin:0">{s["note"]}</div></div></div>')
+                f'<div>{grind_svg(t)}</div><div>{note(s["note"], "margin:0")}</div></div></div>')
     elif k == "spec":
         half = (len(s["rows"]) + 1) // 2
         def tbl(rows):
@@ -395,7 +409,7 @@ def slide(t, s, n, total, m=False):
         body = (f'<div class="s-body"><h2>{s["h2"]}</h2><div class="lead">{s["lead"]}</div>'
                 f'<div style="display:grid;grid-template-columns:{"1fr" if m else "1fr 1fr"};gap:{36 if m else 52}px;margin-top:26px;align-items:start">'
                 f'<table style="margin-top:0">{rows}</table>'
-                f'<div class="note" style="margin-top:0">{s["note"]}</div></div></div>')
+                f'<div>{note(s["note"], "margin-top:0")}</div></div></div>')
     else:  # final
         body = (f'<div class="watermark">UT-9</div><div class="s-body"><h2>{s["h2"]}</h2>'
                 f'<div class="lead">{s["lead"]}</div>' + cols(s["cols"]) +
