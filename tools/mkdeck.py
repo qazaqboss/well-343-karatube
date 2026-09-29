@@ -55,8 +55,8 @@ RU = dict(
  title="NanoCem UT-9 — презентация продукта",
  foot_l="NanoCem UT-9 · ультратонкий цемент",
  foot_r="ТОО «ЭкоМикс» · EASYMIX · nanocem.app",
- g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="частицы сводятся в перемычку у стенки",
- g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="твёрдая фаза проникает в интервал",
+ g1="ОБЫЧНЫЙ ЦЕМЕНТ · 40–80 МКМ", g1s="кольматация призабойной зоны",
+ g2="NANOCEM UT-9 · D95 ≤ 9 МКМ",  g2s="проникновение в матрицу коллектора",
  c1="ДО ИЗОЛЯЦИИ · 28.01", c2="ПИК · 19.03", c3="СЕЙЧАС · 27.09",
  cnote="Дебит нефти, т/сут. Восьмой месяц после изоляции — эффект держится.",
  s=[
@@ -71,17 +71,19 @@ RU = dict(
               ("Выполнено заходов","7 скважин","январь — сентябрь 2026"),
               ("Опорный результат","1,1 → 16,4","т/сут на скважине 343")]),
   # 3. Помол
-  dict(kind="grind", kicker="Принцип", h2="Решает помол, а не давление закачки",
-       lead="Изолирует не объём закачки, а твёрдая фаза, дошедшая до места.",
-       note="Под давлением раствор фильтруется: жидкость затворения отжимается в пласт, "
-            "а частицы движутся к каналам. Частица проходит в канал, если она примерно втрое "
-            "мельче его раскрытия. Если крупнее — частицы сводятся в перемычку у стенки скважины, "
-            "образуют наружную корку, и дальше идёт один фильтрат. Обычный тампонажный цемент "
-            "с частицами 40–80 мкм упирается в этот предел на любом давлении.\n\n"
-            "D50 ~3,5 мкм и D95 ≤ 9 мкм переводят задачу в другой диапазон: часть закачанной "
-            "порции проникает в микротрещины и поровое пространство призабойной зоны, остальное "
-            "формирует камень в перфорационных каналах. После ОЗЦ экран стоит внутри интервала, "
-            "а не поверх него."),
+  dict(kind="grind", kicker="Принцип", h2="Решает тонкость помола, а не давление закачки",
+       lead="Результат РИР определяет проникающая способность раствора.",
+       note="При закачке раствор отдаёт воду в пласт, и твёрдая фаза движется к каналам "
+            "фильтрации. Если размер частиц соизмерим с раскрытием канала, происходит "
+            "кольматация призабойной зоны: на стенке нарастает фильтрационная корка, дальше "
+            "проходит только фильтрат, а удельная приемистость интервала падает без заполнения "
+            "самого канала. Обычный тампонажный цемент с частицами 40–80 мкм упирается "
+            "в этот предел при любом давлении закачки.\n\n"
+            "Тонкость помола D50 ~3,5 мкм и D95 ≤ 9 мкм даёт раствору проникающую способность, "
+            "приближающуюся к бездисперсным растворам: часть объёма проникает в микротрещины "
+            "и матрицу поровых коллекторов призабойной зоны, остальное формирует цементный "
+            "камень в перфорационных каналах. После ОЗЦ изолирующий экран расположен "
+            "в интервале, а не на стенке эксплуатационной колонны."),
   # 4. Характеристики
   dict(kind="spec", kicker="Технические характеристики", h2="Паспорт продукта",
        sub="Сухая смесь, порошок серого цвета · фасовка 25 кг и 1000 кг",
@@ -101,27 +103,27 @@ RU = dict(
   # 5. Задачи
   dict(kind="text", kicker="Применение", h2="Что изолирует NanoCem UT-9",
        lead="Три направления, отработанные на действующем эксплуатационном фонде.",
-       cols=[("Задача 01","Селективная изоляция интервалов","Отсечение отработавших интервалов "
-              "перфорации. Нефтенасыщенная часть пласта остаётся работающей — скважина "
+       cols=[("Задача 01","Ремонтно-изоляционные работы","Селективное отключение отработавших "
+              "интервалов перфорации. Нефтенасыщенная часть пласта остаётся в работе — скважина "
               "возвращается в добычу с более высоким дебитом."),
-             ("Задача 02","Разобщение горизонтов","Герметизация каналов за обсадной колонной, "
-              "связывающих выше- и нижележащие пласты. Ультратонкость позволяет заполнить "
-              "узкие зазоры, недоступные обычному тампонажному цементу."),
-             ("Задача 03","Ремонт цементного кольца","Заполнение трещин и микрозазоров в крепи, "
-              "восстановление разобщения пластов. Адгезия от 2,5 МПа даёт сцепление "
-              "с существующим камнем.")]),
+             ("Задача 02","Ликвидация заколонных перетоков","Отсечение каналов за эксплуатационной "
+              "колонной, связывающих выше- и нижележащие пласты. Тонкость помола позволяет "
+              "заполнить узкие зазоры, недоступные обычному тампонажному цементу."),
+             ("Задача 03","Герметизация эксплуатационной колонны","Заполнение трещин и микрозазоров "
+              "в цементном кольце, восстановление разобщения пластов. Адгезия от 2,5 МПа даёт "
+              "сцепление с ранее сформированным цементным камнем.")]),
   # 6. Технология
   dict(kind="tech", kicker="Технология", h2="Как это делается на скважине",
        sub="Отработанная схема ЦПД — на примере скважины 357, сентябрь 2026",
-       steps=[("01","Подготовка","Остановка, ГИС, определение интервалов притока. Раствор "
-               "затворяется при В/Ц около 0,87 — раствор намеренно подвижный, иначе твёрдая фаза не войдёт "
-               "в каналы, ради которых его и берут."),
+       steps=[("01","Подготовка","Остановка, ГИС, определение интервалов притока и удельной "
+               "приемистости. Раствор затворяется при В/Ц около 0,87 — намеренно подвижный, иначе "
+               "твёрдая фаза не войдёт в каналы, ради которых его и берут."),
               ("02","Закачка в три ступени","Сначала порция при открытом затрубе — раствор "
                "расставляется по всем интервалам. Затем подъём НКТ и вторая порция. И только "
                "потом пакеровка и додавка в закрытую."),
-              ("03","Контроль по давлению","На закрытой ступени давление растёт и останавливается: "
-               "пласт перестал принимать. Это рабочий признак герметизации — пока каналы открыты, "
-               "давление при постоянной подаче не растёт."),
+              ("03","Контроль по приемистости","На закрытой ступени давление растёт и встаёт: "
+               "удельная приемистость интервала упала до нуля, пласт перестал принимать раствор. "
+               "Пока каналы открыты, давление при постоянной подаче не растёт."),
               ("04","ОЗЦ под давлением","Скважина остаётся под давлением весь срок — цемент "
                "набирает прочность в сжатом состоянии, а не просто стоит в стволе."),
               ("05","Разбурка и опрессовка","Мост разбуривают и каждый интервал опрессовывают "
@@ -190,8 +192,8 @@ EN = dict(
  title="NanoCem UT-9 — product presentation",
  foot_l="NanoCem UT-9 · ultra-fine cement",
  foot_r="EcoMix LLP · EASYMIX · nanocem.app",
- g1="ORDINARY CEMENT · 40–80 µm", g1s="particles bridge at the wall",
- g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="the solid phase enters the interval",
+ g1="ORDINARY CEMENT · 40–80 µm", g1s="near-wellbore plugging",
+ g2="NANOCEM UT-9 · D95 ≤ 9 µm",  g2s="penetration into the rock matrix",
  c1="BEFORE · 28.01", c2="PEAK · 19.03", c3="NOW · 27.09",
  cnote="Oil rate, t/day. Eighth month after the treatment — the effect is holding.",
  s=[
@@ -204,16 +206,18 @@ EN = dict(
               ("Treatments completed","7 wells","January — September 2026"),
               ("Reference result","1.1 → 16.4","t/day on well 343")]),
   dict(kind="grind", kicker="The principle", h2="Fineness decides it, not pump pressure",
-       lead="What isolates the interval is the solid phase that reaches it, not the volume pumped.",
-       note="Under squeeze pressure the slurry dehydrates: the mixing water is forced off into the "
-            "formation while the particles travel towards the channels. A particle enters a channel "
-            "only if it is roughly three times finer than the aperture. If it is coarser, the particles "
-            "bridge at the borehole wall, build an external filter cake, and nothing but filtrate goes "
-            "further. Ordinary oil-well cement at 40–80 µm runs into that limit at any pressure.\n\n"
-            "A D50 of ~3.5 µm and a D95 of 9 µm or finer move the job into a different range: part of "
-            "the pumped volume penetrates the microfractures and pore space of the near-wellbore zone, "
-            "the rest builds set cement in the perforation channels. After WOC the barrier sits inside "
-            "the interval, not on top of it."),
+       lead="A squeeze job is decided by the penetrating ability of the slurry.",
+       note="As it is pumped, the slurry gives up its water to the formation and the solid phase "
+            "travels towards the filtration channels. If the particle size is comparable to the "
+            "channel aperture, the near-wellbore zone is plugged instead: a filter cake builds on "
+            "the wall, nothing but filtrate goes further, and the specific injectivity of the "
+            "interval falls without the channel itself being filled. Ordinary oil-well cement at "
+            "40–80 µm runs into that limit at any pump pressure.\n\n"
+            "A fineness of D50 ~3.5 µm and D95 ≤ 9 µm gives the slurry a penetrating ability "
+            "approaching that of a solids-free system: part of the volume enters the microfractures "
+            "and the matrix of the near-wellbore reservoir rock, the rest builds set cement in the "
+            "perforation channels. After WOC the barrier sits within the interval, not on the "
+            "casing wall."),
   dict(kind="spec", kicker="Technical data", h2="Product data sheet",
        sub="Dry blend, grey powder · supplied in 25 kg and 1000 kg packs",
        rows=[("Fineness D50 / D95","~3.5 µm / ≤ 9 µm"),
@@ -231,25 +235,27 @@ EN = dict(
              ("Shelf life","12 months")]),
   dict(kind="text", kicker="Applications", h2="What NanoCem UT-9 isolates",
        lead="Three uses proven on a producing well stock.",
-       cols=[("Use 01","Selective interval isolation","Cutting off spent perforation intervals. "
-              "The oil-bearing part of the reservoir keeps working — the well returns to "
-              "production at a higher rate."),
-             ("Use 02","Zonal separation","Sealing the channels behind the casing that connect "
-              "horizons above and below. The ultra-fine grind fills narrow gaps that an ordinary "
-              "oil-well cement cannot reach."),
-             ("Use 03","Repairing the cement sheath","Filling cracks and micro-gaps in the sheath and "
-              "restoring zonal isolation. A bond of 2.5 MPa or better grips the existing stone.")]),
+       cols=[("Use 01","Remedial squeeze work","Selectively shutting off spent perforation "
+              "intervals. The oil-bearing part of the reservoir stays on production — the well "
+              "returns at a higher rate."),
+             ("Use 02","Eliminating crossflow behind casing","Cutting off the channels behind the "
+              "production casing that connect the horizons above and below. The fineness fills "
+              "narrow gaps that ordinary oil-well cement cannot reach."),
+             ("Use 03","Restoring casing integrity","Filling cracks and micro-gaps in the cement "
+              "sheath and restoring zonal isolation. A bond of 2.5 MPa or better grips the "
+              "previously set cement.")]),
   dict(kind="tech", kicker="Procedure", h2="How it is done at the well",
        sub="The established squeeze sequence — as run on well 357, September 2026",
-       steps=[("01","Preparation","Shut in, log, identify the inflow intervals. The slurry is mixed at "
-               "a W/C ratio of about 0.87 — deliberately mobile, or it will not enter the "
-               "channels it is chosen for."),
+       steps=[("01","Preparation","Shut in, log, identify the inflow intervals and the specific "
+               "injectivity. The slurry is mixed at a W/C ratio of about 0.87 — deliberately mobile, "
+               "or the solid phase will not enter the channels it is chosen for."),
               ("02","A three-stage squeeze","First a portion with the annulus open — the grout is "
                "distributed across all the intervals. Then the tubing is pulled and a second portion "
                "goes in. Only then is the packer set and the rest squeezed in closed."),
-              ("03","Pressure as the control","On the closed-in stage the pressure builds and then stops: "
-               "the formation has stopped taking. That is the working sign of a seal — while the channels "
-               "are open, pressure does not build at a constant pump rate."),
+              ("03","Injectivity as the control","On the closed-in stage the pressure builds and "
+               "then holds: the specific injectivity of the interval has fallen to zero and the "
+               "formation has stopped taking slurry. While the channels are open, pressure does not "
+               "build at a constant pump rate."),
               ("04","Waiting on cement under pressure","The well stays under pressure throughout — the "
                "cement gains strength under compression rather than simply standing in the hole."),
               ("05","Drill-out and pressure test","The bridge is drilled out and each interval is tested "
