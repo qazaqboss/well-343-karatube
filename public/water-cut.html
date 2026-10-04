@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQMCPD3KPC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQMCPD3KPC');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обводнённость фонда — NanoCem UT-9</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NanoCem UT-9">
+<meta property="og:url" content="https://nanocem.app/sealing.html">
+<meta property="og:title" content="Обводнённость фонда — общий анализ">
+<meta property="og:description" content="Семьдесят скважин, девять месяцев замеров: распределение обводнённости по фонду, разбор по горизонтам и место наших заходов UT-9.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://nanocem.app/og-fund.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Герметичность фонда — разбор заходов NanoCem UT-9">
+<meta name="twitter:image" content="https://nanocem.app/og-fund.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FFFFFF;--bg-2:#F8F8F8;--surface:#F4F4F4;--surface-2:#ECECEC;--border:#D8D8D8;--border-dim:#EBEBEB;--white:#111111;--white-dim:#2A2A2A;--grey:#777777;--grey-dim:#AAAAAA;--grey-muted:#CCCCCC;--red:#EF4444;--amber:#D97706;--green:#16A34A;--font-h:'Oswald',sans-serif;--font-data:'Inter',sans-serif;--font-body:'Inter',sans-serif}
+body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px;height:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+.header{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:28px;height:28px;border:1.5px solid var(--border);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark-inner{width:10px;height:10px;background:var(--white)}
+.logo-eyebrow{font-family:var(--font-data);font-size:9px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}
+.logo-text{font-family:var(--font-h);font-size:15px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--white)}
+.nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.nav a{font-family:var(--font-h);font-size:12px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--grey);transition:color .2s}
+.nav a:hover,.nav a.active{color:var(--white)}
+.nav-pill{border:1px solid var(--border);padding:4px 10px;border-radius:2px}
+.nav-pill:hover{border-color:var(--grey)}
+.nav-pill.active{border-color:var(--white)}
+.header-right{display:flex;align-items:center;gap:20px}
+.live-badge{display:flex;align-items:center;gap:7px;font-family:var(--font-data);font-size:11px;color:var(--white-dim);letter-spacing:2px;text-transform:uppercase}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--white-dim);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.header-date{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--grey);transition:all .2s}
+.nav-mobile{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px 16px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-family:var(--font-h);font-size:13px;font-weight:300;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey);padding:13px 0;border-bottom:1px solid var(--border-dim)}
+.nav-mobile a:last-child{border-bottom:none}
+
+/* HERO */
+.hero{padding:38px 40px 30px;border-bottom:1px solid var(--border);background:var(--bg-2);position:relative;overflow:hidden}
+.hero::after{content:'АКЦ';position:absolute;right:-10px;top:-26px;font-family:var(--font-h);font-size:180px;font-weight:700;color:rgba(0,0,0,0.04);line-height:1;pointer-events:none;user-select:none}
+.hero-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;position:relative}
+.hero-eyebrow{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-family:var(--font-h);font-size:50px;font-weight:700;line-height:1.04;letter-spacing:-.5px;text-transform:uppercase;max-width:780px}
+.hero-title .light{font-weight:300;color:var(--grey)}
+.hero-lead{font-size:14px;color:var(--white-dim);line-height:1.6;max-width:640px;margin-top:16px}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px;font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1.5px;text-transform:uppercase}
+.hero-meta-item span{color:var(--white)}
+.hero-meta-sep{color:var(--grey-muted)}
+.side-box{border:1px solid var(--border);background:var(--bg);padding:16px 18px;max-width:320px;flex-shrink:0}
+.side-title{font-family:var(--font-data);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:9px}
+.side-text{font-size:12px;color:var(--white-dim);line-height:1.6}
+.side-text+.side-text{margin-top:8px;color:var(--grey)}
+
+/* KPI */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.kpi{padding:22px 24px;border-right:1px solid var(--border)}
+.kpi:last-child{border-right:none}
+.kpi-label{font-family:var(--font-data);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:10px}
+.kpi-value{font-family:var(--font-h);font-size:44px;font-weight:700;line-height:1}
+.kpi-value.red{color:var(--red)}
+.kpi-unit{font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);margin-top:6px}
+
+/* SECTIONS */
+.section{padding:36px 40px;border-bottom:1px solid var(--border)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.section-title{font-family:var(--font-h);font-size:20px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.section-sub{font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:1px;margin-top:5px;max-width:680px;line-height:1.6}
+
+/* TABLE */
+.tbl-wrap{border:1px solid var(--border);overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:820px}
+th{font-family:var(--font-data);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim);text-align:left;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:13px 14px;font-size:12.5px;border-bottom:1px solid var(--border-dim);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg-2)}
+.c-well{font-family:var(--font-h);font-size:18px;font-weight:600;letter-spacing:1px;white-space:nowrap;width:90px}
+.c-mono{font-family:var(--font-data);font-size:12px;color:var(--white-dim);white-space:nowrap}
+.res{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-data);font-size:12px;font-weight:600;white-space:nowrap}
+.dot{width:9px;height:9px;flex-shrink:0}
+.dot.g{background:var(--white)}
+.dot.a{background:var(--grey-muted)}
+.dot.r{background:#fff;border:1.5px solid var(--red)}
+.res.r{color:var(--red)}
+.c-note{color:var(--grey);font-size:12px;line-height:1.45}
+.st-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.st-dot.work{background:var(--green)}.st-dot.stop{background:var(--red)}.st-dot.krs{background:var(--grey-muted)}
+
+/* MAP SCHEME */
+.scheme{border:1px solid var(--border);background:var(--bg-2);padding:24px;overflow-x:auto}
+.scheme svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.scheme-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-family:var(--font-data);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);justify-content:center}
+.scheme-legend span{display:flex;align-items:center;gap:7px}
+
+/* FACTOR CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.card{background:var(--bg);padding:24px}
+.card-idx{font-family:var(--font-data);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:12px}
+.card-title{font-family:var(--font-h);font-size:17px;font-weight:600;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
+.card-text{font-size:12.5px;color:var(--white-dim);line-height:1.6;margin-top:12px}
+.card-text b{font-weight:600}
+
+/* AKC */
+.akc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.akc-col{background:var(--bg);padding:24px 26px}
+.akc-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+.akc-well{font-family:var(--font-h);font-size:30px;font-weight:700;letter-spacing:1px}
+.akc-tag{font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--red);color:var(--red);padding:3px 9px;border-radius:2px;white-space:nowrap}
+.bar{display:flex;height:34px;border:1px solid var(--border);overflow:hidden}
+.bar div{display:flex;align-items:center;justify-content:center;font-family:var(--font-data);font-size:10.5px;font-weight:600;color:#fff;overflow:hidden;white-space:nowrap}
+.b-good{background:#111}
+.b-part{background:#8A8A8A}
+.b-bad{background:#C4C4C4;color:#333!important}
+.b-none{background:repeating-linear-gradient(45deg,#EF4444,#EF4444 3px,#fff 3px,#fff 6px);color:#111!important}
+.bar-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-family:var(--font-data);font-size:10px;letter-spacing:.5px;color:var(--grey)}
+.bar-legend span{display:flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;flex-shrink:0}
+.akc-head{font-family:var(--font-data);font-size:12.5px;margin:18px 0 6px}
+.akc-head b{font-weight:600}
+.akc-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--border-dim);font-family:var(--font-data);font-size:11.5px}
+.akc-row:last-of-type{border-bottom:none}
+.akc-k{color:var(--grey)}
+.akc-v{font-weight:600;text-align:right}
+.akc-note{font-size:12.5px;color:var(--white-dim);line-height:1.6;margin-top:14px}
+
+/* CONCLUSION */
+.concl{display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.pane{background:var(--bg);padding:26px 28px}
+.pane-title{font-family:var(--font-h);font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.pane p{font-size:13px;color:var(--white-dim);line-height:1.65;margin-bottom:12px}
+.pane p:last-child{margin-bottom:0}
+.pane b{font-weight:600}
+.step{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--border-dim)}
+.step:last-child{border-bottom:none}
+.step-n{font-family:var(--font-h);font-size:13px;color:var(--grey-dim);width:20px;flex-shrink:0;padding-top:1px}
+.step-t{font-size:12.5px;color:var(--white-dim);line-height:1.55}
+.link{display:inline-block;margin-top:14px;font-family:var(--font-data);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--grey-muted);padding-bottom:2px}
+.caveat{padding:22px 40px;background:var(--bg-2);border-bottom:1px solid var(--border);font-size:12px;color:var(--grey);line-height:1.65}
+.caveat b{color:var(--white-dim);font-weight:600}
+
+.footer{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;font-family:var(--font-data);font-size:10px;letter-spacing:1px;color:var(--grey);text-transform:uppercase}
+.footer-right{font-family:var(--font-h);font-size:13px;letter-spacing:2px;color:var(--white-dim)}
+
+@media(max-width:1100px){.kpi-row{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:none}.kpi:nth-child(-n+2){border-bottom:1px solid var(--border)}.cards{grid-template-columns:1fr}.akc{grid-template-columns:1fr}.concl{grid-template-columns:1fr}}
+@media(max-width:900px){
+  .nav{display:none}.nav-toggle{display:flex}.header{padding:0 20px}.header-date{display:none}
+  .hero{padding:26px 20px 22px}.hero-inner{flex-direction:column}.hero-title{font-size:34px}.hero::after{font-size:110px}
+  .side-box{max-width:none;width:100%}
+  .section{padding:26px 20px}.scheme{padding:16px}.caveat{padding:18px 20px}
+  .footer{flex-direction:column;gap:8px;align-items:flex-start;padding:16px 20px}
+}
+@media(max-width:480px){.hero-title{font-size:28px}.kpi-row{grid-template-columns:1fr}.kpi{border-right:none;border-bottom:1px solid var(--border)}}
+
+/* адаптив шапки: приоритет — навигация, ниже 1250px — бургер */
+.logo{flex-shrink:0}.logo-text,.logo-eyebrow{white-space:nowrap}
+@media(max-width:1500px){.live-badge{display:none}}
+@media(max-width:1360px){.header-date{display:none}}
+@media(max-width:1250px){.nav{display:none}.nav-toggle{display:flex}}
+.logo{cursor:pointer;transition:opacity .15s}
+.logo:hover{opacity:.65}
+
+/* ── Телефон ─────────────────────────────────────────────────────────────── */
+@media(max-width:560px){
+  .kpi-card{padding-top:18px}
+  .kpi-note{position:static;display:inline-block;margin-bottom:9px}
+}
+@media(max-width:700px){
+  /* таблица заходов разворачивается в карточки — горизонтальной прокрутки нет */
+  .tbl-wrap{overflow-x:visible;border:none}
+  table{min-width:0;display:block}
+  thead{display:none}
+  tbody,tr,td{display:block;width:auto}
+  tr{border:1px solid var(--border);margin-bottom:-1px;padding:16px 18px;background:var(--bg)}
+  td{border:none;padding:5px 0;font-size:12.5px;display:flex;align-items:baseline;
+     justify-content:space-between;gap:14px;text-align:right}
+  td .cv{display:inline-flex;align-items:baseline;gap:0}
+  td::before{content:attr(data-k);flex-shrink:0;font-family:var(--font-data);font-size:9px;
+             letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim);text-align:left}
+  td.c-well{display:block;text-align:left;font-size:22px;padding:0 0 10px;
+            border-bottom:1px solid var(--border-dim);margin-bottom:8px}
+  td.c-well::before{content:none}
+  td.c-note{display:block;text-align:left;padding-top:10px;margin-top:6px;
+            border-top:1px solid var(--border-dim)}
+  td.c-note::before{display:block;margin-bottom:5px}
+}
+@media(max-width:640px){
+  /* карточки АКЦ: содержимое переносится, а не выталкивает страницу вбок */
+  .akc-col{padding:18px 16px}
+  .akc-top{flex-wrap:wrap;gap:8px}
+  .akc-tag{white-space:normal}
+  .akc-row{flex-wrap:wrap;gap:2px}
+  .akc-v{text-align:left}
+  .bar-legend{flex-wrap:wrap;gap:8px 14px}
+}
+
+/* ── Обводнённость фонда ─────────────────────────────────────────────────── */
+.wc-chart{padding:26px 40px 10px;border-bottom:1px solid var(--border)}
+.wc-wrap{height:300px;position:relative}
+.wc-legend{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 4px}
+.wc-leg{display:flex;align-items:center;gap:7px;font-family:var(--font-data);font-size:11px;color:var(--grey);letter-spacing:.5px}
+.wc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* распределение по диапазонам */
+.dist{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.dist-col{background:var(--bg);padding:20px 18px 18px;display:flex;flex-direction:column}
+.dist-range{font-family:var(--font-data);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim)}
+.dist-n{font-family:var(--font-h);font-size:44px;font-weight:700;line-height:1;margin-top:10px}
+.dist-sub{font-family:var(--font-data);font-size:11px;color:var(--grey);margin-top:5px}
+.dist-bar{height:5px;background:var(--border-dim);margin-top:14px;position:relative;overflow:hidden}
+.dist-bar i{position:absolute;inset:0 auto 0 0;background:var(--white)}
+.dist-ours{margin-top:14px;display:flex;gap:5px;flex-wrap:wrap;min-height:22px}
+.dist-chip{font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:1px;
+           border:1px solid var(--white);background:var(--white);color:var(--bg);padding:3px 8px;border-radius:2px}
+
+/* горизонты */
+.hz{border:1px solid var(--border)}
+.hz-row{display:grid;grid-template-columns:120px 1fr 86px 70px;gap:16px;align-items:center;
+        padding:14px 20px;border-bottom:1px solid var(--border-dim)}
+.hz-row:last-child{border-bottom:none}
+.hz-name{font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:1px}
+.hz-track{height:10px;background:var(--bg-2);position:relative;overflow:hidden}
+.hz-fill{position:absolute;inset:0 auto 0 0;background:var(--white)}
+.hz-val{font-family:var(--font-h);font-size:18px;font-weight:700;text-align:right}
+.hz-n{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);text-align:right}
+
+/* вклад заходов в обводнённость фонда */
+.ef{display:grid;grid-template-columns:1fr 78px 1fr 1.35fr;gap:1px;background:var(--border);
+    border:1px solid var(--border);align-items:stretch}
+.ef-box{background:var(--bg);padding:24px 26px}
+.ef-k{font-family:var(--font-data);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim)}
+.ef-v{font-family:var(--font-h);font-size:44px;font-weight:700;line-height:1;margin-top:12px;letter-spacing:-.5px}
+.ef-v.dim{color:var(--grey-muted)}
+.ef-v.ok{color:#16A34A}
+.ef-note{font-size:12.5px;color:var(--grey);line-height:1.55;margin-top:14px}
+.ef-arrow{background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;
+          font-family:var(--font-data);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)}
+@media(max-width:1100px){.ef{grid-template-columns:1fr 70px 1fr}.ef-box.wide{grid-column:1/-1}}
+@media(max-width:640px){.ef{grid-template-columns:1fr}.ef-arrow{padding:12px 0}.ef-box.wide{grid-column:auto}}
+
+/* наши заходы: до и после */
+.ba{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.ba-col{background:var(--bg);padding:22px 22px 20px}
+.ba-w{font-family:var(--font-h);font-size:24px;font-weight:700;letter-spacing:1px}
+.ba-line{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+.ba-from{font-family:var(--font-h);font-size:26px;font-weight:700;color:var(--grey-muted)}
+.ba-arr{color:var(--grey-dim);font-size:15px}
+.ba-to{font-family:var(--font-h);font-size:34px;font-weight:700;color:#16A34A}
+.ba-note{font-size:12px;color:var(--grey);line-height:1.5;margin-top:12px}
+
+@media(max-width:1100px){
+  .dist{grid-template-columns:repeat(2,1fr)}
+  .dist-col:last-child{grid-column:1/-1}
+  .ba{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .wc-chart{padding:20px 20px 8px}
+  .hz-row{grid-template-columns:80px 1fr 70px;gap:10px;padding:12px 14px}
+  .hz-n{display:none}
+}
+@media(max-width:640px){
+  .dist{grid-template-columns:1fr}
+  .dist-col:last-child{grid-column:auto}
+  .ba{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html" title="На главную">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    <div><div class="logo-eyebrow">ТОО «ЭкоМикс» · EASYMIX</div><div class="logo-text">NanoCem UT-9</div></div>
+  </a>
+  <nav class="nav">
+    <a href="index.html" class="nav-pill">Фонд</a>
+    <a href="water-cut.html" class="nav-pill active">Обводнённость</a><a href="sealing.html" class="nav-pill">Герметичность</a>
+    <a href="plan.html" class="nav-pill">Программа</a>
+    <a href="product.html" class="nav-pill">Продукт</a>
+    <a href="stages.html" class="nav-pill">Этапы</a>
+    <a href="/erp/" class="nav-pill">ERP</a>
+    <a href="/ai" class="nav-pill">AI</a>
+  </nav>
+  <div class="header-right">
+    <div class="live-badge"><div class="live-dot"></div>Аналитика</div>
+    <div class="header-date">фонд на 27.09.2026 · 70 скважин</div>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+<nav class="nav-mobile" id="navMobile">
+  <a href="index.html" onclick="closeNav()">Фонд скважин</a>
+  <a href="water-cut.html" class="active" onclick="closeNav()">Обводнённость фонда</a>
+  <a href="water-cut.html" class="active" onclick="closeNav()">Обводнённость фонда</a>
+  <a href="sealing.html" onclick="closeNav()">Герметичность</a>
+  <a href="plan.html" onclick="closeNav()">Программа UT-9</a>
+  <a href="product.html" onclick="closeNav()">Продукт</a>
+  <a href="stages.html" onclick="closeNav()">Этапы недропользования</a>
+  <a href="/erp/" onclick="closeNav()">ERP — контракты и скважины</a>
+  <a href="/ai" onclick="closeNav()">AI-помощник</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Аналитика фонда · Девять месяцев замеров</div>
+      <h1 class="hero-title">ОБВОДНЁННОСТЬ ФОНДА —<br>ОБЩАЯ КАРТИНА</h1>
+      <div class="hero-lead">Семьдесят скважин месторождения, январь — сентябрь 2026. Здесь фонд
+      виден целиком: сколько скважин в каком диапазоне обводнённости, как показатель ведёт себя
+      по горизонтам и где на этом фоне стоят семь скважин с заходами NanoCem UT-9.</div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">СКВАЖИН <span id="mWells">—</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ОБВОДНЁННОСТЬ ФОНДА <span id="mWc">—</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ЗАХОДОВ UT-9 <span id="mUt9">—</span></div>
+        <div class="hero-meta-sep">·</div>
+        <div class="hero-meta-item">ДАННЫЕ НА <span>27.09.2026</span></div>
+      </div>
+    </div>
+    <div class="side-box">
+      <div class="side-title">Как считается</div>
+      <div class="side-text">Обводнённость фонда — это отношение суммарной добычи воды к суммарной
+      добыче жидкости, а не среднее по скважинам. Среднее завысило бы вклад малодебитных скважин:
+      скважина с 0,4 м³/сут и скважина с 30 м³/сут весили бы одинаково.</div>
+      <div class="side-text">Замеры — фактический режим из суточных режимных листов на последнюю
+      дату каждого месяца. Скважины в ремонте в расчёт не входят.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPI -->
+<div class="kpi-row" id="kpis"></div>
+
+<!-- ДИНАМИКА -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Динамика за девять месяцев</div>
+      <div class="section-sub">Чёрная линия — фонд целиком. Зелёные — наши скважины, каждая сама по себе: так видно
+      движение относительно фонда без искажения от смены состава группы. Точка месяца — последний замер месяца.</div>
+    </div>
+  </div>
+</section>
+<div class="wc-chart">
+  <div class="wc-legend">
+    <div class="wc-leg"><span class="wc-dot" style="background:#111"></span>Весь фонд — сумма воды к сумме жидкости</div>
+    <div class="wc-leg"><span class="wc-dot" style="background:#16A34A"></span>Каждая наша скважина отдельной линией</div>
+    <div class="wc-leg" style="color:var(--grey-dim)">Разрыв линии — месяц без замера: ремонт или ожидание бригады</div>
+  </div>
+  <div class="wc-wrap"><canvas id="wcChart"></canvas></div>
+</div>
+
+<!-- РАСПРЕДЕЛЕНИЕ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Распределение по диапазонам</div>
+      <div class="section-sub">Сколько скважин фонда в каждом диапазоне обводнённости на 27.09.2026.
+      Чёрным отмечены наши — видно, в какую часть фонда они попали после изоляции.</div>
+    </div>
+  </div>
+  <div class="dist" id="dist"></div>
+</section>
+
+<!-- ГОРИЗОНТЫ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">По горизонтам</div>
+      <div class="section-sub">Обводнённость считается по каждому горизонту отдельно: сумма воды
+      к сумме жидкости внутри группы.</div>
+    </div>
+  </div>
+  <div class="hz" id="hz"></div>
+</section>
+
+<!-- НАШИ ЗАХОДЫ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Наши заходы: до и после</div>
+      <div class="section-sub">Четыре скважины, по которым обводнённость до работ задокументирована
+      замерами. По 301 дореремонтного замера в сопоставимом режиме нет, 305 переведена на другой
+      горизонт, 357 ещё не запущена — их в сравнение не берём.</div>
+    </div>
+  </div>
+  <div class="ba">
+    <div class="ba-col">
+      <div class="ba-w">343</div>
+      <div class="ba-line"><span class="ba-from">89,4%</span><span class="ba-arr">→</span><span class="ba-to">48,1%</span></div>
+      <div class="ba-note">Изоляция в январе 2026. Минимум 27,5% на пике эффекта, восьмой месяц работы.</div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-w">342</div>
+      <div class="ba-line"><span class="ba-from">91,0%</span><span class="ba-arr">→</span><span class="ba-to">37,1%</span></div>
+      <div class="ba-note">Потребовалось два захода: 10.05 и 31.05. Сейчас — минимум с момента изоляции.</div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-w">311</div>
+      <div class="ba-line"><span class="ba-from">90,5%</span><span class="ba-arr">→</span><span class="ba-to">60,1%</span></div>
+      <div class="ba-note">После освоения доходила до 49%, затем откатилась к 60% — мешает плохой заколонный цемент.</div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-w">303</div>
+      <div class="ba-line"><span class="ba-from">95,0%</span><span class="ba-arr">→</span><span class="ba-to">65,4%</span></div>
+      <div class="ba-note">Отсчёт от первых суток после запуска 11.09. Вывод на режим продолжается.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ВЫВОДЫ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Что из этого следует</div>
+      <div class="section-sub">Три наблюдения, которые видны только на фоне всего фонда.</div>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-idx">Наблюдение 01</div>
+      <div class="card-title">Фонд стоит на месте</div>
+      <div class="card-text">За девять месяцев обводнённость фонда прошла путь
+      <b id="o1a">—</b>, то есть изменилась на <b id="o1b">—</b>. Добыча нефти при этом
+      <b id="o1c">—</b> с <b id="o1d">—</b>. Фонд в целом держится, но сам по себе не улучшается —
+      значит, прирост может дать только адресная работа по скважинам.</div>
+    </div>
+    <div class="card">
+      <div class="card-idx">Наблюдение 02</div>
+      <div class="card-title">Фонд расслоён, а не однороден</div>
+      <div class="card-text">В диапазоне до 40% воды — <b id="o2a">—</b>, выше 60% — <b id="o2b">—</b>.
+      Это две разные группы с разной экономикой: первая даёт нефть, вторая гоняет воду.
+      Кандидаты на изоляцию — во второй группе.</div>
+    </div>
+    <div class="card">
+      <div class="card-idx">Наблюдение 03</div>
+      <div class="card-title">Срез не доказывает эффект</div>
+      <div class="card-text">Сравнение «наши против остальных» на один день мало что значит:
+      скважины изначально разные. Доказательство даёт только движение каждой скважины
+      относительно самой себя — блок «до и после» выше. Срез нужен для другого: чтобы видеть,
+      куда скважина попала после работ и остались ли в фонде кандидаты с тем же профилем.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ВКЛАД В ФОНД -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Вклад заходов в обводнённость фонда</div>
+      <div class="section-sub">Насколько ниже держится обводнённость всего фонда благодаря выполненным
+      заходам. Расчёт по четырём скважинам, у которых дореремонтный замер задокументирован.</div>
+    </div>
+  </div>
+  <div class="ef">
+    <div class="ef-box">
+      <div class="ef-k">Обводнённость фонда сейчас</div>
+      <div class="ef-v" id="efNow">—</div>
+    </div>
+    <div class="ef-arrow">было бы</div>
+    <div class="ef-box">
+      <div class="ef-k">Если бы заходов не было</div>
+      <div class="ef-v dim" id="efAlt">—</div>
+    </div>
+    <div class="ef-box wide">
+      <div class="ef-k">Разница</div>
+      <div class="ef-v ok" id="efDelta">—</div>
+      <div class="ef-note" id="efNote">—</div>
+    </div>
+  </div>
+  <div class="spec-note" style="margin-top:18px">Как считается: берём сегодняшний отбор жидкости по
+  каждой из четырёх скважин и подставляем обводнённость, которая была до работ. Получается, сколько
+  воды фонд поднимал бы сверх нынешнего. Допущение одно и названо прямо: отбор жидкости взят текущий.
+  Фактически после изоляции он тоже изменился, поэтому цифра — оценка порядка величины, а не точный баланс.</div>
+</section>
+
+<div class="caveat">
+  <b>Оговорка.</b> Данные — фактический режим из суточных режимных листов на последнюю дату каждого
+  месяца, по одной точке на месяц. Это снимок, а не среднемесячное значение: разовый замер может
+  отличаться от режима. Скважины без замера (ремонт, ожидание бригады) в расчёт обводнённости не
+  входят, поэтому число скважин по месяцам разное — оно указано в подписи к каждой точке графика.
+  Поскважинные показатели фонда, кроме наших собственных скважин, не публикуются: на странице только агрегаты — суммы, доли и количества. Обводнённость групп считается по сумме потоков, среднее арифметическое по скважинам дало бы
+  другую цифру и приведено отдельно в карточках выше.<br><br>
+  Наши скважины на графике показаны по отдельности намеренно. Усреднять их в одну линию нельзя:
+  состав группы меняется от месяца к месяцу — скважина уходит в ремонт и выпадает из расчёта, —
+  и такая линия показывала бы смену состава, а не изменение обводнённости.
+</div>
+
+<footer class="footer">
+  <div>Аналитика обводнённости фонда · данные на 27.09.2026 · <a href="index.html" style="border-bottom:1px solid var(--grey-muted)">Фонд скважин</a> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a></div>
+  <div class="footer-right">ТОО «ЭкоМикс» · EASYMIX</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="field.js?v=20261004i"></script>
+<script>
+function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
+function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
+
+(function(){
+  var F = window.FIELD, S = F.series, last = S[S.length - 1], first = S[0];
+  var ut9wells = F.ours;
+  var fmt = function(v, d){ return (v === null || v === undefined) ? '—' : v.toFixed(d === undefined ? 1 : d).replace('.', ','); };
+
+  /* ── шапка ─────────────────────────────────────────────────────────────── */
+  document.getElementById('mWells').textContent = F.wellsTotal;
+  document.getElementById('mWc').textContent = fmt(last.wc) + '%';
+  document.getElementById('mUt9').textContent = F.ut9.length;
+
+  /* ── KPI ───────────────────────────────────────────────────────────────── */
+  var delta = last.wc - first.wc;
+  var kpi = [
+    ['Обводнённость фонда', fmt(last.wc) + '%', '<span>сумма воды к сумме жидкости</span>', ''],
+    ['Скважин в расчёте', String(F.measured), '<span>из</span> ' + F.wellsTotal + ' <span>в фонде, остальные в ремонте</span>', ''],
+    ['С начала года', (delta >= 0 ? '+' : '−') + fmt(Math.abs(delta)) + ' <span>п.п.</span>',
+     '<span>январь</span> ' + fmt(first.wc) + '% → <span>сентябрь</span> ' + fmt(last.wc) + '%', delta > 0 ? 'red' : ''],
+    ['Добыча нефти', fmt(last.qn, 0) + ' <span>т/сут</span>',
+     '<span>по</span> ' + last.wells + ' <span>скважинам с замером</span>', '']
+  ];
+  document.getElementById('kpis').innerHTML = kpi.map(function(k){
+    return '<div class="kpi"><div class="kpi-label">' + k[0] + '</div>' +
+           '<div class="kpi-value' + (k[3] ? ' ' + k[3] : '') + '">' + k[1] + '</div>' +
+           '<div class="kpi-unit">' + k[2] + '</div></div>';
+  }).join('');
+
+  /* ── распределение ─────────────────────────────────────────────────────── */
+  var bins = F.dist, maxN = 0;
+  bins.forEach(function(b){ maxN = Math.max(maxN, b.n); });
+  document.getElementById('dist').innerHTML = bins.map(function(b){
+    return '<div class="dist-col"><div class="dist-range">' + b.label + '</div>' +
+      '<div class="dist-n">' + b.n + '</div>' +
+      '<div class="dist-sub"><span>' + (b.n === 1 ? 'скважина' : (b.n >= 2 && b.n <= 4 ? 'скважины' : 'скважин')) +
+      '</span> · ' + Math.round(b.n / F.measured * 100) + '<span>% фонда</span></div>' +
+      '<div class="dist-bar"><i style="width:' + (b.n / maxN * 100) + '%"></i></div>' +
+      '<div class="dist-ours">' + b.ours.map(function(w){ return '<span class="dist-chip">' + w + '</span>'; }).join('') + '</div></div>';
+  }).join('');
+
+  /* ── горизонты ─────────────────────────────────────────────────────────── */
+  document.getElementById('hz').innerHTML = F.horizons.map(function(h){
+    return '<div class="hz-row"><div class="hz-name">' + h.name + '</div>' +
+      '<div class="hz-track"><div class="hz-fill" style="width:' + h.wc.toFixed(0) + '%"></div></div>' +
+      '<div class="hz-val">' + fmt(h.wc) + '%</div>' +
+      '<div class="hz-n">' + h.n + ' <span>скв.</span></div></div>';
+  }).join('');
+
+  /* ── наблюдения ────────────────────────────────────────────────────────── */
+  var lo = bins[0].n + bins[1].n, hi = bins[3].n + bins[4].n;
+  document.getElementById('o1a').textContent = fmt(first.wc) + '% → ' + fmt(last.wc) + '%';
+  document.getElementById('o1b').innerHTML = fmt(Math.abs(delta)) + ' <span>пункта</span>';
+  document.getElementById('o1c').innerHTML = '<span>' + (last.qn >= first.qn ? 'выросла' : 'снизилась') + '</span>';
+  document.getElementById('o1d').innerHTML = fmt(first.qn, 0) + ' <span>до</span> ' + fmt(last.qn, 0) + ' <span>т/сут</span>';
+  document.getElementById('o2a').innerHTML = lo + ' <span>скважин</span>';
+  document.getElementById('o2b').innerHTML = hi + ' <span>скважин</span>';
+
+  /* ── график ────────────────────────────────────────────────────────────── */
+  Chart.defaults.color = '#AAAAAA';
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.font.size = 11;
+  new Chart(document.getElementById('wcChart').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: F.monthsLabels,
+      datasets: [
+        { label: 'Весь фонд', data: S.map(function(x){ return x.wc; }), borderColor: '#111111',
+          backgroundColor: 'transparent', borderWidth: 2.5, pointRadius: 3, pointHoverRadius: 5,
+          tension: 0.25, order: 1 }
+      ].concat(ut9wells.map(function(w){
+        return { label: 'Скв. ' + w.w, data: w.series, borderColor: 'rgba(22,163,74,0.75)',
+                 backgroundColor: 'transparent', borderWidth: 1.3, pointRadius: 2, pointHoverRadius: 5,
+                 tension: 0.25, spanGaps: false, order: 2 };
+      }))
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(17,17,17,0.92)', titleColor: '#fff', bodyColor: '#ddd', padding: 11,
+          callbacks: {
+            title: function(c){ return S[c[0].dataIndex].full + ' · замер ' + S[c[0].dataIndex].date; },
+            label: function(c){ return c.dataset.label + ': ' + c.parsed.y.toFixed(1).replace('.', ',') + '%'; },
+            afterBody: function(c){
+              return 'В расчёте фонда: ' + S[c[0].dataIndex].wells + ' скважин с замером';
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: 'rgba(0,0,0,0.05)', tickLength: 0 }, border: { color: 'rgba(0,0,0,0.12)' } },
+        y: { min: 0, max: 100, grid: { color: 'rgba(0,0,0,0.05)' }, border: { color: 'transparent' },
+             ticks: { stepSize: 20, callback: function(v){ return v + '%'; } } }
+      }
+    }
+  });
+
+  /* ── вклад в фонд ──────────────────────────────────────────────────────── */
+  var E = F.effect;
+  document.getElementById('efNow').textContent = fmt(E.wcNow, 2) + '%';
+  document.getElementById('efAlt').textContent = fmt(E.wcAlt, 2) + '%';
+  document.getElementById('efDelta').innerHTML = '−' + fmt(Math.abs(E.delta), 2) + ' <span>п.п.</span>';
+  document.getElementById('efNote').innerHTML =
+    '<span>Скважины</span> ' + E.wells.join(', ') + '. <span>Без заходов фонд поднимал бы на</span> ' +
+    fmt(E.waterSaved) + ' <span>м³/сут воды больше.</span>';
+})();
+</script>
+<script src="i18n.js?v=20261004i" defer></script>
+<script src="backend.js?v=20260910" defer></script>
+</body>
+</html>
