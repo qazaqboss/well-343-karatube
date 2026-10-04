@@ -244,27 +244,19 @@ tbody tr:hover{background:var(--bg-2)}
 .hz-val{font-family:var(--font-h);font-size:18px;font-weight:700;text-align:right}
 .hz-n{font-family:var(--font-data);font-size:11px;color:var(--grey-dim);text-align:right}
 
-/* таблица фонда */
-.tf-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
-.tf-filters{display:flex;gap:6px;flex-wrap:wrap}
-.tf-btn{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey);background:none;
-        border:1px solid var(--border);padding:6px 14px;cursor:pointer;border-radius:2px;white-space:nowrap}
-.tf-btn:hover{border-color:var(--grey);color:var(--white-dim)}
-.tf-btn.on{background:var(--white);color:var(--bg);border-color:var(--white);font-weight:600}
-.tf-count{font-family:var(--font-data);font-size:11px;color:var(--grey-dim)}
-.tf-wrap{border:1px solid var(--border);overflow-x:auto}
-.tf{width:100%;border-collapse:collapse;min-width:720px;font-size:12.5px}
-.tf th{font-family:var(--font-data);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim);
-       text-align:left;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--border);white-space:nowrap}
-.tf td{padding:11px 14px;border-bottom:1px solid var(--border-dim);vertical-align:middle}
-.tf tr:last-child td{border-bottom:none}
-.tf tr.ours{background:var(--bg-2)}
-.tf .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.tf-well{font-family:var(--font-h);font-size:16px;font-weight:600;letter-spacing:1px;white-space:nowrap}
-.tf-tag{display:inline-block;font-family:var(--font-data);font-size:9px;letter-spacing:1px;text-transform:uppercase;
-        background:var(--white);color:var(--bg);padding:2px 7px;border-radius:2px;margin-left:8px;vertical-align:middle}
-.tf-mini{display:inline-block;width:64px;height:16px;vertical-align:middle}
-.tf-idle{color:var(--grey-dim)}
+/* вклад заходов в обводнённость фонда */
+.ef{display:grid;grid-template-columns:1fr 78px 1fr 1.35fr;gap:1px;background:var(--border);
+    border:1px solid var(--border);align-items:stretch}
+.ef-box{background:var(--bg);padding:24px 26px}
+.ef-k{font-family:var(--font-data);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim)}
+.ef-v{font-family:var(--font-h);font-size:44px;font-weight:700;line-height:1;margin-top:12px;letter-spacing:-.5px}
+.ef-v.dim{color:var(--grey-muted)}
+.ef-v.ok{color:#16A34A}
+.ef-note{font-size:12.5px;color:var(--grey);line-height:1.55;margin-top:14px}
+.ef-arrow{background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;
+          font-family:var(--font-data);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)}
+@media(max-width:1100px){.ef{grid-template-columns:1fr 70px 1fr}.ef-box.wide{grid-column:1/-1}}
+@media(max-width:640px){.ef{grid-template-columns:1fr}.ef-arrow{padding:12px 0}.ef-box.wide{grid-column:auto}}
 
 /* наши заходы: до и после */
 .ba{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
@@ -385,7 +377,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="section-head">
     <div>
       <div class="section-title">Распределение по диапазонам</div>
-      <div class="section-sub">Сколько скважин в каждом диапазоне обводнённости на 27.09.2026.
+      <div class="section-sub">Сколько скважин фонда в каждом диапазоне обводнённости на 27.09.2026.
       Чёрным отмечены наши — видно, в какую часть фонда они попали после изоляции.</div>
     </div>
   </div>
@@ -473,29 +465,35 @@ tbody tr:hover{background:var(--bg-2)}
   </div>
 </section>
 
-<!-- ТАБЛИЦА ФОНДА -->
+<!-- ВКЛАД В ФОНД -->
 <section class="section">
   <div class="section-head">
     <div>
-      <div class="section-title">Весь фонд</div>
-      <div class="section-sub">Сортировка по обводнённости, от высокой к низкой. Мини-график —
-      обводнённость скважины по месяцам, январь слева. Наши скважины выделены фоном.</div>
+      <div class="section-title">Вклад заходов в обводнённость фонда</div>
+      <div class="section-sub">Насколько ниже держится обводнённость всего фонда благодаря выполненным
+      заходам. Расчёт по четырём скважинам, у которых дореремонтный замер задокументирован.</div>
     </div>
   </div>
-  <div class="tf-top">
-    <div class="tf-filters" id="tfFilters"></div>
-    <div class="tf-count" id="tfCount"></div>
+  <div class="ef">
+    <div class="ef-box">
+      <div class="ef-k">Обводнённость фонда сейчас</div>
+      <div class="ef-v" id="efNow">—</div>
+    </div>
+    <div class="ef-arrow">было бы</div>
+    <div class="ef-box">
+      <div class="ef-k">Если бы заходов не было</div>
+      <div class="ef-v dim" id="efAlt">—</div>
+    </div>
+    <div class="ef-box wide">
+      <div class="ef-k">Разница</div>
+      <div class="ef-v ok" id="efDelta">—</div>
+      <div class="ef-note" id="efNote">—</div>
+    </div>
   </div>
-  <div class="tf-wrap">
-    <table class="tf">
-      <thead><tr>
-        <th>Скважина</th><th>Горизонт</th><th>Участок</th>
-        <th class="num">Обв., %</th><th class="num">Qн, т/сут</th><th class="num">Qж, м³/сут</th>
-        <th>Динамика с января</th>
-      </tr></thead>
-      <tbody id="tfBody"></tbody>
-    </table>
-  </div>
+  <div class="spec-note" style="margin-top:18px">Как считается: берём сегодняшний отбор жидкости по
+  каждой из четырёх скважин и подставляем обводнённость, которая была до работ. Получается, сколько
+  воды фонд поднимал бы сверх нынешнего. Допущение одно и названо прямо: отбор жидкости взят текущий.
+  Фактически после изоляции он тоже изменился, поэтому цифра — оценка порядка величины, а не точный баланс.</div>
 </section>
 
 <div class="caveat">
@@ -503,7 +501,7 @@ tbody tr:hover{background:var(--bg-2)}
   месяца, по одной точке на месяц. Это снимок, а не среднемесячное значение: разовый замер может
   отличаться от режима. Скважины без замера (ремонт, ожидание бригады) в расчёт обводнённости не
   входят, поэтому число скважин по месяцам разное — оно указано в подписи к каждой точке графика.
-  Обводнённость групп считается по сумме потоков, среднее арифметическое по скважинам дало бы
+  Поскважинные показатели фонда, кроме наших собственных скважин, не публикуются: на странице только агрегаты — суммы, доли и количества. Обводнённость групп считается по сумме потоков, среднее арифметическое по скважинам дало бы
   другую цифру и приведено отдельно в карточках выше.<br><br>
   Наши скважины на графике показаны по отдельности намеренно. Усреднять их в одну линию нельзя:
   состав группы меняется от месяца к месяцу — скважина уходит в ремонт и выпадает из расчёта, —
@@ -516,30 +514,26 @@ tbody tr:hover{background:var(--bg-2)}
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="field.js?v=20261004e"></script>
+<script src="field.js?v=20261004g"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 
 (function(){
   var F = window.FIELD, S = F.series, last = S[S.length - 1], first = S[0];
-  var meas = F.wells.filter(function(w){ return w.obv !== null; });
-  var ours = meas.filter(function(w){ return w.ut9; });
-  var ut9wells = F.wells.filter(function(w){ return w.ut9; });
+  var ut9wells = F.ours;
   var fmt = function(v, d){ return (v === null || v === undefined) ? '—' : v.toFixed(d === undefined ? 1 : d).replace('.', ','); };
 
   /* ── шапка ─────────────────────────────────────────────────────────────── */
-  document.getElementById('mWells').textContent = F.wells.length;
+  document.getElementById('mWells').textContent = F.wellsTotal;
   document.getElementById('mWc').textContent = fmt(last.wc) + '%';
   document.getElementById('mUt9').textContent = F.ut9.length;
 
   /* ── KPI ───────────────────────────────────────────────────────────────── */
-  var sorted = meas.map(function(w){ return w.obv; }).sort(function(a, b){ return a - b; });
-  var median = sorted[Math.floor(sorted.length / 2)];
   var delta = last.wc - first.wc;
   var kpi = [
     ['Обводнённость фонда', fmt(last.wc) + '%', '<span>сумма воды к сумме жидкости</span>', ''],
-    ['Медиана по скважинам', fmt(median) + '%', '<span>половина фонда выше, половина ниже</span>', ''],
+    ['Скважин в расчёте', String(F.measured), '<span>из</span> ' + F.wellsTotal + ' <span>в фонде, остальные в ремонте</span>', ''],
     ['С начала года', (delta >= 0 ? '+' : '−') + fmt(Math.abs(delta)) + ' <span>п.п.</span>',
      '<span>январь</span> ' + fmt(first.wc) + '% → <span>сентябрь</span> ' + fmt(last.wc) + '%', delta > 0 ? 'red' : ''],
     ['Добыча нефти', fmt(last.qn, 0) + ' <span>т/сут</span>',
@@ -552,33 +546,19 @@ function closeNav(){document.getElementById('navMobile').classList.remove('open'
   }).join('');
 
   /* ── распределение ─────────────────────────────────────────────────────── */
-  var BINS = [[0, 20, 'до 20%'], [20, 40, '20–40%'], [40, 60, '40–60%'], [60, 80, '60–80%'], [80, 101, 'от 80%']];
-  var maxN = 0;
-  var bins = BINS.map(function(b){
-    var g = meas.filter(function(w){ return w.obv >= b[0] && w.obv < b[1]; });
-    maxN = Math.max(maxN, g.length);
-    return { label: b[2], n: g.length, ours: g.filter(function(w){ return w.ut9; }).map(function(w){ return w.w; }) };
-  });
+  var bins = F.dist, maxN = 0;
+  bins.forEach(function(b){ maxN = Math.max(maxN, b.n); });
   document.getElementById('dist').innerHTML = bins.map(function(b){
     return '<div class="dist-col"><div class="dist-range">' + b.label + '</div>' +
       '<div class="dist-n">' + b.n + '</div>' +
       '<div class="dist-sub"><span>' + (b.n === 1 ? 'скважина' : (b.n >= 2 && b.n <= 4 ? 'скважины' : 'скважин')) +
-      '</span> · ' + Math.round(b.n / meas.length * 100) + '<span>% фонда</span></div>' +
+      '</span> · ' + Math.round(b.n / F.measured * 100) + '<span>% фонда</span></div>' +
       '<div class="dist-bar"><i style="width:' + (b.n / maxN * 100) + '%"></i></div>' +
       '<div class="dist-ours">' + b.ours.map(function(w){ return '<span class="dist-chip">' + w + '</span>'; }).join('') + '</div></div>';
   }).join('');
 
   /* ── горизонты ─────────────────────────────────────────────────────────── */
-  var hz = {};
-  meas.forEach(function(w){
-    var k = (w.gor || '—').trim();
-    hz[k] = hz[k] || { qv: 0, qzh: 0, n: 0 };
-    hz[k].qv += w.qv || 0; hz[k].qzh += w.qzh || 0; hz[k].n++;
-  });
-  var hzArr = Object.keys(hz).map(function(k){
-    return { name: k, n: hz[k].n, wc: hz[k].qzh ? hz[k].qv / hz[k].qzh * 100 : 0 };
-  }).sort(function(a, b){ return b.n - a.n; });
-  document.getElementById('hz').innerHTML = hzArr.map(function(h){
+  document.getElementById('hz').innerHTML = F.horizons.map(function(h){
     return '<div class="hz-row"><div class="hz-name">' + h.name + '</div>' +
       '<div class="hz-track"><div class="hz-fill" style="width:' + h.wc.toFixed(0) + '%"></div></div>' +
       '<div class="hz-val">' + fmt(h.wc) + '%</div>' +
@@ -636,52 +616,17 @@ function closeNav(){document.getElementById('navMobile').classList.remove('open'
     }
   });
 
-  /* ── таблица ───────────────────────────────────────────────────────────── */
-  function spark(series){
-    var pts = series.map(function(v, i){ return [i, v]; }).filter(function(p){ return p[1] !== null; });
-    if (pts.length < 2) return '<span class="tf-idle">—</span>';
-    var n = series.length - 1, d = pts.map(function(p){
-      return (p[0] / n * 62 + 1).toFixed(1) + ',' + (15 - (p[1] / 100 * 13)).toFixed(1);
-    }).join(' L');
-    return '<svg class="tf-mini" viewBox="0 0 64 16"><polyline points="" fill="none"/>' +
-           '<path d="M' + d + '" fill="none" stroke="#111" stroke-width="1.2"/></svg>';
-  }
-  var FILTERS = [
-    ['all', 'Весь фонд', function(){ return true; }],
-    ['ut9', 'Наши заходы', function(w){ return w.ut9; }],
-    ['hi', 'Выше 60%', function(w){ return w.obv !== null && w.obv >= 60; }],
-    ['mid', '40–60%', function(w){ return w.obv !== null && w.obv >= 40 && w.obv < 60; }],
-    ['lo', 'Ниже 40%', function(w){ return w.obv !== null && w.obv < 40; }],
-    ['idle', 'Без замера', function(w){ return w.obv === null; }]
-  ];
-  document.getElementById('tfFilters').innerHTML = FILTERS.map(function(f, i){
-    return '<button class="tf-btn' + (i === 0 ? ' on' : '') + '" data-f="' + f[0] + '">' + f[1] + '</button>';
-  }).join('');
-
-  function render(key){
-    var f = FILTERS.filter(function(x){ return x[0] === key; })[0];
-    var rows = F.wells.filter(f[2]);
-    document.getElementById('tfBody').innerHTML = rows.map(function(w){
-      return '<tr' + (w.ut9 ? ' class="ours"' : '') + '>' +
-        '<td class="tf-well">' + w.w + (w.ut9 ? '<span class="tf-tag">UT-9</span>' : '') + '</td>' +
-        '<td>' + (w.gor || '—') + '</td>' +
-        '<td>' + (w.area === 'основной' ? 'Основной' : 'Западный склон') + '</td>' +
-        '<td class="num">' + (w.obv === null ? '<span class="tf-idle">в ремонте</span>' : '<b>' + fmt(w.obv) + '</b>') + '</td>' +
-        '<td class="num">' + fmt(w.qn, 2) + '</td>' +
-        '<td class="num">' + fmt(w.qzh) + '</td>' +
-        '<td>' + spark(w.series) + '</td></tr>';
-    }).join('');
-    document.getElementById('tfCount').innerHTML = '<span>Показано скважин:</span> ' + rows.length + ' <span>из</span> ' + F.wells.length;
-  }
-  document.getElementById('tfFilters').addEventListener('click', function(e){
-    var b = e.target.closest('.tf-btn'); if (!b) return;
-    document.querySelectorAll('.tf-btn').forEach(function(x){ x.classList.remove('on'); });
-    b.classList.add('on'); render(b.dataset.f);
-  });
-  render('all');
+  /* ── вклад в фонд ──────────────────────────────────────────────────────── */
+  var E = F.effect;
+  document.getElementById('efNow').textContent = fmt(E.wcNow, 2) + '%';
+  document.getElementById('efAlt').textContent = fmt(E.wcAlt, 2) + '%';
+  document.getElementById('efDelta').innerHTML = '−' + fmt(Math.abs(E.delta), 2) + ' <span>п.п.</span>';
+  document.getElementById('efNote').innerHTML =
+    '<span>Скважины</span> ' + E.wells.join(', ') + '. <span>Без заходов фонд поднимал бы на</span> ' +
+    fmt(E.waterSaved) + ' <span>м³/сут воды больше.</span>';
 })();
 </script>
-<script src="i18n.js?v=20261004e" defer></script>
+<script src="i18n.js?v=20261004g" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
