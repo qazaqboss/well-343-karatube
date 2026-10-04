@@ -224,7 +224,7 @@ tbody tr:hover{background:var(--bg-2)}
   </a>
   <nav class="nav">
     <a href="index.html" class="nav-pill">Фонд</a>
-    <a href="water-cut.html" class="nav-pill">Обводнённость</a><a href="sealing.html" class="nav-pill active">Герметичность</a>
+    <a href="sealing.html" class="nav-pill active">Герметичность</a>
     <a href="plan.html" class="nav-pill">Программа</a>
     <a href="product.html" class="nav-pill">Продукт</a>
     <a href="stages.html" class="nav-pill">Этапы</a>
@@ -239,7 +239,6 @@ tbody tr:hover{background:var(--bg-2)}
 </header>
 <nav class="nav-mobile" id="navMobile">
   <a href="index.html" onclick="closeNav()">Фонд скважин</a>
-  <a href="water-cut.html" onclick="closeNav()">Обводнённость фонда</a>
   <a href="sealing.html" class="active" onclick="closeNav()">Герметичность</a>
   <a href="plan.html" onclick="closeNav()">Программа UT-9</a>
   <a href="product.html" onclick="closeNav()">Продукт</a>
@@ -308,6 +307,50 @@ tbody tr:hover{background:var(--bg-2)}
       <thead><tr><th>Скважина</th><th>Заходов</th><th>Итог герметизации</th><th>Дата захода</th><th>Зона залежи</th><th>Статус на <span data-wells-updated>27.09.2026</span></th><th>Комментарий</th></tr></thead>
       <tbody id="tbody"></tbody>
     </table>
+  </div>
+</section>
+
+<!-- ЭФФЕКТ НА УРОВНЕ ФОНДА -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="section-title">Что это дало фонду в целом</div>
+      <div class="section-sub">Отдельная скважина — это кейс. Вопрос в другом: заметен ли результат
+      на уровне всего эксплуатационного фонда.</div>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-idx">Эффект</div>
+      <div class="card-title">Фонд поднимает на 25,6 м³/сут воды меньше</div>
+      <div class="card-text">Четыре скважины, по которым дореремонтная обводнённость задокументирована
+      замерами — <b>303, 311, 342 и 343</b>, — после изоляции дают на 25,6 м³/сут воды меньше, чем
+      давали бы при прежней обводнённости и нынешнем отборе жидкости. Это объём, который фонду
+      больше не нужно поднимать, греть, разделять и утилизировать.</div>
+      <div class="card-text">В пересчёте на весь эксплуатационный фонд четыре скважины удерживают
+      его обводнённость примерно <b>на 1,9 пункта ниже</b>, чем она была бы без заходов.</div>
+    </div>
+    <div class="card">
+      <div class="card-idx">Масштаб</div>
+      <div class="card-title">Четыре скважины против десятков</div>
+      <div class="card-text">Полтора-два пункта по фонду — это немного, и так и должно быть:
+      обработано четыре скважины. Важен не размер цифры, а то, что эффект вообще различим
+      на уровне фонда при такой доле охвата.</div>
+      <div class="card-text">Оттуда и считается потенциал программы: если тот же результат
+      воспроизвести на кандидатах со схожим профилем, вклад растёт пропорционально числу заходов,
+      а не числу скважин в фонде.</div>
+    </div>
+    <div class="card">
+      <div class="card-idx">Оговорка</div>
+      <div class="card-title">Это оценка, а не баланс</div>
+      <div class="card-text">Расчёт сделан при одном допущении: отбор жидкости взят сегодняшний.
+      Фактически после изоляции он тоже менялся — где-то вырос, где-то снизился вместе с режимом
+      насоса. Поэтому цифра показывает порядок величины и направление, но не является точным
+      балансом по воде.</div>
+      <div class="card-text">По 301 дореремонтного замера в сопоставимом режиме нет, 305 переведена
+      на другой горизонт, 357 ещё не запущена — эти три скважины в расчёт не входят, хотя заходы
+      на них выполнены.</div>
+    </div>
   </div>
 </section>
 
@@ -580,7 +623,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="footer-right">ТОО «ЭкоМикс» · EASYMIX</div>
 </footer>
 
-<script src="wells.js?v=20261004g"></script>
+<script src="wells.js?v=20261004h"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
@@ -602,7 +645,7 @@ document.getElementById('tbody').innerHTML = window.WELLS.wells.slice().sort(fun
     '<td class="c-note" data-k="Комментарий">' + s.note + '</td></tr>';
 }).join('');
 </script>
-<script src="i18n.js?v=20261004g" defer></script>
+<script src="i18n.js?v=20261004h" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
