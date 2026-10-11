@@ -1,0 +1,212 @@
+# -*- coding: utf-8 -*-
+"""Отчёт о расходе NanoCem UT-9 → tools/_report.html (дальше рендер в PDF).
+
+Статусы и итоги заходов берутся из public/wells.js — единого источника фонда,
+чтобы документ не расходился с сайтом. Название месторождения и оператор
+в документ не выносятся: только номера скважин.
+"""
+import io, json, os, subprocess
+from string import Template
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# ── фонд из wells.js ─────────────────────────────────────────────────────────
+js = io.open(os.path.join(ROOT, 'public', 'wells.js'), encoding='utf-8').read()
+node = subprocess.run(['node', '-e', '''
+global.window={};global.document={getElementById:()=>null,querySelectorAll:()=>[],
+ createElement:()=>({}),head:{appendChild(){}},body:{getAttribute:()=>''},
+ readyState:'complete',addEventListener(){},dispatchEvent(){}};
+global.CustomEvent=function(){};
+require(process.argv[1]);
+console.log(JSON.stringify(global.window.WELLS));
+''', os.path.join(ROOT, 'public', 'wells.js')], capture_output=True, text=True, check=True)
+W = json.loads(node.stdout)
+
+# Расход цемента по заходам — по факту завоза, оценочно.
+SPEND = {'343': 3.5, '342': 3.0, '301': 3.5, '311': 3.5, '303': 3.0, '305': 3.5,
+         '357': 3.0, '363': 3.0}
+ORDER = ['343', '342', '301', '311', '303', '305', '357', '363']
+ENTRIES = {'343': 'интервалы перфорации 629,8–660 м',
+           '342': 'два захода: 10.05 и 31.05, разбурка моста, запуск 06.06',
+           '301': 'интервалы 637–641; 646–655; 661–677 м',
+           '311': 'изоляция обводнённого интервала после ГИС',
+           '303': 'интервал 686–688 м',
+           '305': 'интервалы 454–457,3; 474–477,4 м',
+           '357': 'три интервала 657–663; 669,5–672; 679–684 м, опрессовка 25.09',
+           '363': 'четыре интервала 647–650; 652–654; 660–665; 667–674 м'}
+CLS = {'first': 'ok', 'second': 'ok', 'confirmed': 'ok', 'tested': 'ok',
+       'fresh': 'warn', 'wait': 'warn', 'lost': 'bad', 'open': 'bad'}
+
+wells = {w['id']: w for w in W['wells']}
+total = sum(SPEND[i] for i in ORDER)
+
+rows = []
+for i in ORDER:
+    w = wells[i]
+    s = w['seal']
+    rows.append(
+      '<tr><td class="w">%s</td><td>%s</td><td class="dim">%s</td>'
+      '<td class="num">≈%s</td><td class="%s">%s</td></tr>'
+      % (i, s['date'], ENTRIES[i], ('%.1f' % SPEND[i]).replace('.', ','),
+         CLS[s['code']], s['label']))
+
+live = [w for w in W['wells'] if w['last']['qn'] != '—']
+live.sort(key=lambda w: -float(w['last']['qn'].replace(',', '.')))
+cards = []
+for w in live[:3]:
+    cards.append('<div class="eff"><div class="eff-w">Скв. %s</div>'
+                 '<div class="eff-v">%s<span> т/сут</span></div>'
+                 '<div class="eff-s">обводнённость %s%% · замер %s</div></div>'
+                 % (w['id'], w['last']['qn'], w['last']['obv'], w['last']['date']))
+
+HTML = Template('''<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8">
+<title>Расход NanoCem UT-9 по скважинам</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--border:#D8D8D8;--ink:#111;--ink-dim:#2A2A2A;--grey:#777;--grey-dim:#AAA;
+      --ok:#16A34A;--bad:#EF4444;--warn:#EA580C;--fh:'Oswald',sans-serif;--fd:'Inter',sans-serif}
+html,body{background:#fff;color:var(--ink);font-family:var(--fd);-webkit-font-smoothing:antialiased}
+.page{width:210mm;height:297mm;padding:18mm 16mm 14mm;display:flex;flex-direction:column;
+      page-break-after:always;break-after:page;position:relative}
+.page:last-child{page-break-after:auto;break-after:auto}
+.head{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.mark{width:22px;height:22px;border:1.5px solid var(--border);transform:rotate(45deg);
+      display:flex;align-items:center;justify-content:center}
+.mark i{width:8px;height:8px;background:var(--ink);display:block}
+.brand{font-family:var(--fh);font-size:12px;letter-spacing:3.5px;text-transform:uppercase}
+.sp{flex:1}
+.kick{font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-dim);text-align:right;line-height:1.5}
+.eyebrow{font-size:9px;letter-spacing:3.5px;text-transform:uppercase;color:var(--grey-dim);margin:26px 0 10px}
+h1{font-family:var(--fh);font-weight:700;font-size:38px;line-height:1.02;letter-spacing:-.4px;text-transform:uppercase}
+h1 .light{font-weight:300;color:var(--grey)}
+h2{font-family:var(--fh);font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;
+   margin:22px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.sub{font-size:11px;color:var(--grey);margin-top:9px;letter-spacing:.3px}
+.big{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);margin-top:22px}
+.big > div{padding:16px 16px 18px;border-right:1px solid var(--border)}
+.big > div:last-child{border-right:none}
+.big-k{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:9px}
+.big-v{font-family:var(--fh);font-size:34px;font-weight:600;line-height:1}
+.big-v span{font-size:13px;font-weight:400;color:var(--grey)}
+.big-s{font-size:10px;color:var(--grey);margin-top:7px;line-height:1.45}
+table{width:100%;border-collapse:collapse;font-size:10px}
+th{font-size:8px;letter-spacing:1.6px;text-transform:uppercase;color:var(--grey-dim);
+   text-align:left;padding:0 8px 7px;border-bottom:1px solid var(--border);font-weight:500}
+td{padding:9px 8px;border-bottom:1px solid #EBEBEB;vertical-align:top;line-height:1.4}
+td.w{font-family:var(--fh);font-size:14px;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.dim{color:var(--grey)}
+td.ok{color:var(--ok)}  td.bad{color:var(--bad)}  td.warn{color:var(--warn)}
+tr.total td{border-bottom:none;border-top:1.5px solid var(--ink);font-weight:600;padding-top:10px}
+.effs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);
+      border:1px solid var(--border);margin-top:4px}
+.eff{background:#fff;padding:14px 14px 16px}
+.eff-w{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-dim);margin-bottom:8px}
+.eff-v{font-family:var(--fh);font-size:28px;font-weight:600;line-height:1}
+.eff-v span{font-size:11px;font-weight:400;color:var(--grey)}
+.eff-s{font-size:9.5px;color:var(--grey);margin-top:6px}
+p.note{font-size:10px;line-height:1.6;color:var(--ink-dim);margin-top:14px}
+p.fine{font-size:9px;line-height:1.6;color:var(--grey);margin-top:12px}
+.foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;
+      justify-content:space-between;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)}
+</style></head><body>
+
+<div class="page">
+  <div class="head"><div class="mark"><i></i></div><div class="brand">EasyMix</div>
+    <div class="sp"></div><div class="kick">NanoCem UT-9<br>ультратонкий цемент</div></div>
+
+  <div class="eyebrow">Отчёт о расходе реагента</div>
+  <h1>РАСХОД NANOCEM UT-9<br><span class="light">ПО</span> СКВАЖИНАМ</h1>
+  <div class="sub">Горизонт J1-IV · январь — октябрь 2026 · данные на ${updated}</div>
+
+  <div class="big">
+    <div><div class="big-k">Всего израсходовано</div>
+      <div class="big-v">≈${total}<span> т</span></div>
+      <div class="big-s">ультратонкого цемента на ${n} заходов</div></div>
+    <div><div class="big-k">Скважин обработано</div>
+      <div class="big-v">${n}</div>
+      <div class="big-s">${ids}</div></div>
+    <div><div class="big-k">Расход в среднем</div>
+      <div class="big-v">≈${avg}<span> т</span></div>
+      <div class="big-s">на скважину · технология ЦПД, изоляция водопритока</div></div>
+  </div>
+
+  <h2>Расшифровка по скважинам</h2>
+  <table>
+    <thead><tr><th>Скв.</th><th>Дата захода</th><th>Интервалы и работы</th>
+      <th style="text-align:right">Расход, т</th><th>Итог герметизации</th></tr></thead>
+    <tbody>
+${rows}
+      <tr class="total"><td colspan="3">Итого · ${n} заходов</td>
+        <td class="num">≈${total}</td><td>тонн</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note"><b>Суть работ.</b> NanoCem UT-9 — ультратонкий тампонажный цемент (D95 ≤ 9 мкм)
+  для ремонтно-изоляционных работ: закачка под давлением в интервалы перфорации, чтобы отсечь
+  обводнённые зоны. Помол позволяет цементу входить в трещины и поры, куда обычный тампонажный
+  цемент не проходит.</p>
+
+  <p class="fine"><b>Как считать расход.</b> Цифры — по факту завоза, оценочные. Завезённый тоннаж
+  и тоннаж, ушедший в пласт, — разные величины: в сводках указывают завоз, а в скважину уходит
+  то, что поместилось в закачанный объём раствора. Пример по 363: заявлены 3 т и замес 3 м³
+  плотностью 1,49 г/см³, но 3 м³ такой плотности содержат ≈2,2 т цемента — остаток не замешивался.
+  При сверке материала считать нужно по объёму и плотности, а не по заголовку сводки.</p>
+
+  <div class="foot"><div>ТОО «ЭкоМикс» · NanoCem UT-9</div><div>Стр. 1 / 2</div></div>
+</div>
+
+<div class="page">
+  <div class="head"><div class="mark"><i></i></div><div class="brand">EasyMix</div>
+    <div class="sp"></div><div class="kick">NanoCem UT-9<br>расход по скважинам</div></div>
+
+  <h2>Где заходы работают сейчас</h2>
+  <div class="effs">
+${cards}
+  </div>
+  <p class="note">Три скважины с действующим эффектом изоляции. По <b>343</b> дебит вырос
+  с 1,10 до 10,64 т/сут, обводнённость опустилась с 89,4 до 48,2% — эффект держится девятый месяц.
+  По <b>342</b> результат получен со второго захода. По <b>301</b> дореремонтного замера
+  в сопоставимом режиме нет, поэтому прирост к базе по ней не считается.</p>
+
+  <h2>Где эффекта нет или он ещё не оценён</h2>
+  <p class="note"><b>311 — эффект утрачен на третьем месяце.</b> После захода обводнённость упала
+  с 90,5 до 49%, держалась около 60% полтора месяца, а 28.09 за сутки вернулась к 88%. Подъём
+  жидкости при этом вырос — значит, вода нашла путь мимо изолированной перфорации. По заключению
+  АКЦ сплошной контакт заколонного цемента на этой скважине всего 30,4%.</p>
+  <p class="note"><b>303 — откат на выводе на режим.</b> Пик 3,06 т/сут 28.09 продержался одни
+  сутки, 29.09 обводнённость вернулась к 88,7%. Итог определится в октябре.</p>
+  <p class="note"><b>305 — оценить заход нельзя.</b> В сентябре скважину перевели на вышележащий
+  горизонт T1-II, прежний объект не эксплуатируется.</p>
+  <p class="note"><b>357 — герметичность подтверждена опрессовкой.</b> Единственный заход, где
+  каждый интервал испытан отдельно до запуска: три из трёх держат 30–40 атм. С 30.09 идёт вывод
+  на режим, первые замеры добычи — в октябре.</p>
+  <p class="note"><b>363 — заход 10.10, идёт ОЗЦ.</b> Четыре интервала, давление закачки выросло
+  с 20 до 90 атм и приём прекратился. Опрессовка возможна только после разбурки моста.</p>
+
+  <h2>Что из этого следует</h2>
+  <p class="note">Результат заходов распределён по площади не случайно. Устойчивый эффект дали
+  скважины центральной части залежи; на краевых, где заколонный цемент имеет плохой контакт,
+  изоляция перфорации эффекта не удерживает — вода обходит её за колонной. Поэтому отбирать
+  кандидатов нужно по положению скважины и состоянию крепи, а не по уровню обводнённости.</p>
+  <p class="fine">Статусы и даты в документе берутся из той же базы фонда, что и суточные отчёты
+  по скважинам на nanocem.app. Отдельная статья потерь, не связанная с реагентом, — ожидание
+  бригады: на 357 это 94 дня, на 363 — 124 дня без добычи.</p>
+
+  <div class="foot"><div>ТОО «ЭкоМикс» · NanoCem UT-9 · nanocem.app</div>
+    <div>Данные: суточные режимные листы · Стр. 2 / 2</div></div>
+</div>
+</body></html>
+''').substitute(updated=W['updated'], total=('%.1f' % total).replace('.', ','),
+           n=len(ORDER), ids=' · '.join(ORDER),
+           avg=('%.1f' % (total / len(ORDER))).replace('.', ','),
+           rows='\n'.join('      ' + r for r in rows),
+           cards='\n'.join('    ' + c for c in cards))
+
+out = os.path.join(ROOT, 'tools', '_report.html')
+io.open(out, 'w', encoding='utf-8').write(HTML)
+print('tools/_report.html · заходов %d · расход ≈%.1f т' % (len(ORDER), total))
