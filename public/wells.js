@@ -124,6 +124,23 @@
           date: "24.09.2026", zone: "уточняется", qobv: "база 1,50 т/сут · 80,6%",
           note: "ЦПД в трёх интервалах 657–663, 669,5–672 и 679–684 м, 3 т ультратонкого состава. 25.09 мост разбурен и каждый интервал опрессован — все три держат (30–40 атм, 15 мин). Изоляция подтверждена прямым испытанием, а не косвенно. База для оценки эффекта известна точно: 1,50 т/сут при 80,6% воды за десять суток до остановки."
         }
+      },
+      {
+        id: "363", href: "well-363.html", title: "Скважина 363",
+        status: { code: "krs", label: "КРС · ОЗЦ", detail: "ЦПД 10.10 · твердение" },
+        last: { date: "—", qn: "—", obv: "—", qzh: "—" },
+        stats: [
+          ["Qн средн. за период", "1,23 т/сут"],
+          ["Обводнённость", "85,2% · 73,8–95,0"],
+          ["База до изоляции", "0,46 т/сут · 87,1%"],
+          ["Дней без добычи", "124 с 10.06"]
+        ],
+        note: "Девять месяцев скважина работала на подъём воды: январь — 4,43 т/сут при 80% обводнённости, к марту отбор зажали со 100 до 30 об/мин и добыча ушла к 0,1–0,3 т/сут при той же воде. 09.06 остановка по перегрузу, дальше четыре месяца ожидания бригады. 10.10 выполнен ЦПД в четырёх интервалах, идёт ОЗЦ.",
+        seal: {
+          code: "fresh", label: "Заход выполнен — идёт ОЗЦ", entries: "1 заход",
+          date: "10.10.2026", zone: "уточняется", qobv: "база 0,46 т/сут · 87,1%",
+          note: "Четыре интервала 647–674 м, 3,0 м³ замеса. Приём прекратился при 90 атм — косвенный признак, что интервалы закрылись. Прямая опрессовка будет после разбурки моста."
+        }
       }
     ]
   };
@@ -139,7 +156,7 @@
 
   /* ── Лента фонда: рендерится в #fundStrip на любой странице ────────────── */
   var CSS = '' +
-    '.wf-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border,#D8D8D8);border:1px solid var(--border,#D8D8D8)}' +
+    '.wf-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:1px;background:var(--border,#D8D8D8);border:1px solid var(--border,#D8D8D8)}' +
     '.wf-card{background:var(--bg,#fff);padding:16px 18px;display:block;text-decoration:none;color:inherit;transition:background .15s}' +
     '.wf-card:hover{background:var(--bg-2,#F8F8F8)}' +
     '.wf-card.is-current{background:var(--surface,#F4F4F4)}' +
@@ -151,7 +168,7 @@
     '.wf-val{font-family:Inter,sans-serif;font-size:12.5px;margin-top:9px;color:#2A2A2A}' +
     '.wf-val b{font-weight:600}' +
     '.wf-sub{font-family:Inter,sans-serif;font-size:10.5px;color:#AAAAAA;margin-top:3px;letter-spacing:.5px}' +
-    '@media(max-width:1500px){.wf-strip{grid-template-columns:repeat(4,1fr)}}' +
+    '@media(max-width:1700px){.wf-strip{grid-template-columns:repeat(4,1fr)}}' +
     '@media(max-width:1100px){.wf-strip{grid-template-columns:repeat(3,1fr)}}' +
     '@media(max-width:640px){.wf-strip{grid-template-columns:repeat(2,1fr)}}';
 
