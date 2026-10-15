@@ -259,7 +259,7 @@ tbody tr:hover{background:var(--bg-2)}
 @media(max-width:640px){.ef{grid-template-columns:1fr}.ef-arrow{padding:12px 0}.ef-box.wide{grid-column:auto}}
 
 /* наши заходы: до и после */
-.ba{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.ba{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
 .ba-col{background:var(--bg);padding:22px 22px 20px}
 .ba-w{font-family:var(--font-h);font-size:24px;font-weight:700;letter-spacing:1px}
 .ba-line{display:flex;align-items:baseline;gap:10px;margin-top:14px}
@@ -303,7 +303,7 @@ tbody tr:hover{background:var(--bg-2)}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Аналитика</div>
-    <div class="header-date">фонд на 27.09.2026 · 70 скважин</div>
+    <div class="header-date">фонд на 13.10.2026 · 73 скважины</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -326,7 +326,7 @@ tbody tr:hover{background:var(--bg-2)}
     <div>
       <div class="hero-eyebrow">Аналитика фонда · Девять месяцев замеров</div>
       <h1 class="hero-title">ОБВОДНЁННОСТЬ ФОНДА —<br>ОБЩАЯ КАРТИНА</h1>
-      <div class="hero-lead">Семьдесят скважин месторождения, январь — сентябрь 2026. Здесь фонд
+      <div class="hero-lead">Семьдесят три скважины месторождения, январь — октябрь 2026. Здесь фонд
       виден целиком: сколько скважин в каком диапазоне обводнённости, как показатель ведёт себя
       по горизонтам и где на этом фоне стоят восемь скважин с заходами NanoCem UT-9.</div>
       <div class="hero-meta">
@@ -336,7 +336,7 @@ tbody tr:hover{background:var(--bg-2)}
         <div class="hero-meta-sep">·</div>
         <div class="hero-meta-item">ЗАХОДОВ UT-9 <span id="mUt9">—</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ДАННЫЕ НА <span>27.09.2026</span></div>
+        <div class="hero-meta-item">ДАННЫЕ НА <span>13.10.2026</span></div>
       </div>
     </div>
     <div class="side-box">
@@ -377,7 +377,7 @@ tbody tr:hover{background:var(--bg-2)}
   <div class="section-head">
     <div>
       <div class="section-title">Распределение по диапазонам</div>
-      <div class="section-sub">Сколько скважин фонда в каждом диапазоне обводнённости на 27.09.2026.
+      <div class="section-sub">Сколько скважин фонда в каждом диапазоне обводнённости на 13.10.2026.
       Чёрным отмечены наши — видно, в какую часть фонда они попали после изоляции.</div>
     </div>
   </div>
@@ -403,40 +403,47 @@ tbody tr:hover{background:var(--bg-2)}
       <div class="section-title">Наши заходы: до и после</div>
       <div class="section-sub">Четыре скважины, по которым обводнённость до работ задокументирована
       замерами. По 301 дореремонтного замера в сопоставимом режиме нет, 305 переведена на другой
-      горизонт, 357 выводится на режим с 30.09 — их в сравнение не берём. Значения «после» — замер
-      30.09.2026.</div>
+      горизонт, 363 запущена 12.10 и даёт пусковую воду — их в сравнение не берём. Значения «после» —
+      замер 13.10.2026.</div>
     </div>
   </div>
   <div class="ba">
     <div class="ba-col">
       <div class="ba-w">343</div>
-      <div class="ba-line"><span class="ba-from">89,4%</span><span class="ba-arr">→</span><span class="ba-to">48,1%</span></div>
-      <div class="ba-note">Изоляция в январе 2026. Минимум 27,5% на пике эффекта, восьмой месяц работы.</div>
+      <div class="ba-line"><span class="ba-from">89,4%</span><span class="ba-arr">→</span><span class="ba-to">46,4%</span></div>
+      <div class="ba-note">Изоляция в январе 2026. Минимум 27,5% на пике эффекта, девятый месяц работы.</div>
     </div>
     <div class="ba-col">
       <div class="ba-w">342</div>
-      <div class="ba-line"><span class="ba-from">91,0%</span><span class="ba-arr">→</span><span class="ba-to">37,1%</span></div>
-      <div class="ba-note">Потребовалось два захода: 10.05 и 31.05. Сейчас — минимум с момента изоляции.</div>
+      <div class="ba-line"><span class="ba-from">91,0%</span><span class="ba-arr">→</span><span class="ba-to">35,2%</span></div>
+      <div class="ba-note">Потребовалось два захода: 10.05 и 31.05. 13.10 — лучшая обводнённость за всё время после изоляции.</div>
     </div>
     <div class="ba-col">
       <div class="ba-w">311</div>
-      <div class="ba-line"><span class="ba-from">90,5%</span><span class="ba-arr">→</span><span class="ba-to">88,0%</span></div>
-      <div class="ba-note">Доходила до 49%, затем откат к 60%, а к 28.09 возврат к 88%: эффект не удержался. Причина — плохой заколонный цемент, вода идёт мимо изолированной перфорации.</div>
+      <div class="ba-line"><span class="ba-from">90,5%</span><span class="ba-arr">→</span><span class="ba-to">85,4%</span></div>
+      <div class="ba-note">Доходила до 49%, затем откат к 60% и возврат к 88% 28.09: эффект не удержался. Октябрьские 85,4% — в пределах доремонтного коридора, причём отбор жидкости вырос с 21,5 до 24,8 м³/сут.</div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-w">357</div>
+      <div class="ba-line"><span class="ba-from">80,6%</span><span class="ba-arr">→</span><span class="ba-to">63,8%</span></div>
+      <div class="ba-note">Запуск 01.10 после ЦПД 24.09. Единственная скважина, где герметичность подтверждена опрессовкой до запуска. 13 суток работы — срок короткий, но направление однозначное.</div>
     </div>
     <div class="ba-col">
       <div class="ba-w">303</div>
-      <div class="ba-line"><span class="ba-from">95,0%</span><span class="ba-arr">→</span><span class="ba-to">88,7%</span></div>
-      <div class="ba-note">После запуска 11.09 опускалась до 65%, к 29.09 вернулась к 88,7%. Вывод на режим продолжается, итог по скважине определится в октябре.</div>
+      <div class="ba-line"><span class="ba-from">95,0%</span><span class="ba-arr">→</span><span class="ba-to">85,2%</span></div>
+      <div class="ba-note">После запуска 11.09 опускалась до 65%, 29.09 откат к 88,7%, за октябрь сползла до 85,2% при растущем дебите. Похоже на затянувшийся вывод на режим; итог определится в ноябре.</div>
     </div>
   </div>
-  <div class="spec-note" style="margin-top:18px">Ещё по двум заходам сравнивать пока нечего: <b>357</b>
-  выводится на режим с 30.09, на <b>363</b> заход сделан 10.10 и идёт ОЗЦ. На графике выше их линии
-  обрываются там, где скважины ушли в ремонт, — это не падение обводнённости, а отсутствие замеров.</div>
-  <div class="spec-note" style="margin-top:12px">Две из четырёх скважин эффект не удержали. На 311
-  он продержался меньше трёх месяцев, на 303 обводнённость откатилась на выводе на режим. Весь
-  нынешний вклад в показатель фонда держат 343 и 342 — те, что стоят в центральной части залежи.
-  Это и есть главный вывод по программе: отбирать кандидатов нужно по положению скважины и
-  состоянию заколонного цемента, а не по уровню обводнённости.</div>
+  <div class="spec-note" style="margin-top:18px">По <b>363</b> сравнивать пока нечего: скважина
+  запущена 12.10, и первый замер дал 98% воды — это пусковая вода после ремонта. На графике выше
+  линии 357 и 363 обрываются там, где скважины стояли в ремонте: это отсутствие замеров,
+  а не падение обводнённости.</div>
+  <div class="spec-note" style="margin-top:12px">Две скважины из пяти эффект не удержали: на 311
+  он продержался меньше трёх месяцев, на 303 обводнённость откатилась на выводе на режим, и обе
+  в октябре лишь частично отыгрывают назад. Основу вклада в показатель фонда по-прежнему держат
+  343 и 342 — те, что стоят в центральной части залежи. Главный вывод по программе не изменился:
+  отбирать кандидатов нужно по положению скважины и состоянию заколонного цемента, а не по уровню
+  обводнённости.</div>
 </section>
 
 <!-- ВЫВОДЫ -->
@@ -480,7 +487,7 @@ tbody tr:hover{background:var(--bg-2)}
     <div>
       <div class="section-title">Вклад заходов в обводнённость фонда</div>
       <div class="section-sub">Насколько ниже держится обводнённость всего фонда благодаря выполненным
-      заходам. Расчёт по четырём скважинам, у которых дореремонтный замер задокументирован.</div>
+      заходам. Расчёт по пяти скважинам, у которых дореремонтный замер задокументирован.</div>
     </div>
   </div>
   <div class="ef">
@@ -500,12 +507,12 @@ tbody tr:hover{background:var(--bg-2)}
     </div>
   </div>
   <div class="spec-note" style="margin-top:18px">Как считается: берём сегодняшний отбор жидкости по
-  каждой из четырёх скважин и подставляем обводнённость, которая была до работ. Получается, сколько
+  каждой из пяти скважин и подставляем обводнённость, которая была до работ. Получается, сколько
   воды фонд поднимал бы сверх нынешнего. Допущение одно и названо прямо: отбор жидкости взят текущий.
   Фактически после изоляции он тоже изменился, поэтому цифра — оценка порядка величины, а не точный баланс.<br><br>
-  Из чего складывается на 30.09: <b>343 — 9,7 м³/сут</b>, <b>342 — 7,7</b>, на <b>311</b> и <b>303</b>
-  остаётся 0,5 и 0,9. Неделей раньше общая цифра была 25,6 м³/сут и 1,94 п.п. — разница ровно в том,
-  что эти две скважины эффект потеряли.</div>
+  Из чего складывается на 13.10: <b>343 — 9,6 м³/сут</b>, <b>342 — 8,0</b>, <b>357 — 2,1</b>,
+  <b>303 — 1,5</b>, <b>311 — 1,3</b>. Две недели назад было 18,8 м³/сут и 1,41 п.п.: прибавку дала
+  вышедшая на режим 357 и частичное восстановление 303 и 311.</div>
 </section>
 
 <div class="caveat">
@@ -515,22 +522,20 @@ tbody tr:hover{background:var(--bg-2)}
   входят, поэтому число скважин по месяцам разное — оно указано в подписи к каждой точке графика.
   Поскважинные показатели фонда, кроме наших собственных скважин, не публикуются: на странице только агрегаты — суммы, доли и количества. Обводнённость групп считается по сумме потоков, среднее арифметическое по скважинам дало бы
   другую цифру и приведено отдельно в карточках выше.<br><br>
-  Наши скважины приведены по замеру 30.09.2026 — по ним ведутся суточные данные. Остальной фонд —
-  на 27.09, последнюю дату, на которую есть замеры по всем скважинам. Поэтому показатель фонда на этой
-  странице считается по смешанному срезу, и расхождение с режимным листом за 27.09 составляет
-  доли пункта.<br><br>
+  Весь срез — на одну дату, 13.10.2026: и наши скважины, и остальной фонд взяты из режимного листа
+  за этот день. Фонд за октябрь вырос до 73 скважин, из них с замером 71.<br><br>
   Наши скважины на графике показаны по отдельности намеренно. Усреднять их в одну линию нельзя:
   состав группы меняется от месяца к месяцу — скважина уходит в ремонт и выпадает из расчёта, —
   и такая линия показывала бы смену состава, а не изменение обводнённости.
 </div>
 
 <footer class="footer">
-  <div>Аналитика обводнённости фонда · данные на 27.09.2026 · <a href="index.html" style="border-bottom:1px solid var(--grey-muted)">Фонд скважин</a> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a></div>
+  <div>Аналитика обводнённости фонда · данные на 13.10.2026 · <a href="index.html" style="border-bottom:1px solid var(--grey-muted)">Фонд скважин</a> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a></div>
   <div class="footer-right">ТОО «ЭкоМикс» · EASYMIX</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="field.js?v=20261011a"></script>
+<script src="field.js?v=20261015a"></script>
 <script>
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
@@ -642,7 +647,7 @@ function closeNav(){document.getElementById('navMobile').classList.remove('open'
     fmt(E.waterSaved) + ' <span>м³/сут воды больше.</span>';
 })();
 </script>
-<script src="i18n.js?v=20261011a" defer></script>
+<script src="i18n.js?v=20261015a" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>

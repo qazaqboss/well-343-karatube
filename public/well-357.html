@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="NanoCem UT-9">
 <meta property="og:url" content="https://nanocem.app/well-357.html">
 <meta property="og:title" content="Скважина №357 — изоляция NanoCem UT-9">
-<meta property="og:description" content="До изоляции 1,50 т/сут при 80,6% воды. ЦПД 24.09 в трёх интервалах, опрессовка 25.09 — держат все три.">
+<meta property="og:description" content="После изоляции 3,95 т/сут при 63,8% воды против базы 1,50 т/сут при 80,6%. Дебит вырос в 2,6 раза за две недели.">
 <meta property="og:image" content="https://nanocem.app/og-357.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -93,7 +93,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .compare-obv.dim{color:var(--grey)}
 .compare-col.center{padding-left:28px;border-left:2px solid var(--border)}
 .compare-col.last{padding-left:28px;border-left:2px solid #EF4444}
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stats-bar{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--border)}
 .stat-cell{padding:24px 20px;border-right:1px solid var(--border)}
 .stat-cell:last-child{border-right:none}
 .stat-label{font-family:var(--font-data);font-size:10px;color:var(--grey-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
@@ -164,6 +164,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font-body);min-he
 .log-comment{font-size:12px;color:var(--grey);max-width:380px;line-height:1.45}
 .phase-tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 8px;border-radius:2px;white-space:nowrap}
 .phase-work{background:rgba(34,197,94,.12);color:#16A34A}
+.phase-after{background:rgba(34,197,94,.12);color:#16A34A}
 .phase-decline{background:rgba(249,115,22,.14);color:#EA580C}
 .phase-gis{background:rgba(13,148,136,.14);color:#0D9488}
 .phase-before{background:rgba(0,0,0,.05);color:#555}
@@ -250,7 +251,7 @@ a{text-decoration:none;color:inherit}
   </nav>
   <div class="header-right">
     <div class="live-badge"><div class="live-dot"></div>Мониторинг</div>
-    <div class="header-date">30.09.2026 / В РАБОТЕ</div>
+    <div class="header-date">13.10.2026 / В РАБОТЕ</div>
     <div class="nav-toggle" id="navToggle" onclick="toggleNav()"><span></span><span></span><span></span></div>
   </div>
 </header>
@@ -275,34 +276,34 @@ a{text-decoration:none;color:inherit}
       <div class="hero-meta">
         <div class="hero-meta-item">ГОРИЗОНТ <span>J1-IV</span></div>
         <div class="hero-meta-sep">·</div>
-        <div class="hero-meta-item">ПЕРИОД <span>01.01–30.09.2026</span></div>
+        <div class="hero-meta-item">ПЕРИОД <span>01.01–13.10.2026</span></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="status-pill"><div class="status-dot"></div>Вывод на режим с 30.09</div>
-      <div class="hero-date-note">База до изоляции — 1,50 т/сут при 80,6% воды · опрессовка 25.09 держит · 29.09 спущен насос, 30.09 начат вывод на режим</div>
+      <div class="status-pill"><div class="status-dot"></div>В работе · после изоляции</div>
+      <div class="hero-date-note">13.10 — 3,95 т/сут при 63,8% воды против базы 1,50 т/сут при 80,6% · дебит вырос в 2,6 раза, обводнённость ниже на 16,8 пункта</div>
     </div>
   </div>
 </section>
 
 <div class="kpi-strip">
   <div class="kpi-card dark">
-    <div class="kpi-note">26–28.02.2026</div>
-    <div class="kpi-label">Qн · пик</div>
-    <div class="kpi-value">2.22</div>
-    <div class="kpi-unit">Т / СУТ · обв. 71,2%</div>
+    <div class="kpi-note">11–13.10.2026</div>
+    <div class="kpi-label">Qн · максимум</div>
+    <div class="kpi-value">3.95</div>
+    <div class="kpi-unit">Т / СУТ · обв. 63,8%</div>
   </div>
   <div class="kpi-card dark">
     <div class="kpi-note">за период</div>
-    <div class="kpi-label">Qн · средний</div>
-    <div class="kpi-value">1.50</div>
-    <div class="kpi-unit">Т / СУТ · 176 суток</div>
+    <div class="kpi-label">Qн · после изоляции</div>
+    <div class="kpi-value">3.44</div>
+    <div class="kpi-unit">Т / СУТ · 13 суток</div>
   </div>
   <div class="kpi-card red">
     <div class="kpi-note">за период</div>
-    <div class="kpi-label">Обводнённость средн.</div>
-    <div class="kpi-value red">78.8</div>
-    <div class="kpi-unit">% · диапазон 70,5–83,7</div>
+    <div class="kpi-label">Обводнённость сейчас</div>
+    <div class="kpi-value red">63.8</div>
+    <div class="kpi-unit">% · было 80,6 до изоляции</div>
   </div>
   <div class="kpi-card dark">
     <div class="kpi-note">16–25.06.2026</div>
@@ -310,10 +311,11 @@ a{text-decoration:none;color:inherit}
     <div class="kpi-value">1.50</div>
     <div class="kpi-unit">Т / СУТ · обв. 80,6%</div>
   </div>
-  <div class="kpi-card red">
-    <div class="kpi-label">Дней простоя</div>
-    <div class="kpi-value red"><span id="daysSince">1</span></div>
-    <div class="kpi-unit">остановка 25.06.2026</div>
+  <div class="kpi-card dark">
+    <div class="kpi-note">13.10 к базе</div>
+    <div class="kpi-label">Прирост нефти</div>
+    <div class="kpi-value">×2.6</div>
+    <div class="kpi-unit">1,50 → 3,95 т/сут</div>
   </div>
 </div>
 
@@ -324,14 +326,15 @@ a{text-decoration:none;color:inherit}
   </div>
   <div class="compare-divider"></div>
   <div class="compare-col center">
-    <div class="compare-label">Пиковый дебит</div><div class="compare-date">26–28.02.2026</div>
-    <div class="compare-big">2.22</div><div class="compare-unit">т/сут нефти</div><div class="compare-obv">Обв. 71,2%</div>
-  </div>
-  <div class="compare-divider"></div>
-  <div class="compare-col last">
     <div class="compare-label">База перед изоляцией</div><div class="compare-date">16–25.06.2026</div>
     <div class="compare-big" style="color:#EF4444">1.50</div><div class="compare-unit">т/сут нефти</div>
     <div class="compare-obv" style="color:#EF4444">Обв. 80,6%</div>
+  </div>
+  <div class="compare-divider"></div>
+  <div class="compare-col last">
+    <div class="compare-label">После изоляции</div><div class="compare-date">13.10.2026</div>
+    <div class="compare-big" style="color:#16A34A">3.95</div><div class="compare-unit">т/сут нефти</div>
+    <div class="compare-obv" style="color:#16A34A">Обв. 63,8%</div>
   </div></div>
 
 <div class="stats-bar">
@@ -351,17 +354,22 @@ a{text-decoration:none;color:inherit}
     <div class="stat-sub">т/сут · обв. 80,0% · 31 сут</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-label">Июнь 2026</div>
+    <div class="stat-label">Июнь 2026 · база</div>
     <div class="stat-value">1.33</div>
     <div class="stat-sub">т/сут · обв. 79,9% · 25 сут</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Октябрь 2026 · после</div>
+    <div class="stat-value" style="color:#16A34A">3.44</div>
+    <div class="stat-sub">т/сут · обв. 66,1% · 13 сут</div>
   </div>
 </div>
 
 <div class="main-layout">
   <div class="main-left">
     <div class="chart-block">
-      <div class="chart-title">Динамика добычи до изоляции</div>
-      <div class="chart-sub">01.01.2026 — 25.06.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта и ожидания исключены</div>
+      <div class="chart-title">Динамика добычи до и после изоляции</div>
+      <div class="chart-sub">01.01.2026 — 13.10.2026 · Qн (т/сут) и Обводнённость (%) · дни ремонта и ожидания исключены, поэтому запуск 01.10 идёт сразу за остановкой 25.06</div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:#111"></div>Qн, т/сут</div>
         <div class="legend-item"><div class="legend-dot" style="background:#AAAAAA"></div>Обводнённость, %</div>
@@ -407,6 +415,22 @@ a{text-decoration:none;color:inherit}
 
     <div class="events-block">
       <div class="events-title">Ключевые события</div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">13</div><div class="month-label">ОКТ</div></div>
+        <div class="event-body">
+          <div class="ev ev-peak">Заход окупился по дебиту</div>
+          <div class="event-note">3,95 т/сут при 63,8% воды. База до изоляции — 1,50 т/сут при 80,6%: нефти в 2,6 раза больше, воды на 16,8 пункта меньше. Подъём жидкости при этом вырос с 6,9 до 12,5 м³/сут, то есть прибавка идёт не разбавлением, а реальным притоком нефти.</div>
+        </div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date-col"><div class="day-num">02</div><div class="month-label">ОКТ</div></div>
+        <div class="event-body">
+          <div class="ev ev-rise">Пусковая вода ушла за сутки</div>
+          <div class="event-note">Первый замер 01.10 дал 87% воды при 1,19 т/сут — это вода, закачанная при ремонте. На вторые сутки обводнённость обвалилась до 67,8%, дебит вырос до 3,04 т/сут. Ровно то, о чём говорит методика: судить о заходе по первым суткам нельзя.</div>
+        </div>
+      </div>
 
       <div class="event-item">
         <div class="event-date-col"><div class="day-num">30</div><div class="month-label">СЕН</div></div>
@@ -501,16 +525,17 @@ a{text-decoration:none;color:inherit}
   <div class="main-right">
     <div class="rir-block">
       <div class="rir-block-title">Заход NanoCem UT-9</div>
-      <div class="days-big" id="daysBig" style="color:#EF4444">1</div>
-      <div class="days-label">дней без добычи с 25.06</div>
-      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">вывод на режим, замеры в октябре</span></div>
+      <div class="days-big" style="color:#16A34A">×2.6</div>
+      <div class="days-label">к базе до изоляции</div>
+      <div class="rir-row"><span class="rir-key">СТАТУС</span><span class="rir-val" style="color:#16A34A">в работе · 13 суток после запуска</span></div>
       <div class="rir-row"><span class="rir-key">БАЗА ДО ИЗОЛЯЦИИ</span><span class="rir-val">1,50 т/сут · обв. 80,6%</span></div>
       <div class="rir-row"><span class="rir-key">ЦПД</span><span class="rir-val" style="color:#16A34A">24.09.2026</span></div>
       <div class="rir-row"><span class="rir-key">ИНТЕРВАЛЫ</span><span class="rir-val">657–663 · 669,5–672 · 679–684 м</span></div>
       <div class="rir-row"><span class="rir-key">СОСТАВ РИР</span><span class="rir-val">ультратонкий, 3 т · В/Ц 0,87</span></div>
       <div class="rir-row"><span class="rir-key">ДАВЛЕНИЕ ЗАКАЧКИ</span><span class="rir-val">40 → 80 атм, стоп 80</span></div>
       <div class="rir-row"><span class="rir-key">ОПРЕССОВКА</span><span class="rir-val" style="color:#16A34A">3 из 3 · 30–40 атм</span></div>
-      <div class="rir-row"><span class="rir-key">ЗАПУСК</span><span class="rir-val" style="color:#16A34A">30.09.2026 · вывод на режим</span></div>
+      <div class="rir-row"><span class="rir-key">ЗАПУСК</span><span class="rir-val" style="color:#16A34A">01.10.2026</span></div>
+      <div class="rir-row"><span class="rir-key">СЕЙЧАС</span><span class="rir-val" style="color:#16A34A">3,95 т/сут · обв. 63,8%</span></div>
     </div>
     <div class="tech-block">
       <div class="tech-title">Технические данные</div>
@@ -525,15 +550,15 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="stat-block">
       <div class="stat-block-title">Итоги периода</div>
-      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 30.09.2026</span></div>
-      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">270</span></div>
-      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">176</span></div>
-      <div class="stat-row"><span class="stat-key">Дней простоя</span><span class="stat-val red">94 (с 26.06)</span></div>
+      <div class="stat-row"><span class="stat-key">Период данных</span><span class="stat-val">01.01 – 13.10.2026</span></div>
+      <div class="stat-row"><span class="stat-key">Дней всего</span><span class="stat-val">286</span></div>
+      <div class="stat-row"><span class="stat-key">Дней с добычей</span><span class="stat-val">189</span></div>
+      <div class="stat-row"><span class="stat-key">Дней простоя</span><span class="stat-val red">97 (26.06 – 30.09)</span></div>
       <div class="stat-row"><span class="stat-key">Накоплено нефти</span><span class="stat-val">≈264 т</span></div>
-      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">2,22 т/сут (26.02)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qн</span><span class="stat-val">3,95 т/сут (11–13.10)</span></div>
       <div class="stat-row"><span class="stat-key">Мин. Qн</span><span class="stat-val red">0,71 т/сут (15.04)</span></div>
-      <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">11,2 м³/сут (05.01)</span></div>
-      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val">70,5% (01–04.03)</span></div>
+      <div class="stat-row"><span class="stat-key">Макс. Qж</span><span class="stat-val">12,5 м³/сут (11–13.10)</span></div>
+      <div class="stat-row"><span class="stat-key">Мин. обводнённость</span><span class="stat-val" style="color:#16A34A">63,3% (08–09.10)</span></div>
       <div class="stat-row"><span class="stat-key">Макс. обводнённость</span><span class="stat-val red">83,7% (05–07.04)</span></div>
     </div>
   </div>
@@ -544,7 +569,8 @@ a{text-decoration:none;color:inherit}
   <div class="log-filters" id="logFilters"><button class="log-filter active" data-phase="all">Все дни</button>
     <button class="log-filter" data-phase="before">До изоляции</button>
     <button class="log-filter" data-phase="idle">Ожидание ремонта</button>
-    <button class="log-filter" data-phase="krs">КРС</button></div>
+    <button class="log-filter" data-phase="krs">КРС</button>
+    <button class="log-filter" data-phase="after">После изоляции</button></div>
   <div class="log-count" id="logCount"></div>
   <div class="log-table-wrap">
     <table class="log-table">
@@ -569,8 +595,8 @@ a{text-decoration:none;color:inherit}
     <div class="passport-cell"><div class="passport-key">ЦПД</div><div class="passport-val">24.09.2026 · 40 → 80 атм</div></div>
     <div class="passport-cell"><div class="passport-key">Опрессовка</div><div class="passport-val">25.09.2026 · 3 из 3 герметичны</div></div>
     <div class="passport-cell"><div class="passport-key">Тип ремонта</div><div class="passport-val">КРС · ЦПД + реперфорация</div></div>
-    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">Вывод на режим с 30.09.2026</div></div>
-    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–30.09.2026 (273 сут)</div></div>
+    <div class="passport-cell"><div class="passport-key">Текущий статус</div><div class="passport-val">В работе с 01.10.2026 · 3,95 т/сут при 63,8%</div></div>
+    <div class="passport-cell"><div class="passport-key">Период данных</div><div class="passport-val">01.01–13.10.2026 (286 сут)</div></div>
     <div class="passport-cell"><div class="passport-key">База до изоляции</div><div class="passport-val">1,50 т/сут · обв. 80,6%</div></div></div>
 </div>
 
@@ -578,13 +604,13 @@ a{text-decoration:none;color:inherit}
 <section style="padding:28px 40px;border-top:1px solid var(--border)">
   <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px">
     <div style="font-family:var(--font-h);font-size:15px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Фонд под наблюдением</div>
-    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>30.09.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
+    <div style="font-family:var(--font-data);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)">Данные на <span data-wells-updated>13.10.2026</span> · <a href="sealing.html" style="border-bottom:1px solid var(--grey-muted)">Герметичность</a> · <a href="plan.html" style="border-bottom:1px solid var(--grey-muted)">Программа UT-9</a> · <a href="product.html" style="border-bottom:1px solid var(--grey-muted)">Продукт</a> · <a href="nanocem-ut9-report.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--grey-muted)">Расход UT-9 (PDF)</a></div>
   </div>
   <div id="fundStrip"></div>
 </section>
 
 <footer class="footer">
-  <div class="footer-left">Скважина 357 · Горизонт J1-IV<br>Данные: суточные режимные листы и сводки КРС · 01.01 – 30.09.2026</div>
+  <div class="footer-left">Скважина 357 · Горизонт J1-IV<br>Данные: суточные режимные листы и сводки КРС · 01.01 – 13.10.2026</div>
   <div class="footer-right">ТОО «ЭкоМикс» · EASYMIX</div>
 </footer>
 
@@ -866,6 +892,19 @@ const DATA = [
   {d:"28.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:"79",phase:"krs",ev:"",comment:"КРС. Промывка, подъём компоновки."},
   {d:"29.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:"79",phase:"krs",ev:"pump",comment:"Спуск насоса NTZ 350*090DT33 на глубину 638,6 м."},
   {d:"30.09",qzh:null,qn:null,obv:null,qv:null,rpm:null,ndin:"172/160",phase:"restart",ev:"start",comment:"Начат вывод на режим. Ндин/Нст 172/160 м. Первые замеры добычи ожидаются в октябре."},
+  {d:"01.10",qzh:10.5,qn:1.19,obv:87,qv:9.1,rpm:80,ndin:"146",phase:"after",ev:"start",comment:"Первые сутки после запуска: 1,19 т/сут при 87% воды. Это пусковая вода — показатель первых суток ни о чём не говорит."},
+  {d:"02.10",qzh:10.8,qn:3.04,obv:67.8,qv:7.3,rpm:80,ndin:"146",phase:"after",ev:"rise",comment:"Вторые сутки: обводнённость обвалилась с 87 до 67,8%, дебит вырос с 1,19 до 3,04 т/сут. Пусковая вода ушла, и стал виден результат изоляции."},
+  {d:"03.10",qzh:10.8,qn:3.06,obv:67.6,qv:7.3,rpm:80,ndin:"146",phase:"after",ev:"",comment:""},
+  {d:"04.10",qzh:10.5,qn:3.3,obv:64,qv:6.7,rpm:80,ndin:"146",phase:"after",ev:"",comment:""},
+  {d:"05.10",qzh:10.4,qn:3.27,obv:64,qv:6.7,rpm:80,ndin:"146",phase:"after",ev:"",comment:""},
+  {d:"06.10",qzh:11.7,qn:3.73,obv:63.5,qv:7.4,rpm:80,ndin:"161",phase:"after",ev:"",comment:"Отбор жидкости поднят с 10,4 до 11,7 м³/сут, обводнённость продолжила снижаться — 63,5%."},
+  {d:"07.10",qzh:11.7,qn:3.73,obv:63.5,qv:7.4,rpm:80,ndin:"161",phase:"after",ev:"",comment:""},
+  {d:"08.10",qzh:12.1,qn:3.88,obv:63.3,qv:7.7,rpm:80,ndin:"161",phase:"after",ev:"",comment:""},
+  {d:"09.10",qzh:12.2,qn:3.91,obv:63.3,qv:7.7,rpm:80,ndin:"161",phase:"after",ev:"",comment:""},
+  {d:"10.10",qzh:12,qn:3.75,obv:64.2,qv:7.7,rpm:80,ndin:"161",phase:"after",ev:"",comment:""},
+  {d:"11.10",qzh:12.5,qn:3.95,obv:63.8,qv:8,rpm:80,ndin:"165",phase:"after",ev:"",comment:""},
+  {d:"12.10",qzh:12.5,qn:3.95,obv:63.8,qv:8,rpm:80,ndin:"165",phase:"after",ev:"",comment:""},
+  {d:"13.10",qzh:12.5,qn:3.95,obv:63.8,qv:8,rpm:80,ndin:"165",phase:"after",ev:"peak",comment:"Две недели после запуска: 3,95 т/сут при 63,8% воды против базы 1,50 т/сут при 80,6%. Дебит вырос в 2,6 раза, обводнённость ниже на 16,8 пункта."},
 ];
 
 Chart.defaults.color = '#AAAAAA';
@@ -886,27 +925,24 @@ new Chart(ctx, {
         callbacks:{label:c=>c.datasetIndex===0?`Qн: ${c.parsed.y} т/сут`:`Обв.: ${c.parsed.y}%`}},
       annotation:{annotations:{
         peakLine:{type:'line',xMin:labels.indexOf('26.02'),xMax:labels.indexOf('26.02'),borderColor:'rgba(0,0,0,0.15)',borderWidth:1,borderDash:[3,4]},
-        peakLabel:{type:'label',xValue:labels.indexOf('26.02'),yValue:2.45,yScaleID:'y',content:['ПИК 2,22'],color:'rgba(0,0,0,0.45)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
+        peakLabel:{type:'label',xValue:labels.indexOf('26.02'),yValue:2.60,yScaleID:'y',content:['ПИК 2,22'],color:'rgba(0,0,0,0.45)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
         meterLine:{type:'line',xMin:labels.indexOf('11.04'),xMax:labels.indexOf('11.04'),borderColor:'rgba(249,115,22,0.5)',borderWidth:1.5,borderDash:[3,4]},
         meterLabel:{type:'label',xValue:labels.indexOf('11.04'),yValue:0.45,yScaleID:'y',content:['СМЕНА ЗАМЕРА'],color:'rgba(234,88,12,0.85)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
         stopLine:{type:'line',xMin:labels.indexOf('25.06'),xMax:labels.indexOf('25.06'),borderColor:'rgba(239,68,68,0.5)',borderWidth:1.5},
-        stopLabel:{type:'label',xValue:labels.indexOf('25.06'),yValue:2.1,yScaleID:'y',content:['ОСТАНОВКА'],color:'rgba(239,68,68,0.8)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}}
+        stopLabel:{type:'label',xValue:labels.indexOf('25.06'),yValue:2.1,yScaleID:'y',content:['ОСТАНОВКА'],color:'rgba(239,68,68,0.8)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}},
+        isoLine:{type:'line',xMin:labels.indexOf('01.10'),xMax:labels.indexOf('01.10'),borderColor:'rgba(22,163,74,0.55)',borderWidth:1.5},
+        isoLabel:{type:'label',xValue:labels.indexOf('01.10'),yValue:4.15,yScaleID:'y',content:['ЦПД 24.09 · ЗАПУСК'],color:'rgba(22,163,74,0.9)',font:{size:9,family:"'Inter', sans-serif",weight:'600'}}
       }}},
     scales:{
       x:{grid:{color:'rgba(0,0,0,0.05)',tickLength:0},border:{color:'rgba(0,0,0,0.1)'},ticks:{maxTicksLimit:12,maxRotation:0,color:'#BBBBBB',font:{size:8}}},
-      y:{position:'left',min:0,max:2.6,grid:{color:'rgba(0,0,0,0.05)'},border:{color:'transparent'},ticks:{color:'#BBBBBB',font:{size:8},stepSize:0.5,callback:v=>v+' т'}},
-      y2:{position:'right',min:65,max:90,grid:{display:false},border:{color:'transparent'},ticks:{color:'#CCCCCC',font:{size:8},stepSize:5,callback:v=>v+'%'}}
+      y:{position:'left',min:0,max:4.4,grid:{color:'rgba(0,0,0,0.05)'},border:{color:'transparent'},ticks:{color:'#BBBBBB',font:{size:8},stepSize:0.5,callback:v=>v+' т'}},
+      y2:{position:'right',min:55,max:92,grid:{display:false},border:{color:'transparent'},ticks:{color:'#CCCCCC',font:{size:8},stepSize:5,callback:v=>v+'%'}}
     }}
 });
 
-const STOP_DATE = new Date('2026-06-25');
-const today = new Date();
-const daysIn = Math.max(1, Math.floor((today - STOP_DATE) / 86400000));
-document.getElementById('daysBig').textContent = daysIn;
-document.getElementById('daysSince').textContent = daysIn;
 
 (function(){
-  const PHASE_LABEL = { before:'До изоляции', idle:'ОКРС', krs:'КРС', restart:'Вывод на режим' };
+  const PHASE_LABEL = { before:'До изоляции', idle:'ОКРС', krs:'КРС', restart:'Вывод на режим', after:'После изоляции' };
   const EV_LABEL = {
     peak:{text:'пик',cls:'evb-peak'}, rise:{text:'герметично',cls:'evb-rise'}, low:{text:'минимум',cls:'evb-low'},
     warn:{text:'осложнение',cls:'evb-warn'}, rpm:{text:'обороты',cls:'evb-rpm'}, stop:{text:'остановка',cls:'evb-crash'},
@@ -944,8 +980,8 @@ document.getElementById('daysSince').textContent = daysIn;
 function toggleNav(){document.getElementById('navMobile').classList.toggle('open');document.getElementById('navToggle').classList.toggle('active');}
 function closeNav(){document.getElementById('navMobile').classList.remove('open');document.getElementById('navToggle').classList.remove('active');}
 </script>
-<script src="wells.js?v=20261011a" defer></script>
-<script src="i18n.js?v=20261011a" defer></script>
+<script src="wells.js?v=20261015a" defer></script>
+<script src="i18n.js?v=20261015a" defer></script>
 <script src="backend.js?v=20260910" defer></script>
 </body>
 </html>
