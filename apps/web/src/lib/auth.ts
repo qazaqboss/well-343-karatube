@@ -15,12 +15,15 @@ export const SESSION_COOKIE = 'subsoil_session';
 export const SESSION_MAX_AGE = 60 * 60 * 12;
 
 export interface AuthConfig {
+  /** Логин из ADMIN_LOGIN. Если не задан — вход только по паролю, как раньше. */
+  login: string | null;
   password: string | null;
   secret: string | null;
 }
 
 export function authConfig(): AuthConfig {
   return {
+    login: process.env.ADMIN_LOGIN?.trim() || null,
     password: process.env.ADMIN_PASSWORD?.trim() || null,
     secret: process.env.SESSION_SECRET?.trim() || null,
   };
