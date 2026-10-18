@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 /** Адрес FastAPI внутри контейнера: он отдаёт AI-помощника, ERP и PDF-отчёты. */
-const LEGACY = process.env.LEGACY_ORIGIN ?? 'http://127.0.0.1:8080';
+const LEGACY = process.env.LEGACY_ORIGIN ?? 'http://127.0.0.1:8000';
 
 /**
  * Редиректы старых страниц nanocem.app — таблица из 00-migration.md.
