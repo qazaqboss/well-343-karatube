@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { Button, Hero } from '@subsoil/ui';
-import { SESSION_COOKIE, SESSION_MAX_AGE, SESSION_VALUE } from '@/lib/session';
+import { Button, Hero, Panel } from '@subsoil/ui';
+import { SESSION_COOKIE, SESSION_MAX_AGE, authConfig, issueToken, safeEqual } from '@/lib/auth';
 import { SiteFooter, SiteHeader } from '@/components/site-chrome';
 
 export const metadata = { title: 'Вход — Subsoil' };
@@ -9,17 +9,31 @@ export const metadata = { title: 'Вход — Subsoil' };
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ next?: string; e?: string }>;
 }) {
-  const { next } = await searchParams;
-  const target = next && next.startsWith('/app') ? next : '/app';
+  const { next, e } = await searchParams;
+  // Пускаем обратно только на внутренние адреса — иначе ?next= становится
+  // открытым редиректом на чужой сайт.
+  const ALLOWED = ['/app', '/ai', '/erp', '/stage-reports'];
+  const target = next && ALLOWED.some((p) => next.startsWith(p)) ? next : '/app';
+  const { password, secret } = authConfig();
+  const ready = Boolean(password && secret);
 
-  async function signIn() {
+  async function signIn(formData: FormData) {
     'use server';
+    const cfg = authConfig();
+    if (!cfg.password || !cfg.secret) {
+      redirect(`/login?next=${encodeURIComponent(target)}&e=setup`);
+    }
+    const given = String(formData.get('password') ?? '');
+    if (!safeEqual(given, cfg.password)) {
+      redirect(`/login?next=${encodeURIComponent(target)}&e=bad`);
+    }
     const jar = await cookies();
-    jar.set(SESSION_COOKIE, SESSION_VALUE, {
+    jar.set(SESSION_COOKIE, await issueToken(cfg.secret), {
       httpOnly: true,
       sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
       path: '/',
       maxAge: SESSION_MAX_AGE,
     });
@@ -33,53 +47,69 @@ export default async function LoginPage({
         <Hero
           eyebrow="Кабинет"
           title="ВХОД В SUBSOIL"
-          lead="Пока работает демо-режим: вход без пароля кладёт сессию на сутки и открывает кабинет на демонстрационных данных. Настоящая аутентификация подключится вместе с API."
+          lead="Показатели фонда, заходы UT-9 и требования доступны только по паролю."
           watermark="/APP"
         />
-        <div className="ss-wrap" style={{ padding: '40px 40px 80px', maxWidth: 560 }}>
-          <form action={signIn} style={{ display: 'grid', gap: 16 }}>
-            <label style={{ display: 'grid', gap: 6 }}>
-              <span className="ss-label">Почта</span>
-              <input
-                className="ss-focus"
-                type="email"
-                name="email"
-                placeholder="demo@subsoil.kz"
-                autoComplete="username"
-                style={inputStyle}
-              />
-            </label>
-            <label style={{ display: 'grid', gap: 6 }}>
-              <span className="ss-label">Пароль</span>
-              <input
-                className="ss-focus"
-                type="password"
-                name="password"
-                placeholder="любой"
-                autoComplete="current-password"
-                style={inputStyle}
-              />
-            </label>
-            <div style={{ marginTop: 8 }}>
-              <Button type="submit">Войти в демо-кабинет</Button>
-            </div>
-            <p style={{ fontSize: 13, color: 'var(--ss-ink-quiet)', lineHeight: 1.6 }}>
-              Поля ни на что не влияют — форма оставлена, чтобы страница не изменилась,
-              когда появится настоящий вход.
-            </p>
-          </form>
+        <div className="ss-wrap" style={{ padding: '40px 40px 80px', maxWidth: 520 }}>
+          {!ready ? (
+            <Panel style={{ padding: 20, borderColor: 'var(--ss-crit)' }}>
+              <div className="ss-label" style={{ color: 'var(--ss-crit)' }}>
+                Вход не настроен
+              </div>
+              <p style={{ fontSize: 14, lineHeight: 1.65, marginTop: 10 }}>
+                На сервере не заданы переменные <code>ADMIN_PASSWORD</code> и{' '}
+                <code>SESSION_SECRET</code>. Пока их нет, кабинет закрыт для всех — это
+                намеренно: забытая переменная не должна открывать данные.
+              </p>
+            </Panel>
+          ) : (
+            <form action={signIn} style={{ display: 'grid', gap: 16 }}>
+              {e === 'bad' ? (
+                <div
+                  role="alert"
+                  style={{
+                    border: '1px solid var(--ss-crit)',
+                    color: 'var(--ss-crit)',
+                    padding: '10px 12px',
+                    fontSize: 13,
+                  }}
+                >
+                  Неверный пароль.
+                </div>
+              ) : null}
+
+              <label style={{ display: 'grid', gap: 6 }}>
+                <span className="ss-label">Пароль</span>
+                <input
+                  className="ss-focus"
+                  type="password"
+                  name="password"
+                  autoComplete="current-password"
+                  autoFocus
+                  required
+                  style={{
+                    border: '1px solid var(--ss-line)',
+                    borderRadius: 'var(--ss-radius-btn)',
+                    background: 'var(--ss-bg)',
+                    color: 'var(--ss-ink)',
+                    font: 'inherit',
+                    padding: '10px 12px',
+                  }}
+                />
+              </label>
+
+              <div>
+                <Button type="submit">Войти</Button>
+              </div>
+
+              <p style={{ fontSize: 13, color: 'var(--ss-ink-quiet)', lineHeight: 1.6 }}>
+                Сессия действует 12 часов. Данные фонда за пределы кабинета не выходят.
+              </p>
+            </form>
+          )}
         </div>
       </main>
       <SiteFooter />
     </>
   );
 }
-
-const inputStyle = {
-  border: '1px solid var(--ss-line)',
-  borderRadius: 'var(--ss-radius-btn)',
-  background: 'var(--ss-bg)',
-  color: 'var(--ss-ink)',
-  font: 'inherit',
-  padding: '10px 12px',
-} as const;

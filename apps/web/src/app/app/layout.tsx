@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { apiMode } from '@/lib/api';
+import { FUND_META } from '@/lib/real/build';
 
 /** Левое меню кабинета — по 02-sitemap.md. */
 const NAV = [
@@ -14,7 +15,7 @@ const NAV = [
 const SETTINGS = { href: '/app/settings', label: 'Настройки' };
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  const demo = apiMode() === 'mock';
+  const mode = apiMode();
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -58,17 +59,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </Link>
         </nav>
 
-        {demo ? (
-          <div
-            className="ss-label"
-            style={{ margin: '24px 20px 0', lineHeight: 1.6, color: 'var(--ss-warn)' }}
-          >
-            Демо-данные
-            <span style={{ display: 'block', textTransform: 'none', letterSpacing: 0, fontSize: 11 }}>
-              Компании и показатели вымышлены. Реальные подключатся через API.
-            </span>
-          </div>
-        ) : null}
+        <div
+          className="ss-label"
+          style={{
+            margin: '24px 20px 0',
+            lineHeight: 1.6,
+            color: mode === 'mock' ? 'var(--ss-warn)' : 'var(--ss-ink-quiet)',
+          }}
+        >
+          {mode === 'mock' ? 'Демо-данные' : `Данные на ${FUND_META.updated}`}
+          <span style={{ display: 'block', textTransform: 'none', letterSpacing: 0, fontSize: 11 }}>
+            {mode === 'mock'
+              ? 'Компании и показатели вымышлены.'
+              : 'Промысел — из суточных режимных листов. Требования пока демонстрационные.'}
+          </span>
+        </div>
       </aside>
 
       <main className="ss-app-main" style={{ flex: 1, minWidth: 0, padding: '24px 32px 48px' }}>

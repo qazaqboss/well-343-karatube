@@ -14,6 +14,7 @@ export default function Page() {
         'Выгрузка реестра обязательств',
       ]}
       links={[
+        { href: '/erp/', label: 'Отчёты по этапам в ERP' },
         { href: '/app', label: 'Сводка холдинга' },
       ]}
     />
