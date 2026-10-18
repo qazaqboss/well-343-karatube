@@ -3,7 +3,7 @@ import { STAGES } from '@/lib/site-content';
 
 export const metadata = { title: '7 этапов недропользования РК — Subsoil' };
 
-export default function Page() {
+export default function StagesPage() {
   return (
     <>
       <Hero
@@ -15,7 +15,7 @@ export default function Page() {
       />
       <section className="ss-wrap" style={{ paddingBlock: 56 }}>
         <SectionTitle aside="Кодекс о недрах и недропользовании">Этапы</SectionTitle>
-        <div style={{ display: 'grid', gap: 12, maxWidth: 860 }}>
+        <div style={{ display: 'grid', gap: 12, maxWidth: 880 }}>
           {STAGES.map((s) => (
             <Panel key={s.n} style={{ padding: 20, display: 'grid', gridTemplateColumns: '48px 1fr', gap: 16 }}>
               <div className="ss-display ss-nums" style={{ fontSize: 26, fontWeight: 700, color: 'var(--ss-ink-quiet)' }}>

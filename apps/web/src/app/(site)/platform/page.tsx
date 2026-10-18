@@ -1,5 +1,5 @@
 import { Button, Hero, Panel, SectionTitle } from '@subsoil/ui';
-import { PLATFORM_STEPS } from '@/lib/site-content';
+import { FLOW, PLATFORM } from '@/lib/site-content';
 
 export const metadata = { title: 'Как устроена платформа — Subsoil' };
 
@@ -17,7 +17,7 @@ export default function PlatformPage() {
       <section className="ss-wrap" style={{ paddingBlock: 56 }}>
         <SectionTitle aside="пять шагов">Путь данных</SectionTitle>
         <div style={{ display: 'grid', gap: 16 }}>
-          {PLATFORM_STEPS.map((s) => (
+          {FLOW.map((s) => (
             <Panel key={s.n} style={{ padding: 20, display: 'grid', gridTemplateColumns: '64px 1fr', gap: 16 }}>
               <div className="ss-display" style={{ fontSize: 28, fontWeight: 700, color: 'var(--ss-ink-quiet)' }}>
                 {s.n}

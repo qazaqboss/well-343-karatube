@@ -2,11 +2,11 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { Button, Hero, Panel } from '@subsoil/ui';
 import { SESSION_COOKIE, SESSION_MAX_AGE, authConfig, issueToken, safeEqual } from '@/lib/auth';
-import { GateFooter, GateHeader } from '@/components/gate-chrome';
+import { SiteFooter, SiteHeader } from '@/components/site-chrome';
 
 export const metadata = {
-  title: 'Subsoil',
-  description: 'Закрытая система. Доступ по паролю.',
+  title: 'Вход — Subsoil',
+  description: 'Кабинет Subsoil. Доступ по паролю.',
   robots: { index: false, follow: false },
 };
 
@@ -33,10 +33,10 @@ export default async function GatePage({
     'use server';
     const cfg = authConfig();
     if (!cfg.password || !cfg.secret) {
-      redirect(`/?next=${encodeURIComponent(target)}&e=setup`);
+      redirect(`/login?next=${encodeURIComponent(target)}&e=setup`);
     }
     if (!safeEqual(String(formData.get('password') ?? ''), cfg.password)) {
-      redirect(`/?next=${encodeURIComponent(target)}&e=bad`);
+      redirect(`/login?next=${encodeURIComponent(target)}&e=bad`);
     }
     const jar = await cookies();
     jar.set(SESSION_COOKIE, await issueToken(cfg.secret), {
@@ -51,15 +51,12 @@ export default async function GatePage({
 
   return (
     <>
-      <GateHeader />
+      <SiteHeader />
       <main>
         <Hero
-          eyebrow="Недропользование · Промысел · Аналитика фонда"
-          title={
-            <>
-              SUBSOIL
-            </>
-          }
+          eyebrow="Кабинет"
+          title="ВХОД В КАБИНЕТ"
+
           lead="Показатели фонда, заходы NanoCem UT-9, контракты и сроки недропользования. Доступ по паролю."
           watermark="J1-IV"
         />
@@ -118,7 +115,7 @@ export default async function GatePage({
           )}
         </div>
       </main>
-      <GateFooter />
+      <SiteFooter />
     </>
   );
 }

@@ -1,9 +1,20 @@
 import type { MetadataRoute } from 'next';
 
 /**
- * Индексировать нечего: сайт закрыт целиком, снаружи доступен только вход.
- * Это не защита — она в middleware, — а просьба не хранить адреса в выдаче.
+ * Витрина открыта для индексации, всё рабочее — нет.
+ *
+ * Это не защита — она в middleware, — а просьба не держать в выдаче адреса,
+ * за которыми лежат данные клиента.
  */
 export default function robots(): MetadataRoute.Robots {
-  return { rules: [{ userAgent: '*', disallow: '/' }] };
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/app/', '/ai', '/erp/', '/stage-reports/', '/login'],
+      },
+    ],
+    sitemap: 'https://nanocem.app/sitemap.xml',
+  };
 }

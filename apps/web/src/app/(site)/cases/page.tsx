@@ -18,6 +18,7 @@ export default function Page() {
           {CASES.map((c) => (
             <Panel key={c.title} style={{ padding: 24 }}>
               <h3 className="ss-display" style={{ fontSize: 18, fontWeight: 600 }}>{c.title}</h3>
+              <div className="ss-nums ss-display" style={{ fontSize: 22, fontWeight: 600, marginTop: 6 }}>{c.metric}</div>
               <p style={{ fontSize: 14, lineHeight: 1.7, marginTop: 12 }}>
                 <b>Было. </b>{c.before}
               </p>

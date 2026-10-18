@@ -2,11 +2,10 @@ import Link from 'next/link';
 import { Button } from '@subsoil/ui';
 
 const NAV = [
+  { href: '/products', label: 'Продукты' },
   { href: '/platform', label: 'Платформа' },
-  { href: '/modules', label: 'Модули' },
-  { href: '/solutions/water-cut', label: 'Решения' },
-  { href: '/products/nanocem-ut9', label: 'NanoCem UT-9' },
-  { href: '/cases', label: 'Кейсы' },
+  { href: '/stages', label: '7 этапов' },
+  { href: '/cases', label: 'Результаты' },
   { href: '/company', label: 'Компания' },
 ];
 
@@ -90,8 +89,8 @@ export function SiteFooter() {
           info@easymix.kz
         </div>
         <div style={{ lineHeight: 1.7 }}>
-          <Link href="/resources" style={{ textDecoration: 'none' }}>
-            Ресурсы
+          <Link href="/products" style={{ textDecoration: 'none' }}>
+            Продукты
           </Link>
           <br />
           <Link href="/demo" style={{ textDecoration: 'none' }}>
