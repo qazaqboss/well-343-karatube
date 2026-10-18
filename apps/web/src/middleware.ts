@@ -19,7 +19,7 @@ export async function middleware(req: NextRequest) {
   if (await verifyToken(token, secret)) return NextResponse.next();
 
   const url = req.nextUrl.clone();
-  url.pathname = '/login';
+  url.pathname = '/';
   url.search = `?next=${encodeURIComponent(req.nextUrl.pathname + req.nextUrl.search)}`;
   const res = NextResponse.redirect(url);
   // Протухшую или подделанную куку стираем, чтобы не пытаться по ней войти снова.

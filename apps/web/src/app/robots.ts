@@ -1,9 +1,9 @@
 import type { MetadataRoute } from 'next';
 
-/** Кабинет закрыт от индексации: /app/* — только по логину (08-public-site.md). */
+/**
+ * Индексировать нечего: сайт закрыт целиком, снаружи доступен только вход.
+ * Это не защита — она в middleware, — а просьба не хранить адреса в выдаче.
+ */
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: [{ userAgent: '*', allow: '/', disallow: ['/app/', '/login'] }],
-    sitemap: 'https://nanocem.app/sitemap.xml',
-  };
+  return { rules: [{ userAgent: '*', disallow: '/' }] };
 }

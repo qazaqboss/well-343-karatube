@@ -12,13 +12,17 @@ const LEGACY = process.env.LEGACY_ORIGIN ?? 'http://127.0.0.1:8080';
  */
 const legacyRedirects = [
   { source: '/index.html', destination: '/', permanent: true },
-  { source: '/product.html', destination: '/products/nanocem-ut9', permanent: true },
-  { source: '/stages.html', destination: '/solutions/subsoil-stages', permanent: true },
+  // Публичных страниц продукта и этапов больше нет: сайт закрыт целиком,
+  // поэтому старые адреса ведут на вход, а не на несуществующие разделы.
+  { source: '/product.html', destination: '/', permanent: true },
+  { source: '/stages.html', destination: '/', permanent: true },
   { source: '/water-cut.html', destination: '/app/field/water-cut', permanent: true },
   { source: '/sealing.html', destination: '/app/nanocem/sealing', permanent: true },
   { source: '/plan.html', destination: '/app/nanocem/program', permanent: true },
   // Страницы скважин старого сайта — в фонд кабинета.
   { source: '/well-:id(\\d+).html', destination: '/app/field/wells', permanent: true },
+  // Вход переехал на корень: страница /login жила в прошлой версии.
+  { source: '/login', destination: '/', permanent: true },
 ];
 
 /**
