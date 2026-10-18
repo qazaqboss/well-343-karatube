@@ -18,6 +18,18 @@ echo "→ FastAPI (AI и ERP) на 127.0.0.1:${API_PORT}"
 env -u PORT python3 server/subsoil_ai.py --web --port "${API_PORT}" &
 API_PID=$!
 
+# Сборки фронтенда может не быть: например, если сервис собран не по Dockerfile,
+# а старым способом, где Node вообще не участвует. Тогда отдаём хотя бы прежний
+# сайт, а не пустую страницу, — но говорим об этом в логе во весь голос.
+if [ ! -d apps/web/.next ]; then
+  echo "✗✗✗ apps/web/.next не найден: фронтенд Subsoil не собран." >&2
+  echo "✗✗✗ Сервис поднят в прежнем виде, Python отдаёт старый сайт на \$PORT." >&2
+  echo "✗✗✗ Проверьте, что Railway собирает сервис по корневому Dockerfile." >&2
+  kill -TERM "${API_PID}" 2>/dev/null || true
+  wait "${API_PID}" 2>/dev/null || true
+  exec python3 server/subsoil_ai.py --web --port "${PORT}"
+fi
+
 echo "→ Next.js (витрина и кабинет) на 0.0.0.0:${PORT}"
 node apps/web/node_modules/next/dist/bin/next start apps/web --port "${PORT}" --hostname 0.0.0.0 &
 WEB_PID=$!

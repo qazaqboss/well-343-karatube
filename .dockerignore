@@ -1,0 +1,41 @@
+# Что НЕ уезжает в контекст сборки.
+#
+# Главное здесь — node_modules. Без этой строки COPY перезаписывает собранные
+# в образе зависимости локальными: в них нативные бинарники под macOS
+# (esbuild, @tailwindcss/oxide, sharp), и сборка внутри Linux-контейнера падает.
+node_modules
+**/node_modules
+
+# Артефакты сборки — образ собирает их сам.
+.next
+**/.next
+.turbo
+**/.turbo
+dist
+**/dist
+*.tsbuildinfo
+
+# История и служебное.
+.git
+.gitignore
+.github
+.vercel
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+.DS_Store
+
+# Сырые суточные выгрузки по всему фонду: в образ им не нужно,
+# а попасть туда они не должны тем более.
+data
+
+# Локальные окружения и ключи.
+.env
+.env.*
+!.env.example
+
+# Исходники документации и заметок — на работу сервиса не влияют.
+subsoil
+tools/_deck-*.html
+tools/_report.html

@@ -1,1 +1,4 @@
-web: python server/subsoil_ai.py --web
+# Railway предпочитает Dockerfile, но если сервис настроен на Procfile —
+# команда должна быть той же, иначе поднимется только Python и новый
+# фронтенд не запустится.
+web: ./start.sh
