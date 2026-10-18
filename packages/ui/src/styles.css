@@ -33,15 +33,9 @@
   --ss-line: #2a2a2a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --ss-bg: #111111;
-    --ss-panel: #1a1a1a;
-    --ss-ink: #f2f2f2;
-    --ss-ink-quiet: #9a9a9a;
-    --ss-line: #2a2a2a;
-  }
-}
+/* Тёмная тема включается явно: data-theme="dark" на <html>.
+   Светлая остаётся базовой — Subsoil наследует светлый монохром nanocem.app,
+   и переключение по системной настройке меняло бы фирменный вид без спроса. */
 
 body {
   background: var(--ss-bg);
