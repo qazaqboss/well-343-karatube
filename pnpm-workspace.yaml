@@ -1,0 +1,8 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+# pnpm 12 требует решения по каждому пакету с postinstall-скриптом.
+# esbuild (через vitest) собирает/проверяет нативный бинарник — разрешаем.
+allowBuilds:
+  esbuild: true

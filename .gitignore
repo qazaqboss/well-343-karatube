@@ -18,3 +18,10 @@ tools/_deck-*.html
 
 # Сырые суточные выгрузки по всему фонду — не для публикации
 data/
+
+# Монорепо Subsoil
+node_modules/
+.next/
+.turbo/
+dist/
+*.tsbuildinfo
