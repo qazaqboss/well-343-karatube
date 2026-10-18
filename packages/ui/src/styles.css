@@ -1,0 +1,88 @@
+/**
+ * Токены Subsoil как CSS-переменные.
+ *
+ * Компоненты packages/ui берут цвет только отсюда — поэтому тёмная тема
+ * включается одним атрибутом data-theme="dark" на <html>, без правок разметки.
+ * Статусные цвета в обеих темах одинаковые: это единственный цвет в интерфейсе,
+ * и он должен читаться одинаково (09-design-system.md).
+ */
+
+:root {
+  --ss-bg: #ffffff;
+  --ss-panel: #f4f4f2;
+  --ss-ink: #111111;
+  --ss-ink-quiet: #6b6b6b;
+  --ss-line: #e2e2de;
+
+  --ss-ok: #2e7d32;
+  --ss-warn: #b7791f;
+  --ss-crit: #c62828;
+  --ss-none: #9e9e9e;
+
+  --ss-font-display: 'Oswald', sans-serif;
+  --ss-font-body: 'Inter', sans-serif;
+
+  --ss-radius-btn: 2px;
+}
+
+:root[data-theme='dark'] {
+  --ss-bg: #111111;
+  --ss-panel: #1a1a1a;
+  --ss-ink: #f2f2f2;
+  --ss-ink-quiet: #9a9a9a;
+  --ss-line: #2a2a2a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ss-bg: #111111;
+    --ss-panel: #1a1a1a;
+    --ss-ink: #f2f2f2;
+    --ss-ink-quiet: #9a9a9a;
+    --ss-line: #2a2a2a;
+  }
+}
+
+body {
+  background: var(--ss-bg);
+  color: var(--ss-ink);
+  font-family: var(--ss-font-body);
+}
+
+/* Цифры не должны прыгать в колонках таблиц. */
+.ss-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Заголовки — Oswald капсом. */
+.ss-display {
+  font-family: var(--ss-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Мелкая подпись капсом с разрядкой. */
+.ss-label {
+  font-family: var(--ss-font-body);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ss-ink-quiet);
+}
+
+/* Панель: общая тонкая рамка, без скруглений и теней. */
+.ss-panel {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-line);
+}
+
+.ss-panel-quiet {
+  background: var(--ss-panel);
+  border: 1px solid var(--ss-line);
+}
+
+/* Фокус виден всегда — иначе кабинетом нельзя пользоваться с клавиатуры. */
+.ss-focus:focus-visible {
+  outline: 2px solid var(--ss-ink);
+  outline-offset: 2px;
+}
