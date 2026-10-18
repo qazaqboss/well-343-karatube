@@ -7,9 +7,8 @@
  */
 import { z } from 'zod';
 
-/** Уровень светофора. */
+/** Уровень светофора. Тип берётся из metrics.ts, чтобы он был один на весь пакет. */
 export const levelSchema = z.enum(['ok', 'warn', 'crit', 'none']);
-export type Level = z.infer<typeof levelSchema>;
 
 /** Уровень агрегации: холдинг → компания → месторождение. */
 export const scopeSchema = z.enum(['holding', 'company', 'field']);

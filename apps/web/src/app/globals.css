@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+
+/* Сетка страниц: контент не растягивается шире читаемого. */
+.ss-wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-inline: 40px;
+}
+
+@media (max-width: 720px) {
+  .ss-wrap { padding-inline: 16px; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a { color: inherit; }
+
+/* Нижняя панель кабинета на телефоне. */
+@media (max-width: 900px) {
+  .ss-sidebar { display: none; }
+  .ss-bottombar { display: grid; }
+  .ss-app-main { padding-bottom: 72px; }
+}
+@media (min-width: 901px) {
+  .ss-bottombar { display: none; }
+}

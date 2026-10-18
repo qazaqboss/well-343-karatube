@@ -3,6 +3,9 @@ packages:
   - 'packages/*'
 
 # pnpm 12 требует решения по каждому пакету с postinstall-скриптом.
-# esbuild (через vitest) собирает/проверяет нативный бинарник — разрешаем.
+# Все три ставят нативные бинарники — для сборки Tailwind, обработки
+# изображений и запуска тестов. Разрешаем.
 allowBuilds:
   esbuild: true
+  '@tailwindcss/oxide': true
+  sharp: true
