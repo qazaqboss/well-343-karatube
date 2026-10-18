@@ -12,6 +12,9 @@ const NAV = [
   { href: '/app/ai', label: 'AI', short: 'AI' },
 ];
 
+/** Сервис на отдельном домене — в меню отмечен стрелкой наружу. */
+const EXTERNAL = [{ href: 'https://ofi.nanocem.app/', label: 'OilField Interact ↗' }];
+
 const SETTINGS = { href: '/app/settings', label: 'Настройки' };
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -52,6 +55,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <Link key={n.href} href={n.href} className="ss-focus" style={navItem}>
               {n.label}
             </Link>
+          ))}
+          {EXTERNAL.map((n) => (
+            <a key={n.href} href={n.href} target="_blank" rel="noopener" className="ss-focus" style={navItem}>
+              {n.label}
+            </a>
           ))}
           <span style={{ height: 1, background: 'var(--ss-line)', margin: '12px 20px' }} />
           <Link href={SETTINGS.href} className="ss-focus" style={navItem}>

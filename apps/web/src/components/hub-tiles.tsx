@@ -14,6 +14,8 @@ export interface HubTile {
   pending?: boolean;
   /** Раздел живёт на прежнем интерфейсе. */
   legacy?: boolean;
+  /** Раздел на отдельном домене — открывается в новой вкладке. */
+  external?: boolean;
 }
 
 /**
@@ -38,6 +40,7 @@ export function HubTiles({ tiles }: { tiles: readonly HubTile[] }) {
         <Link
           key={t.href}
           href={t.href}
+          {...(t.external ? { target: '_blank', rel: 'noopener' } : {})}
           className="ss-focus"
           style={{
             background: 'var(--ss-bg)',
@@ -56,6 +59,10 @@ export function HubTiles({ tiles }: { tiles: readonly HubTile[] }) {
             {t.pending ? (
               <span className="ss-label" style={{ color: 'var(--ss-warn)' }}>
                 в переносе
+              </span>
+            ) : t.external ? (
+              <span className="ss-label" style={{ color: 'var(--ss-ink-quiet)' }}>
+                отдельный сервис
               </span>
             ) : t.legacy ? (
               <span className="ss-label" style={{ color: 'var(--ss-ink-quiet)' }}>
@@ -84,7 +91,7 @@ export function HubTiles({ tiles }: { tiles: readonly HubTile[] }) {
           <p style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--ss-ink-quiet)', flex: 1 }}>{t.text}</p>
 
           <span style={{ fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>
-            Открыть →
+            {t.external ? 'Открыть ↗' : 'Открыть →'}
           </span>
         </Link>
       ))}

@@ -69,8 +69,15 @@ export default async function AppHome() {
       legacy: true,
     },
     {
-      href: '/app/reports',
+      href: 'https://ofi.nanocem.app/',
       index: '06',
+      title: 'OilField Interact',
+      text: 'Учёт работы скважин на промысле: что сделали с оборудованием, какие параметры выставили и что получили по добыче. Полевик, супервайзер и технолог заполняют одну карточку.',
+      external: true,
+    },
+    {
+      href: '/app/reports',
+      index: '07',
       title: 'Отчёты',
       text: 'Суточная сводка, отчёт по этапу и паспорт скважины — из тех же данных.',
       pending: true,
