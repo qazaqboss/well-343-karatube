@@ -2,7 +2,7 @@
 # Запуск контейнера: два процесса в одном сервисе.
 #
 #   Next.js  — на $PORT, отдаёт витрину Subsoil и кабинет /app
-#   FastAPI  — на 127.0.0.1:8080, отдаёт AI-помощника и ERP
+#   FastAPI  — на 127.0.0.1:8000, отдаёт AI-помощника и ERP
 #
 # Next проксирует на FastAPI пути /ai, /erp и /stage-reports (см. next.config.ts),
 # поэтому снаружи это по-прежнему один сайт.
@@ -12,7 +12,7 @@
 set -euo pipefail
 
 PORT="${PORT:-3000}"
-API_PORT=8080
+API_PORT=8000
 
 echo "→ FastAPI (AI и ERP) на 127.0.0.1:${API_PORT}"
 env -u PORT python3 server/subsoil_ai.py --web --port "${API_PORT}" &
