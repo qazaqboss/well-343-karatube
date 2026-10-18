@@ -26,7 +26,7 @@ export default async function GatePage({
 }) {
   const { next, e } = await searchParams;
   const target = next && ALLOWED.some((p) => next.startsWith(p)) ? next : '/app';
-  const { password, secret } = authConfig();
+  const { login, password, secret } = authConfig();
   const ready = Boolean(password && secret);
 
   async function signIn(formData: FormData) {
@@ -35,7 +35,14 @@ export default async function GatePage({
     if (!cfg.password || !cfg.secret) {
       redirect(`/login?next=${encodeURIComponent(target)}&e=setup`);
     }
-    if (!safeEqual(String(formData.get('password') ?? ''), cfg.password)) {
+    // Логин без учёта регистра: «icp» и «ICP» — один и тот же пользователь.
+    // Сравниваем оба поля всегда, чтобы по времени ответа нельзя было понять,
+    // какое из них неверно.
+    const loginOk = cfg.login
+      ? safeEqual(String(formData.get('login') ?? '').trim().toLowerCase(), cfg.login.toLowerCase())
+      : true;
+    const passOk = safeEqual(String(formData.get('password') ?? ''), cfg.password);
+    if (!loginOk || !passOk) {
       redirect(`/login?next=${encodeURIComponent(target)}&e=bad`);
     }
     const jar = await cookies();
@@ -80,8 +87,30 @@ export default async function GatePage({
                   role="alert"
                   style={{ border: '1px solid var(--ss-crit)', color: 'var(--ss-crit)', padding: '10px 12px', fontSize: 13 }}
                 >
-                  Неверный пароль.
+                  Неверный логин или пароль.
                 </div>
+              ) : null}
+
+              {login ? (
+                <label style={{ display: 'grid', gap: 6 }}>
+                  <span className="ss-label">Логин</span>
+                  <input
+                    className="ss-focus"
+                    type="text"
+                    name="login"
+                    autoComplete="username"
+                    autoFocus
+                    required
+                    style={{
+                      border: '1px solid var(--ss-line)',
+                      borderRadius: 'var(--ss-radius-btn)',
+                      background: 'var(--ss-bg)',
+                      color: 'var(--ss-ink)',
+                      font: 'inherit',
+                      padding: '10px 12px',
+                    }}
+                  />
+                </label>
               ) : null}
 
               <label style={{ display: 'grid', gap: 6 }}>
@@ -91,7 +120,7 @@ export default async function GatePage({
                   type="password"
                   name="password"
                   autoComplete="current-password"
-                  autoFocus
+                  autoFocus={!login}
                   required
                   style={{
                     border: '1px solid var(--ss-line)',
