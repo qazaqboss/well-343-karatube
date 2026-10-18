@@ -144,6 +144,37 @@ const out = {
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(out, null, 0) + '\n', 'utf8');
 
+// ── программа UT-9 со страницы plan.html ────────────────────────────────────
+const plan = readFileSync(join(PUBLIC, 'plan.html'), 'utf8');
+
+const scenarios = {};
+const scenBlock = plan.slice(plan.indexOf('const SCEN = {'), plan.indexOf('const WELLS = ['));
+for (const m of scenBlock.matchAll(
+  /(s\d):\s*\{\s*name:'([^']*)',\s*text:'([^']*)',\s*fit:'([^']*)'/gs,
+)) {
+  scenarios[m[1]] = { name: m[2], text: m[3], fit: m[4] };
+}
+
+const wellsStart = plan.indexOf('const WELLS = [');
+const wellsBlock = plan.slice(wellsStart, plan.indexOf('\n];', wellsStart));
+const candidates = [...wellsBlock.matchAll(
+  /\{w:'([^']*)',\s*m:'(\d+)',\s*d:(\d),\s*sc:'(s\d)',\s*obj:'([^']*)'\}/g,
+)].map((m) => ({ well: m[1], month: m[2], decade: Number(m[3]), scenario: m[4], object: m[5] }));
+
+const program = {
+  months: { '08': 'Август', '09': 'Сентябрь', '10': 'Октябрь', '11': 'Ноябрь' },
+  decades: ['I', 'II', 'III'],
+  scenarios,
+  candidates,
+  note:
+    'Перечень носит аналитический характер и подготовлен ТОО «ЭкоМикс» для планирования ' +
+    'поставок цемента NanoCem UT-9. Периоды указаны ориентировочно, с точностью до декады, ' +
+    'и подлежат уточнению. Решение о проведении работ, их очерёдности и составе программы ' +
+    'принимает недропользователь.',
+};
+writeFileSync(join(dirname(OUT), 'program.json'), JSON.stringify(program) + '\n', 'utf8');
+console.log(`program.json: ${candidates.length} кандидатов, ${Object.keys(scenarios).length} сценария`);
+
 const days = out.wells.reduce((s, w) => s + w.daily.length, 0);
 const measured = out.wells.reduce((s, w) => s + w.daily.filter((r) => r.qn !== null).length, 0);
 console.log(
