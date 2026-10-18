@@ -1,9 +1,12 @@
 /**
  * Клиент данных Subsoil.
  *
- * Два адаптера за одним интерфейсом: mock отдаёт демо-данные, http ходит
- * в реальный API. Выбор — переменной окружения NEXT_PUBLIC_API_MODE, без
- * правок кода экранов (критерий готовности в задании).
+ * Три адаптера за одним интерфейсом:
+ *   local — настоящие данные фонда из выгрузки файлов сайта (по умолчанию);
+ *   mock  — выдуманные компании и показатели, для витрины и отладки;
+ *   http  — реальный API, когда он поднимется.
+ *
+ * Выбор — переменной окружения NEXT_PUBLIC_API_MODE, без правок кода экранов.
  */
 import type {
   HoldingProduction,
@@ -20,18 +23,21 @@ export interface ScopeQuery {
 }
 
 export interface SubsoilApi {
-  /** Источник данных — показывается в подвале кабинета, чтобы демо не выдавали за факт. */
-  readonly mode: 'mock' | 'http';
+  /** Источник данных — показывается в кабинете, чтобы демо не выдавали за факт. */
+  readonly mode: ApiMode;
   getScopeTree(): Promise<ScopeTree>;
   getSummary(q: ScopeQuery): Promise<HoldingSummary>;
   getProduction(q: ScopeQuery & { metric: ProductionMetric; days?: number }): Promise<HoldingProduction>;
   getRequirements(q: ScopeQuery & { days?: number }): Promise<HoldingRequirements>;
 }
 
-export type ApiMode = 'mock' | 'http';
+export type ApiMode = 'local' | 'mock' | 'http';
 
 export function apiMode(): ApiMode {
-  return process.env.NEXT_PUBLIC_API_MODE === 'http' ? 'http' : 'mock';
+  const m = process.env.NEXT_PUBLIC_API_MODE;
+  if (m === 'http') return 'http';
+  if (m === 'mock') return 'mock';
+  return 'local';
 }
 
 export function apiBaseUrl(): string {
