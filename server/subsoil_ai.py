@@ -844,7 +844,7 @@ async function sendMessage() {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 120000);
   try {
-    const res = await fetch('/chat', {
+    const res = await fetch('/ai/chat', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({message: q, history}),
@@ -872,7 +872,7 @@ function quickQ(q) { input.value = q; sendMessage(); }
 
 async function clearHistory() {
   history = [];
-  await fetch('/reset', {method:'POST'});
+  await fetch('/ai/reset', {method:'POST'});
   chat.innerHTML = '<div class="msg system">История очищена.</div>';
 }
 </script>
@@ -923,7 +923,11 @@ def run_web(port: int = 8765) -> None:
             _ai.append(SubsoilAI())
         return _ai[0]
 
-    @app.post("/chat")
+    # Эндпоинты лежат под /ai/, а не в корне: наверху стоит Next, и он
+    # проксирует сюда только /ai и /ai/*. Корневой /chat до Python не
+    # доходил — браузер получал HTML-страницу 404 вместо JSON. Под /ai
+    # они заодно попадают под проверку входа: её matcher — /ai/:path*.
+    @app.post("/ai/chat")
     async def chat(req: ChatRequest):
         question = req.message.strip()
         if not question:
@@ -960,7 +964,7 @@ def run_web(port: int = 8765) -> None:
         save_log(question, answer)
         return {"answer": answer}
 
-    @app.post("/reset")
+    @app.post("/ai/reset")
     async def reset():
         _ai.clear()
         return {"ok": True}
