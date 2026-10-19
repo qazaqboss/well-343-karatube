@@ -665,7 +665,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI-помощник недропользователя — Каратюбе</title>
+<title>AI-помощник недропользователя — Subsoil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -762,8 +762,8 @@ HTML_PAGE = r"""<!DOCTYPE html>
   <a class="logo" href="/" title="На главную">
     <div class="logo-mark"><i></i></div>
     <div>
-      <div class="logo-eyebrow">Месторождение Каратюбе</div>
-      <div class="logo-text">IC Petroleum</div>
+      <div class="logo-eyebrow">Subsoil</div>
+      <div class="logo-text">Недропользование</div>
     </div>
   </a>
   <nav class="nav">
@@ -779,7 +779,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
 <div class="stage-bar">
   <span>Быстрые запросы</span>
   <button class="stage-btn" onclick="quickQ('Что делать в первый день после регистрации контракта?')">День 1</button>
-  <button class="stage-btn" onclick="quickQ('Какое состояние фонда Каратюбе и что с обводнённостью на 343?')">Фонд 343</button>
+  <button class="stage-btn" onclick="quickQ('Какое состояние фонда и что с обводнённостью на 343?')">Фонд 343</button>
   <button class="stage-btn" onclick="quickQ('По каким скважинам изоляция NanoCem UT-9 держит, а по каким нет и почему?')">Изоляция UT-9</button>
   <button class="stage-btn" onclick="quickQ('Кто согласовывает проект разведочных работ?')">Разведка</button>
   <button class="stage-btn" onclick="quickQ('Нашли залежь на разведке, что делать дальше?')">Залежь найдена</button>
@@ -790,7 +790,7 @@ HTML_PAGE = r"""<!DOCTYPE html>
   <button class="stage-btn" onclick="quickQ('Что значит сложный проект по КОНН?')">Сложный проект</button>
 </div>
 <div id="chat">
-  <div class="msg system">Спросите об этапах недропользования, документах и сроках — или о фонде Каратюбе и изоляции водопритока</div>
+  <div class="msg system">Спросите об этапах недропользования, документах и сроках — или о фонде скважин и изоляции водопритока</div>
 </div>
 <footer>
   <textarea id="input" rows="1" placeholder="Введите вопрос... (Enter — отправить, Shift+Enter — новая строка)"></textarea>
