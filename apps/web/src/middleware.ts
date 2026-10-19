@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { SESSION_COOKIE, authConfig, verifyToken } from '@/lib/auth';
+import { SESSION_COOKIE, verifyToken } from '@/lib/auth';
 
 /**
  * Кабинет закрыт без действующей сессии.
@@ -13,10 +13,9 @@ import { SESSION_COOKIE, authConfig, verifyToken } from '@/lib/auth';
  * не проходит. Адрес, куда человек шёл, передаётся в ?next=.
  */
 export async function middleware(req: NextRequest) {
-  const { secret } = authConfig();
   const token = req.cookies.get(SESSION_COOKIE)?.value;
 
-  if (await verifyToken(token, secret)) return NextResponse.next();
+  if (await verifyToken(token)) return NextResponse.next();
 
   const url = req.nextUrl.clone();
   url.pathname = '/login';

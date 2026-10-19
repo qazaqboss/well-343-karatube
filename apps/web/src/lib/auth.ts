@@ -1,12 +1,17 @@
 /**
- * Вход в кабинет по паролю.
+ * Вход в кабинет.
  *
- * Пароль хранится только в переменной окружения ADMIN_PASSWORD и в репозиторий
- * не попадает. Сессия — кука с подписью HMAC-SHA256 на SESSION_SECRET: подделать
- * её, не зная секрета, нельзя, а серверного хранилища сессий не требуется.
+ * Обязательна одна переменная — ADMIN_PASSWORD. SESSION_SECRET необязателен:
+ * если он задан, подпись сессии идёт на нём, если нет — ключ выводится из
+ * самого пароля. Так забытая вторая переменная не оставляет кабинет закрытым
+ * для всех, а те, кто её уже задал, ничего не теряют.
  *
- * Поведение при отсутствии переменных — отказ во входе, а не свободный доступ:
- * забытая переменная на проде не должна открывать кабинет всему интернету.
+ * Логин необязателен и читается из ADMIN_LOGIN (или ADMIN_USER — то же самое,
+ * второе имя оставлено, потому что обе переменные успели разойтись по
+ * инструкциям). Если логин не задан, проверяется только пароль.
+ *
+ * Без ADMIN_PASSWORD вход закрыт для всех: забытая переменная не должна
+ * открывать данные.
  */
 
 export const SESSION_COOKIE = 'subsoil_session';
@@ -15,36 +20,45 @@ export const SESSION_COOKIE = 'subsoil_session';
 export const SESSION_MAX_AGE = 60 * 60 * 12;
 
 export interface AuthConfig {
-  /** Логин из ADMIN_LOGIN. Если не задан — вход только по паролю, как раньше. */
+  /** Логин из ADMIN_LOGIN либо ADMIN_USER. Не задан — вход только по паролю. */
   login: string | null;
   password: string | null;
+  /** Явный ключ подписи. Не задан — выводится из пароля. */
   secret: string | null;
 }
 
 export function authConfig(): AuthConfig {
   return {
-    login: process.env.ADMIN_LOGIN?.trim() || null,
+    login: process.env.ADMIN_LOGIN?.trim() || process.env.ADMIN_USER?.trim() || null,
     password: process.env.ADMIN_PASSWORD?.trim() || null,
     secret: process.env.SESSION_SECRET?.trim() || null,
   };
 }
 
-/** Настроен ли вход. Если нет — кабинет закрыт для всех. */
+/** Настроен ли вход. Достаточно пароля. */
 export function authReady(): boolean {
-  const c = authConfig();
-  return Boolean(c.password && c.secret);
+  return Boolean(authConfig().password);
 }
 
 const enc = new TextEncoder();
 
-async function hmac(secret: string, data: string): Promise<string> {
-  const key = await crypto.subtle.importKey(
-    'raw',
-    enc.encode(secret),
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign'],
-  );
+/**
+ * Материал для ключа подписи.
+ *
+ * Берём SESSION_SECRET, если он есть, иначе пароль. В обоих случаях строка
+ * прогоняется через SHA-256 с фиксированной солью: подпись не зависит
+ * от длины и формы исходной строки, а из куки её не вытащить.
+ */
+async function signingKey(cfg: AuthConfig): Promise<CryptoKey | null> {
+  const base = cfg.secret ?? cfg.password;
+  if (!base) return null;
+  const material = await crypto.subtle.digest('SHA-256', enc.encode(`subsoil.v1.${base}`));
+  return crypto.subtle.importKey('raw', material, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+}
+
+async function hmac(cfg: AuthConfig, data: string): Promise<string | null> {
+  const key = await signingKey(cfg);
+  if (!key) return null;
   const sig = await crypto.subtle.sign('HMAC', key, enc.encode(data));
   return base64url(new Uint8Array(sig));
 }
@@ -68,20 +82,43 @@ export function safeEqual(a: string, b: string): boolean {
   return diff === 0;
 }
 
-/** Токен сессии: срок годности и подпись. */
-export async function issueToken(secret: string, now = Date.now()): Promise<string> {
-  const exp = Math.floor(now / 1000) + SESSION_MAX_AGE;
-  const payload = `admin.${exp}`;
-  return `${payload}.${await hmac(secret, payload)}`;
+/**
+ * Проверка логина и пароля.
+ *
+ * Логин без учёта регистра: «icp» и «ICP» — один пользователь. Оба поля
+ * сравниваются всегда, даже если первое уже не совпало: иначе по времени
+ * ответа видно, что именно введено неверно.
+ */
+export function checkCredentials(login: string, password: string): boolean {
+  const cfg = authConfig();
+  if (!cfg.password) return false;
+  const loginOk = cfg.login
+    ? safeEqual(login.trim().toLowerCase(), cfg.login.toLowerCase())
+    : true;
+  const passOk = safeEqual(password, cfg.password);
+  return loginOk && passOk;
 }
 
-export async function verifyToken(token: string | undefined, secret: string | null): Promise<boolean> {
-  if (!token || !secret) return false;
+/** Токен сессии: срок годности и подпись. */
+export async function issueToken(now = Date.now()): Promise<string | null> {
+  const cfg = authConfig();
+  const exp = Math.floor(now / 1000) + SESSION_MAX_AGE;
+  const payload = `admin.${exp}`;
+  const sig = await hmac(cfg, payload);
+  return sig ? `${payload}.${sig}` : null;
+}
+
+export async function verifyToken(token: string | undefined): Promise<boolean> {
+  if (!token) return false;
+  const cfg = authConfig();
+  if (!cfg.password) return false;
+
   const parts = token.split('.');
   if (parts.length !== 3) return false;
   const [role, expRaw, sig] = parts as [string, string, string];
   const exp = Number(expRaw);
   if (!Number.isFinite(exp) || exp * 1000 < Date.now()) return false;
-  const expected = await hmac(secret, `${role}.${expRaw}`);
-  return safeEqual(sig, expected);
+
+  const expected = await hmac(cfg, `${role}.${expRaw}`);
+  return expected !== null && safeEqual(sig, expected);
 }

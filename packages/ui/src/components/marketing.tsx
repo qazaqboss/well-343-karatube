@@ -51,10 +51,12 @@ export interface HeroProps {
   actions?: ReactNode;
   /** Крупный бледный текст на фоне — дата или код объекта, как «J1-IV». */
   watermark?: string;
+  /** Иллюстрация справа. Если она есть, водяной знак не рисуется: вдвоём тесно. */
+  aside?: ReactNode;
 }
 
 /** Серый блок с крупным бледным текстом на фоне (09-design-system.md). */
-export function Hero({ eyebrow, title, lead, actions, watermark }: HeroProps) {
+export function Hero({ eyebrow, title, lead, actions, watermark, aside }: HeroProps) {
   return (
     <section
       style={{
@@ -62,23 +64,26 @@ export function Hero({ eyebrow, title, lead, actions, watermark }: HeroProps) {
         overflow: 'hidden',
         background: 'var(--ss-panel)',
         borderBottom: '1px solid var(--ss-line)',
-        padding: '64px 40px 56px',
+        padding: '56px 40px 52px',
       }}
     >
-      {watermark ? (
+      {watermark && !aside ? (
         <span
           aria-hidden="true"
           className="ss-display"
           style={{
             position: 'absolute',
-            right: 24,
+            right: 40,
             top: '50%',
             transform: 'translateY(-50%)',
-            fontSize: 'clamp(80px, 18vw, 220px)',
+            fontSize: 'clamp(64px, 11vw, 150px)',
             fontWeight: 700,
             lineHeight: 1,
+            letterSpacing: 0,
             color: 'var(--ss-line)',
-            opacity: 0.6,
+            opacity: 0.55,
+            maxWidth: '45%',
+            overflow: 'hidden',
             pointerEvents: 'none',
             userSelect: 'none',
           }}
@@ -87,7 +92,19 @@ export function Hero({ eyebrow, title, lead, actions, watermark }: HeroProps) {
         </span>
       ) : null}
 
-      <div style={{ position: 'relative', maxWidth: 980 }}>
+      <div
+        className={aside ? 'ss-hero-split' : undefined}
+        style={{
+          position: 'relative',
+          display: aside ? 'grid' : 'block',
+          gridTemplateColumns: aside ? 'minmax(0, 1.25fr) minmax(0, 1fr)' : undefined,
+          gap: aside ? 40 : undefined,
+          alignItems: 'center',
+          maxWidth: aside ? 1240 : 980,
+          margin: '0 auto',
+        }}
+      >
+        <div>
         <div className="ss-label">{eyebrow}</div>
         <h1
           className="ss-display"
@@ -101,6 +118,8 @@ export function Hero({ eyebrow, title, lead, actions, watermark }: HeroProps) {
           </p>
         ) : null}
         {actions ? <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 28 }}>{actions}</div> : null}
+        </div>
+        {aside ? <div style={{ minWidth: 0 }}>{aside}</div> : null}
       </div>
     </section>
   );

@@ -32,3 +32,9 @@ a { color: inherit; }
 @media (min-width: 901px) {
   .ss-bottombar { display: none; }
 }
+
+/* Hero с иллюстрацией: на узких экранах колонки складываются,
+   иначе и текст, и схема становятся нечитаемо узкими. */
+@media (max-width: 900px) {
+  .ss-hero-split { grid-template-columns: 1fr !important; }
+}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button, Hero, Panel, SectionTitle } from '@subsoil/ui';
 import { AI_QUESTIONS, CASES, FLOW, PLATFORM, PRODUCTS, PROOF } from '@/lib/site-content';
+import { DashboardSketch } from '@/components/dashboard-sketch';
 
 /**
  * Главная Subsoil.
@@ -31,7 +32,7 @@ export default function HomePage() {
             </Button>
           </>
         }
-        watermark="J1-IV"
+        aside={<DashboardSketch />}
       />
 
       {/* ── Цифры и разбор результатов ─────────────────────────────────── */}
