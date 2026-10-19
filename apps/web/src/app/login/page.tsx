@@ -128,30 +128,9 @@ export default async function LoginPage({
                     autoComplete="username"
                     autoFocus
                     required
-                    style={{
-                      border: '1px solid var(--ss-line)',
-                      borderRadius: 'var(--ss-radius-btn)',
-                      background: 'var(--ss-bg)',
-                      color: 'var(--ss-ink)',
-                      font: 'inherit',
-                      padding: '10px 12px',
-                    }}
+                    style={inputStyle}
                   />
                 </label>
-              ) : null}
-
-              {cfg.login ? (
-              <label style={{ display: 'grid', gap: 6 }}>
-                <span className="ss-label">Логин</span>
-                <input
-                  className="ss-focus"
-                  type="text"
-                  name="login"
-                  autoComplete="username"
-                  autoFocus
-                  style={inputStyle}
-                />
-              </label>
               ) : null}
 
               <label style={{ display: 'grid', gap: 6 }}>
