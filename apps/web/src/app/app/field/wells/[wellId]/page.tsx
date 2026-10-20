@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { KpiCard, KpiStrip, Panel, SectionTitle, StatusDot } from '@subsoil/ui';
 import { getJobs, getWell, listWells } from '@/lib/real/build';
 import { WellChart } from '@/components/well-chart';
+import { WellJournal } from '@/components/well-journal';
 
 export function generateStaticParams() {
   return listWells().map((w) => ({ wellId: w.id }));
@@ -108,34 +109,11 @@ export default async function WellPage({ params }: { params: Promise<{ wellId: s
         )}
       </Panel>
 
-      <SectionTitle aside="последние 30 суток">Журнал</SectionTitle>
+      <SectionTitle aside={`${well.daily.length} сут · с начала года`}>Журнал суточных замеров</SectionTitle>
       <Panel>
-        <div style={{ overflowX: 'auto' }}>
-          <table className="ss-nums" style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
-            <thead>
-              <tr>
-                {['Дата', 'Фаза', 'Qж', 'Qн', 'Обв., %', 'Комментарий'].map((h) => (
-                  <th key={h} style={TH}>
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {well.daily.slice(-30).reverse().map((r) => (
-                <tr key={r.d}>
-                  <td style={{ ...TD, whiteSpace: 'nowrap' }}>{r.d}</td>
-                  <td style={{ ...TD, color: 'var(--ss-ink-quiet)', fontSize: 12 }}>{r.phase}</td>
-                  <td style={NUM}>{fmt(r.qzh, 1)}</td>
-                  <td style={NUM}>{fmt(r.qn, 2)}</td>
-                  <td style={NUM}>{fmt(r.obv, 1)}</td>
-                  <td style={{ ...TD, fontSize: 13, color: 'var(--ss-ink-quiet)' }}>{r.comment}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <WellJournal rows={well.daily} />
       </Panel>
+
     </>
   );
 }
@@ -152,28 +130,8 @@ function Row({ label, value, level }: { label: string; value: string; level?: 'o
   );
 }
 
-function fmt(v: number | null, digits: number): string {
-  if (v === null) return '—';
-  return v.toFixed(digits).replace('.', ',');
-}
-
 /** ISO → «ДД.ММ», как подписаны сутки в журнале. */
 function shortDate(iso: string): string {
   const [, m, d] = iso.split('-');
   return `${d}.${m}`;
 }
-
-const TH = {
-  textAlign: 'left',
-  fontSize: 11,
-  letterSpacing: '0.1em',
-  textTransform: 'uppercase',
-  color: 'var(--ss-ink-quiet)',
-  fontWeight: 500,
-  padding: '0 12px 8px',
-  borderBottom: '1px solid var(--ss-line)',
-  whiteSpace: 'nowrap',
-} as const;
-
-const TD = { padding: '10px 12px', borderBottom: '1px solid var(--ss-line)', fontSize: 14 } as const;
-const NUM = { ...TD, textAlign: 'right', whiteSpace: 'nowrap' } as const;
